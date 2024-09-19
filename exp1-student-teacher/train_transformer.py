@@ -8,6 +8,7 @@ from src.transformer import TransformerModel
 def train_transformer(
     train_path: str,
     eval_path: str,
+    test_path: str,
     batch_size=8,
     epochs=60,
     learning_rate=0.0001,
@@ -26,10 +27,10 @@ def train_transformer(
         data_path=train_path, batch_size=batch_size
     )
     eval_dataloader, _ = create_dataloader(
-        data_path=train_path, batch_size=batch_size, pretrained_tokenizer=tokenizer
+        data_path=eval_path, batch_size=batch_size, pretrained_tokenizer=tokenizer
     )
     test_dataloader, _ = create_dataloader(
-        data_path=train_path, batch_size=batch_size, pretrained_tokenizer=tokenizer
+        data_path=test_path, batch_size=batch_size, pretrained_tokenizer=tokenizer
     )
 
     model = TransformerModel(
@@ -55,11 +56,13 @@ def train_transformer(
         epochs=epochs,
         seed=seed,
     )
-    predict(model=model, dataloader=test_dataloader, max_length=64)
+    preds = predict(model=model, dataloader=test_dataloader, max_length=64)
+    print(preds)
 
 
 if __name__ == "__main__":
     train_transformer(
         train_path="./task0-data/DEVELOPMENT-LANGUAGES/austronesian/hil.trn",
         eval_path="./task0-data/DEVELOPMENT-LANGUAGES/austronesian/hil.dev",
+        test_path="./task0-data/DEVELOPMENT-LANGUAGES/austronesian/hil.tst",
     )
