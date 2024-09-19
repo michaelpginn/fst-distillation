@@ -3,7 +3,7 @@ import torch
 from torch import nn
 
 class PositionalEncoding(nn.Module):
-    """Sinusoidal positional encodings, from https://towardsdatascience.com/a-detailed-guide-to-pytorchs-nn-transformer-module-c80afbc9ffb1"""
+    """Sinusoidal positional encodings"""
     def __init__(self, d_model: int, dropout: float = 0.1, max_len: int = 5000):
         super().__init__()
         self.dropout = nn.Dropout(p=dropout)

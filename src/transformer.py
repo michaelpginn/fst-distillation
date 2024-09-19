@@ -1,15 +1,16 @@
-from jaxtyping import Bool, Num, Float
 import math
-import torch
-from torch import nn
-from torch import Tensor
 
-from .tokenizer import Tokenizer
+from jaxtyping import Bool, Num
+from torch import Tensor, nn
+
 from .positional_encoding import PositionalEncoding
+from .tokenizer import Tokenizer
 from .utils import create_causal_mask
+
 
 class TransformerModel(nn.Module):
     MODEL_TYPE = "transformer"
+
     def __init__(
         self,
         *args,
@@ -19,15 +20,14 @@ class TransformerModel(nn.Module):
         num_encoder_layers: int,
         num_decoder_layers: int,
         dropout: float,
-        **kwargs
+        **kwargs,
     ) -> None:
         super().__init__(*args, **kwargs)
 
         self.d_model = d_model
         vocab_size = len(tokenizer)
         self.embedding = nn.Embedding(vocab_size, d_model)
-        self.positional_encoding = PositionalEncoding(d_model=d_model,
-                                                      dropout=dropout)
+        self.positional_encoding = PositionalEncoding(d_model=d_model, dropout=dropout)
         self.transformer = nn.Transformer(
             d_model=d_model,
             nhead=nhead,
@@ -43,7 +43,7 @@ class TransformerModel(nn.Module):
         src: Num[Tensor, "batch_size src_seq_length"],
         tgt: Num[Tensor, "batch_size tgt_seq_length"],
         src_pad_mask: Bool[Tensor, "batch_size src_seq_length"] | None = None,
-        tgt_pad_mask: Bool[Tensor, "batch_size tgt_seq_length"] | None = None
+        tgt_pad_mask: Bool[Tensor, "batch_size tgt_seq_length"] | None = None,
     ):
         """
         Arguments:
@@ -52,7 +52,7 @@ class TransformerModel(nn.Module):
             src_pad_mask: Tensor, shape ``[batch_size, src_seq_length]``
             tgt_pad_mask: Tensor, shape ``[batch_size, tgt_seq_length]``
         Returns:
-            torch.Tensor: Output tensor with the predicted token probabilities.
+            torch.Tensor: [batch_size, tgt_seq_length, vocab_size] Output tensor with the predicted token probabilities.
         """
         src_embeddings = self.embedding(src) * math.sqrt(self.d_model)
         tgt_embeddings = self.embedding(tgt) * math.sqrt(self.d_model)
@@ -66,6 +66,6 @@ class TransformerModel(nn.Module):
             tgt_mask=tgt_causal_mask,
             tgt_is_causal=True,
             src_key_padding_mask=src_pad_mask,
-            tgt_key_padding_mask=tgt_pad_mask
+            tgt_key_padding_mask=tgt_pad_mask,
         )
-        return self.out(transformer_out).permute(0, 2, 1)
+        return self.out(transformer_out)
