@@ -1,5 +1,5 @@
-import wandb
 from src.modeling import TransformerModel
+from src.optional_wandb import wandb
 from src.tasks.inflection import create_dataloader
 from src.training import evaluate, predict, train
 
@@ -8,8 +8,8 @@ def train_transformer(
     train_path: str,
     eval_path: str,
     test_path: str,
-    batch_size=512,
-    epochs=60,
+    batch_size=256,
+    epochs=100,
     learning_rate=0.0001,
     d_model=512,
     nhead=8,

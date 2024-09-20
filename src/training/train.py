@@ -5,7 +5,7 @@ import torch
 from torch.utils.data import DataLoader
 from tqdm import tqdm
 
-import wandb
+from src.optional_wandb import wandb
 
 device = "cuda" if torch.cuda.is_available() else "mps"
 
@@ -96,7 +96,13 @@ def train(
         )
         print(f"Training loss: {train_loss:.4f}")
         print(f"Validation loss: {validation_loss:.4f}")
-        wandb.log({"train_loss": train_loss, "validation_loss": validation_loss})
+        wandb.log(
+            {
+                "epoch": epoch,
+                "train_loss": train_loss,
+                "validation_loss": validation_loss,
+            }
+        )
 
     # Upload checkpoint to wandb
     temp_file = tempfile.NamedTemporaryFile(suffix="ckpt.pth")
