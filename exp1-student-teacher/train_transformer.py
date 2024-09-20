@@ -8,7 +8,7 @@ def train_transformer(
     train_path: str,
     eval_path: str,
     test_path: str,
-    batch_size=16,
+    batch_size=512,
     epochs=60,
     learning_rate=0.0001,
     d_model=512,
@@ -86,5 +86,5 @@ if __name__ == "__main__":
         train_path="./task0-data/DEVELOPMENT-LANGUAGES/austronesian/hil.trn",
         eval_path="./task0-data/DEVELOPMENT-LANGUAGES/austronesian/hil.dev",
         test_path="./task0-data/GOLD-TEST/hil.tst",
-        epochs=40,
+        epochs=60,
     )
