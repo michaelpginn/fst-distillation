@@ -23,7 +23,7 @@ def train_transformer(
     language = train_path.split("/")[-1].split(".")[0]
     hyperparams = locals()
 
-    # Create dataloaderes
+    # Create dataloaders
     train_dataloader, tokenizer = create_dataloader(
         data_path=train_path, batch_size=batch_size
     )
@@ -58,6 +58,8 @@ def train_transformer(
         learning_rate=learning_rate,
         seed=seed,
     )
+
+    # Run predictions and evaluate on test data
     pred_token_ids, label_token_ids = predict(
         model=model, dataloader=test_dataloader, tokenizer=tokenizer, max_length=64
     )
@@ -66,6 +68,12 @@ def train_transformer(
 
     print("Predicted\tLabel")
     print("\n".join([p + "\t" + l for p, l in zip(preds, labels)]))
+
+    preds_table = wandb.Table(
+        columns=["predicted", "label", "correct"],
+        data=[[p, lab, "yes" if p == lab else "no"] for p, lab in zip(preds, labels)],
+    )
+    wandb.log({"test_predictions": preds_table})
 
     metrics = {
         "accuracy": evaluate.accuracy(preds, labels),

@@ -1,3 +1,4 @@
+import tempfile
 from typing import Callable
 
 import torch
@@ -72,6 +73,7 @@ def train(
     learning_rate: float = 0.0001,
     seed: int = 0,
 ):
+    """Trains the model with the specified parameters."""
     torch.manual_seed(seed)
     torch.cuda.manual_seed(seed)
 
@@ -95,3 +97,10 @@ def train(
         print(f"Training loss: {train_loss:.4f}")
         print(f"Validation loss: {validation_loss:.4f}")
         wandb.log({"train_loss": train_loss, "validation_loss": validation_loss})
+
+    # Upload checkpoint to wandb
+    temp_file = tempfile.NamedTemporaryFile(suffix="ckpt.pth")
+    torch.save(model.state_dict(), temp_file)
+    artifact = wandb.Artifact("final_checkpoint", type="model")
+    artifact.add_file(temp_file.name)
+    wandb.log_artifact(artifact)
