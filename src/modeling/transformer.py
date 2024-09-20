@@ -1,6 +1,5 @@
 import math
 
-from jaxtyping import Bool, Num
 from torch import Tensor, nn
 
 from .input_processing import create_causal_mask
@@ -40,10 +39,10 @@ class TransformerModel(nn.Module):
 
     def forward(
         self,
-        src: Num[Tensor, "batch_size src_seq_length"],
-        tgt: Num[Tensor, "batch_size tgt_seq_length"],
-        src_pad_mask: Bool[Tensor, "batch_size src_seq_length"] | None = None,
-        tgt_pad_mask: Bool[Tensor, "batch_size tgt_seq_length"] | None = None,
+        src: Tensor,
+        tgt: Tensor,
+        src_pad_mask: Tensor | None = None,
+        tgt_pad_mask: Tensor | None = None,
     ):
         """
         Arguments:
