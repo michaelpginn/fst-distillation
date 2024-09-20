@@ -17,3 +17,7 @@ Our initial work consists of two main goals:
 2. We will train high-quality neural models and perform **knowledge distillation to FSTs** by sampling novel forms from the neural model in order to vastly increase the amount of labeled data. To this end, we will study various finite-state induction algorithms, also including those which utilize negative samples and uncertainty estimates.
 
 # Usage
+```shell
+pip install -r requirements.txt
+python -m exp1-student-teacher.train_transformer
+```
