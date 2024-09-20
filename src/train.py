@@ -6,7 +6,7 @@ from tqdm import tqdm
 
 import wandb
 
-device = "cuda" if torch.cuda.is_available() else "cpu"
+device = "cuda" if torch.cuda.is_available() else "mps"
 
 
 def training_loop(
@@ -58,7 +58,7 @@ def validation_loop(model: torch.nn.Module, dataloader: DataLoader, loss_fn: Cal
                 src_pad_mask=source_pad_mask,
                 tgt_pad_mask=target_pad_mask,
             )
-            loss = loss_fn(out, target_labels)
+            loss = loss_fn(out.permute(0, 2, 1), target_labels)
             epoch_loss += loss.detach().item()
     return epoch_loss / len(dataloader)
 

@@ -15,3 +15,5 @@ Our initial work consists of two main goals:
 
 1. We will compare the **sample efficiency** of **neural and finite-state learning algorithms**, by studying how performance of these systems varies with the size of the provided training set and the amount of data needed to converge.
 2. We will train high-quality neural models and perform **knowledge distillation to FSTs** by sampling novel forms from the neural model in order to vastly increase the amount of labeled data. To this end, we will study various finite-state induction algorithms, also including those which utilize negative samples and uncertainty estimates.
+
+# Usage

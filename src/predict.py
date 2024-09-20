@@ -1,4 +1,4 @@
-from typing import List
+from typing import List, Tuple
 
 import torch
 from torch.utils.data import DataLoader
@@ -6,22 +6,23 @@ from tqdm import tqdm
 
 from src.tokenizer import Tokenizer
 
-device = "cuda" if torch.cuda.is_available() else "cpu"
+device = "cuda" if torch.cuda.is_available() else "mps"
 
 
 def predict(
     model: torch.nn.Module,
     dataloader: DataLoader,
+    tokenizer: Tokenizer,
     max_length: int,
-) -> List[List[int]]:
-    """Runs inference. Returns a list of predicted token IDs in the same order as the inputs."""
+) -> Tuple[List[List[int]], List[List[int]]]:
+    """Runs inference. Returns a list of predicted token IDs in the same order as the inputs, and the label IDs."""
     model.eval()
-    tokenizer: Tokenizer = model.tokenizer
 
     predicted_ids: List[List[int]] = []
+    label_ids: List[List[int]] = []
 
     for batch in tqdm(dataloader, "Predicting"):
-        batch_size = len(batch)
+        batch_size = batch["source_input_ids"].size(0)
 
         # Start with just column of <BOS> tokens
         output_sequence = torch.full(
@@ -58,4 +59,5 @@ def predict(
 
         # We have generated seqs for this batch. Let's add to a full list of preds.
         predicted_ids += output_sequence.tolist()
-    return predicted_ids
+        label_ids += batch["target_input_ids"].tolist()
+    return predicted_ids, label_ids

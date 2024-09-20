@@ -1,4 +1,5 @@
 import wandb
+from src import evaluate
 from src.inflection import create_dataloader
 from src.predict import predict
 from src.train import train
@@ -54,15 +55,30 @@ def train_transformer(
         train_dataloader=train_dataloader,
         eval_dataloader=eval_dataloader,
         epochs=epochs,
+        learning_rate=learning_rate,
         seed=seed,
     )
-    preds = predict(model=model, dataloader=test_dataloader, max_length=64)
-    print(preds)
+    pred_token_ids, label_token_ids = predict(
+        model=model, dataloader=test_dataloader, tokenizer=tokenizer, max_length=64
+    )
+    preds = [tokenizer.decode(ids) for ids in pred_token_ids]
+    labels = [tokenizer.decode(ids) for ids in label_token_ids]
+
+    print("Predicted\tLabel")
+    print("\n".join([p + "\t" + l for p, l in zip(preds, labels)]))
+
+    metrics = {
+        "accuracy": evaluate.accuracy(preds, labels),
+        "levenshtein": evaluate.levenshtein(preds, labels),
+    }
+    print(metrics)
+    wandb.log({"test": metrics})
 
 
 if __name__ == "__main__":
     train_transformer(
         train_path="./task0-data/DEVELOPMENT-LANGUAGES/austronesian/hil.trn",
         eval_path="./task0-data/DEVELOPMENT-LANGUAGES/austronesian/hil.dev",
-        test_path="./task0-data/DEVELOPMENT-LANGUAGES/austronesian/hil.tst",
+        test_path="./task0-data/GOLD-TEST/hil.tst",
+        epochs=40,
     )
