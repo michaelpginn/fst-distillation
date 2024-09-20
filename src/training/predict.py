@@ -4,7 +4,7 @@ import torch
 from torch.utils.data import DataLoader
 from tqdm import tqdm
 
-from src.tokenizer import Tokenizer
+from src.modeling.tokenizer import Tokenizer
 
 device = "cuda" if torch.cuda.is_available() else "mps"
 

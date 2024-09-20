@@ -3,9 +3,9 @@ import math
 from jaxtyping import Bool, Num
 from torch import Tensor, nn
 
+from .input_processing import create_causal_mask
 from .positional_encoding import PositionalEncoding
 from .tokenizer import Tokenizer
-from .utils import create_causal_mask
 
 
 class TransformerModel(nn.Module):

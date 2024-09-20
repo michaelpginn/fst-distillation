@@ -1,4 +1,5 @@
-from ..tokenizer import Tokenizer
+from src.modeling.tokenizer import Tokenizer
+
 from .example import InflectionExample
 
 

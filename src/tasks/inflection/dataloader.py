@@ -1,9 +1,9 @@
 from torch.utils.data import DataLoader
 
-from src.inflection.tokenizer import SharedTaskInflectionTokenizer
+from src.modeling.input_processing import create_pad_mask, pad_batch_collate_fn
 
-from ..utils import create_pad_mask, pad_batch_collate_fn
 from .dataset import SharedTaskInflectionDataset
+from .tokenizer import SharedTaskInflectionTokenizer
 
 
 def create_dataloader(

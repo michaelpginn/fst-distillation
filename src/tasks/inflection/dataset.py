@@ -1,8 +1,8 @@
-import torch
 from torch.utils.data import Dataset
 
 from .example import InflectionExample
 from .tokenizer import SharedTaskInflectionTokenizer
+
 
 class SharedTaskInflectionDataset(Dataset):
     """Represents data from the SIGMORPHON shared tasks. Data should be provided in a TSV file without headers."""
@@ -10,9 +10,9 @@ class SharedTaskInflectionDataset(Dataset):
     def __init__(self, path: str, tokenizer: SharedTaskInflectionTokenizer | None):
         """Initialize a dataset. If a pretrained `tokenizer` is provided, will use to tokenize, otherwise, a new one will be created."""
         self.raw_examples: list[InflectionExample] = []
-        with open(path, 'r') as f:
+        with open(path, "r") as f:
             for line in f:
-                row = line.strip().split('\t')
+                row = line.strip().split("\t")
                 if len(row) == 2:
                     # Test data, no target forms
                     [lemma, features] = row

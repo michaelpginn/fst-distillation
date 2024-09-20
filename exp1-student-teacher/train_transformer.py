@@ -1,16 +1,14 @@
 import wandb
-from src import evaluate
-from src.inflection import create_dataloader
-from src.predict import predict
-from src.train import train
-from src.transformer import TransformerModel
+from src.modeling import TransformerModel
+from src.tasks.inflection import create_dataloader
+from src.training import evaluate, predict, train
 
 
 def train_transformer(
     train_path: str,
     eval_path: str,
     test_path: str,
-    batch_size=8,
+    batch_size=16,
     epochs=60,
     learning_rate=0.0001,
     d_model=512,
