@@ -1,0 +1,859 @@
+(i,i) (s,s) (t,t) (a,a) (r,r)	V;NFIN
+( ,n) ( ,a) ( ,g) (d,d) (a,a) (l,l) (a,a) (g,g) (a,a) (n,n)	V;PROG;PST
+( ,m) ( ,a) ( ,g) ( ,a) (t,t) (u,u) (d,d) (l,l) (o,o)	V;FUT
+( ,n) ( ,a) ( ,g) ( ,a) (t,t) (u,u) (d,d) (l,l) (o,o)	V;PRS
+( ,n) ( ,a) ( ,g) ( ,a) (d,d) (e,e) (s,s) (i,i) (s,s) (y,y) (o,o) (n,n) ( , ) ( ,p) ( ,a)	V;PRF+PROG;PRS
+( ,g) ( ,i) ( ,n) ( ,a) (t,t) (a,a) (p,p) (o,o) (s,s) ( , ) ( ,p) ( ,a)	V;PRF+PROG;PRS
+( ,n) ( ,a) ( ,g) (h,h) (i,i) (g,g) (d,d) ( ,a) ( , ) ( ,n) (a,a)	V;PRF;PST
+( ,n) ( ,a) ( ,g) (b,b) (a,a) (l,l) (i,i) (g,g) (y,y) (a,a)	V;PROG;PST
+( ,m) ( ,a) ( ,g) ( ,a) (t,t) (u,u) (o,o) (n,n)	V;PROG;FUT
+( ,m) ( ,a) (t,t) (a,a) (b,b) (o,o) (/, ) (k, ) (a,n) (t, ) (a,a) (b, ) (o, )	V;PRF;FUT
+( ,g) ( ,i) ( ,n) ( ,a) (a,a) (g,g) (d,d) ( ,a) ( , ) ( ,n) (a,a)	V;PRF;PRS
+(p,p) (a,a) (a,a) (t,t) (h,h) (a,a) (g,g)	V;NFIN
+( ,n) ( ,a) ( ,g) ( ,a) (y,y) (u,u) (h,h) (o,o) (m,m)	V;PROG;PRS
+( ,n) ( ,a) ( ,g) (h,h) (u,u) (l,l) (a,a) (r,r)	V;PST
+(h,g) (i,i) (g, ) (u, ) (g, ) (m, ) (a,n) (/, ) (h,h) (i,i) (g,g) (u,u) (g,g) (m,m) (a,a) (o, ) (n, )	V;PST
+( ,m) ( ,a) ( ,g) ( ,a) (b,b) (y,y) (a,a) (h,h) (e,e)	V;FUT
+( ,n) ( ,a) ( ,g) ( ,a) (p,p) (a,a) (m,m) (a,a) (n,n) (g,g) (k,k) (o,o) (t,t) ( , ) ( ,p) ( ,a)	V;PRF+PROG;PRS
+( ,n) ( ,a) ( ,g) (p,p) (i,i) (l,l) (i,i) ( , ) ( ,p) ( ,a)	V;PRF+PROG;PST
+( ,m) ( ,a) ( ,g) ( ,a) (d,d) (a,a) (l,l) (a,a) (g,g) (a,a) (n,n)	V;PROG;FUT
+( ,m) ( ,a) ( ,g) ( ,a) (b,b) (a,a) (s,s) ( ,a) ( , ) ( ,p) (a,a)	V;PRF+PROG;FUT
+( ,m) ( ,a) ( ,g) ( ,a) (h,h) (a,a) (m,m) (b,b) (a,a) (l,l) ( , ) ( ,p) ( ,a)	V;PRF+PROG;FUT
+( ,m) ( ,a) ( ,g) ( ,a) (g,g) (a,a) (m,m) (i,i) (t,t) ( , ) ( ,n) ( ,a)	V;PRF;FUT
+( ,n) ( ,a) ( ,g) (l,l) (u,u) (p,p) (a,a) (d,d)	V;PROG;PST
+( ,n) ( ,a) ( ,g) ( ,-) (a,a) (w,w) (a,a) (y,y) ( , ) ( ,n) ( ,a)	V;PRF;PST
+( ,n) ( ,a) ( ,g) ( ,a) (p,p) (i,i) (l,l) (i,i)	V;PROG;PRS
+(d,d) (a,a) (w,w)	V;NFIN
+( ,n) ( ,a) ( ,g) (b,b) (a,a) (k,k) (a,a) (l,l)	V;PST
+( ,m) ( ,a) ( ,g) ( ,a) (d,d) (a,a) (l,l) (a,a) (g,g) (a,a) ( ,n) ( , ) (n,n) ( ,a)	V;PRF;FUT
+(k,k) (a,a) (n,n) (t,t) (a,a)	V;NFIN
+( ,n) ( ,a) ( ,g) ( ,a) (t,t) (a,a) (w,w) (a,a) (g,g)	V;PROG;PRS
+( ,m) ( ,a) ( ,g) ( ,a) (b,b) (a,a) (t,t) (o,o) (n,n)	V;PROG;FUT
+( ,n) ( ,a) ( ,g) ( ,a) (h,h) (u,u) (l,l) (a,a) (r,r)	V;PROG;PRS
+(m,m) (a,a) (n,n) (e,e) (h,h) (o,o)	V;NFIN
+( ,m) ( ,a) ( ,g) ( ,a) (t,t) (u,u) (o,o) (n,n)	V;FUT
+(t,t) (a,a) (w,w) (a,a) (g,g)	V;NFIN
+( ,n) ( ,a) ( ,g) (d,d) (e,e) (s,s) (i,i) (s,s) (y,y) (o,o) (n,n) ( , ) ( ,p) ( ,a)	V;PRF+PROG;PST
+(t, ) (a, ) (l, ) (u, ) (p, ) (a, ) (n,n) (g, ) (d, ) (a,a) (n, ) (/, ) (t,t) (a,a) (l,l) (u,u) (p,p) (a,a) (n,n) (g,g) (o, ) (d,d) (/, ) (t, ) (a,a) (l, ) (u, ) (p,n) (a, ) (n,n) (g,a) (d, ) (o, ) (n, )	V;PRF;PRS
+( ,n) ( ,a) ( ,g) (s,s) (u,u) (g,g) (o,o) (d,d) ( , ) ( ,p) ( ,a)	V;PRF+PROG;PST
+(u,g) (y,i) (a,n) (t, ) (/,a) (u,u) (y,y) (a,a) (t,t) (a,a) (n,n)	V;PRS
+( ,m) ( ,a) ( ,g) ( ,a) (i,i) (s,s) (t,t) (o,o) (r,r) (y,y) (a,a)	V;FUT
+( ,n) ( ,a) ( ,g) ( ,a) (k,k) (a,a) (n,n) (t,t) (a,a)	V;PRS
+( ,m) ( ,a) ( ,g) ( ,a) (b,b) (y,y) (a,a) (h,h) (e,e) ( , ) ( ,p) ( ,a)	V;PRF+PROG;FUT
+( ,n) ( ,a) ( ,g) ( ,a) (b,b) (a,a) (l,l) (i,i) (k,k)	V;PRS
+( ,n) ( ,a) ( ,g) (g,g) (i,i) (n,n) (h,h) (a,a) (w,w) ( ,a) ( , ) ( ,n) (a,a)	V;PRF;PST
+( ,n) ( ,a) ( ,g) ( ,a) (s,s) (i,i) (n,n) (g,g) (g,g) (i,i) (t,t)	V;PROG;PRS
+( ,n) ( ,a) ( ,g) (t,t) (a,a) (w,w) (a,a) (g,g) ( , ) ( ,p) ( ,a)	V;PRF+PROG;PST
+( ,n) ( ,a) ( ,g) (p,p) (a,a) (m,m) (a,a) (n,n) (g,g) (k,k) (o,o) (t,t) ( , ) ( ,p) ( ,a)	V;PRF+PROG;PST
+(h,g) (i,i) (b, ) (a,n) (l, ) (o, ) (/, ) (h,h) (i,i) (b,b) (a,a) (l,l) (u,o) (a, ) (n,p) ( ,a)	V;PRF+PROG;PST
+( ,p) ( ,a) ( ,g) ( ,a) (b,b) (u,u) (k,k) (s,s) (a,a) ( ,n) ( , ) (n,n) ( ,a)	V;PRF;FUT
+( ,g) ( ,i) ( ,n) (d,d) (u,u) (l,l) (a,a)	V;PROG;PST
+( ,n) ( ,a) ( ,g) (s,s) (a,a) (o,o) (t,t)	V;PST
+(t, ) (a, ) (b, ) (o, ) (/, ) (k,n) (a,a) (t,t) (a,a) (b,b) (o,o)	V;PST
+( ,g) ( ,i) ( ,n) ( ,a) (k,k) (a,a) (l,l) (l,l) (i,i) (m,m) (t,t) (a,a) (n,n)	V;PROG;PRS
+( ,n) ( ,a) ( ,g) (h,h) (u,u) (n,n) (a,a) (h,h) (u,u) (n,n) (a,a)	V;PST
+( ,m) ( ,a) ( ,g) ( ,a) (i,i) (n,n) (o,o) (m,m)	V;PROG;FUT
+(m, ) (a, ) (n, ) (g, ) (i, ) (n,n) (/, ) (n, ) (a,a) (n,n) (g,g) (i,i) (n,n)	V;PRF+PROG;PST
+( ,g) ( ,i) ( ,n) ( ,a) (b,b) (a,a) (t,t) (o,o) (n,n)	V;PRS
+( ,n) ( ,a) ( ,g) ( ,a) (k,k) (u,u) (h,h) ( ,a) ( , ) ( ,p) (a,a)	V;PRF+PROG;PRS
+( ,n) ( ,a) (g,g) (u,u) (s,s) (t,t) (u,u) (h,h) (a,a) (n,n)	V;PRS
+( ,g) ( ,i) ( ,n) (k,k) (a,a) (l,l) (l,l) (i,i) (m,m) (t,t) (a,a) (n,n) ( , ) ( ,p) ( ,a)	V;PRF+PROG;PST
+(b,b) (a,a) (l,l) (i,i) (k,k)	V;NFIN
+( ,m) ( ,a) ( ,g) ( ,a) (d,d) (u,u) (g,g) (a,a) (n,n) (g,g) ( , ) ( ,p) ( ,a)	V;PRF+PROG;FUT
+( ,g) ( ,i) ( ,n) (s,s) (a,a) (b,b) (a,a) (t,t) ( , ) ( ,n) ( ,a)	V;PRF;PST
+( ,n) ( ,a) ( ,g) ( ,a) (t,t) (a,a) (w,w) (a,a) (g,g) ( , ) ( ,n) ( ,a)	V;PRF;PRS
+( ,n) ( ,a) ( ,g) ( ,a) (s,s) (u,u) (g,g) (a,a) (t,t) (a,a)	V;PROG;PRS
+( ,n) ( ,a) ( ,g) (p,p) (a,a) (k,k) (i,i) (t,t) ( ,a) ( , ) ( ,p) (a,a)	V;PRF+PROG;PST
+( ,n) ( ,a) ( ,g) ( ,a) (k,k) (a,a) (n,n) (t,t) ( ,a) ( , ) ( ,p) (a,a)	V;PRF+PROG;PRS
+( ,g) ( ,i) ( ,n) ( ,a) (t,t) (a,a) (p,p) (o,o) (s,s) ( , ) ( ,n) ( ,a)	V;PRF;PRS
+(h,g) (a, ) (l,i) (o, ) (k,n) (/, ) (h,h) (a,a) (l,l) (u,u) (k,k) (a,a) (n,n)	V;PROG;PST
+(u,g) (y,i) (a,n) (t, ) (/,-) (u,u) (y,y) (a,a) (t,t) (a,a) (n,n) ( , ) ( ,p) ( ,a)	V;PRF+PROG;PST
+( ,m) ( ,a) ( ,g) ( ,a) (i,i) (s,s) (t,t) (a,a) (r,r) ( , ) ( ,n) ( ,a)	V;PRF;FUT
+(b, ) (u,g) (l, ) (i,i) (g,n) (/,a) (b,b) (u,u) (l,l) (i,i) (g,g) (a,a) (n,n) ( , ) ( ,p) ( ,a)	V;PRF+PROG;PRS
+( ,n) ( ,a) ( ,g) ( ,a) (p,p) (u,u) (n,n) (g,g) (k,k) (o,o) ( , ) ( ,p) ( ,a)	V;PRF+PROG;PRS
+( ,n) ( ,a) ( ,g) (d,d) (a,a) (l,l) (a,a) (g,g) (a,a) (n,n) ( , ) ( ,p) ( ,a)	V;PRF+PROG;PST
+( ,m) ( ,a) ( ,g) ( ,a) (s,s) (a,a) (o,o) (t,t) ( , ) ( ,p) ( ,a)	V;PRF+PROG;FUT
+( ,n) ( ,a) ( ,g) (y,y) (u,u) (h,h) (o,o) (m,m) ( , ) ( ,p) ( ,a)	V;PRF+PROG;PST
+( ,n) ( ,a) ( ,g) (p,p) (a,a) (m,m) (a,a) (n,n) (g,g) (k,k) (o,o) (t,t)	V;PROG;PST
+( ,n) ( ,a) ( ,g) ( ,a) (p,p) (a,a) (k,k) (i,i) (l,l) (a,a) (l,l) ( ,a) ( , ) ( ,n) (a,a)	V;PRF;PRS
+( ,m) ( ,a) (h,h) (a,a) (n,n) (g,g) (o, ) (p,p) (/, ) (h, ) (a,a) (n,n) (g, ) (p,p) (a,a) (n, )	V;PRF+PROG;FUT
+( ,n) ( ,a) ( ,g) (p,p) (a,a) (d,d) (a,a) (l,l) (a,a)	V;PST
+( ,m) ( ,a) ( ,g) ( ,a) (s,s) (u,u) (g,g) (o,o) (d,d)	V;PROG;FUT
+( ,n) ( ,a) ( ,g) ( ,a) (o,o) (b,b) (r,r) ( ,a) ( , ) ( ,n) (a,a)	V;PRF;PRS
+( ,m) ( ,a) ( ,g) ( ,a) (m,m) (a,a) (n,n) (e,e) (h,h) (o,o)	V;FUT
+( ,n) ( ,a) ( ,g) ( ,a) (b,b) (y,y) (a,a) (h,h) (e,e) ( , ) ( ,n) ( ,a)	V;PRF;PRS
+( ,g) ( ,i) ( ,n) (k,k) (a,a) (l,l) (l,l) (i,i) (m,m) (t,t) (a,a) (n,n)	V;PROG;PST
+( ,m) ( ,a) ( ,g) ( ,a) (b,b) (u,u) (t,t) (a,a) (n,n) (g,g)	V;FUT
+( ,m) ( ,a) ( ,g) ( ,a) (k,k) (u,u) (h,h) (a,a)	V;PROG;FUT
+( ,n) ( ,a) ( ,g) ( ,a) (k,k) (a,a) (d,d) (l,l) (a,a) (w,w) ( , ) ( ,p) ( ,a)	V;PRF+PROG;PRS
+( ,m) ( ,a) ( ,g) ( ,a) (h,h) (u,u) (n,n) (a,a) (h,h) (u,u) (n,n) ( ,a) ( , ) ( ,p) (a,a)	V;PRF+PROG;FUT
+( ,m) ( ,a) ( ,g) ( ,a) (s,s) (i,i) (n,n) (g,g) (g,g) (i,i) (t,t) ( , ) ( ,n) ( ,a)	V;PRF;FUT
+( ,n) ( ,a) ( ,g) ( ,-) (a,a) (k,k) (u,u)	V;PROG;PST
+( ,n) ( ,a) ( ,g) (t,t) (a,a) (n,n) (d,d) (o,o) (g,g)	V;PROG;PST
+( ,n) ( ,a) ( ,g) (b,b) (a,a) (s,s) ( ,a) ( , ) ( ,n) (a,a)	V;PRF;PST
+( ,m) ( ,a) (k,k) (i,i) (t,t) ( ,a) ( , ) ( ,n) (a,a)	V;PRF;FUT
+( ,n) ( ,a) ( ,g) ( ,a) (p,p) (a,a) (a,a) (t,t) (h,h) (a,a) (g,g)	V;PRS
+( ,n) ( ,a) (k,k) (i,i) (t,t) (a,a)	V;PROG;PST
+(t, ) (a, ) (l, ) (u,m) (p, ) (a,a) (n, ) (g, ) (d, ) (a, ) (n, ) (/, ) (t,t) (a,a) (l,l) (u, ) (p, ) (a, ) (n, ) (g, ) (o, ) (d, ) (/, ) (t, ) (a, ) (l, ) (u,u) (p,p) (a,a) (n,n) (g,g) (d,d) (o,o) (n,n)	V;FUT
+(u,m) (y, ) (a,a) (t,g) (/,a) (u,u) (y,y) (a,a) (t,t) (a, ) (n,p) ( ,a)	V;PRF+PROG;FUT
+( ,n) ( ,a) ( ,g) ( ,a) (b,b) (a,a) (s,s) (a,a)	V;PRS
+( ,m) (a,a) ( ,g) ( ,a) ( ,a) (g,g) (d,d) (a,a)	V;PROG;FUT
+( ,m) ( ,a) ( ,g) ( ,a) (k,k) (a,a) (d,d) (o,o) ( , ) ( ,p) ( ,a)	V;PRF+PROG;FUT
+( ,n) ( ,a) (t,t) (a,a) (b,b) (o,o) (/, ) (k, ) (a,p) (t, ) (a,a) (b, ) (o, )	V;PRF+PROG;PST
+( ,n) ( ,a) ( ,g) ( ,a) (d,d) (a,a) (l,l) (a,a) (g,g) (a,a) (n,n) ( , ) ( ,p) ( ,a)	V;PRF+PROG;PRS
+( ,m) ( ,a) ( ,g) ( ,a) (s,s) (a,a) (o,o) (t,t)	V;PROG;FUT
+( ,n) ( ,a) ( ,g) ( ,a) (b,b) (a,a) (l,l) (i,i) (k,k)	V;PROG;PRS
+( ,m) ( ,a) ( ,g) ( ,a) (h,h) (a,a) (m,m) (p,p) (a,a) (n,n) (g,g) ( , ) ( ,n) ( ,a)	V;PRF;FUT
+( ,g) ( ,i) ( ,n) ( ,a) (b,b) (a,a) (t,t) (o,o) (n,n)	V;PROG;PRS
+(b, ) (a,g) (t, ) (i,i) (/, ) (b, ) (a, ) (t, ) (i, ) (a, ) (n,n) (/, ) (p,p) (a,a) (m,m) (a,a) ( ,n) (t,t) (i,i) (a,a) (n,n)	V;PROG;PRS
+( ,g) ( ,i) ( ,n) ( ,a) (s,s) (u,u) (l,l) (i,i) (t,t)	V;PROG;PRS
+( ,n) ( ,a) ( ,g) (b,b) (a,a) (t,t) (y,y) (a,a) (g,g) ( , ) ( ,n) ( ,a)	V;PRF;PST
+(h,h) (u,u) (l,l) (a,a) (r,r)	V;NFIN
+( ,m) (a,a) ( ,g) ( ,a) ( ,a) (b,b) (o,o) (t,t) ( , ) ( ,n) ( ,a)	V;PRF;FUT
+(k,k) (a,a) (o,o) (n,n)	V;NFIN
+( ,n) ( ,a) ( ,g) (p,p) (a,a) (m,m) (a,a) (t,t) (i,i)	V;PROG;PST
+( ,m) ( ,a) ( ,g) ( ,a) (t,t) (i,i) (n,n) (d,d) (o,o) (g,g) ( , ) ( ,p) ( ,a)	V;PRF+PROG;FUT
+( ,m) ( ,a) ( ,g) ( ,a) (t,t) (a,a) (n,n) (-,-) (a,a) (w,w)	V;FUT
+(p, ) (a,n) (t, ) (a, ) (y, ) (/, ) (t, ) (a,a) (g, ) (u,p) (m, ) (a,a) (t,t) (a,a) (y,y) (o, ) (n, )	V;PST
+( ,n) ( ,a) ( ,g) ( ,a) (k,k) (a,a) (b,b) (u,u) (h,h) (i,i)	V;PROG;PRS
+(b,b) (a,a) (t,t) (y,y) (a,a) (g,g)	V;NFIN
+( ,g) ( ,i) ( ,n) ( ,a) (k,k) (a,a) (l,l) (l,l) (i,i) (m,m) (t,t) (a,a) ( ,n) ( , ) (n,n) ( ,a)	V;PRF;PRS
+( ,n) ( ,a) ( ,g) ( ,a) (h,h) (i,i) (b,b) (i,i)	V;PRS
+( ,m) ( ,a) ( ,g) ( ,a) (s,s) (a,a) (o,o) (t,t)	V;FUT
+( ,n) ( ,a) ( ,g) ( ,a) (p,p) (a,a) (m,m) (a,a) (t,t) (i,i)	V;PROG;PRS
+( ,n) ( ,a) ( ,g) ( ,-) (d,d) (a,a) (o,o) (g,g) ( , ) ( ,n) ( ,a)	V;PRF;PST
+( ,n) ( ,a) ( ,g) ( ,a) (p,p) (a,a) (d,d) (a,a) (l,l) (a,a)	V;PROG;PRS
+( ,m) ( ,a) ( ,g) ( ,a) (s,s) (i,i) (r,r) (a,a)	V;FUT
+( ,n) ( ,a) ( ,g) (s,s) (u,u) (l,l) (a,a) (t,t) ( , ) ( ,p) ( ,a)	V;PRF+PROG;PST
+( ,m) ( ,a) ( ,g) ( ,a) (k,k) (a,a) (o,o) (n,n) ( , ) ( ,p) ( ,a)	V;PRF+PROG;FUT
+( ,n) ( ,a) ( ,g) (b,b) (a,a) (l,l) (i,i) (k,k)	V;PROG;PST
+( ,n) ( ,a) ( ,g) (k,k) (a,a) (b,b) (u,u) (h,h) (i,i)	V;PROG;PST
+( ,m) ( ,a) ( ,g) ( ,a) (l,l) (a,a) (k,k) (a,a) (t,t) ( , ) ( ,p) ( ,a)	V;PRF+PROG;FUT
+( ,m) ( ,a) ( ,g) ( ,a) (b,b) (a,a) (l,l) (i,i) (k,k) ( , ) ( ,n) ( ,a)	V;PRF;FUT
+( ,g) ( ,i) ( ,n) ( ,a) (a,a) (k,k) (u,u) ( , ) ( ,n) ( ,a)	V;PRF;PRS
+(g,g) (i,i) (n,n) (h,h) (a,a) (w,w) (a,a)	V;NFIN
+( ,n) ( ,a) ( ,g) (p,p) (a,a) (a,a) (t,t) (h,h) (a,a) (g,g) ( , ) ( ,n) ( ,a)	V;PRF;PST
+( ,n) ( ,a) ( ,g) ( ,a) (k,k) (a,a) (b,b) (u,u) (h,h) (i,i)	V;PRS
+( ,n) ( ,a) ( ,g) (g,g) (a,a) (m,m) (i,i) (t,t) ( , ) ( ,p) ( ,a)	V;PRF+PROG;PST
+( ,n) ( ,a) ( ,g) ( ,a) (t,t) (u,u) (o,o) (n,n)	V;PROG;PRS
+(d,d) (a,a) (w,w)	V;PRF;PST
+( ,m) ( ,a) ( ,g) ( ,a) (p,p) (u,u) (n,n) (g,g) (k,k) (o,o)	V;PROG;FUT
+( ,m) ( ,a) ( ,g) ( ,a) (b,b) (a,a) (k,k) (a,a) (l,l)	V;FUT
+(b, ) (u,g) (l, ) (i,i) (g,n) (/,a) (b,b) (u,u) (l,l) (i,i) (g,g) (a,a) (n,n)	V;PROG;PRS
+( ,n) ( ,a) ( ,g) (k,k) (a,a) (o,o) (n,n)	V;PROG;PST
+( ,n) ( ,a) ( ,g) (p,p) (i,i) (l,l) (i,i)	V;PST
+( ,n) ( ,a) ( ,g) (h,h) (u,u) (l,l) (a,a) (r,r) ( , ) ( ,n) ( ,a)	V;PRF;PST
+( ,n) ( ,a) ( ,g) (h,h) (a,a) (m,m) (p,p) (a,a) (n,n) (g,g)	V;PST
+( ,m) ( ,a) ( ,g) ( ,a) (h,h) (i,i) (b,b) (i,i) ( , ) ( ,p) ( ,a)	V;PRF+PROG;FUT
+( ,m) ( ,a) (k,k) (i,i) (t,t) ( ,a) ( , ) ( ,p) (a,a)	V;PRF+PROG;FUT
+( ,m) (a,a) ( ,g) ( ,a) ( ,a) (w,w) (a,a) (y,y)	V;FUT
+( ,m) ( ,a) ( ,g) ( ,a) (s,s) (i,i) (r,r) (a,a)	V;PROG;FUT
+( ,n) ( ,a) ( ,g) ( ,a) (p,p) (i,i) (l,l) (i,i)	V;PRS
+(t,t) (a,a) (n,n) (d,d) (o,o) (g,g)	V;NFIN
+( ,m) (a,a) ( ,g) ( ,a) ( ,a) (b,b) (o,o) (t,t)	V;FUT
+( ,n) ( ,a) ( ,g) (t,t) (u,u) (l,l) (o,o) (g,g)	V;PROG;PST
+( ,n) ( ,a) ( ,g) ( ,a) (l,l) (a,a) (k,k) (a,a) (t,t)	V;PROG;PRS
+( ,n) ( ,a) ( ,g) (b,b) (a,a) (l,l) (i,i) (k,k)	V;PST
+( ,m) ( ,a) ( ,g) ( ,a) (d,d) (a,a) (l,l) (a,a) (g,g) (a,a) (n,n) ( , ) ( ,p) ( ,a)	V;PRF+PROG;FUT
+(h,n) (i, ) (b, ) (a,a) (l, ) (o, ) (/, ) (h,h) (i,i) (b,b) (a,a) (l,l) (u,u) (a,a) (n,n)	V;PST
+( ,n) ( ,a) ( ,g) (b,b) (y,y) (a,a) (h,h) (e,e)	V;PST
+( ,n) ( ,a) ( ,g) ( ,a) (t,t) (u,u) (d,d) (l,l) (o,o)	V;PROG;PRS
+( ,g) ( ,i) ( ,n) (s,s) (u,u) (l,l) (i,i) (t,t) ( , ) ( ,p) ( ,a)	V;PRF+PROG;PST
+( ,n) ( ,a) (k,k) (i,i) (t,t) ( ,a) ( , ) ( ,n) (a,a)	V;PRF;PRS
+( ,n) ( ,a) ( ,g) ( ,a) (d,d) (a,a) (o,o) (g,g)	V;PRS
+(m,m) (a,a) (n,n) (g,g) (i,i) (n,n) (/, ) (n, ) (a, ) (n, ) (g, ) (i, ) (n, )	V;PRF;FUT
+( ,n) ( ,a) ( ,g) (h,h) (a,a) (m,m) (p,p) (a,a) (n,n) (g,g)	V;PROG;PST
+( ,n) ( ,a) (h,h) (a,a) (n,n) (g,g) (o, ) (p,p) (/, ) (h, ) (a,a) (n,n) (g, ) (p,n) (a,a) (n, )	V;PRF;PST
+( ,n) ( ,a) ( ,g) ( ,a) (h,h) (a,a) (m,m) (p,p) (a,a) (n,n) (g,g) ( , ) ( ,n) ( ,a)	V;PRF;PRS
+( ,n) ( ,a) ( ,g) ( ,a) (b,b) (u,u) (t,t) (a,a) (n,n) (g,g) ( , ) ( ,p) ( ,a)	V;PRF+PROG;PRS
+(u,g) (y,i) (a,n) (t, ) (/,a) (u,u) (y,y) (a,a) (t,t) (a,a) (n,n) ( , ) ( ,p) ( ,a)	V;PRF+PROG;PRS
+(n,n) (a,a) (g,g) ( ,n) ( ,a) ( ,g) (o,o) (n,n) ( , ) ( ,p) ( ,a)	V;PRF+PROG;PST
+( ,n) ( ,a) ( ,g) (k,k) (a,a) (b,b) (u,u) (h,h) (i,i) ( , ) ( ,n) ( ,a)	V;PRF;PST
+( ,g) ( ,i) ( ,n) (b,b) (u,u) (k,k) ( ,a) ( , ) ( ,n) (a,a)	V;PRF;PST
+( ,n) ( ,a) ( ,g) (i,i) (s,s) (t,t) (a,a) (r,r) ( , ) ( ,p) ( ,a)	V;PRF+PROG;PST
+( ,n) ( ,a) ( ,g) ( ,a) (a,a) (b,b) (o,o) (t,t)	V;PROG;PRS
+( ,m) ( ,a) ( ,g) ( ,a) (h,h) (i,i) (b,b) (i,i)	V;FUT
+( ,n) ( ,a) ( ,g) (t,t) (a,a) (n,n) (d,d) (o,o) (g,g) ( , ) ( ,n) ( ,a)	V;PRF;PST
+( ,g) ( ,i) ( ,n) (d,d) (u,u) (m,m) (d,d) (o,o) (m,m)	V;PST
+( ,m) ( ,a) ( ,g) ( ,a) (b,b) (a,a) (l,l) (i,i) (g,g) (y,y) (a,a)	V;PROG;FUT
+( ,n) ( ,a) ( ,g) (t,t) (i,i) (n,n) (d,d) (o,o) (g,g) ( , ) ( ,n) ( ,a)	V;PRF;PST
+( ,n) ( ,a) ( ,g) (g,g) (u,u) ( ,a) ( , ) ( ,p) (a,a)	V;PRF+PROG;PST
+( ,m) ( ,a) ( ,g) ( ,a) (p,p) (a,a) (m,m) (a,a) (n,n) (g,g) (k,k) (o,o) (t,t)	V;FUT
+( ,n) ( ,a) ( ,g) (d,d) (a,a) (l,l) (a,a) (g,g) (a,a) (n,n)	V;PST
+( ,n) ( ,a) ( ,g) (s,s) (i,i) (l,l) (i,i) (n,n) (g,g)	V;PST
+( ,m) ( ,a) ( ,g) ( ,a) (h,h) (a,a) (t,t) (a,a) (g,g)	V;FUT
+( ,n) ( ,a) (d,d) (u,u) (l,l) (a,a)	V;PRS
+( ,m) ( ,a) ( ,g) ( ,a) (s,s) (u,u) (l,l) (o,o) (d,d)	V;FUT
+( ,g) ( ,i) ( ,n) ( ,a) (b,b) (u,u) (k,k) (a,a)	V;PROG;PRS
+( ,m) ( ,a) ( ,g) ( ,a) (s,s) (a,a) (b,b) (a,a) (t,t) ( , ) ( ,n) ( ,a)	V;PRF;FUT
+( ,n) ( ,a) ( ,g) ( ,a) (b,b) (u,u) (h,h) (i,i) ( ,n) ( , ) (n,n) ( ,a)	V;PRF;PRS
+( ,n) ( ,a) ( ,g) ( ,a) (k,k) (a,a) (o,o) (n,n) ( , ) ( ,p) ( ,a)	V;PRF+PROG;PRS
+( ,n) ( ,a) ( ,g) ( ,a) (k,k) (a,a) (o,o) ( ,n) ( , ) (n,n) ( ,a)	V;PRF;PRS
+(u,m) (y, ) (a,a) (t,g) (/,a) (u,u) (y,y) (a,a) (t,t) (a, ) (n,n) ( ,a)	V;PRF;FUT
+( ,m) ( ,a) (g,g) (u,u) (s,s) (t,t) (u,u) (h,h) (a,a) (n,n)	V;FUT
+(b,b) (a,a) (l,l) (i,i) (g,g) (y,y) (a,a)	V;NFIN
+( ,m) ( ,a) ( ,g) ( ,a) (i,i) (s,s) (t,t) (a,a) (r,r) ( , ) ( ,p) ( ,a)	V;PRF+PROG;FUT
+( ,m) ( ,a) ( ,g) ( ,a) (p,p) (a,a) (a,a) (t,t) (h,h) (a,a) (g,g)	V;PROG;FUT
+( ,g) ( ,i) ( ,n) (d,d) (u,u) (m,m) (d,d) (o,o) (m,m)	V;PROG;PST
+( ,m) ( ,a) ( ,g) ( ,a) (l,l) (a,a) (k,k) (a,a) (t,t)	V;PROG;FUT
+( ,n) ( ,a) (k,k) (i,i) (t,t) (a,a)	V;PRS
+( ,m) ( ,a) ( ,g) ( ,a) (k,k) (a,a) (o,o) (n,n)	V;PROG;FUT
+( ,n) ( ,a) ( ,g) ( ,a) (t,t) (a,a) (w,w) (a,a) (g,g) ( , ) ( ,p) ( ,a)	V;PRF+PROG;PRS
+( ,m) ( ,a) ( ,g) ( ,a) (l,l) (u,u) (p,p) (a,a) (d,d) ( , ) ( ,n) ( ,a)	V;PRF;FUT
+( ,n) ( ,a) ( ,g) (p,p) (a,a) (d,d) (a,a) (l,l) ( ,a) ( , ) ( ,p) (a,a)	V;PRF+PROG;PST
+( ,m) ( ,a) ( ,g) ( ,a) (h,h) (a,a) (t,t) (a,a) (g,g) ( , ) ( ,n) ( ,a)	V;PRF;FUT
+( ,g) ( ,i) ( ,n) ( ,-) (a,a) (g,g) (d,d) (a,a)	V;PST
+( ,n) ( ,a) ( ,g) ( ,-) (d,d) (a,a) (o,o) (g,g)	V;PST
+( ,n) ( ,a) ( ,g) (k,k) (a,a) (n,n) (t,t) (a,a)	V;PROG;PST
+(k,k) (u,u) (h,h) (a,a)	V;NFIN
+( ,n) ( ,a) ( ,g) (t,t) (u,u) (l,l) (o,o) (g,g) ( , ) ( ,p) ( ,a)	V;PRF+PROG;PST
+( ,n) ( ,a) ( ,g) ( ,-) (d,d) (a,a) (o,o) (g,g) ( , ) ( ,p) ( ,a)	V;PRF+PROG;PST
+( ,n) ( ,a) ( ,g) (t,t) (a,a) (n,n) (d,d) (o,o) (g,g)	V;PST
+( ,m) ( ,a) ( ,g) ( ,a) (s,s) (u,u) (g,g) (a,a) (t,t) ( ,a) ( , ) ( ,n) (a,a)	V;PRF;FUT
+( ,m) ( ,a) ( ,g) ( ,a) (h,h) (i,i) (b,b) (i,i) ( , ) ( ,n) ( ,a)	V;PRF;FUT
+(b, ) (a,g) (t, ) (i,i) (/, ) (b, ) (a, ) (t, ) (i, ) (a, ) (n,n) (/, ) (p,p) (a,a) (m,m) (a,a) (t,t) (i,i) (a,a) (n,n) ( , ) ( ,p) ( ,a)	V;PRF+PROG;PRS
+( ,n) ( ,a) ( ,g) ( ,a) (b,b) (u,u) (h,h) (i,i) (n,n)	V;PRS
+( ,m) ( ,a) ( ,g) ( ,a) (t,t) (a,a) (w,w) (a,a) (g,g) ( , ) ( ,n) ( ,a)	V;PRF;FUT
+( ,m) ( ,a) ( ,g) ( ,a) (t,t) (u,u) (o,o) ( ,n) ( , ) (n,n) ( ,a)	V;PRF;FUT
+( ,n) ( ,a) ( ,g) ( ,a) (t,t) (a,a) (n,n) (-,-) (a,a) (w,w) ( , ) ( ,p) ( ,a)	V;PRF+PROG;PRS
+( ,n) ( ,a) ( ,g) (h,h) (a,a) (m,m) (b,b) (a,a) (l,l)	V;PST
+( ,n) ( ,a) ( ,g) ( ,a) (b,b) (a,a) (t,t) (y,y) (a,a) (g,g)	V;PRS
+( ,n) ( ,a) ( ,g) (k,k) (a,a) (d,d) (l,l) (a,a) (w,w)	V;PROG;PST
+(b, ) (u,m) (l, ) (i,a) (g,g) (/,a) (b,b) (u,u) (l,l) (i,i) (g,g) (a, ) (n, )	V;PROG;FUT
+( ,n) ( ,a) ( ,g) ( ,a) (m,m) (a,a) (n,n) (e,e) (h,h) (o,o) ( , ) ( ,n) ( ,a)	V;PRF;PRS
+( ,m) ( ,a) ( ,g) ( ,a) (b,b) (u,u) (t,t) (a,a) (n,n) (g,g) ( , ) ( ,n) ( ,a)	V;PRF;FUT
+( ,m) ( ,a) ( ,g) ( ,a) (p,p) (a,a) (k,k) (i,i) (l,l) (a,a) (l,l) ( ,a) ( , ) ( ,p) (a,a)	V;PRF+PROG;FUT
+( ,n) ( ,a) ( ,g) ( ,a) (b,b) (u,u) (h,h) (i,i) (n,n) ( , ) ( ,p) ( ,a)	V;PRF+PROG;PRS
+( ,n) ( ,a) ( ,g) ( ,a) (k,k) (u,u) (h,h) (a,a)	V;PROG;PRS
+( ,g) ( ,i) ( ,n) (p,p) (a,a) (t,t) (a,a) (y,y)	V;PST
+( ,m) ( ,a) ( ,g) ( ,a) (b,b) (a,a) (s,s) (a,a)	V;FUT
+(h,p) (i, ) (g,a) (u, ) (g,g) (m, ) (a,a) (/, ) (h,h) (i,i) (g,g) (u,u) (g,g) (m,m) (a,a) (o,o) (n,n)	V;FUT
+( ,n) ( ,a) ( ,g) ( ,a) (p,p) (u,u) (n,n) (g,g) (k,k) (o,o)	V;PRS
+( ,n) ( ,a) ( ,g) (l,l) (u,u) (p,p) (a,a) (d,d) ( , ) ( ,p) ( ,a)	V;PRF+PROG;PST
+( ,n) ( ,a) ( ,g) (b,b) (a,a) (l,l) (i,i) (k,k) ( , ) ( ,p) ( ,a)	V;PRF+PROG;PST
+( ,n) ( ,a) ( ,g) (l,l) (a,a) (k,k) (a,a) (t,t)	V;PROG;PST
+( ,n) ( ,a) ( ,g) (l,l) (a,a) (k,k) (a,a) (t,t) ( , ) ( ,p) ( ,a)	V;PRF+PROG;PST
+( ,g) ( ,i) ( ,n) (b,b) (u,u) (k,k) (s,s) (a,a) ( ,n) ( , ) (n,n) ( ,a)	V;PRF;PST
+( ,n) ( ,a) ( ,g) ( ,a) (s,s) (u,u) (g,g) (o,o) (d,d) ( , ) ( ,p) ( ,a)	V;PRF+PROG;PRS
+( ,n) ( ,a) ( ,g) ( ,a) (s,s) (i,i) (l,l) (i,i) (n,n) (g,g) ( , ) ( ,n) ( ,a)	V;PRF;PRS
+( ,n) ( ,a) ( ,g) (l,l) (u,u) (p,p) (a,a) (d,d)	V;PST
+( ,n) ( ,a) ( ,g) (h,h) (u,u) (l,l) (a,a) (r,r) ( , ) ( ,p) ( ,a)	V;PRF+PROG;PST
+( ,m) ( ,a) ( ,g) ( ,a) (b,b) (a,a) (k,k) (a,a) (l,l) ( , ) ( ,p) ( ,a)	V;PRF+PROG;FUT
+( ,n) ( ,a) ( ,g) ( ,a) (h,h) (a,a) (t,t) (a,a) (g,g) ( , ) ( ,n) ( ,a)	V;PRF;PRS
+( ,m) ( ,a) ( ,g) ( ,a) (i,i) (n,n) (o,o) (m,m) ( , ) ( ,n) ( ,a)	V;PRF;FUT
+(m,m) (a,a) (n,n) (g,g) (i,i) (n,n) (/, ) (n, ) (a, ) (n, ) (g, ) (i, ) (n, )	V;FUT
+( ,n) ( ,a) ( ,g) (k,k) (a,a) (d,d) (o,o) ( , ) ( ,p) ( ,a)	V;PRF+PROG;PST
+( ,n) ( ,a) ( ,g) (h,h) (i,i) (m,m) (o,o) ( , ) ( ,p) ( ,a)	V;PRF+PROG;PST
+( ,m) ( ,a) ( ,g) ( ,a) (s,s) (i,i) (l,l) (i,i) (n,n) (g,g) ( , ) ( ,p) ( ,a)	V;PRF+PROG;FUT
+( ,n) ( ,a) ( ,g) (s,s) (u,u) (l,l) (a,a) (t,t) ( , ) ( ,n) ( ,a)	V;PRF;PST
+( ,m) ( ,a) ( ,g) ( ,a) (l,l) (a,a) (k,k) (a,a) (t,t)	V;FUT
+(t,t) (u,u) (d,d) (l,l) (o,o)	V;NFIN
+( ,m) ( ,a) ( ,g) ( ,a) (d,d) (u,u) (g,g) (a,a) (n,n) (g,g) ( , ) ( ,n) ( ,a)	V;PRF;FUT
+(t,n) (a,a) (b, ) (o,g) (/,a) (k,k) (a,a) (t,t) (a,a) (b,b) (o,o) ( , ) ( ,n) ( ,a)	V;PRF;PRS
+( ,m) ( ,a) ( ,g) ( ,a) (h,h) (u,u) (n,n) (a,a) (h,h) (u,u) (n,n) (a,a)	V;FUT
+(h,m) (a,a) (l, ) (o,g) (k,a) (/, ) (h,h) (a,a) (l,l) (u,o) (k,k) (a, ) (n, )	V;PROG;FUT
+( ,n) ( ,a) ( ,g) (b,b) (u,u) (h,h) (i,i) (n,n)	V;PROG;PST
+( ,n) ( ,a) ( ,g) ( ,a) (m,m) (a,a) (n,n) (e,e) (h,h) (o,o)	V;PROG;PRS
+(n,n) (a,a) (g,g) (o,o) (n,n)	V;NFIN
+( ,n) ( ,a) ( ,g) ( ,a) (s,s) (u,u) (l,l) (a,a) (t,t)	V;PRS
+( ,n) ( ,a) ( ,g) ( ,a) (t,t) (i,i) (n,n) (d,d) (o,o) (g,g)	V;PROG;PRS
+( ,m) ( ,a) ( ,g) ( ,a) (t,t) (u,u) (l,l) (o,o) (g,g)	V;FUT
+( ,m) ( ,a) ( ,g) ( ,a) (y,y) (u,u) (h,h) (o,o) (m,m) ( , ) ( ,p) ( ,a)	V;PRF+PROG;FUT
+( ,n) ( ,a) ( ,g) (b,b) (u,u) (t,t) (a,a) (n,n) (g,g)	V;PST
+( ,m) ( ,a) ( ,g) ( ,a) (k,k) (a,a) (b,b) (u,u) (h,h) (i,i) ( , ) ( ,p) ( ,a)	V;PRF+PROG;FUT
+( ,m) ( ,a) (k,k) (i,i) (t,t) (a,a)	V;FUT
+( ,n) ( ,a) ( ,g) ( ,a) (s,s) (i,i) (l,l) (i,i) (n,n) (g,g)	V;PROG;PRS
+( ,n) ( ,a) ( ,g) (h,h) (a,a) (t,t) (a,a) (g,g) ( , ) ( ,n) ( ,a)	V;PRF;PST
+(u,g) (y,i) (a,n) (t, ) (/,-) (u,u) (y,y) (a,a) (t,t) (a,a) (n,n)	V;PROG;PST
+(n,n) (a,a) (g,g) ( ,n) ( ,a) ( ,g) (o,o) (n,n)	V;PST
+( ,n) ( ,a) (t,t) (a,a) (b,b) (o,o) (/, ) (k, ) (a,n) (t, ) (a,a) (b, ) (o, )	V;PRF;PST
+( ,n) ( ,a) ( ,g) ( ,a) (b,b) (a,a) (t,t) (y,y) (a,a) (g,g) ( , ) ( ,n) ( ,a)	V;PRF;PRS
+( ,n) ( ,a) ( ,g) ( ,-) (a,a) (w,w) (a,a) (y,y)	V;PST
+( ,n) ( ,a) ( ,g) (k,k) (a,a) (d,d) (o,o)	V;PST
+( ,g) ( ,i) ( ,n) ( ,a) (b,b) (u,u) (k,k) (s,s) (a,a) (n,n)	V;PROG;PRS
+( ,n) ( ,a) ( ,g) (b,b) (a,a) (s,s) (a,a)	V;PROG;PST
+( ,m) ( ,a) ( ,g) ( ,a) (l,l) (a,a) (k,k) (a,a) (t,t) ( , ) ( ,n) ( ,a)	V;PRF;FUT
+( ,n) ( ,a) ( ,g) ( ,a) (b,b) (u,u) (t,t) (a,a) (n,n) (g,g) ( , ) ( ,n) ( ,a)	V;PRF;PRS
+( ,n) ( ,a) ( ,g) ( ,a) (g,g) (u,u) ( ,a) ( , ) ( ,p) (a,a)	V;PRF+PROG;PRS
+( ,m) ( ,a) ( ,g) ( ,a) (k,k) (a,a) (b,b) (u,u) (h,h) (i,i)	V;PROG;FUT
+( ,m) ( ,a) ( ,g) ( ,a) (h,h) (a,a) (m,m) (p,p) (a,a) (n,n) (g,g) ( , ) ( ,p) ( ,a)	V;PRF+PROG;FUT
+(g,g) (a,a) (m,m) (i,i) (t,t)	V;NFIN
+( ,m) ( ,a) ( ,g) ( ,a) (b,b) (a,a) (l,l) (i,i) (k,k) ( , ) ( ,p) ( ,a)	V;PRF+PROG;FUT
+( ,n) ( ,a) ( ,g) ( ,a) (d,d) (a,a) (o,o) (g,g) ( , ) ( ,p) ( ,a)	V;PRF+PROG;PRS
+( ,n) ( ,a) ( ,g) ( ,a) (t,t) (a,a) (n,n) (-,-) (a,a) (w,w) ( , ) ( ,n) ( ,a)	V;PRF;PRS
+(h,h) (a,a) (t,t) (a,a) (g,g)	V;NFIN
+( ,n) ( ,a) ( ,g) (t,t) (u,u) (d,d) (l,l) (o,o) ( , ) ( ,n) ( ,a)	V;PRF;PST
+( ,m) ( ,a) ( ,g) ( ,a) (s,s) (i,i) (r,r) ( ,a) ( , ) ( ,p) (a,a)	V;PRF+PROG;FUT
+( ,n) ( ,a) ( ,g) (k,k) (a,a) (b,b) (u,u) (h,h) (i,i) ( , ) ( ,p) ( ,a)	V;PRF+PROG;PST
+(o,o) (b,b) (r,r) (a,a)	V;NFIN
+( ,m) ( ,a) ( ,g) ( ,a) (l,l) (u,u) (t,t) (o,o) ( , ) ( ,p) ( ,a)	V;PRF+PROG;FUT
+( ,n) ( ,a) ( ,g) (g,g) (u,u) (a,a)	V;PST
+(u,m) (y, ) (a,a) (t,g) (/,a) (u,u) (y,y) (a,a) (t,t) (a, ) (n, )	V;FUT
+( ,n) ( ,a) ( ,g) ( ,a) (a,a) (w,w) (a,a) (y,y) ( , ) ( ,p) ( ,a)	V;PRF+PROG;PRS
+(s,s) (a,a) (b,b) (a,a) (t,t)	V;NFIN
+( ,m) ( ,a) ( ,g) ( ,a) (s,s) (i,i) (n,n) (g,g) (g,g) (i,i) (t,t) ( , ) ( ,p) ( ,a)	V;PRF+PROG;FUT
+(k,g) (i,i) (t,n) (a,a) (/, ) (p,p) (a,a) (n,n) (g,g) (i,i) (t,t) ( ,a) ( , ) ( ,p) (a,a)	V;PRF+PROG;PRS
+( ,n) ( ,a) ( ,g) (k,k) (u,u) (h,h) ( ,a) ( , ) ( ,p) (a,a)	V;PRF+PROG;PST
+( ,m) ( ,a) ( ,g) ( ,a) (h,h) (i,i) (m,m) (o,o) ( , ) ( ,n) ( ,a)	V;PRF;FUT
+( ,m) ( ,a) ( ,g) ( ,a) (t,t) (a,a) (n,n) (d,d) (o,o) (g,g)	V;FUT
+(p,p) (u,u) (n,n) (g,g) (k,k) (o,o)	V;NFIN
+(u, ) (y, ) (a, ) (t, ) (/, ) (u,u) (y,y) (a,a) (t,t) (a, ) (n, )	V;NFIN
+( ,g) ( ,i) ( ,n) (t,t) (a,a) (p,p) (o,o) (s,s)	V;PST
+(p, ) (a,n) (t, ) (a, ) (y, ) (/, ) (t, ) (a,a) (g, ) (u,p) (m, ) (a,a) (t,t) (a,a) (y,y) (o, ) (n,n) ( ,a)	V;PRF;PRS
+( ,n) ( ,a) ( ,g) ( ,a) (g,g) (a,a) (m,m) (i,i) (t,t) ( , ) ( ,n) ( ,a)	V;PRF;PRS
+( ,n) ( ,a) ( ,g) ( ,a) (p,p) (a,a) (a,a) (t,t) (h,h) (a,a) (g,g) ( , ) ( ,p) ( ,a)	V;PRF+PROG;PRS
+( ,n) ( ,a) ( ,g) (t,t) (a,a) (n,n) (d,d) (o,o) (g,g) ( , ) ( ,p) ( ,a)	V;PRF+PROG;PST
+(t,t) (i,i) (n,n) (d,d) (o,o) (g,g)	V;NFIN
+( ,n) ( ,a) ( ,g) ( ,a) (p,p) (i,i) (l,l) (i,i) ( , ) ( ,p) ( ,a)	V;PRF+PROG;PRS
+( ,n) ( ,a) ( ,g) (k,k) (u,u) (h,h) (a,a)	V;PROG;PST
+( ,m) ( ,a) ( ,g) ( ,a) (s,s) (u,u) (g,g) (o,o) (d,d) ( , ) ( ,p) ( ,a)	V;PRF+PROG;FUT
+( ,g) ( ,i) ( ,n) ( ,a) (a,a) (g,g) (d,d) ( ,a) ( , ) ( ,p) (a,a)	V;PRF+PROG;PRS
+( ,m) ( ,a) ( ,g) ( ,a) (p,p) (a,a) (k,k) (i,i) (t,t) ( ,a) ( , ) ( ,n) (a,a)	V;PRF;FUT
+( ,n) ( ,a) ( ,g) ( ,a) (b,b) (a,a) (k,k) (a,a) (l,l) ( , ) ( ,n) ( ,a)	V;PRF;PRS
+(h,g) (a, ) (l,i) (o,n) (k,a) (/, ) (h,h) (a,a) (l,l) (u,u) (k,k) (a,a) (n,n) ( , ) ( ,p) ( ,a)	V;PRF+PROG;PRS
+(n,n) (a,a) (g,g) ( ,n) ( ,a) ( ,g) (o,o) (n,n)	V;PROG;PST
+( ,m) ( ,a) ( ,g) ( ,a) (d,d) (a,a) (o,o) (g,g)	V;FUT
+( ,m) ( ,a) ( ,g) ( ,a) (s,s) (u,u) (g,g) (a,a) (t,t) (a,a)	V;PROG;FUT
+( ,m) ( ,a) ( ,g) ( ,a) (k,k) (a,a) (n,n) (t,t) ( ,a) ( , ) ( ,n) (a,a)	V;PRF;FUT
+( ,n) ( ,a) ( ,g) ( ,a) (h,h) (a,a) (m,m) (p,p) (a,a) (n,n) (g,g)	V;PRS
+( ,n) ( ,a) ( ,g) (s,s) (i,i) (l,l) (i,i) (n,n) (g,g) ( , ) ( ,p) ( ,a)	V;PRF+PROG;PST
+( ,n) ( ,a) ( ,g) ( ,a) (h,h) (a,a) (m,m) (p,p) (a,a) (n,n) (g,g)	V;PROG;PRS
+( ,g) ( ,i) ( ,n) ( ,a) (s,s) (u,u) (l,l) (i,i) (t,t) ( , ) ( ,n) ( ,a)	V;PRF;PRS
+( ,n) ( ,a) ( ,g) (p,p) (u,u) (n,n) (g,g) (k,k) (o,o)	V;PST
+(s,s) (a,a) (o,o) (t,t)	V;NFIN
+( ,m) ( ,a) ( ,g) ( ,a) (p,p) (a,a) (k,k) (i,i) (t,t) (a,a)	V;FUT
+(a,a) (g,g) (d,d) (a,a)	V;NFIN
+( ,n) ( ,a) ( ,g) (t,t) (a,a) (n,n) (-,-) (a,a) (w,w) ( , ) ( ,n) ( ,a)	V;PRF;PST
+( ,n) ( ,a) ( ,g) (k,k) (i,i) (n,n) (a,a) (h,h) (a,a) (n,n) (g,g) (l,l) (a,a) ( ,n) ( , ) (n,n) ( ,a)	V;PRF;PST
+( ,m) ( ,a) ( ,g) ( ,a) (p,p) (a,a) (k,k) (i,i) (t,t) (a,a)	V;PROG;FUT
+( ,n) ( ,a) ( ,g) ( ,a) (h,h) (u,u) (l,l) (a,a) (r,r) ( , ) ( ,p) ( ,a)	V;PRF+PROG;PRS
+( ,g) ( ,i) ( ,n) ( ,a) (b,b) (a,a) (t,t) (o,o) (n,n) ( , ) ( ,p) ( ,a)	V;PRF+PROG;PRS
+( ,n) ( ,a) ( ,g) (s,s) (a,a) (o,o) (t,t) ( , ) ( ,p) ( ,a)	V;PRF+PROG;PST
+( ,m) ( ,a) (g,g) (u,u) (s,s) (t,t) (u,u) (h,h) (a,a) (n,n) ( , ) ( ,n) ( ,a)	V;PRF;FUT
+(g,g) (u,u) (a,a)	V;NFIN
+( ,n) ( ,a) ( ,g) (p,p) (i,i) (l,l) (i,i)	V;PROG;PST
+( ,n) ( ,a) ( ,g) (k,k) (a,a) (b,b) (u,u) (h,h) (i,i)	V;PST
+( ,n) ( ,a) ( ,g) (s,s) (u,u) (g,g) (o,o) (d,d) ( , ) ( ,n) ( ,a)	V;PRF;PST
+(h,g) (a, ) (l,i) (o, ) (k,n) (/, ) (h,h) (a,a) (l,l) (u,u) (k,k) (a,a) (n,n) ( , ) ( ,p) ( ,a)	V;PRF+PROG;PST
+( ,n) ( ,a) ( ,g) (p,p) (a,a) (k,k) (i,i) (l,l) (a,a) (l,l) (a,a)	V;PST
+( ,g) ( ,i) ( ,n) ( ,a) (b,b) (u,u) (k,k) (a,a)	V;PRS
+( ,n) ( ,a) ( ,g) (k,k) (a,a) (o,o) (n,n) ( , ) ( ,p) ( ,a)	V;PRF+PROG;PST
+( ,n) ( ,a) ( ,g) ( ,a) (h,h) (i,i) (b,b) (i,i)	V;PROG;PRS
+( ,m) ( ,a) ( ,g) ( ,a) (b,b) (a,a) (t,t) (o,o) (n,n)	V;FUT
+( ,n) ( ,a) ( ,g) (d,d) (e,e) (s,s) (i,i) (s,s) (y,y) (o,o) (n,n)	V;PST
+( ,n) ( ,a) ( ,g) ( ,a) (y,y) (u,u) (h,h) (o,o) (m,m)	V;PRS
+( ,n) ( ,a) ( ,g) (b,b) (u,u) (h,h) (i,i) (n,n) ( , ) ( ,p) ( ,a)	V;PRF+PROG;PST
+( ,m) ( ,a) ( ,g) ( ,a) (h,h) (a,a) (m,m) (b,b) (a,a) (l,l)	V;PROG;FUT
+( ,n) ( ,a) ( ,g) (k,k) (a,a) (n,n) (t,t) ( ,a) ( , ) ( ,p) (a,a)	V;PRF+PROG;PST
+( ,n) ( ,a) ( ,g) (g,g) (a,a) (m,m) (i,i) (t,t)	V;PROG;PST
+( ,m) ( ,a) ( ,g) ( ,a) (p,p) (a,a) (m,m) (a,a) (t,t) (i,i) ( , ) ( ,n) ( ,a)	V;PRF;FUT
+( ,g) ( ,i) ( ,n) (t,t) (a,a) (p,p) (o,o) (s,s)	V;PROG;PST
+( ,n) ( ,a) ( ,g) (b,b) (a,a) (k,k) (a,a) (l,l) ( , ) ( ,n) ( ,a)	V;PRF;PST
+( ,n) ( ,a) ( ,g) ( ,a) (t,t) (u,u) (d,d) (l,l) (o,o) ( , ) ( ,n) ( ,a)	V;PRF;PRS
+( ,m) ( ,a) ( ,g) ( ,a) (h,h) (u,u) (l,l) (a,a) (r,r) ( , ) ( ,p) ( ,a)	V;PRF+PROG;FUT
+( ,m) ( ,a) ( ,g) ( ,a) (o,o) (b,b) (r,r) ( ,a) ( , ) ( ,p) (a,a)	V;PRF+PROG;FUT
+( ,n) ( ,a) ( ,g) (k,k) (a,a) (n,n) (t,t) ( ,a) ( , ) ( ,n) (a,a)	V;PRF;PST
+(b,b) (u,u) (k,k) (a,a)	V;NFIN
+( ,m) ( ,a) ( ,g) ( ,a) (l,l) (u,u) (t,t) (o,o)	V;PROG;FUT
+( ,n) ( ,a) ( ,g) ( ,a) (h,h) (a,a) (t,t) (a,a) (g,g)	V;PROG;PRS
+(h,h) (i,i) (m,m) (o,o)	V;NFIN
+( ,g) ( ,i) ( ,n) ( ,a) (s,s) (a,a) (b,b) (a,a) (t,t) ( , ) ( ,n) ( ,a)	V;PRF;PRS
+(a,a) (b,b) (o,o) (t,t)	V;NFIN
+(p,m) (a,a) (t,p) (a,a) (y, ) (/, ) (t,t) (a,a) (g, ) (u,y) (m, ) (a,p) (t, ) (a,a) (y, ) (o, ) (n, )	V;PRF+PROG;FUT
+( ,m) ( ,a) ( ,g) ( ,a) (k,k) (u,u) (h,h) (a,a)	V;FUT
+( ,m) ( ,a) (h,h) (u,u) (l,l) (o,o) (g,g) (/, ) (k, ) (a,p) (h,a) (u, ) (l, ) (o, ) (g, )	V;PRF+PROG;FUT
+(p,p) (a,a) (t,t) (a,a) (y,y) (/, ) (t, ) (a, ) (g, ) (u, ) (m, ) (a, ) (t, ) (a, ) (y, ) (o, ) (n, )	V;NFIN
+( ,m) ( ,a) ( ,g) ( ,a) (p,p) (a,a) (a,a) (t,t) (h,h) (a,a) (g,g) ( , ) ( ,p) ( ,a)	V;PRF+PROG;FUT
+( ,n) ( ,a) ( ,g) ( ,a) (p,p) (a,a) (k,k) (i,i) (l,l) (a,a) (l,l) ( ,a) ( , ) ( ,p) (a,a)	V;PRF+PROG;PRS
+( ,n) ( ,a) ( ,g) ( ,a) (b,b) (u,u) (t,t) (a,a) (n,n) (g,g)	V;PROG;PRS
+(h,m) (i, ) (b, ) (a,a) (l, ) (o, ) (/, ) (h,h) (i,i) (b,b) (a,a) (l,l) (u,u) (a,a) (n,n)	V;FUT
+( ,g) ( ,i) ( ,n) ( ,a) (s,s) (i,i) (r,r) (a,a)	V;PROG;PRS
+( ,m) ( ,a) (g,g) (u,u) (s,s) (t,t) (u,u) (h,h) (a,a) (n,n)	V;PROG;FUT
+( ,n) ( ,a) ( ,g) ( ,a) (k,k) (a,a) (d,d) (l,l) (a,a) (w,w)	V;PROG;PRS
+( ,n) ( ,a) ( ,g) (k,k) (a,a) (o,o) ( ,n) ( , ) (n,n) ( ,a)	V;PRF;PST
+( ,n) ( ,a) ( ,g) ( ,a) (s,s) (u,u) (g,g) (o,o) (d,d) ( , ) ( ,n) ( ,a)	V;PRF;PRS
+(b, ) (a,n) (t, ) (i, ) (/,a) (b,b) (a,a) (t,t) (i,i) (a,a) (n,n) (/, ) (p, ) (a, ) (m, ) (a, ) (t, ) (i,n) (a,a) (n, )	V;PRF;PRS
+( ,m) ( ,a) ( ,g) ( ,a) (d,d) (e,e) (s,s) (i,i) (s,s) (y,y) (o,o) (n,n)	V;FUT
+( ,n) ( ,a) ( ,g) (h,h) (u,u) (l,l) (a,a) (r,r)	V;PROG;PST
+( ,n) ( ,a) ( ,g) ( ,a) (l,l) (u,u) (p,p) (a,a) (d,d) ( , ) ( ,n) ( ,a)	V;PRF;PRS
+( ,n) ( ,a) ( ,g) ( ,a) (h,h) (a,a) (m,m) (b,b) (a,a) (l,l) ( , ) ( ,p) ( ,a)	V;PRF+PROG;PRS
+( ,n) ( ,a) ( ,g) ( ,a) (s,s) (u,u) (l,l) (a,a) (t,t) ( , ) ( ,p) ( ,a)	V;PRF+PROG;PRS
+( ,n) ( ,a) ( ,g) ( ,a) (k,k) (a,a) (d,d) (o,o)	V;PROG;PRS
+( ,g) ( ,i) ( ,n) ( ,a) (p,p) (a,a) (t,t) (a,a) (y,y)	V;PROG;PRS
+(p,n) (a,a) (t,g) (a,a) (y, ) (/, ) (t,t) (a,a) (g,g) (u,u) (m,m) (a,a) (t,t) (a,a) (y,y) (o,o) (n,n)	V;PROG;PRS
+( ,n) ( ,a) ( ,g) ( ,a) (a,a) (w,w) (a,a) (y,y)	V;PROG;PRS
+(h,g) (a, ) (l,i) (o,n) (k,a) (/, ) (h,h) (a,a) (l,l) (u,u) (k,k) (a,a) (n,n)	V;PROG;PRS
+( ,n) ( ,a) ( ,g) (l,l) (u,u) (t,t) (o,o)	V;PST
+(k,k) (a,a) (l,l) (l,l) (i,i) (m,m) (t,t) (a,a) (n,n)	V;NFIN
+(k,n) (i, ) (t, ) (a,a) (/, ) (p, ) (a, ) (n, ) (g,k) (i,i) (t,t) (a,a)	V;PRS
+( ,n) ( ,a) ( ,g) (p,p) (a,a) (k,k) (i,i) (t,t) ( ,a) ( , ) ( ,n) (a,a)	V;PRF;PST
+( ,n) ( ,a) (g,g) (u,u) (s,s) (t,t) (u,u) (h,h) (a,a) (n,n)	V;PST
+( ,m) ( ,a) ( ,g) ( ,a) (s,s) (u,u) (g,g) (a,a) (t,t) (a,a)	V;FUT
+( ,n) ( ,a) ( ,g) (h,h) (a,a) (m,m) (p,p) (a,a) (n,n) (g,g) ( , ) ( ,n) ( ,a)	V;PRF;PST
+(b, ) (u,m) (l, ) (i,a) (g,g) (/,a) (b,b) (u,u) (l,l) (i,i) (g,g) (a, ) (n,n) ( ,a)	V;PRF;FUT
+(t, ) (a,m) (b, ) (o, ) (/, ) (k, ) (a,a) (t,t) (a,a) (b,b) (o,o)	V;FUT
+( ,n) ( ,a) ( ,g) ( ,a) (k,k) (u,u) (h,h) ( ,a) ( , ) ( ,n) (a,a)	V;PRF;PRS
+( ,g) ( ,i) ( ,n) ( ,a) (d,d) (u,u) (m,m) (d,d) (o,o) (m,m) ( , ) ( ,p) ( ,a)	V;PRF+PROG;PRS
+( ,g) ( ,i) ( ,n) ( ,a) (d,d) (u,u) (m,m) (d,d) (o,o) (m,m)	V;PRS
+( ,n) ( ,a) ( ,g) ( ,a) (s,s) (u,u) (l,l) (o,o) (d,d)	V;PRS
+( ,n) ( ,a) ( ,g) ( ,a) (t,t) (u,u) (o,o) ( ,n) ( , ) (n,n) ( ,a)	V;PRF;PRS
+( ,n) ( ,a) ( ,g) ( ,-) (i,i) (n,n) (o,o) (m,m) ( , ) ( ,p) ( ,a)	V;PRF+PROG;PST
+( ,n) ( ,a) ( ,g) (s,s) (u,u) (g,g) (o,o) (d,d)	V;PROG;PST
+( ,m) ( ,a) ( ,g) ( ,a) (b,b) (a,a) (l,l) (i,i) (k,k)	V;FUT
+(b,b) (a,a) (k,k) (a,a) (l,l)	V;NFIN
+( ,m) ( ,a) ( ,g) ( ,a) (s,s) (i,i) (n,n) (g,g) (g,g) (i,i) (t,t)	V;FUT
+( ,m) ( ,a) ( ,g) ( ,a) (t,t) (i,i) (n,n) (d,d) (o,o) (g,g)	V;FUT
+( ,m) ( ,a) ( ,g) ( ,a) (d,d) (u,u) (m,m) (d,d) (o,o) (m,m)	V;PROG;FUT
+( ,m) ( ,a) ( ,g) ( ,a) (h,h) (u,u) (l,l) (a,a) (r,r)	V;PROG;FUT
+( ,n) ( ,a) ( ,g) ( ,a) (p,p) (a,a) (k,k) (i,i) (l,l) (a,a) (l,l) (a,a)	V;PROG;PRS
+( ,m) ( ,a) ( ,g) ( ,a) (t,t) (a,a) (w,w) (a,a) (g,g)	V;FUT
+(b,b) (y,y) (a,a) (h,h) (e,e)	V;NFIN
+(b, ) (a,g) (t, ) (i,i) (/, ) (b, ) (a, ) (t, ) (i, ) (a, ) (n,n) (/, ) (p,p) (a,a) (m,m) (a,a) ( ,n) (t,t) (i,i) (a,a) (n,n)	V;PROG;PST
+( ,n) ( ,a) ( ,g) (m,m) (a,a) (n,n) (e,e) (h,h) (o,o)	V;PST
+( ,n) ( ,a) ( ,g) ( ,a) (k,k) (a,a) (d,d) (l,l) (a,a) (w,w)	V;PRS
+( ,n) ( ,a) ( ,g) ( ,a) (t,t) (i,i) (n,n) (d,d) (o,o) (g,g)	V;PRS
+( ,n) ( ,a) ( ,g) ( ,a) (s,s) (i,i) (n,n) (g,g) (g,g) (i,i) (t,t)	V;PRS
+( ,g) ( ,i) ( ,n) (t,t) (a,a) (p,p) (o,o) (s,s) ( , ) ( ,p) ( ,a)	V;PRF+PROG;PST
+( ,n) ( ,a) ( ,g) ( ,a) (b,b) (a,a) (l,l) (i,i) (g,g) (y,y) (a,a)	V;PRS
+( ,n) ( ,a) ( ,g) (s,s) (u,u) (g,g) (a,a) (t,t) ( ,a) ( , ) ( ,n) (a,a)	V;PRF;PST
+( ,n) ( ,a) ( ,g) ( ,a) (h,h) (u,u) (n,n) (a,a) (h,h) (u,u) (n,n) (a,a)	V;PROG;PRS
+( ,n) ( ,a) ( ,g) ( ,a) (k,k) (u,u) (h,h) (a,a)	V;PRS
+( ,m) ( ,a) ( ,g) ( ,a) (d,d) (a,a) (o,o) (g,g) ( , ) ( ,n) ( ,a)	V;PRF;FUT
+( ,m) ( ,a) ( ,g) ( ,a) (s,s) (u,u) (g,g) (o,o) (d,d)	V;FUT
+( ,n) ( ,a) ( ,g) ( ,a) (g,g) (i,i) (n,n) (h,h) (a,a) (w,w) (a,a)	V;PROG;PRS
+( ,m) ( ,a) ( ,g) ( ,a) (t,t) (a,a) (n,n) (-,-) (a,a) (w,w) ( , ) ( ,p) ( ,a)	V;PRF+PROG;FUT
+(m,m) (a,a) (k,k) (a,a) (/, ) (n, ) (a, ) (k, ) (a, )	V;PROG;FUT
+( ,n) ( ,a) ( ,g) (s,s) (i,i) (l,l) (i,i) (n,n) (g,g) ( , ) ( ,n) ( ,a)	V;PRF;PST
+(h,m) (u, ) (l, ) (o, ) (g, ) (/, ) (k, ) (a,a) (h,h) (u,u) (l,l) (o,o) (g,g)	V;PROG;FUT
+( ,n) ( ,a) ( ,g) (h,h) (u,u) (n,n) (a,a) (h,h) (u,u) (n,n) (a,a)	V;PROG;PST
+( ,n) ( ,a) ( ,g) ( ,a) (p,p) (a,a) (d,d) (a,a) (l,l) (a,a)	V;PRS
+( ,n) ( ,a) ( ,g) (p,p) (a,a) (d,d) (a,a) (l,l) (a,a)	V;PROG;PST
+( ,n) ( ,a) ( ,g) (p,p) (a,a) (k,k) (i,i) (t,t) (a,a)	V;PROG;PST
+( ,g) ( ,i) ( ,n) (b,b) (a,a) (t,t) (o,o) (n,n)	V;PROG;PST
+( ,n) ( ,a) ( ,g) (t,t) (u,u) (o,o) (n,n) ( , ) ( ,p) ( ,a)	V;PRF+PROG;PST
+( ,m) (a,a) ( ,g) ( ,a) ( ,a) (k,k) (u,u)	V;PROG;FUT
+( ,n) ( ,a) ( ,g) ( ,a) (t,t) (u,u) (l,l) (o,o) (g,g)	V;PROG;PRS
+( ,n) ( ,a) ( ,g) ( ,a) (t,t) (a,a) (n,n) (d,d) (o,o) (g,g) ( , ) ( ,n) ( ,a)	V;PRF;PRS
+( ,m) ( ,a) ( ,g) ( ,a) (s,s) (u,u) (l,l) (i,i) (t,t) ( , ) ( ,p) ( ,a)	V;PRF+PROG;FUT
+(h,h) (i,i) (g,g) (u,u) (g,g) (m,m) (a,a) (/, ) (h, ) (i, ) (g, ) (u, ) (g, ) (m, ) (a, ) (o, ) (n, )	V;NFIN
+( ,m) ( ,a) ( ,g) ( ,a) (h,h) (i,i) (g,g) (d,d) ( ,a) ( , ) ( ,n) (a,a)	V;PRF;FUT
+( ,g) ( ,i) ( ,n) (s,s) (i,i) (r,r) ( ,a) ( , ) ( ,p) (a,a)	V;PRF+PROG;PST
+(p, ) (a,n) (t, ) (a, ) (y, ) (/, ) (t, ) (a,a) (g, ) (u,p) (m, ) (a, ) (t,t) (a,a) (y,y) (o, ) (n,n) ( ,a)	V;PRF;PST
+( ,n) ( ,a) ( ,g) (b,b) (a,a) (t,t) (y,y) (a,a) (g,g)	V;PST
+( ,g) ( ,i) ( ,n) (s,s) (i,i) (r,r) ( ,a) ( , ) ( ,n) (a,a)	V;PRF;PST
+(m,m) (a,a) (n,n) (g,g) (i,i) (n,n) (/, ) (n, ) (a, ) (n, ) (g, ) (i, ) (n, )	V;PRS
+(k,k) (i,i) (t,t) (a,a)	V;NFIN
+(t, ) (a, ) (l, ) (u, ) (p, ) (a, ) (n, ) (g,g) (d, ) (a,i) (n,n) (/, ) (t,t) (a,a) (l,l) (u,u) (p,p) (a,a) (n,n) (g,g) (o,o) (d,d) (/, ) (t, ) (a, ) (l, ) (u, ) (p,p) (a,a) (n, ) (g, ) (d, ) (o, ) (n, )	V;PRF+PROG;PST
+( ,n) ( ,a) ( ,g) ( ,a) (h,h) (a,a) (m,m) (b,b) (a,a) (l,l)	V;PROG;PRS
+( ,n) ( ,a) ( ,g) (p,p) (a,a) (a,a) (t,t) (h,h) (a,a) (g,g)	V;PST
+(h,n) (u, ) (l, ) (o, ) (g, ) (/, ) (k, ) (a,a) (h,h) (u,u) (l,l) (o,o) (g,g)	V;PST
+( ,n) ( ,a) ( ,g) ( ,a) (s,s) (a,a) (o,o) (t,t) ( , ) ( ,n) ( ,a)	V;PRF;PRS
+( ,n) ( ,a) ( ,g) (i,i) (s,s) (t,t) (a,a) (r,r) ( , ) ( ,n) ( ,a)	V;PRF;PST
+( ,m) ( ,a) ( ,g) ( ,a) (p,p) (a,a) (t,t) (a,a) (y,y)	V;PROG;FUT
+( ,n) ( ,a) ( ,g) ( ,a) (h,h) (u,u) (l,l) (a,a) (r,r)	V;PRS
+( ,n) ( ,a) ( ,g) (b,b) (a,a) (l,l) (i,i) (g,g) (y,y) ( ,a) ( , ) ( ,p) (a,a)	V;PRF+PROG;PST
+( ,g) ( ,i) ( ,n) (s,s) (u,u) (l,l) (i,i) (t,t) ( , ) ( ,n) ( ,a)	V;PRF;PST
+( ,n) ( ,a) (d,d) (u,u) (l,l) ( ,a) ( , ) ( ,n) (a,a)	V;PRF;PST
+( ,m) ( ,a) ( ,g) ( ,a) (h,h) (a,a) (m,m) (b,b) (a,a) (l,l)	V;FUT
+(h,h) (a,a) (l,l) (o,o) (k,k) (/, ) (h, ) (a, ) (l, ) (u, ) (k, ) (a, ) (n, )	V;NFIN
+(t, ) (a, ) (l, ) (u, ) (p, ) (a, ) (n,n) (g, ) (d, ) (a,a) (n, ) (/, ) (t,t) (a,a) (l,l) (u,u) (p,p) (a,a) (n,n) (g,g) (o, ) (d,d) (/, ) (t, ) (a,a) (l, ) (u, ) (p,n) (a, ) (n,n) (g,a) (d, ) (o, ) (n, )	V;PRF;PST
+( ,n) ( ,a) ( ,g) ( ,a) (k,k) (a,a) (o,o) (n,n)	V;PRS
+( ,m) ( ,a) ( ,g) ( ,a) (b,b) (a,a) (t,t) (o,o) (n,n) ( , ) ( ,p) ( ,a)	V;PRF+PROG;FUT
+( ,n) ( ,a) ( ,g) ( ,a) (n,n) (a,a) (g,g) (o,o) ( ,n) ( , ) (n,n) ( ,a)	V;PRF;PRS
+( ,n) ( ,a) ( ,g) ( ,a) (g,g) (i,i) (n,n) (h,h) (a,a) (w,w) (a,a)	V;PRS
+( ,g) ( ,i) ( ,n) ( ,a) (s,s) (i,i) (r,r) (a,a)	V;PRS
+(t,n) (a,a) (b, ) (o,g) (/,a) (k,k) (a,a) (t,t) (a,a) (b,b) (o,o)	V;PRS
+(h,n) (i, ) (b, ) (a,a) (l,k) (o, ) (/,a) (h,h) (i,i) (b,b) (a,a) (l,l) (u,o) (a, ) (n, )	V;PRS
+( ,n) ( ,a) ( ,g) ( ,a) (k,k) (a,a) (n,n) (t,t) (a,a)	V;PROG;PRS
+( ,n) ( ,a) ( ,g) (b,b) (y,y) (a,a) (h,h) (e,e) ( , ) ( ,n) ( ,a)	V;PRF;PST
+( ,g) ( ,i) ( ,n) (s,s) (i,i) (r,r) (a,a)	V;PROG;PST
+(m, ) (a, ) (k, ) (a, ) (/, ) (n,n) (a,a) (k,k) (a,a)	V;PROG;PST
+( ,g) ( ,i) ( ,n) ( ,-) (a,a) (g,g) (d,d) ( ,a) ( , ) ( ,n) (a,a)	V;PRF;PST
+( ,n) ( ,a) ( ,g) ( ,a) (b,b) (a,a) (l,l) (i,i) (k,k) ( , ) ( ,p) ( ,a)	V;PRF+PROG;PRS
+( ,n) ( ,a) ( ,g) ( ,a) (l,l) (u,u) (p,p) (a,a) (d,d)	V;PROG;PRS
+( ,g) ( ,i) ( ,n) ( ,a) (k,k) (a,a) (l,l) (l,l) (i,i) (m,m) (t,t) (a,a) (n,n) ( , ) ( ,p) ( ,a)	V;PRF+PROG;PRS
+(h,g) (i,i) (g, ) (u,n) (g, ) (m, ) (a,a) (/, ) (h,h) (i,i) (g,g) (u,u) (g,g) (m,m) (a,a) (o, ) (n, )	V;PROG;PRS
+( ,m) ( ,a) ( ,g) ( ,a) (t,t) (a,a) (n,n) (-,-) (a,a) (w,w)	V;PROG;FUT
+(p,p) (i,i) (l,l) (i,i)	V;NFIN
+( ,m) ( ,a) ( ,g) ( ,a) (k,k) (a,a) (d,d) (o,o)	V;FUT
+( ,m) ( ,a) ( ,g) ( ,a) (k,k) (i,i) (n,n) (a,a) (h,h) (a,a) (n,n) (g,g) (l,l) (a,a) ( ,n) ( , ) (n,n) ( ,a)	V;PRF;FUT
+( ,m) (a,a) ( ,g) ( ,a) ( ,a) (w,w) (a,a) (y,y) ( , ) ( ,p) ( ,a)	V;PRF+PROG;FUT
+( ,m) ( ,a) ( ,g) ( ,a) (h,h) (a,a) (t,t) (a,a) (g,g)	V;PROG;FUT
+( ,m) ( ,a) ( ,g) ( ,a) (b,b) (a,a) (l,l) (i,i) (k,k)	V;PROG;FUT
+( ,n) ( ,a) ( ,g) ( ,a) (o,o) (b,b) (r,r) (a,a)	V;PROG;PRS
+(p,p) (a,a) (t,t) (a,a) (y,y)	V;NFIN
+(k,k) (i,i) (n,n) (a,a) (h,h) (a,a) (n,n) (g,g) (l,l) (a,a) (n,n)	V;NFIN
+( ,m) ( ,a) ( ,g) ( ,a) (d,d) (e,e) (s,s) (i,i) (s,s) (y,y) (o,o) (n,n)	V;PROG;FUT
+( ,n) ( ,a) ( ,g) (t,t) (u,u) (d,d) (l,l) (o,o)	V;PST
+( ,n) ( ,a) ( ,g) (p,p) (a,a) (m,m) (a,a) (n,n) (g,g) (k,k) (o,o) (t,t)	V;PST
+( ,n) ( ,a) ( ,g) ( ,a) (t,t) (a,a) (n,n) (-,-) (a,a) (w,w)	V;PRS
+( ,n) ( ,a) ( ,g) (b,b) (a,a) (l,l) (i,i) (k,k) ( , ) ( ,n) ( ,a)	V;PRF;PST
+( ,g) ( ,i) ( ,n) ( ,a) (s,s) (u,u) (l,l) (i,i) (t,t) ( , ) ( ,p) ( ,a)	V;PRF+PROG;PRS
+( ,n) ( ,a) ( ,g) (h,h) (i,i) (b,b) (i,i)	V;PROG;PST
+( ,p) ( ,a) ( ,g) ( ,a) (k,k) (a,a) (l,l) (l,l) (i,i) (m,m) (t,t) (a,a) (n,n)	V;PROG;FUT
+( ,n) ( ,a) ( ,g) ( ,a) (d,d) (a,a) (l,l) (a,a) (g,g) (a,a) (n,n)	V;PRS
+( ,n) ( ,a) ( ,g) (g,g) (u,u) (a,a)	V;PROG;PST
+( ,g) ( ,i) ( ,n) ( ,a) (t,t) (a,a) (p,p) (o,o) (s,s)	V;PRS
+( ,n) ( ,a) ( ,g) (p,p) (u,u) (n,n) (g,g) (k,k) (o,o) ( , ) ( ,n) ( ,a)	V;PRF;PST
+( ,m) ( ,a) (t,t) (a,a) (b,b) (o,o) (/, ) (k, ) (a,p) (t, ) (a,a) (b, ) (o, )	V;PRF+PROG;FUT
+( ,n) ( ,a) ( ,g) ( ,a) (a,a) (w,w) (a,a) (y,y)	V;PRS
+(b,b) (a,a) (s,s) (a,a)	V;NFIN
+( ,g) ( ,i) ( ,n) ( ,a) (s,s) (u,u) (l,l) (i,i) (t,t)	V;PRS
+( ,n) ( ,a) ( ,g) ( ,a) (k,k) (i,i) (n,n) (a,a) (h,h) (a,a) (n,n) (g,g) (l,l) (a,a) (n,n)	V;PRS
+( ,m) ( ,a) ( ,g) ( ,a) (b,b) (a,a) (s,s) ( ,a) ( , ) ( ,n) (a,a)	V;PRF;FUT
+( ,g) ( ,i) ( ,n) (p,p) (a,a) (t,t) (a,a) (y,y) ( , ) ( ,p) ( ,a)	V;PRF+PROG;PST
+( ,g) ( ,i) ( ,n) ( ,a) (a,a) (k,k) (u,u) ( , ) ( ,p) ( ,a)	V;PRF+PROG;PRS
+( ,m) ( ,a) ( ,g) ( ,a) (i,i) (s,s) (t,t) (o,o) (r,r) (y,y) ( ,a) ( , ) ( ,n) (a,a)	V;PRF;FUT
+( ,n) ( ,a) ( ,g) (p,p) (i,i) (l,l) (i,i) ( , ) ( ,n) ( ,a)	V;PRF;PST
+( ,n) ( ,a) ( ,g) ( ,a) (a,a) (b,b) (o,o) (t,t) ( , ) ( ,n) ( ,a)	V;PRF;PRS
+(b, ) (u,g) (l, ) (i,i) (g,n) (/,a) (b,b) (u,u) (l,l) (i,i) (g,g) (a,a) (n,n)	V;PRS
+( ,m) ( ,a) ( ,g) ( ,a) (p,p) (a,a) (a,a) (t,t) (h,h) (a,a) (g,g) ( , ) ( ,n) ( ,a)	V;PRF;FUT
+(t,t) (a,a) (p,p) (o,o) (s,s)	V;NFIN
+( ,n) ( ,a) ( ,g) ( ,a) (p,p) (a,a) (m,m) (a,a) (t,t) (i,i) ( , ) ( ,p) ( ,a)	V;PRF+PROG;PRS
+(b,b) (a,a) (t,t) (i, ) (/, ) (b, ) (a, ) (t, ) (i,i) (a, ) (n, ) (/, ) (p, ) (a, ) (m, ) (a, ) (t, ) (i, ) (a, ) (n, )	V;NFIN
+( ,n) ( ,a) ( ,g) (b,b) (u,u) (t,t) (a,a) (n,n) (g,g) ( , ) ( ,p) ( ,a)	V;PRF+PROG;PST
+( ,n) ( ,a) ( ,g) (b,b) (a,a) (k,k) (a,a) (l,l)	V;PROG;PST
+( ,n) ( ,a) ( ,g) ( ,a) (h,h) (a,a) (t,t) (a,a) (g,g) ( , ) ( ,p) ( ,a)	V;PRF+PROG;PRS
+( ,n) ( ,a) ( ,g) (h,h) (u,u) (n,n) (a,a) (h,h) (u,u) ( ,n) ( ,a) ( , ) (n,n) (a,a)	V;PRF;PST
+( ,n) ( ,a) ( ,g) ( ,a) (o,o) (b,b) (r,r) (a,a)	V;PRS
+( ,n) ( ,a) ( ,g) ( ,a) (t,t) (u,u) (l,l) (o,o) (g,g) ( , ) ( ,n) ( ,a)	V;PRF;PRS
+( ,n) ( ,a) ( ,g) ( ,a) (l,l) (a,a) (k,k) (a,a) (t,t) ( , ) ( ,n) ( ,a)	V;PRF;PRS
+( ,n) ( ,a) ( ,g) (t,t) (a,a) (n,n) (-,-) (a,a) (w,w)	V;PST
+(m,m) (a,a) (n,n) (g,g) (i,i) (n,n) (/, ) (n, ) (a, ) (n, ) (g, ) (i, ) (n, )	V;PRF+PROG;FUT
+( ,n) ( ,a) ( ,k) ( ,a) (s,s) (a,a) (r,r) (a,a) (n,n) (g,g)	V;PST
+( ,n) ( ,a) ( ,g) ( ,a) (p,p) (a,a) (a,a) (t,t) (h,h) (a,a) (g,g) ( , ) ( ,n) ( ,a)	V;PRF;PRS
+( ,n) ( ,a) ( ,g) ( ,a) (k,k) (a,a) (d,d) (l,l) (a,a) (w,w) ( , ) ( ,n) ( ,a)	V;PRF;PRS
+( ,n) ( ,a) ( ,g) (m,m) (a,a) (n,n) (e,e) (h,h) (o,o)	V;PROG;PST
+(h,m) (i, ) (b, ) (a,a) (l, ) (o, ) (/, ) (h,h) (i,i) (b,b) (a,a) (l,l) (u,u) (a,a) (n,n) ( , ) ( ,p) ( ,a)	V;PRF+PROG;FUT
+(t, ) (a, ) (l, ) (u, ) (p, ) (a, ) (n,n) (g, ) (d, ) (a,a) (n, ) (/, ) (t,t) (a,a) (l,l) (u,u) (p,p) (a,a) (n,n) (g,g) (o, ) (d,d) (/, ) (t, ) (a,a) (l, ) (u, ) (p, ) (a, ) (n,n) (g, ) (d, ) (o, ) (n, )	V;PRS
+( ,n) ( ,a) ( ,g) ( ,a) (g,g) (i,i) (n,n) (h,h) (a,a) (w,w) ( ,a) ( , ) ( ,n) (a,a)	V;PRF;PRS
+(m,m) (a,a) (n,n) (g,g) (i,i) (n,n) (/, ) (n, ) (a, ) (n, ) (g, ) (i, ) (n, )	V;PROG;PRS
+( ,m) ( ,a) ( ,g) ( ,a) (s,s) (u,u) (l,l) (i,i) (t,t)	V;FUT
+( ,n) ( ,a) (k,k) (i,i) (t,t) (a,a) (/, ) (p, ) (a, ) (n,n) (g, ) (i, ) (t, ) (a,a)	V;PRF;PRS
+( ,g) ( ,i) ( ,n) ( ,-) (a,a) (g,g) (d,d) (a,a)	V;PROG;PST
+(h,h) (i,i) (b,b) (a,a) (l,l) (o,o) (/, ) (h, ) (i, ) (b, ) (a, ) (l, ) (u, ) (a, ) (n, )	V;NFIN
+( ,m) ( ,a) (d,d) (u,u) (l,l) ( ,a) ( , ) ( ,p) (a,a)	V;PRF+PROG;FUT
+( ,m) ( ,a) ( ,g) ( ,a) (b,b) (a,a) (l,l) (i,i) (g,g) (y,y) (a,a)	V;FUT
+(p, ) (a,m) (t, ) (a,a) (y, ) (/, ) (t, ) (a, ) (g, ) (u,p) (m, ) (a,a) (t,t) (a,a) (y,y) (o, ) (n,n) ( ,a)	V;PRF;FUT
+( ,n) ( ,a) ( ,g) ( ,a) (s,s) (u,u) (l,l) (a,a) (t,t)	V;PROG;PRS
+( ,g) ( ,i) ( ,n) (d,d) (u,u) (m,m) (d,d) (o,o) (m,m) ( , ) ( ,p) ( ,a)	V;PRF+PROG;PST
+(h,h) (a,a) (m,m) (p,p) (a,a) (n,n) (g,g)	V;NFIN
+(h,n) (u,a) (l, ) (o, ) (g,g) (/,a) (k,k) (a,a) (h,h) (u,u) (l,l) (o,o) (g,g)	V;PROG;PRS
+( ,m) ( ,a) ( ,g) ( ,a) (n,n) (a,a) (g,g) (o,o) (n,n)	V;FUT
+( ,m) ( ,a) (d,d) (u,u) (l,l) ( ,a) ( , ) ( ,n) (a,a)	V;PRF;FUT
+(k,m) (i,a) (t,g) (a,a) (/, ) (p,p) (a,a) (n,n) (g,g) (i,i) (t,t) (a,a)	V;PROG;FUT
+( ,n) ( ,a) ( ,g) ( ,a) (t,t) (u,u) (o,o) (n,n)	V;PRS
+( ,n) ( ,a) ( ,g) (k,k) (a,a) (d,d) (l,l) (a,a) (w,w)	V;PST
+( ,m) ( ,a) ( ,g) ( ,a) (b,b) (y,y) (a,a) (h,h) (e,e) ( , ) ( ,n) ( ,a)	V;PRF;FUT
+(b, ) (u,g) (l, ) (i,i) (g,n) (/, ) (b,b) (u,u) (l,l) (i,i) (g,g) (a,a) (n,n)	V;PROG;PST
+( ,n) ( ,a) ( ,g) (h,h) (i,i) (m,m) (o,o)	V;PST
+(t,n) (a,a) (b, ) (o,g) (/,a) (k,k) (a,a) (t,t) (a,a) (b,b) (o,o)	V;PROG;PRS
+( ,g) ( ,i) ( ,n) (d,d) (u,u) (l,l) ( ,a) ( , ) ( ,p) (a,a)	V;PRF+PROG;PST
+( ,n) ( ,a) ( ,g) ( ,a) (l,l) (u,u) (p,p) (a,a) (d,d) ( , ) ( ,p) ( ,a)	V;PRF+PROG;PRS
+( ,n) ( ,a) ( ,g) (t,t) (i,i) (n,n) (d,d) (o,o) (g,g)	V;PROG;PST
+( ,m) ( ,a) ( ,g) ( ,a) (n,n) (a,a) (g,g) (o,o) ( ,n) ( , ) (n,n) ( ,a)	V;PRF;FUT
+( ,n) ( ,a) ( ,g) ( ,-) (i,i) (n,n) (o,o) (m,m)	V;PST
+( ,n) ( ,a) ( ,g) (k,k) (a,a) (d,d) (o,o)	V;PROG;PST
+( ,n) ( ,a) ( ,g) (b,b) (u,u) (t,t) (a,a) (n,n) (g,g) ( , ) ( ,n) ( ,a)	V;PRF;PST
+( ,g) ( ,i) ( ,n) ( ,a) (d,d) (u,u) (m,m) (d,d) (o,o) (m,m) ( , ) ( ,n) ( ,a)	V;PRF;PRS
+( ,n) ( ,a) (g,g) (u,u) (s,s) (t,t) (u,u) (h,h) (a,a) (n,n)	V;PROG;PST
+( ,m) ( ,a) ( ,g) ( ,a) (p,p) (a,a) (k,k) (i,i) (t,t) ( ,a) ( , ) ( ,p) (a,a)	V;PRF+PROG;FUT
+(h,m) (i, ) (b, ) (a,a) (l, ) (o, ) (/, ) (h,h) (i,i) (b,b) (a,a) (l,l) (u,u) (a,a) (n,n)	V;PROG;FUT
+(m,m) (a,a) (k,k) (a,a) (/, ) (n, ) (a, ) (k, ) (a, )	V;NFIN
+(h,n) (u,a) (l, ) (o, ) (g,g) (/,a) (k,k) (a,a) (h,h) (u,u) (l,l) (o,o) (g,g) ( , ) ( ,p) ( ,a)	V;PRF+PROG;PRS
+( ,m) ( ,a) ( ,g) ( ,a) (s,s) (u,u) (l,l) (a,a) (t,t) ( , ) ( ,n) ( ,a)	V;PRF;FUT
+( ,m) ( ,a) ( ,g) ( ,a) (m,m) (a,a) (n,n) (e,e) (h,h) (o,o) ( , ) ( ,p) ( ,a)	V;PRF+PROG;FUT
+( ,n) ( ,a) ( ,g) (h,h) (a,a) (m,m) (b,b) (a,a) (l,l)	V;PROG;PST
+( ,n) ( ,a) ( ,g) ( ,a) (t,t) (a,a) (w,w) (a,a) (g,g)	V;PRS
+( ,n) ( ,a) ( ,g) (d,d) (u,u) (g,g) (a,a) (n,n) (g,g)	V;PROG;PST
+( ,m) ( ,a) ( ,g) ( ,a) (g,g) (u,u) ( ,a) ( , ) ( ,n) (a,a)	V;PRF;FUT
+( ,g) ( ,i) ( ,n) ( ,a) (s,s) (a,a) (b,b) (a,a) (t,t)	V;PROG;PRS
+( ,m) ( ,a) ( ,g) ( ,a) (n,n) (a,a) (g,g) (o,o) (n,n)	V;PROG;FUT
+( ,m) ( ,a) ( ,g) ( ,a) (p,p) (a,a) (d,d) (a,a) (l,l) ( ,a) ( , ) ( ,n) (a,a)	V;PRF;FUT
+( ,n) ( ,a) ( ,g) (b,b) (u,u) (t,t) (a,a) (n,n) (g,g)	V;PROG;PST
+( ,m) ( ,a) (d,d) (u,u) (l,l) (a,a)	V;PROG;FUT
+(t, ) (a, ) (l, ) (u,g) (p,i) (a, ) (n,n) (g, ) (d, ) (a,a) (n, ) (/, ) (t,t) (a,a) (l,l) (u,u) (p,p) (a,a) (n,n) (g,g) (o,o) (d,d) (/, ) (t, ) (a, ) (l, ) (u, ) (p, ) (a, ) (n, ) (g, ) (d, ) (o, ) (n, )	V;PROG;PRS
+( ,m) ( ,a) ( ,g) ( ,a) (d,d) (e,e) (s,s) (i,i) (s,s) (y,y) (o,o) ( ,n) ( , ) (n,n) ( ,a)	V;PRF;FUT
+( ,n) ( ,a) (g,g) (u,u) (s,s) (t,t) (u,u) (h,h) (a,a) (n,n)	V;PROG;PRS
+( ,m) ( ,a) ( ,g) ( ,a) (k,k) (a,a) (b,b) (u,u) (h,h) (i,i)	V;FUT
+( ,n) ( ,a) ( ,g) (s,s) (u,u) (g,g) (a,a) (t,t) ( ,a) ( , ) ( ,p) (a,a)	V;PRF+PROG;PST
+( ,n) ( ,a) ( ,g) (h,h) (i,i) (g,g) (d,d) (a,a)	V;PST
+( ,p) ( ,a) ( ,g) ( ,a) (b,b) (u,u) (k,k) (a,a)	V;PROG;FUT
+(t,t) (u,u) (o,o) (n,n)	V;NFIN
+( ,m) ( ,a) ( ,g) ( ,a) (n,n) (a,a) (g,g) (o,o) (n,n) ( , ) ( ,p) ( ,a)	V;PRF+PROG;FUT
+( ,n) ( ,a) ( ,g) ( ,a) (k,k) (i,i) (n,n) (a,a) (h,h) (a,a) (n,n) (g,g) (l,l) (a,a) (n,n)	V;PROG;PRS
+(m, ) (a, ) (n, ) (g, ) (i, ) (n,n) (/, ) (n, ) (a,a) (n,n) (g,g) (i,i) (n,n)	V;PRF;PST
+( ,m) ( ,a) ( ,g) ( ,a) (p,p) (i,i) (l,l) (i,i) ( , ) ( ,n) ( ,a)	V;PRF;FUT
+( ,n) ( ,a) ( ,g) ( ,a) (d,d) (u,u) (g,g) (a,a) (n,n) (g,g)	V;PRS
+(h,n) (u,a) (l, ) (o, ) (g,g) (/,a) (k,k) (a,a) (h,h) (u,u) (l,l) (o,o) (g,g)	V;PROG;PST
+(h,g) (i,i) (b, ) (a,n) (l, ) (o, ) (/,a) (h,h) (i,i) (b,b) (a,a) (l,l) (u,o) (a, ) (n, )	V;PROG;PRS
+( ,n) ( ,a) ( ,g) (s,s) (i,i) (l,l) (i,i) (n,n) (g,g)	V;PROG;PST
+(s,s) (u,u) (g,g) (o,o) (d,d)	V;NFIN
+(p,p) (a,a) (k,k) (i,i) (l,l) (a,a) (l,l) (a,a)	V;NFIN
+( ,n) ( ,a) ( ,g) ( ,a) (s,s) (i,i) (l,l) (i,i) (n,n) (g,g) ( , ) ( ,p) ( ,a)	V;PRF+PROG;PRS
+( ,m) ( ,a) ( ,g) ( ,a) (s,s) (i,i) (n,n) (g,g) (g,g) (i,i) (t,t)	V;PROG;FUT
+( ,n) ( ,a) ( ,g) (d,d) (e,e) (s,s) (i,i) (s,s) (y,y) (o,o) ( ,n) ( , ) (n,n) ( ,a)	V;PRF;PST
+( ,m) ( ,a) ( ,g) ( ,a) (h,h) (a,a) (m,m) (p,p) (a,a) (n,n) (g,g)	V;PROG;FUT
+( ,n) ( ,a) ( ,g) (s,s) (u,u) (l,l) (a,a) (t,t)	V;PST
+( ,m) ( ,a) ( ,g) ( ,a) (g,g) (a,a) (m,m) (i,i) (t,t) ( , ) ( ,p) ( ,a)	V;PRF+PROG;FUT
+( ,m) ( ,a) ( ,g) ( ,a) (d,d) (e,e) (s,s) (i,i) (s,s) (y,y) (o,o) (n,n) ( , ) ( ,p) ( ,a)	V;PRF+PROG;FUT
+(s,s) (a,a) (r,r) (a,a) (n,n) (g,g)	V;NFIN
+( ,n) ( ,a) ( ,g) ( ,a) (k,k) (a,a) (d,d) (o,o)	V;PRS
+(b, ) (a,g) (t, ) (i,i) (/, ) (b, ) (a, ) (t, ) (i, ) (a, ) (n,n) (/, ) (p,p) (a,a) (m,m) (a,a) (t,t) (i,i) (a,a) (n,n) ( , ) ( ,p) ( ,a)	V;PRF+PROG;PST
+( ,n) ( ,a) ( ,g) ( ,a) (g,g) (u,u) ( ,a) ( , ) ( ,n) (a,a)	V;PRF;PRS
+( ,m) ( ,a) ( ,g) ( ,a) (d,d) (u,u) (m,m) (d,d) (o,o) (m,m)	V;FUT
+( ,n) ( ,a) ( ,g) ( ,a) (d,d) (u,u) (g,g) (a,a) (n,n) (g,g)	V;PROG;PRS
+( ,n) ( ,a) ( ,g) ( ,a) (i,i) (s,s) (t,t) (o,o) (r,r) (y,y) (a,a)	V;PROG;PRS
+( ,n) ( ,a) (k,k) (i,i) (t,t) (a,a)	V;PROG;PRS
+( ,n) ( ,a) ( ,g) (g,g) (a,a) (m,m) (i,i) (t,t) ( , ) ( ,n) ( ,a)	V;PRF;PST
+( ,n) ( ,a) ( ,g) ( ,a) (a,a) (k,k) (u,u)	V;PROG;PRS
+(b, ) (u,g) (l, ) (i,i) (g,n) (/, ) (b,b) (u,u) (l,l) (i,i) (g,g) (a,a) (n,n)	V;PST
+( ,m) ( ,a) ( ,g) ( ,a) (p,p) (u,u) (n,n) (g,g) (k,k) (o,o)	V;FUT
+( ,n) ( ,a) ( ,g) ( ,a) (h,h) (a,a) (m,m) (p,p) (a,a) (n,n) (g,g) ( , ) ( ,p) ( ,a)	V;PRF+PROG;PRS
+( ,n) ( ,a) ( ,g) (m,m) (a,a) (n,n) (e,e) (h,h) (o,o) ( , ) ( ,p) ( ,a)	V;PRF+PROG;PST
+( ,n) ( ,a) ( ,g) ( ,a) (o,o) (b,b) (r,r) ( ,a) ( , ) ( ,p) (a,a)	V;PRF+PROG;PRS
+(p,p) (a,a) (m,m) (a,a) (n,n) (g,g) (k,k) (o,o) (t,t)	V;NFIN
+(h,n) (i, ) (b, ) (a,a) (l, ) (o, ) (/, ) (h,h) (i,i) (b,b) (a,a) (l,l) (u,u) (a,a) ( ,n) ( , ) (n,n) ( ,a)	V;PRF;PST
+( ,m) ( ,a) ( ,g) ( ,a) (p,p) (a,a) (k,k) (i,i) (l,l) (a,a) (l,l) ( ,a) ( , ) ( ,n) (a,a)	V;PRF;FUT
+( ,n) ( ,a) ( ,g) (b,b) (a,a) (k,k) (a,a) (l,l) ( , ) ( ,p) ( ,a)	V;PRF+PROG;PST
+( ,m) ( ,a) ( ,g) ( ,a) (p,p) (a,a) (k,k) (i,i) (l,l) (a,a) (l,l) (a,a)	V;FUT
+( ,m) ( ,a) ( ,g) ( ,a) (b,b) (a,a) (t,t) (o,o) ( ,n) ( , ) (n,n) ( ,a)	V;PRF;FUT
+(h,n) (u,a) (l,k) (o,a) (g,g) (/, ) (k, ) (a,a) (h,h) (u,u) (l,l) (o,o) (g,g) ( , ) ( ,p) ( ,a)	V;PRF+PROG;PST
+( ,m) ( ,a) ( ,g) ( ,a) (b,b) (u,u) (h,h) (i,i) (n,n)	V;PROG;FUT
+(g, ) (u,n) (s,a) (t, ) (o, ) (/, ) (g,g) (u,u) (s,s) (t,t) (u,u) (h,h) (a,a) (n,n)	V;PST
+( ,n) ( ,a) ( ,g) ( ,a) (p,p) (u,u) (n,n) (g,g) (k,k) (o,o) ( , ) ( ,n) ( ,a)	V;PRF;PRS
+(p,n) (a,a) (t,g) (a,a) (y, ) (/, ) (t,t) (a,a) (g,g) (u,u) (m,m) (a,a) (t,t) (a,a) (y,y) (o,o) (n,n) ( , ) ( ,p) ( ,a)	V;PRF+PROG;PRS
+( ,n) ( ,a) ( ,g) ( ,a) (h,h) (i,i) (b,b) (i,i) ( , ) ( ,p) ( ,a)	V;PRF+PROG;PRS
+(t, ) (a, ) (l, ) (u,m) (p, ) (a,a) (n, ) (g, ) (d, ) (a, ) (n, ) (/, ) (t,t) (a,a) (l,l) (u,u) (p,p) (a,a) (n,n) (g,g) (o, ) (d,d) (/, ) (t, ) (a,a) (l, ) (u, ) (p,n) (a, ) (n,n) (g,a) (d, ) (o, ) (n, )	V;PRF;FUT
+( ,n) ( ,a) ( ,g) (l,l) (u,u) (t,t) (o,o) ( , ) ( ,p) ( ,a)	V;PRF+PROG;PST
+(k,k) (i,i) (t,t) (a,a) (/, ) (p, ) (a, ) (n, ) (g, ) (i, ) (t, ) (a, )	V;NFIN
+(t, ) (a, ) (l, ) (u, ) (p, ) (a, ) (n,n) (g, ) (d, ) (a,a) (n, ) (/, ) (t,t) (a,a) (l,l) (u,u) (p,p) (a,a) (n,n) (g,g) (o, ) (d,d) (/, ) (t, ) (a,a) (l, ) (u, ) (p, ) (a, ) (n,n) (g, ) (d, ) (o, ) (n, )	V;PST
+(n,n) (a,a) (g,g) ( ,n) ( ,a) ( ,g) (o,o) ( ,n) ( , ) (n,n) ( ,a)	V;PRF;PST
+( ,m) ( ,a) ( ,g) ( ,a) (t,t) (a,a) (p,p) (o, ) (s,s) ( , ) ( ,n) ( ,a)	V;PRF;FUT
+( ,n) ( ,a) ( ,g) ( ,a) (i,i) (s,s) (t,t) (a,a) (r,r)	V;PRS
+(k,g) (i,i) (t,n) (a,a) (/, ) (p,p) (a,a) (n,n) (g,g) (i,i) (t,t) (a,a)	V;PROG;PRS
+(h,h) (i,i) (g,g) (d,d) (a,a)	V;NFIN
+( ,n) ( ,a) ( ,g) (y,y) (u,u) (h,h) (o,o) (m,m)	V;PST
+(t,t) (a,a) (b,b) (o, ) (/, ) (k, ) (a, ) (t, ) (a, ) (b, ) (o,o)	V;NFIN
+( ,m) ( ,a) ( ,g) ( ,a) (b,b) (a,a) (s,s) (a,a)	V;PROG;FUT
+( ,n) ( ,a) ( ,g) ( ,a) (p,p) (a,a) (a,a) (t,t) (h,h) (a,a) (g,g)	V;PROG;PRS
+( ,m) ( ,a) ( ,k) ( ,a) (s,s) (a,a) (r,r) (a,a) (n,n) (g,g)	V;PRS
+( ,n) ( ,a) ( ,g) ( ,a) (l,l) (u,u) (p,p) (a,a) (d,d)	V;PRS
+(n,n) (a,a) (/, ) (n, ) (a, ) (g, ) (a, )	V;NFIN
+(s,s) (i,i) (n,n) (g,g) (g,g) (i,i) (t,t)	V;NFIN
+( ,m) ( ,a) ( ,g) ( ,a) (p,p) (a,a) (k,k) (i,i) (l,l) (a,a) (l,l) (a,a)	V;PROG;FUT
+( ,m) ( ,a) ( ,g) ( ,a) (y,y) (u,u) (h,h) (o,o) (m,m)	V;FUT
+( ,m) ( ,a) ( ,g) ( ,a) (l,l) (u,u) (t,t) (o,o) ( , ) ( ,n) ( ,a)	V;PRF;FUT
+(h,g) (i,i) (b, ) (a,n) (l, ) (o, ) (/, ) (h,h) (i,i) (b,b) (a,a) (l,l) (u,o) (a, ) (n, )	V;PROG;PST
+( ,g) ( ,i) ( ,n) (b,b) (u,u) (k,k) (s,s) (a,a) (n,n) ( , ) ( ,p) ( ,a)	V;PRF+PROG;PST
+( ,n) ( ,a) ( ,g) (p,p) (a,a) (m,m) (a,a) (t,t) (i,i) ( , ) ( ,p) ( ,a)	V;PRF+PROG;PST
+( ,m) ( ,a) ( ,g) ( ,a) (t,t) (u,u) (d,d) (l,l) (o,o) ( , ) ( ,n) ( ,a)	V;PRF;FUT
+( ,n) ( ,a) ( ,g) ( ,a) (p,p) (a,a) (k,k) (i,i) (t,t) (a,a)	V;PRS
+( ,n) ( ,a) ( ,g) (t,t) (u,u) (l,l) (o,o) (g,g)	V;PST
+(h,n) (a,a) (n, ) (g, ) (o, ) (p, ) (/, ) (h,h) (a,a) (n,n) (g,g) (p,p) (a,a) (n,n)	V;PRS
+( ,n) ( ,a) ( ,g) ( ,a) (h,h) (i,i) (b,b) (i,i) ( , ) ( ,n) ( ,a)	V;PRF;PRS
+( ,n) ( ,a) ( ,g) ( ,a) (b,b) (a,a) (l,l) (i,i) (g,g) (y,y) (a,a)	V;PROG;PRS
+( ,n) ( ,a) ( ,g) ( ,-) (a,a) (b,b) (o,o) (t,t)	V;PST
+( ,n) ( ,a) ( ,g) ( ,a) (h,h) (i,i) (m,m) (o,o) ( , ) ( ,n) ( ,a)	V;PRF;PRS
+( ,n) ( ,a) ( ,g) (d,d) (u,u) (g,g) (a,a) (n,n) (g,g)	V;PST
+(p,p) (a,a) (m,m) (a,a) (t,t) (i,i)	V;NFIN
+( ,g) ( ,i) ( ,n) ( ,-) (a,a) (g,g) (d,d) ( ,a) ( , ) ( ,p) (a,a)	V;PRF+PROG;PST
+( ,m) ( ,a) ( ,g) ( ,a) (s,s) (i,i) (r,r) ( ,a) ( , ) ( ,n) (a,a)	V;PRF;FUT
+( ,n) ( ,a) (k,k) (i,i) (t,t) ( ,a) ( , ) ( ,p) (a,a)	V;PRF+PROG;PRS
+( ,n) ( ,a) ( ,g) ( ,a) (s,s) (u,u) (l,l) (o,o) (d,d)	V;PROG;PRS
+( ,m) ( ,a) ( ,g) ( ,a) (m,m) (a,a) (n,n) (e,e) (h,h) (o,o) ( , ) ( ,n) ( ,a)	V;PRF;FUT
+( ,m) ( ,a) ( ,g) ( ,a) (b,b) (y,y) (a,a) (h,h) (e,e)	V;PROG;FUT
+(h,g) (a, ) (l,i) (o, ) (k,n) (/, ) (h,h) (a,a) (l,l) (u,u) (k,k) (a,a) ( ,n) ( , ) (n,n) ( ,a)	V;PRF;PST
+( ,n) ( ,a) ( ,g) ( ,-) (a,a) (k,k) (u,u)	V;PST
+( ,p) ( ,a) ( ,g) ( ,a) (b,b) (u,u) (k,k) (s,s) (a,a) (n,n)	V;PROG;FUT
+(h,h) (u,u) (l, ) (o, ) (g, ) (/, ) (k, ) (a, ) (h, ) (u, ) (l,l) (o,o) (g,g)	V;NFIN
+( ,n) ( ,a) ( ,g) (p,p) (a,a) (d,d) (a,a) (l,l) ( ,a) ( , ) ( ,n) (a,a)	V;PRF;PST
+( ,m) ( ,a) ( ,g) ( ,a) (d,d) (u,u) (m,m) (d,d) (o,o) (m,m) ( , ) ( ,p) ( ,a)	V;PRF+PROG;FUT
+( ,n) ( ,a) ( ,g) (m,m) (a,a) (n,n) (e,e) (h,h) (o,o) ( , ) ( ,n) ( ,a)	V;PRF;PST
+(m, ) (a, ) (n, ) (g, ) (i, ) (n,n) (/, ) (n, ) (a,a) (n,n) (g,g) (i,i) (n,n)	V;PROG;PST
+(k,m) (i,a) (t,g) (a,a) (/, ) (p,p) (a,a) (n,n) (g,g) (i,i) (t,t) ( ,a) ( , ) ( ,p) (a,a)	V;PRF+PROG;FUT
+( ,g) ( ,i) ( ,n) (s,s) (a,a) (b,b) (a,a) (t,t)	V;PST
+( ,g) ( ,i) ( ,n) ( ,a) (b,b) (u,u) (k,k) (s,s) (a,a) (n,n)	V;PRS
+(h,n) (i, ) (b, ) (a,a) (l, ) (o, ) (/, ) (h,h) (i,i) (b,b) (a,a) (l,l) (u,u) (a,a) ( ,n) ( , ) (n,n) ( ,a)	V;PRF;PRS
+( ,n) ( ,a) ( ,g) (t,t) (a,a) (n,n) (-,-) (a,a) (w,w) ( , ) ( ,p) ( ,a)	V;PRF+PROG;PST
+( ,n) ( ,a) ( ,g) (b,b) (u,u) (h,h) (i,i) (n,n)	V;PST
+( ,g) ( ,i) ( ,n) (b,b) (a,a) (t,t) (o,o) (n,n)	V;PST
+( ,n) ( ,a) ( ,g) (s,s) (u,u) (l,l) (a,a) (t,t)	V;PROG;PST
+( ,m) ( ,a) ( ,g) ( ,a) (h,h) (i,i) (g,g) (d,d) (a,a)	V;FUT
+( ,n) ( ,a) ( ,g) (l,l) (u,u) (p,p) (a,a) (d,d) ( , ) ( ,n) ( ,a)	V;PRF;PST
+( ,n) ( ,a) ( ,g) ( ,a) (b,b) (a,a) (l,l) (i,i) (g,g) (y,y) ( ,a) ( , ) ( ,n) (a,a)	V;PRF;PRS
+(h,g) (i,i) (g, ) (u, ) (g, ) (m, ) (a,n) (/, ) (h,h) (i,i) (g,g) (u,u) (g,g) (m,m) (a,a) (o, ) (n,n) ( ,a)	V;PRF;PST
+( ,n) ( ,a) ( ,g) (k,k) (u,u) (h,h) ( ,a) ( , ) ( ,n) (a,a)	V;PRF;PST
+( ,n) ( ,a) ( ,g) ( ,a) (i,i) (s,s) (t,t) (o,o) (r,r) (y,y) ( ,a) ( , ) ( ,n) (a,a)	V;PRF;PRS
+(h,g) (i,i) (g, ) (u,n) (g, ) (m, ) (a,a) (/, ) (h,h) (i,i) (g,g) (u,u) (g,g) (m,m) (a,a) (o, ) (n, )	V;PRS
+( ,n) ( ,a) ( ,g) ( ,a) (s,s) (u,u) (g,g) (a,a) (t,t) ( ,a) ( , ) ( ,p) (a,a)	V;PRF+PROG;PRS
+( ,n) ( ,a) ( ,g) ( ,a) (h,h) (i,i) (m,m) (o,o) ( , ) ( ,p) ( ,a)	V;PRF+PROG;PRS
+(k,k) (a,a) (d,d) (o,o)	V;NFIN
+( ,m) ( ,a) ( ,g) ( ,a) (l,l) (u,u) (p,p) (a,a) (d,d)	V;PROG;FUT
+(t,t) (a,a) (l,l) (u,u) (p,p) (a,a) (n,n) (g,g) (d,d) (a,a) (n, ) (/, ) (t, ) (a, ) (l, ) (u, ) (p, ) (a, ) (n,n) (g, ) (o, ) (d, ) (/, ) (t, ) (a, ) (l, ) (u, ) (p, ) (a, ) (n, ) (g, ) (d, ) (o, ) (n, )	V;NFIN
+( ,n) ( ,a) ( ,g) ( ,a) (b,b) (u,u) (h,h) (i,i) (n,n)	V;PROG;PRS
+( ,n) ( ,a) ( ,g) ( ,a) (d,d) (e,e) (s,s) (i,i) (s,s) (y,y) (o,o) (n,n)	V;PRS
+( ,n) ( ,a) ( ,g) (y,y) (u,u) (h,h) (o,o) (m,m)	V;PROG;PST
+(b, ) (u,m) (l, ) (i,a) (g,g) (/,a) (b,b) (u,u) (l,l) (i,i) (g,g) (a, ) (n,p) ( ,a)	V;PRF+PROG;FUT
+( ,n) ( ,a) ( ,g) (h,h) (a,a) (t,t) (a,a) (g,g)	V;PROG;PST
+( ,n) ( ,a) ( ,g) (s,s) (u,u) (l,l) (o,o) (d,d)	V;PST
+( ,n) ( ,a) ( ,g) ( ,a) (h,h) (i,i) (m,m) (o,o)	V;PROG;PRS
+( ,g) ( ,i) ( ,n) (b,b) (a,a) (t,t) (o,o) (n,n) ( , ) ( ,p) ( ,a)	V;PRF+PROG;PST
+(t, ) (a, ) (l, ) (u, ) (p,p) (a,a) (n, ) (g,g) (d, ) (a,a) (n, ) (/, ) (t,t) (a,a) (l,l) (u, ) (p, ) (a, ) (n, ) (g, ) (o, ) (d, ) (/, ) (t, ) (a, ) (l, ) (u,u) (p,p) (a,a) (n,n) (g,g) (d,d) (o,o) (n,n)	V;PROG;FUT
+( ,n) ( ,a) ( ,g) (p,p) (a,a) (m,m) (a,a) (t,t) (i,i)	V;PST
+( ,m) ( ,a) ( ,g) ( ,a) (h,h) (i,i) (m,m) (o,o) ( , ) ( ,p) ( ,a)	V;PRF+PROG;FUT
+( ,m) ( ,a) ( ,g) ( ,a) (k,k) (a,a) (o,o) ( ,n) ( , ) (n,n) ( ,a)	V;PRF;FUT
+( ,m) ( ,a) (d,d) (u,u) (l,l) (a,a)	V;FUT
+( ,g) ( ,i) ( ,n) (d,d) (u,u) (m,m) (d,d) (o,o) (m,m) ( , ) ( ,n) ( ,a)	V;PRF;PST
+( ,n) ( ,a) ( ,g) ( ,a) (g,g) (u,u) (a,a)	V;PROG;PRS
+( ,n) ( ,a) ( ,g) ( ,a) (h,h) (a,a) (m,m) (b,b) (a,a) (l,l) ( , ) ( ,n) ( ,a)	V;PRF;PRS
+(p, ) (a,n) (t, ) (a, ) (y, ) (/, ) (t, ) (a,a) (g, ) (u,p) (m, ) (a,a) (t,t) (a,a) (y,y) (o, ) (n, )	V;PRS
+( ,n) ( ,a) ( ,g) (g,g) (u,u) ( ,a) ( , ) ( ,n) (a,a)	V;PRF;PST
+( ,n) ( ,a) ( ,g) ( ,a) (m,m) (a,a) (n,n) (e,e) (h,h) (o,o)	V;PRS
+( ,m) ( ,a) ( ,g) ( ,a) (i,i) (s,s) (t,t) (o,o) (r,r) (y,y) (a,a)	V;PROG;FUT
+( ,n) ( ,a) ( ,g) (t,t) (a,a) (n,n) (-,-) (a,a) (w,w)	V;PROG;PST
+( ,n) ( ,a) (k,k) (i,i) (t,t) ( ,a) ( , ) ( ,p) (a,a)	V;PRF+PROG;PST
+( ,n) ( ,a) ( ,g) ( ,a) (k,k) (a,a) (b,b) (u,u) (h,h) (i,i) ( , ) ( ,n) ( ,a)	V;PRF;PRS
+( ,m) ( ,a) ( ,g) ( ,a) (t,t) (a,a) (p,p) (o, ) (s,s)	V;PROG;FUT
+( ,g) ( ,i) ( ,n) ( ,a) (p,p) (a,a) (t,t) (a,a) (y,y) ( , ) ( ,n) ( ,a)	V;PRF;PRS
+(p,n) (a,a) (t, ) (a,g) (y, ) (/, ) (t,t) (a,a) (g,g) (u,u) (m,m) (a,a) (t,t) (a,a) (y,y) (o,o) (n,n) ( , ) ( ,p) ( ,a)	V;PRF+PROG;PST
+( ,m) ( ,a) ( ,g) ( ,a) (b,b) (a,a) (t,t) (y,y) (a,a) (g,g)	V;PROG;FUT
+( ,m) ( ,a) ( ,g) ( ,a) (p,p) (i,i) (l,l) (i,i)	V;PROG;FUT
+( ,p) ( ,a) ( ,g) ( ,a) (b,b) (u,u) (k,k) ( ,a) ( , ) ( ,n) (a,a)	V;PRF;FUT
+(t,t) (a,a) (n,n) (-,-) (a,a) (w,w)	V;NFIN
+( ,n) ( ,a) ( ,g) (t,t) (a,a) (w,w) (a,a) (g,g) ( , ) ( ,n) ( ,a)	V;PRF;PST
+( ,m) ( ,a) ( ,g) ( ,a) (s,s) (u,u) (l,l) (o,o) (d,d)	V;PROG;FUT
+( ,n) ( ,a) ( ,g) ( ,a) (d,d) (u,u) (g,g) (a,a) (n,n) (g,g) ( , ) ( ,n) ( ,a)	V;PRF;PRS
+( ,n) ( ,a) ( ,g) ( ,a) (k,k) (a,a) (o,o) (n,n)	V;PROG;PRS
+( ,m) ( ,a) ( ,g) ( ,a) (g,g) (i,i) (n,n) (h,h) (a,a) (w,w) (a,a)	V;PROG;FUT
+(h,g) (a,i) (n,n) (g, ) (o, ) (p,a) (/, ) (h,h) (a,a) (n,n) (g,g) (p,o) (a,p) (n, )	V;PROG;PRS
+( ,n) ( ,a) ( ,g) (h,h) (i,i) (m,m) (o,o)	V;PROG;PST
+( ,p) ( ,a) ( ,g) ( ,a) (b,b) (u,u) (k,k) (a,a)	V;FUT
+( ,g) ( ,i) ( ,n) ( ,-) (a,a) (k,k) (u,u) ( , ) ( ,n) ( ,a)	V;PRF;PST
+( ,g) ( ,i) ( ,n) (p,p) (a,a) (t,t) (a,a) (y,y)	V;PROG;PST
+(k,m) (i,a) (t,g) (a,a) (/, ) (p,p) (a,a) (n,n) (g,g) (i,i) (t,t) ( ,a) ( , ) ( ,n) (a,a)	V;PRF;FUT
+( ,n) ( ,a) ( ,g) (y,y) (u,u) (h,h) (o,o) (m,m) ( , ) ( ,n) ( ,a)	V;PRF;PST
+( ,m) ( ,a) ( ,g) ( ,a) (p,p) (i,i) (l,l) (i,i) ( , ) ( ,p) ( ,a)	V;PRF+PROG;FUT
+( ,m) ( ,a) ( ,g) ( ,a) (k,k) (a,a) (n,n) (t,t) (a,a)	V;PROG;FUT
+(k,k) (a,a) (d,d) (l,l) (a,a) (w,w)	V;NFIN
+( ,n) ( ,a) ( ,g) ( ,a) (s,s) (a,a) (o,o) (t,t)	V;PRS
+(m, ) (a, ) (n, ) (g, ) (i, ) (n,n) (/, ) (n, ) (a,a) (n,n) (g,g) (i,i) (n,n)	V;PRF;PRS
+( ,m) ( ,a) ( ,g) ( ,a) (p,p) (a,a) (d,d) (a,a) (l,l) ( ,a) ( , ) ( ,p) (a,a)	V;PRF+PROG;FUT
+( ,n) ( ,a) ( ,g) (b,b) (y,y) (a,a) (h,h) (e,e)	V;PROG;PST
+(b,b) (u, ) (l, ) (i, ) (g, ) (/, ) (b, ) (u,u) (l,l) (i,i) (g,g) (a, ) (n, )	V;NFIN
+( ,m) ( ,a) ( ,g) ( ,a) (p,p) (i,i) (l,l) (i,i)	V;FUT
+( ,m) ( ,a) ( ,g) ( ,a) (h,h) (i,i) (g,g) (d,d) ( ,a) ( , ) ( ,p) (a,a)	V;PRF+PROG;FUT
+( ,n) ( ,a) ( ,g) (g,g) (a,a) (m,m) (i,i) (t,t)	V;PST
+( ,m) ( ,a) ( ,g) ( ,a) (p,p) (a,a) (t,t) (a,a) (y,y) ( , ) ( ,n) ( ,a)	V;PRF;FUT
+( ,m) ( ,a) ( ,g) ( ,a) (t,t) (u,u) (l,l) (o,o) (g,g) ( , ) ( ,p) ( ,a)	V;PRF+PROG;FUT
+( ,n) ( ,a) ( ,g) ( ,a) (k,k) (i,i) (n,n) (a,a) (h,h) (a,a) (n,n) (g,g) (l,l) (a,a) ( ,n) ( , ) (n,n) ( ,a)	V;PRF;PRS
+( ,n) ( ,a) ( ,g) ( ,a) (p,p) (a,a) (k,k) (i,i) (l,l) (a,a) (l,l) (a,a)	V;PRS
+( ,n) ( ,a) ( ,g) (h,h) (a,a) (t,t) (a,a) (g,g) ( , ) ( ,p) ( ,a)	V;PRF+PROG;PST
+( ,m) (a,a) ( ,g) ( ,a) ( ,a) (k,k) (u,u)	V;FUT
+(d,d) (u,u) (g,g) (a,a) (n,n) (g,g)	V;NFIN
+( ,n) ( ,a) ( ,g) (s,s) (u,u) (g,g) (a,a) (t,t) (a,a)	V;PROG;PST
+( ,n) ( ,a) ( ,g) (k,k) (a,a) (d,d) (o,o) ( , ) ( ,n) ( ,a)	V;PRF;PST
+( ,n) ( ,a) ( ,g) ( ,a) (d,d) (u,u) (g,g) (a,a) (n,n) (g,g) ( , ) ( ,p) ( ,a)	V;PRF+PROG;PRS
+(h,m) (a,a) (n, ) (g, ) (o, ) (p, ) (/, ) (h,h) (a,a) (n,n) (g,g) (p,p) (a,a) (n,n)	V;FUT
+( ,n) ( ,a) ( ,g) ( ,-) (i,i) (n,n) (o,o) (m,m)	V;PROG;PST
+( ,m) (a,a) ( ,g) ( ,a) ( ,a) (g,g) (d,d) ( ,a) ( , ) ( ,n) (a,a)	V;PRF;FUT
+( ,n) ( ,a) ( ,g) ( ,a) (i,i) (s,s) (t,t) (a,a) (r,r) ( , ) ( ,p) ( ,a)	V;PRF+PROG;PRS
+( ,n) ( ,a) ( ,g) ( ,a) (s,s) (u,u) (l,l) (a,a) (t,t) ( , ) ( ,n) ( ,a)	V;PRF;PRS
+(p, ) (a,m) (t, ) (a,a) (y, ) (/, ) (t, ) (a, ) (g, ) (u,p) (m, ) (a,a) (t,t) (a,a) (y,y) (o, ) (n, )	V;PROG;FUT
+( ,g) ( ,i) ( ,n) ( ,a) (s,s) (i,i) (r,r) ( ,a) ( , ) ( ,n) (a,a)	V;PRF;PRS
+( ,g) ( ,i) ( ,n) ( ,a) (a,a) (g,g) (d,d) (a,a)	V;PRS
+( ,m) ( ,a) ( ,g) ( ,a) (s,s) (i,i) (l,l) (i,i) (n,n) (g,g)	V;PROG;FUT
+( ,m) ( ,a) ( ,g) ( ,a) (g,g) (a,a) (m,m) (i,i) (t,t)	V;FUT
+( ,n) ( ,a) ( ,g) (h,h) (i,i) (b,b) (i,i) ( , ) ( ,p) ( ,a)	V;PRF+PROG;PST
+(t, ) (a, ) (l, ) (u, ) (p, ) (a, ) (n, ) (g,g) (d, ) (a,i) (n,n) (/, ) (t,t) (a,a) (l,l) (u,u) (p,p) (a,a) (n,n) (g,g) (o,o) (d,d) (/, ) (t, ) (a, ) (l, ) (u, ) (p, ) (a, ) (n, ) (g, ) (d, ) (o, ) (n, )	V;PROG;PST
+(p,p) (a,a) (k,k) (i,i) (t,t) (a,a)	V;NFIN
+(t, ) (a, ) (b, ) (o, ) (/, ) (k,n) (a,a) (t,t) (a,a) (b,b) (o,o)	V;PROG;PST
+( ,n) ( ,a) ( ,g) (h,h) (a,a) (m,m) (b,b) (a,a) (l,l) ( , ) ( ,n) ( ,a)	V;PRF;PST
+(u,g) (y,i) (a,n) (t, ) (/,a) (u,u) (y,y) (a,a) (t,t) (a,a) ( ,n) ( , ) (n,n) ( ,a)	V;PRF;PRS
+(t, ) (a, ) (l, ) (u, ) (p,p) (a,a) (n, ) (g,g) (d, ) (a,a) (n, ) (/, ) (t,t) (a,a) (l,l) (u,u) (p,p) (a,a) (n,n) (g,g) (o, ) (d,d) (/, ) (t,o) (a,n) (l, ) (u, ) (p,p) (a,a) (n, ) (g, ) (d, ) (o, ) (n, )	V;PRF+PROG;FUT
+( ,m) ( ,a) ( ,g) ( ,a) (t,t) (i,i) (n,n) (d,d) (o,o) (g,g) ( , ) ( ,n) ( ,a)	V;PRF;FUT
+( ,n) ( ,a) ( ,g) ( ,a) (a,a) (b,b) (o,o) (t,t)	V;PRS
+( ,n) ( ,a) ( ,g) ( ,a) (h,h) (i,i) (g,g) (d,d) (a,a)	V;PROG;PRS
+( ,n) ( ,a) ( ,g) ( ,a) (p,p) (a,a) (d,d) (a,a) (l,l) ( ,a) ( , ) ( ,n) (a,a)	V;PRF;PRS
+( ,m) ( ,a) ( ,g) ( ,a) (b,b) (u,u) (h,h) (i,i) (n,n) ( , ) ( ,p) ( ,a)	V;PRF+PROG;FUT
+( ,m) ( ,a) ( ,g) ( ,a) (o,o) (b,b) (r,r) (a,a)	V;FUT
+( ,n) ( ,a) ( ,g) ( ,a) (s,s) (u,u) (g,g) (o,o) (d,d)	V;PROG;PRS
+( ,n) ( ,a) ( ,g) (d,d) (u,u) (g,g) (a,a) (n,n) (g,g) ( , ) ( ,n) ( ,a)	V;PRF;PST
+( ,m) ( ,a) ( ,g) ( ,a) (t,t) (a,a) (w,w) (a,a) (g,g)	V;PROG;FUT
+( ,m) ( ,a) ( ,g) ( ,a) (s,s) (a,a) (b,b) (a,a) (t,t)	V;PROG;FUT
+( ,m) ( ,a) ( ,g) ( ,a) (d,d) (u,u) (g,g) (a,a) (n,n) (g,g)	V;PROG;FUT
+( ,n) ( ,a) ( ,g) ( ,a) (d,d) (a,a) (o,o) (g,g) ( , ) ( ,n) ( ,a)	V;PRF;PRS
+( ,m) (a,a) ( ,g) ( ,a) ( ,a) (b,b) (o,o) (t,t)	V;PROG;FUT
+( ,n) ( ,a) ( ,g) (h,h) (a,a) (m,m) (p,p) (a,a) (n,n) (g,g) ( , ) ( ,p) ( ,a)	V;PRF+PROG;PST
+( ,g) ( ,i) ( ,n) (b,b) (u,u) (k,k) (a,a)	V;PST
+(s,s) (i,i) (l,l) (i,i) (n,n) (g,g)	V;NFIN
+(t,n) (a,a) (b, ) (o,g) (/,a) (k,k) (a,a) (t,t) (a,a) (b,b) (o,o) ( , ) ( ,p) ( ,a)	V;PRF+PROG;PRS
+( ,n) ( ,a) ( ,g) ( ,a) (l,l) (u,u) (t,t) (o,o) ( , ) ( ,p) ( ,a)	V;PRF+PROG;PRS
+(b, ) (u,g) (l, ) (i,i) (g,n) (/, ) (b,b) (u,u) (l,l) (i,i) (g,g) (a,a) ( ,n) ( , ) (n,n) ( ,a)	V;PRF;PST
+( ,n) ( ,a) ( ,g) ( ,a) (p,p) (a,a) (k,k) (i,i) (t,t) ( ,a) ( , ) ( ,n) (a,a)	V;PRF;PRS
+( ,n) ( ,a) ( ,g) (p,p) (u,u) (n,n) (g,g) (k,k) (o,o)	V;PROG;PST
+(t, ) (a, ) (l, ) (u,g) (p,i) (a, ) (n,n) (g, ) (d, ) (a,a) (n, ) (/, ) (t,t) (a,a) (l,l) (u,u) (p,p) (a,a) (n,n) (g,g) (o,o) (d,d) (/, ) (t, ) (a, ) (l, ) (u, ) (p,p) (a,a) (n, ) (g, ) (d, ) (o, ) (n, )	V;PRF+PROG;PRS
+(g,g) (u,u) (s,s) (t,t) (u,u) (h,h) (a,a) (n,n)	V;NFIN
+(m,m) (a,a) (n,n) (g,g) (i,i) (n,n) (/, ) (n, ) (a, ) (n, ) (g, ) (i, ) (n, )	V;NFIN
+( ,n) ( ,a) ( ,g) ( ,a) (i,i) (s,s) (t,t) (a,a) (r,r) ( , ) ( ,n) ( ,a)	V;PRF;PRS
+( ,n) ( ,a) ( ,g) ( ,a) (b,b) (a,a) (k,k) (a,a) (l,l)	V;PRS
+( ,m) ( ,a) ( ,g) ( ,a) (p,p) (a,a) (m,m) (a,a) (n,n) (g,g) (k,k) (o,o) (t,t) ( , ) ( ,n) ( ,a)	V;PRF;FUT
+( ,n) ( ,a) ( ,g) ( ,a) (s,s) (u,u) (g,g) (o,o) (d,d)	V;PRS
+( ,n) ( ,a) ( ,g) (k,k) (i,i) (n,n) (a,a) (h,h) (a,a) (n,n) (g,g) (l,l) (a,a) (n,n)	V;PST
+( ,n) ( ,a) ( ,g) ( ,a) (p,p) (a,a) (k,k) (i,i) (t,t) (a,a)	V;PROG;PRS
+(m, ) (a, ) (n, ) (g, ) (i, ) (n,n) (/, ) (n, ) (a,a) (n,n) (g,g) (i,i) (n,n)	V;PST
+( ,n) ( ,a) ( ,g) (l,l) (u,u) (t,t) (o,o)	V;PROG;PST
+( ,n) ( ,a) ( ,g) (p,p) (a,a) (k,k) (i,i) (t,t) (a,a)	V;PST
+( ,m) ( ,a) ( ,g) ( ,a) (h,h) (a,a) (m,m) (p,p) (a,a) (n,n) (g,g)	V;FUT
+( ,n) ( ,a) ( ,g) ( ,a) (l,l) (u,u) (t,t) (o,o) ( , ) ( ,n) ( ,a)	V;PRF;PRS
+( ,g) ( ,i) ( ,n) (b,b) (a,a) (t,t) (o,o) ( ,n) ( , ) (n,n) ( ,a)	V;PRF;PST
+( ,n) ( ,a) ( ,g) ( ,a) (d,d) (e,e) (s,s) (i,i) (s,s) (y,y) (o,o) ( ,n) ( , ) (n,n) ( ,a)	V;PRF;PRS
+( ,m) ( ,a) ( ,g) ( ,a) (h,h) (i,i) (b,b) (i,i)	V;PROG;FUT
+( ,n) ( ,a) ( ,g) ( ,a) (l,l) (a,a) (k,k) (a,a) (t,t)	V;PRS
+( ,n) ( ,a) ( ,g) ( ,a) (h,h) (i,i) (g,g) (d,d) ( ,a) ( , ) ( ,n) (a,a)	V;PRF;PRS
+( ,n) ( ,a) ( ,g) ( ,a) (h,h) (u,u) (n,n) (a,a) (h,h) (u,u) (n,n) ( ,a) ( , ) ( ,p) (a,a)	V;PRF+PROG;PRS
+( ,g) ( ,i) ( ,n) (p,p) (a,a) (t,t) (a,a) (y,y) ( , ) ( ,n) ( ,a)	V;PRF;PST
+( ,g) ( ,i) ( ,n) (s,s) (a,a) (b,b) (a,a) (t,t)	V;PROG;PST
+( ,n) ( ,a) ( ,g) ( ,a) (g,g) (a,a) (m,m) (i,i) (t,t) ( , ) ( ,p) ( ,a)	V;PRF+PROG;PRS
+( ,n) ( ,a) ( ,g) ( ,a) (s,s) (a,a) (o,o) (t,t) ( , ) ( ,p) ( ,a)	V;PRF+PROG;PRS
+( ,n) ( ,a) ( ,g) ( ,a) (b,b) (a,a) (s,s) ( ,a) ( , ) ( ,p) (a,a)	V;PRF+PROG;PRS
+( ,n) ( ,a) ( ,g) (s,s) (u,u) (g,g) (a,a) (t,t) (a,a)	V;PST
+( ,m) ( ,a) ( ,g) ( ,a) (s,s) (u,u) (l,l) (i,i) (t,t) ( , ) ( ,n) ( ,a)	V;PRF;FUT
+( ,m) ( ,a) ( ,g) ( ,a) (k,k) (a,a) (d,d) (l,l) (a,a) (w,w)	V;FUT
+( ,n) ( ,a) ( ,g) ( ,a) (s,s) (u,u) (g,g) (a,a) (t,t) ( ,a) ( , ) ( ,n) (a,a)	V;PRF;PRS
+( ,m) ( ,a) ( ,g) ( ,a) (p,p) (u,u) (n,n) (g,g) (k,k) (o,o) ( , ) ( ,p) ( ,a)	V;PRF+PROG;FUT
+( ,m) ( ,a) ( ,g) ( ,a) (g,g) (i,i) (n,n) (h,h) (a,a) (w,w) (a,a)	V;FUT
+( ,n) ( ,a) ( ,g) (h,h) (u,u) (n,n) (a,a) (h,h) (u,u) (n,n) ( ,a) ( , ) ( ,p) (a,a)	V;PRF+PROG;PST
+( ,n) ( ,a) ( ,g) (p,p) (a,a) (m,m) (a,a) (n,n) (g,g) (k,k) (o,o) (t,t) ( , ) ( ,n) ( ,a)	V;PRF;PST
+( ,n) ( ,a) ( ,g) (o,o) (b,b) (r,r) ( ,a) ( , ) ( ,n) (a,a)	V;PRF;PST
+(b,b) (a,a) (t,t) (o,o) (n,n)	V;NFIN
+( ,n) ( ,a) ( ,g) ( ,a) (h,h) (u,u) (l,l) (a,a) (r,r) ( , ) ( ,n) ( ,a)	V;PRF;PRS
+(p, ) (a,m) (t, ) (a,a) (y, ) (/, ) (t, ) (a, ) (g, ) (u,p) (m, ) (a,a) (t,t) (a,a) (y,y) (o, ) (n, )	V;FUT
+( ,n) ( ,a) ( ,g) (p,p) (a,a) (a,a) (t,t) (h,h) (a,a) (g,g) ( , ) ( ,p) ( ,a)	V;PRF+PROG;PST
+( ,m) ( ,a) ( ,g) ( ,a) (s,s) (u,u) (l,l) (a,a) (t,t)	V;FUT
+(l,l) (u,u) (t,t) (o,o)	V;NFIN
+( ,n) ( ,a) ( ,g) (s,s) (u,u) (l,l) (o,o) (d,d) ( , ) ( ,n) ( ,a)	V;PRF;PST
+( ,g) ( ,i) ( ,n) ( ,a) (p,p) (a,a) (t,t) (a,a) (y,y) ( , ) ( ,p) ( ,a)	V;PRF+PROG;PRS
+(d,d) (a,a) (w,w)	V;PST
+( ,g) ( ,i) ( ,n) ( ,a) (b,b) (u,u) (k,k) ( ,a) ( , ) ( ,n) (a,a)	V;PRF;PRS
+( ,m) ( ,a) (h,h) (a,a) (n,n) (g,g) (o, ) (p,p) (/, ) (h, ) (a,a) (n,n) (g, ) (p,n) (a,a) (n, )	V;PRF;FUT
+( ,n) ( ,a) ( ,g) ( ,-) (a,a) (b,b) (o,o) (t,t) ( , ) ( ,p) ( ,a)	V;PRF+PROG;PST
+( ,g) ( ,i) ( ,n) ( ,a) (b,b) (u,u) (k,k) (s,s) (a,a) ( ,n) ( , ) (n,n) ( ,a)	V;PRF;PRS
+( ,m) ( ,a) ( ,g) ( ,a) (k,k) (u,u) (h,h) ( ,a) ( , ) ( ,n) (a,a)	V;PRF;FUT
+( ,m) ( ,a) ( ,g) ( ,a) (t,t) (a,a) (p,p) (o, ) (s,s) ( , ) ( ,p) ( ,a)	V;PRF+PROG;FUT
+( ,m) ( ,a) ( ,g) ( ,a) (d,d) (a,a) (o,o) (g,g)	V;PROG;FUT
+(b, ) (a,n) (t, ) (i, ) (/,a) (b,b) (a,a) (t,t) (i,i) (a,a) (n,n) (/, ) (p, ) (a, ) (m, ) (a, ) (t, ) (i,n) (a,a) (n, )	V;PRF;PST
+( ,n) ( ,a) ( ,g) (s,s) (i,i) (n,n) (g,g) (g,g) (i,i) (t,t) ( , ) ( ,n) ( ,a)	V;PRF;PST
+( ,m) ( ,a) ( ,g) ( ,a) (l,l) (u,u) (p,p) (a,a) (d,d) ( , ) ( ,p) ( ,a)	V;PRF+PROG;FUT
+(h,n) (u,a) (l, ) (o, ) (g,g) (/,a) (k,k) (a,a) (h,h) (u,u) (l,l) (o,o) (g,g)	V;PRS
+( ,m) ( ,a) ( ,g) ( ,a) (l,l) (u,u) (p,p) (a,a) (d,d)	V;FUT
+( ,n) ( ,a) ( ,g) ( ,a) (h,h) (a,a) (m,m) (b,b) (a,a) (l,l)	V;PRS
+( ,n) ( ,a) ( ,g) ( ,a) (s,s) (i,i) (l,l) (i,i) (n,n) (g,g)	V;PRS
+( ,g) ( ,i) ( ,n) ( ,a) (a,a) (g,g) (d,d) (a,a)	V;PROG;PRS
+(b, ) (a,p) (t, ) (i, ) (/, ) (b, ) (a,a) (t, ) (i,g) (a,a) (n, ) (/, ) (p,p) (a,a) (m,m) (a,a) (t,t) (i,i) (a,a) (n,n)	V;PROG;FUT
+(n,n) (a,a) (/, ) (n, ) (a, ) (g, ) (a, )	V;PST
+( ,n) ( ,a) ( ,g) ( ,a) (p,p) (u,u) (n,n) (g,g) (k,k) (o,o)	V;PROG;PRS
+( ,m) ( ,a) ( ,g) ( ,a) (k,k) (a,a) (d,d) (l,l) (a,a) (w,w) ( , ) ( ,n) ( ,a)	V;PRF;FUT
+( ,n) ( ,a) ( ,g) ( ,a) (g,g) (i,i) (n,n) (h,h) (a,a) (w,w) ( ,a) ( , ) ( ,p) (a,a)	V;PRF+PROG;PRS
+( ,m) ( ,a) ( ,g) ( ,a) (t,t) (u,u) (o,o) (n,n) ( , ) ( ,p) ( ,a)	V;PRF+PROG;FUT
+( ,m) ( ,a) ( ,g) ( ,a) (g,g) (a,a) (m,m) (i,i) (t,t)	V;PROG;FUT
