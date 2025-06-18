@@ -1,0 +1,1 @@
+Inflection, but with pre-aligned characters. Treated as a binary sequence classification task.

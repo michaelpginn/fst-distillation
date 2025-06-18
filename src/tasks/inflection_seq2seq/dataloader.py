@@ -23,7 +23,7 @@ def create_dataloader(
     tokenizer = dataset.tokenizer
     pad_token_id = tokenizer.pad_token_id
 
-    def collate_fn(batch: list[dict[str, list[int]]]):
+    def collate_fn(batch: list[dict[str, int | list[int]]]):
         collated_batch = pad_batch_collate_fn(batch, tokenizer.pad_token_id)
 
         # Create masks

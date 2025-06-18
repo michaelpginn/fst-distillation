@@ -14,7 +14,7 @@ This script will produce the output file:
 """
 
 import argparse
-from src.tasks.inflection.dataset import load_examples_from_file
+from src.tasks.inflection_seq2seq.dataset import load_examples_from_file
 from src.hulden_alignment import Aligner
 import pathlib
 

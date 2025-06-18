@@ -13,7 +13,7 @@ class SharedTaskInflectionTokenizer(Tokenizer):
                 vocab.update(set(example.target.lower()))
         return sorted(vocab)
 
-    def tokenize(self, example: InflectionExample) -> dict[str, list[int] | None]:
+    def tokenize(self, example: InflectionExample) -> dict[str, int | list[int] | None]:
         if self.token_to_id is None or self.id_to_token is None:
             raise ValueError(
                 "Your tokenizer has no vocabulary! Call `create_vocab` or `load_from_file` to train your tokenizer."

@@ -13,59 +13,45 @@ device = "cuda" if torch.cuda.is_available() else "mps"
 def training_loop(
     model: torch.nn.Module,
     dataloader: DataLoader,
-    loss_fn: Callable,
-    optimizer: torch.optim.Optimizer,
+    optimizer: torch.optim.Optimizer,  # type:ignore
 ):
     model.train()
     epoch_loss = 0
     for batch in tqdm(dataloader, "Training"):
-        source_input_ids = batch["source_input_ids"].to(device)
-        source_pad_mask = batch["source_pad_mask"].to(device)
-        target_input_ids = batch["target_input_ids"].to(device)
-        target_pad_mask = batch["target_pad_mask"].to(device)
-        target_labels = batch["target_label_ids"].to(device)
-
+        input_ids = batch["input_ids"].to(device)
+        seq_lengths = batch["seq_lengths"]
+        labels = batch["label"].float().to(device)
         optimizer.zero_grad()
         out = model(
-            src=source_input_ids,
-            tgt=target_input_ids,
-            src_pad_mask=source_pad_mask,
-            tgt_pad_mask=target_pad_mask,
+            input_ids=input_ids,
+            seq_lengths=seq_lengths,
         )
-        loss = loss_fn(out.permute(0, 2, 1), target_labels)
+        loss = torch.nn.functional.binary_cross_entropy_with_logits(out, labels)
         loss.backward()
         torch.nn.utils.clip_grad_norm_(model.parameters(), max_norm=1.0)
         optimizer.step()
-
         epoch_loss += loss.detach().item()
-
     return epoch_loss / len(dataloader)
 
 
-def validation_loop(model: torch.nn.Module, dataloader: DataLoader, loss_fn: Callable):
+def validation_loop(model: torch.nn.Module, dataloader: DataLoader):
     model.eval()
     epoch_loss = 0
     with torch.no_grad():
         for batch in tqdm(dataloader, "Evaluating"):
-            source_input_ids = batch["source_input_ids"].to(device)
-            source_pad_mask = batch["source_pad_mask"].to(device)
-            target_input_ids = batch["target_input_ids"].to(device)
-            target_pad_mask = batch["target_pad_mask"].to(device)
-            target_labels = batch["target_label_ids"].to(device)
-
+            input_ids = batch["input_ids"].to(device)
+            seq_lengths = batch["seq_lengths"]
+            labels = batch["label"].float().to(device)
             out = model(
-                src=source_input_ids,
-                tgt=target_input_ids,
-                src_pad_mask=source_pad_mask,
-                tgt_pad_mask=target_pad_mask,
+                input_ids=input_ids,
+                seq_lengths=seq_lengths,
             )
-            loss = loss_fn(out.permute(0, 2, 1), target_labels)
+            loss = torch.nn.functional.binary_cross_entropy_with_logits(out, labels)
             epoch_loss += loss.detach().item()
     return epoch_loss / len(dataloader)
 
 
 def train(
-    project_name: str,
     model: torch.nn.Module,
     train_dataloader: DataLoader,
     eval_dataloader: DataLoader,
@@ -77,8 +63,7 @@ def train(
     torch.manual_seed(seed)
     torch.cuda.manual_seed(seed)
 
-    loss_fn = torch.nn.CrossEntropyLoss()
-    optimizer = torch.optim.AdamW(model.parameters(), lr=learning_rate)
+    optimizer = torch.optim.AdamW(model.parameters(), lr=learning_rate)  # type:ignore
 
     model = model.to(device)
 
@@ -88,12 +73,9 @@ def train(
         train_loss = training_loop(
             model=model,
             dataloader=train_dataloader,
-            loss_fn=loss_fn,
             optimizer=optimizer,
         )
-        validation_loss = validation_loop(
-            model=model, dataloader=train_dataloader, loss_fn=loss_fn
-        )
+        validation_loss = validation_loop(model=model, dataloader=eval_dataloader)
         print(f"Training loss: {train_loss:.4f}")
         print(f"Validation loss: {validation_loss:.4f}")
         wandb.log(

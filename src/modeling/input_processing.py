@@ -3,22 +3,20 @@ from torch import Tensor
 from torch.nn.utils.rnn import pad_sequence
 
 
-def pad_batch_collate_fn(batch: list[dict[str, list[int]]], pad_token_id: int):
+def pad_batch_collate_fn(batch: list[dict[str, int | list[int]]], pad_token_id: int):
     """Collates a batch where each item is a dict[str, list[int]]. Pads sequences to longest and creates tensors."""
-
-    keys = batch[0].keys()
-    grouped_sequences = {key: [] for key in keys}
-    for example in batch:
-        for key in keys:
-            grouped_sequences[key].append(torch.tensor(example[key], dtype=torch.long))
-
-    padded_tensors = {
-        key: pad_sequence(
-            grouped_sequences[key], batch_first=True, padding_value=pad_token_id
+    return {
+        key: (
+            pad_sequence(
+                [torch.tensor(example[key], dtype=torch.long) for example in batch],
+                batch_first=True,
+                padding_value=pad_token_id,
+            )
+            if isinstance(batch[0][key], list)
+            else torch.tensor([ex[key] for ex in batch])
         )
-        for key in keys
+        for key in batch[0].keys()
     }
-    return padded_tensors
 
 
 def create_causal_mask(seq_length: int) -> Tensor:

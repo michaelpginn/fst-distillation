@@ -32,12 +32,8 @@ class Tokenizer(metaclass=abc.ABCMeta):
         pass
 
     @abc.abstractmethod
-    def tokenize(self, example: Any) -> dict[str, list[int] | None]:
-        """Tokenize a single example. Should return a Dict with the following fields:
-        - source_input_ids
-        - target_input_ids
-        - target_label_ids
-        """
+    def tokenize(self, example: Any) -> dict[str, int | list[int] | None]:
+        """Tokenize a single example, returning a dict of inputs used by the model."""
         pass
 
     def decode(self, token_ids: List[int]) -> str:
