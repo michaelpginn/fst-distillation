@@ -7,7 +7,7 @@ class AlignedInflectionTokenizer(Tokenizer):
     def create_vocab(self, examples: list[AlignedInflectionExample]) -> list[str]:
         vocab: set[str] = set()
         for example in examples:
-            vocab.update(set(example.aligned_chars_as_str))
+            vocab.update(set(example.aligned_chars_as_strs))
             vocab.update(set(example.features))
         return sorted(vocab)
 
@@ -29,6 +29,6 @@ class AlignedInflectionTokenizer(Tokenizer):
         input_ids.append(self.sep_token_id)
         input_ids += [
             self.token_to_id.get(pair, self.unk_token_id)
-            for pair in example.aligned_chars_as_str
+            for pair in example.aligned_chars_as_strs
         ]
         return {"input_ids": input_ids, "label": int(example.label)}

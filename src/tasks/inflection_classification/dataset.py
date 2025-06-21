@@ -1,4 +1,6 @@
+from collections import defaultdict
 import re
+from typing import DefaultDict
 from torch.utils.data import Dataset
 import random
 from .example import AlignedInflectionExample
@@ -25,15 +27,21 @@ def create_negative_examples(
     num_tag_swaps_per_ex=5,
     num_random_perturbs_per_ex=5,
 ):
+    # Make a lookup so we can find syncretic examples quickly
+    syncretic_example_lookup: DefaultDict[str, list[tuple]] = defaultdict(lambda: [])
+    for ex in positive_examples:
+        syncretic_example_lookup["".join(ex.aligned_chars_as_strs)].append(tuple(ex.features))
+
     all_examples: list[AlignedInflectionExample] = []
 
     # 1. Right input/output pair, wrong tag
     all_features = set(tuple(ex.features) for ex in positive_examples)
     for ex in positive_examples:
-        other_features = random.sample(
-            list(all_features - set([tuple(ex.features)])), k=num_tag_swaps_per_ex
+        valid_features = set(syncretic_example_lookup["".join(ex.aligned_chars_as_strs)])
+        invalid_features = random.sample(
+            list(all_features - valid_features), k=num_tag_swaps_per_ex
         )
-        for feat in other_features:
+        for feat in invalid_features:
             all_examples.append(
                 AlignedInflectionExample(
                     aligned_chars=ex.aligned_chars, features=list(feat), label=False
@@ -86,6 +94,7 @@ class AlignedInflectionDataset(Dataset):
             self.tokenizer.learn_vocab(positive_examples)
 
         negative_examples = create_negative_examples(positive_examples)
+        breakpoint()
         print(f"Created {len(negative_examples)} negative examples")
         self.examples = [
             self.tokenizer.tokenize(ex) for ex in positive_examples + negative_examples

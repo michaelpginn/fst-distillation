@@ -8,5 +8,5 @@ class AlignedInflectionExample:
     label: bool
 
     @property
-    def aligned_chars_as_str(self):
+    def aligned_chars_as_strs(self):
         return [f"({p[0]},{p[1]})" for p in self.aligned_chars]
