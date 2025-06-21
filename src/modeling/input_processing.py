@@ -20,7 +20,7 @@ def pad_batch_collate_fn(batch: list[dict[str, int | list[int]]], pad_token_id: 
 
 
 def create_causal_mask(seq_length: int) -> Tensor:
-    """Creates causal mask (upper triangular True)"""
+    """Creates causal mask (upper triangular True), where `True` positions are masked"""
     mask = torch.tril(torch.ones(seq_length, seq_length) == 1)
     return ~mask
 
