@@ -1,4 +1,5 @@
-"""Given one or more files in the shared task format, runs Hulden alignment over all examples (from any file), excluding tags.
+"""Usage: python -m exp2-clustering.run_alignment <train_file.jsonl> <eval_file.jsonl> ...
+Given one or more files in the shared task format, runs Hulden alignment over all examples (from any file), excluding tags.
 
 Given the inputs:
 
@@ -14,9 +15,10 @@ This script will produce the output file:
 """
 
 import argparse
-from src.tasks.inflection_seq2seq.dataset import load_examples_from_file
-from src.hulden_alignment import Aligner
 import pathlib
+
+from src.hulden_alignment import Aligner
+from src.tasks.inflection_seq2seq.dataset import load_examples_from_file
 
 parser = argparse.ArgumentParser()
 parser.add_argument("files", nargs="+")
@@ -40,7 +42,7 @@ for file_index in range(len(args.files)):
     with open(output_folder / file_name, "w") as f:
         for example_index in range(current_offset, current_offset + num_examples):
             aligned_strings = alignments[example_index]
-            aligned_tuples = " ".join(
+            aligned_tuples = "".join(
                 [
                     f"({in_char},{out_char})"
                     for in_char, out_char in zip(*aligned_strings)

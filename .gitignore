@@ -2,3 +2,5 @@ wandb/
 __pycache__
 .DS_Store
 .venv
+*.pt
+*.pdf

@@ -9,7 +9,7 @@ class RNNModel(nn.Module):
     def __init__(
         self,
         *args,
-        tokenizer: Tokenizer,
+        tokenizer: Tokenizer | dict,
         d_model: int,
         num_layers: int,
         dropout: float,
@@ -18,7 +18,15 @@ class RNNModel(nn.Module):
         super().__init__(*args, **kwargs)
 
         self.d_model = d_model
-        vocab_size = len(tokenizer)
+        self.num_layers = num_layers
+        self.dropout = dropout
+        self.tokenizer = (
+            tokenizer
+            if isinstance(tokenizer, Tokenizer)
+            else Tokenizer.from_state_dict(tokenizer)
+        )
+
+        vocab_size = len(self.tokenizer)
         self.embedding = nn.Embedding(vocab_size, d_model)
         self.rnn = nn.RNN(
             input_size=d_model,
@@ -29,6 +37,21 @@ class RNNModel(nn.Module):
             # Do we want bidirectional?
         )
         self.out = nn.Linear(in_features=d_model, out_features=1)
+
+    @property
+    def config_dict(self):
+        return {
+            "d_model": self.d_model,
+            "num_layers": self.num_layers,
+            "dropout": self.dropout,
+        }
+
+    @classmethod
+    def load(cls, checkpoint_dict: dict, tokenizer: Tokenizer):
+        assert "state_dict", "config_dict" in checkpoint_dict
+        model = cls(**checkpoint_dict["config_dict"], tokenizer=tokenizer)
+        model.load_state_dict(checkpoint_dict["state_dict"])
+        return model
 
     def forward(
         self,

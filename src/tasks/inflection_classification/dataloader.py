@@ -10,6 +10,7 @@ from .tokenizer import AlignedInflectionTokenizer
 def create_dataloader(
     aligned_data_path: str,
     batch_size: int,
+    syncretic_example_lookup: dict[str, list[tuple]],
     pretrained_tokenizer: AlignedInflectionTokenizer | None = None,
 ):
     """Notably, this dataloader will include (organic) positive and (synthetic) negative examples.
@@ -20,7 +21,9 @@ def create_dataloader(
         pretrained_tokenizer: AlignedInflectionTokenizer | None, if provided, uses a pretrained tokenizer rather than training a new one
     """
     dataset = AlignedInflectionDataset(
-        path=aligned_data_path, tokenizer=pretrained_tokenizer
+        path=aligned_data_path,
+        tokenizer=pretrained_tokenizer,
+        syncretic_example_lookup=syncretic_example_lookup,
     )
     tokenizer = dataset.tokenizer
 

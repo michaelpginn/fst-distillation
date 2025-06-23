@@ -1,5 +1,5 @@
 import abc
-from typing import Any, List
+from typing import Any, List, Literal
 
 
 class Tokenizer(metaclass=abc.ABCMeta):
@@ -36,21 +36,41 @@ class Tokenizer(metaclass=abc.ABCMeta):
         """Tokenize a single example, returning a dict of inputs used by the model."""
         pass
 
-    def decode(self, token_ids: List[int]) -> str:
+    def decode(
+        self,
+        token_ids: List[int],
+        skip_special_tokens=True,
+        return_as: Literal["str", "list"] = "str",
+    ):
         if self.id_to_token is None:
             raise Exception("Need to learn vocab with `create_vocab` first!")
-        decoded_string = ""
-        for id in token_ids:
-            if id == self.eos_token_id or id == self.pad_token_id:
-                break
-            if id == self.bos_token_id:
-                continue
-            decoded_string += self.id_to_token[id]
+        decoded = str("") if return_as is str else list[str]()
 
-        return decoded_string
+        for id in token_ids:
+            if skip_special_tokens and id <= len(self.special_tokens):
+                continue
+            if isinstance(decoded, str):
+                decoded += self.id_to_token[id]
+            else:
+                decoded.append(self.id_to_token[id])
+
+        return decoded
 
     def __len__(self):
         if self.token_to_id is None:
             print("Warning: length of empty tokenizer is 0.")
             return 0
         return len(self.token_to_id)
+
+    @property
+    def state_dict(self):
+        if self.id_to_token is None:
+            raise Exception("Need to learn vocab with `create_vocab` first!")
+        return self.id_to_token
+
+    @classmethod
+    def from_state_dict(cls, state_dict: dict[int, str]):
+        tokenizer = cls()
+        tokenizer.id_to_token = state_dict
+        tokenizer.token_to_id = {token: id for id, token in state_dict.items()}
+        return tokenizer
