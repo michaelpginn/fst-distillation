@@ -29,8 +29,8 @@ from src.tasks.inflection_classification.tokenizer import AlignedInflectionToken
 def extract_fst(
     model: RNNModel,
     examples: list[AlignedInflectionExample],
+    num_initial_clusters: int,
     visualize: bool = False,
-    num_initial_clusters=100,
 ):
     # 1. For each training example, collect activations
     activations = []
@@ -59,14 +59,14 @@ def extract_fst(
         f"cluster-{label_id}": State(name=f"cluster-{label_id}")
         for label_id in range(max(labels) + 1)
     }
-    fst.states = list(state_lookup.values())
+    fst.states = set(state_lookup.values())
     fst.initialstate = state_lookup[f"cluster-{labels[0]}"]
 
     # 4. Use the original inputs to produce a counter of transitions between each pair of states
     transition_counts: defaultdict[tuple[str, str], Counter[str]] = defaultdict(
         lambda: Counter()
     )
-    final_state_labels = []
+    final_state_labels: set[str] = set()
     offset = 0
     for example in tqdm(examples, "Collecting transitions"):
         input_symbols = model.tokenizer.decode(
@@ -81,7 +81,7 @@ def extract_fst(
             transition_counts[(start_state_label, end_state_label)].update(
                 [transition_label]
             )
-        final_state_labels.append(f"cluster-{labels[offset + len(input_symbols) - 1]}")
+        final_state_labels.add(f"cluster-{labels[offset + len(input_symbols) - 1]}")
         offset += len(input_symbols)
 
     # 5. Use the transition reduction heuristic to reduce the number of transitions and thus produce the final FST
@@ -91,22 +91,32 @@ def extract_fst(
     for (start_state_label, end_state_label), counter in tqdm(
         transition_counts.items(), "Creating transitions"
     ):
-        for label, _ in counter.most_common(3):
+        for label, _ in counter.most_common(1):
             if match := re.match(r"\((.*?),(.*?)\)", label):
                 top_label = (match.group(1), match.group(2))
+                if top_label[0] == top_label[1]:
+                    top_label = (top_label[0],)
                 fst.alphabet.update({match.group(1), match.group(2)})
             else:
                 top_label = label.replace("<", "").replace(">", "")
                 fst.alphabet.update({top_label})
+                top_label = (top_label,)
             start_state = state_lookup[start_state_label]
             end_state = state_lookup[end_state_label]
-            start_state.add_transition(end_state, label=top_label, weight=0)
+            start_state.add_transition(end_state, label=top_label, weight=0.0)
 
-    fst.finalstates = [state_lookup[l] for l in final_state_labels]
+    fst.finalstates = {state_lookup[label] for label in final_state_labels}
+    for state in fst.states:
+        state.finalweight = 0.0
+
     print("Minimizing and determinizing")
     fst = alg.minimized(alg.determinized(alg.filtered_accessible(fst)))
     print("Rendering")
     fst.render(view=False, filename="fst")
+
+    l = list(fst.generate("V"))
+    # l = [s for s in fst.generate("V")]
+    breakpoint()
 
 
 if __name__ == "__main__":
