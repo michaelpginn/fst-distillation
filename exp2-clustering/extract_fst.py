@@ -99,6 +99,7 @@ def extract_fst(
     # 5. Use the transition reduction heuristic to reduce the number of transitions and thus produce the final FST
     #
     # FIXME: for now, I use "all transitions"
+    # FIXME: Probably want pick based on unique input symbols, not pairs
     # We should implement "k most common", "threshold", etc
     for (start_state_label, end_state_label), counter in tqdm(
         transition_counts.items(), "Creating transitions"
@@ -149,11 +150,11 @@ def extract_fst(
             if correct_output in generated_outputs:
                 correct_count += 1
             average_num_generations += len(generated_outputs)
+            # TODO: Why are we getting multiple outputs? Shouldn't it be deterministic?
 
     logger.info(f"""Accepted: {accepted_input/len(eval_examples):.2%}
         Correct: {correct_count/len(eval_examples):.2%}
-        Average num generations: {average_num_generations/accepted_input:.2%}
-        """)
+        Average num generations: {average_num_generations/accepted_input:.2%}""")
 
 
     logger.info("Rendering")
