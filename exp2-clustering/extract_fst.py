@@ -6,6 +6,7 @@ You should run `train_rnn.py` first to train a model and produce a checkpoint.
 """
 
 import argparse
+import logging
 import re
 from collections import Counter, defaultdict
 
@@ -13,8 +14,7 @@ import matplotlib.pyplot as plt
 import pandas
 import seaborn
 import torch
-from pyfoma import FST, State
-from pyfoma import algorithms as alg
+from pyfoma.fst import FST, State
 from sklearn.cluster import k_means
 from sklearn.decomposition import PCA
 from sklearn.preprocessing import StandardScaler
@@ -25,16 +25,28 @@ from src.tasks.inflection_classification.dataset import load_examples_from_file
 from src.tasks.inflection_classification.example import AlignedInflectionExample
 from src.tasks.inflection_classification.tokenizer import AlignedInflectionTokenizer
 
+logging.basicConfig()
+logger = logging.getLogger(__file__)
+logger.setLevel(logging.INFO)
 
 def extract_fst(
-    model: RNNModel,
-    examples: list[AlignedInflectionExample],
+    model_path: str,
+    train_path: str,
+    eval_path: str,
     num_initial_clusters: int,
     visualize: bool = False,
 ):
+    checkpoint_dict = torch.load(model_path, weights_only=True)
+    tokenizer = AlignedInflectionTokenizer.from_state_dict(
+        checkpoint_dict["tokenizer_dict"]
+    )
+    model = RNNModel.load(checkpoint_dict, tokenizer)
+    train_examples = load_examples_from_file(train_path)
+    eval_examples = load_examples_from_file(eval_path)
+
     # 1. For each training example, collect activations
     activations = []
-    for example in tqdm(examples, "Computing hidden states"):
+    for example in tqdm(train_examples, "Computing hidden states"):
         inputs = model.tokenizer.tokenize(example)
         hidden_states, _ = model.rnn(model.embedding(torch.tensor(inputs["input_ids"])))
         activations.append(hidden_states.detach())
@@ -60,7 +72,7 @@ def extract_fst(
         for label_id in range(max(labels) + 1)
     }
     fst.states = set(state_lookup.values())
-    fst.initialstate = state_lookup[f"cluster-{labels[0]}"]
+    fst.initialstate = state_lookup[f"cluster-{labels[0]}"] # Use the label of the <bos> cluster
 
     # 4. Use the original inputs to produce a counter of transitions between each pair of states
     transition_counts: defaultdict[tuple[str, str], Counter[str]] = defaultdict(
@@ -68,7 +80,7 @@ def extract_fst(
     )
     final_state_labels: set[str] = set()
     offset = 0
-    for example in tqdm(examples, "Collecting transitions"):
+    for example in tqdm(train_examples, "Collecting transitions"):
         input_symbols = model.tokenizer.decode(
             model.tokenizer.tokenize(example)["input_ids"],  # type:ignore
             skip_special_tokens=False,
@@ -91,16 +103,17 @@ def extract_fst(
     for (start_state_label, end_state_label), counter in tqdm(
         transition_counts.items(), "Creating transitions"
     ):
-        for label, _ in counter.most_common(1):
+        for label, _ in counter.most_common(5):
             if match := re.match(r"\((.*?),(.*?)\)", label):
+                # Paired (input, output) transition
                 top_label = (match.group(1), match.group(2))
                 if top_label[0] == top_label[1]:
                     top_label = (top_label[0],)
                 fst.alphabet.update({match.group(1), match.group(2)})
             else:
-                top_label = label.replace("<", "").replace(">", "")
-                fst.alphabet.update({top_label})
-                top_label = (top_label,)
+                # Unpaired transition (special character or tag)
+                fst.alphabet.update({label})
+                top_label = (label,)
             start_state = state_lookup[start_state_label]
             end_state = state_lookup[end_state_label]
             start_state.add_transition(end_state, label=top_label, weight=0.0)
@@ -109,26 +122,54 @@ def extract_fst(
     for state in fst.states:
         state.finalweight = 0.0
 
-    print("Minimizing and determinizing")
-    fst = alg.minimized(alg.determinized(alg.filtered_accessible(fst)))
-    print("Rendering")
-    fst.render(view=False, filename="fst")
+    # 6. Compose with space insertion FST for alignment
+    # FIXME: We don't need to insert spaces by tags
+    logger.info("Composing with space inserter")
+    space_inserter = FST.regex("('':' ')*(. ('':' ')*)*")
+    # fst = space_inserter @ fst
 
-    l = list(fst.generate("V"))
-    # l = [s for s in fst.generate("V")]
-    breakpoint()
+    logger.info("Minimizing and determinizing")
+    fst = fst.filter_accessible().determinize().minimize()
+
+    logger.info(f"Created FST with {len(fst.states)} states")
+
+    # 7. Evaluate on the dev set
+    accepted_input = 0          # Proportion where the transducer accepts the input
+    correct_count = 0            # Number of examples where correct output is produced
+    average_num_generations = 0         # Number of total generations per input
+    matched_prefix_length = 0   # Average length of matched prefix
+    for example in tqdm(eval_examples, "Evaluating"):
+        input_string = example.features + ['<sep>'] + [c[0] for c in example.aligned_chars]
+        correct_output = example.features + ['<sep>'] + [c[1] for c in example.aligned_chars]
+        correct_output = ''.join(correct_output)
+
+        generated_outputs = list(fst.generate(input_string))
+        if len(generated_outputs) > 0:
+            accepted_input += 1
+            if correct_output in generated_outputs:
+                correct_count += 1
+            average_num_generations += len(generated_outputs)
+
+    logger.info(f"""Accepted: {accepted_input/len(eval_examples):.2%}
+        Correct: {correct_count/len(eval_examples):.2%}
+        Average num generations: {average_num_generations/accepted_input:.2%}
+        """)
+
+
+    logger.info("Rendering")
+    fst.render(view=True, filename="fst")
+
 
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("model_path")
-    parser.add_argument("dataset_path")
+    parser.add_argument("--train_path", "-t", help=".aligned data file")
+    parser.add_argument("--eval_path", "-e", help=".aligned data file")
     args = parser.parse_args()
-
-    checkpoint_dict = torch.load(args.model_path, weights_only=True)
-    tokenizer = AlignedInflectionTokenizer.from_state_dict(
-        checkpoint_dict["tokenizer_dict"]
+    extract_fst(
+        model_path=args.model_path,
+        train_path=args.train_path,
+        eval_path=args.eval_path,
+        num_initial_clusters=10
     )
-    model = RNNModel.load(checkpoint_dict, tokenizer)
-    examples = load_examples_from_file(args.dataset_path)
-    extract_fst(model, examples, num_initial_clusters=10)
