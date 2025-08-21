@@ -12,10 +12,8 @@ import re
 from collections import Counter, defaultdict
 from dataclasses import dataclass
 from pathlib import Path
-from typing import cast
 
 import matplotlib.pyplot as plt
-import numpy as np
 import pandas
 import seaborn
 import torch
@@ -27,8 +25,6 @@ from tqdm import tqdm
 
 from src.learn import standard_scale
 from src.modeling.rnn import RNNModel
-from src.state_clustering.build_macrostates import build_macrostates
-from src.state_clustering.types import Macrostate, Microstate
 from src.tasks.inflection_classification.dataset import load_examples_from_file
 from src.tasks.inflection_classification.tokenizer import AlignedInflectionTokenizer
 from src.training_classifier.train import device
@@ -59,8 +55,6 @@ class ExtractionHyperparameters:
         )
         if modes_set != 1:
             raise ValueError("Must set exactly one transition mode!")
-
-
 
 
 def extract_fst(
@@ -114,36 +108,15 @@ def extract_fst(
         seaborn.scatterplot(x="PC1", y="PC2", hue="cluster", data=pca_data)
         plt.show()
 
-    # 3. Collect macrostates and transitions
-    tokens = [
-        cast(
-            list[str], 
-            model.tokenizer.decode(
-                model.tokenizer.tokenize(example)["input_ids"],  # type:ignore
-                skip_special_tokens=False,
-                return_as="list",
-            )
-        )
-        for example in train_examples
-    ]
-    macrostates, initial_state = build_macrostates(
-        activations=activations,
-        cluster_labels=labels,
-        tokens=tokens,
-    )
-
-
-
-    # fst = FST()
-    # state_lookup = {
-    #     f"cluster-{label}": State(name=f"cluster-{label}") for label in set(labels)
-    # }
-    # fst.states = set(state_lookup.values())
-    # fst.initialstate = state_lookup[
-    #     f"cluster-{labels[0]}"
-    # ]  # Use the label of the <bos> cluster
-
-
+    # 3. Create states
+    fst = FST()
+    state_lookup = {
+        f"cluster-{label}": State(name=f"cluster-{label}") for label in set(labels)
+    }
+    fst.states = set(state_lookup.values())
+    fst.initialstate = state_lookup[
+        f"cluster-{labels[0]}"
+    ]  # Use the label of the <bos> cluster
 
     # 4. Use the original inputs to produce a counter of transitions between each pair of states
     #
