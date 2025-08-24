@@ -1,5 +1,6 @@
 import random
 import re
+from os import PathLike
 
 from torch.utils.data import Dataset
 
@@ -7,7 +8,7 @@ from .example import AlignedInflectionExample
 from .tokenizer import AlignedInflectionTokenizer
 
 
-def load_examples_from_file(path: str):
+def load_examples_from_file(path: str | PathLike):
     """Loads `AlignedInflectionExample` instances from a TSV file"""
     examples: list[AlignedInflectionExample] = []
     with open(path, "r") as f:
@@ -17,7 +18,7 @@ def load_examples_from_file(path: str):
                 raise ValueError("File must be TSV with two columns")
             [chars, features] = row
             char_pairs: list[tuple[str, str]] = re.findall(r"\((.*?),(.*?)\)", chars)
-            features = features.split(";")
+            features = [f"[{f}]" for f in features.split(";")]
             examples.append(AlignedInflectionExample(char_pairs, features, label=True))
     return examples
 
@@ -93,7 +94,7 @@ class AlignedInflectionDataset(Dataset):
 
     def __init__(
         self,
-        path: str,
+        path: PathLike,
         tokenizer: AlignedInflectionTokenizer | None,
         syncretic_example_lookup: dict[str, list[tuple]],
     ):

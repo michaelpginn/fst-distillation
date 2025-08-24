@@ -94,7 +94,6 @@ def extract_fst(
     activations = torch.concat(activations)
 
     # 2. Perform standardization -> dim reduction -> clustering
-    # activations = StandardScaler().fit_transform(activations)
     activations = standard_scale(activations).cpu().detach().numpy()
     if hyperparams.pca_components < activations.shape[-1]:
         pca = PCA(n_components=hyperparams.pca_components, whiten=True)
@@ -221,7 +220,7 @@ def extract_fst(
     # fst = space_inserter @ fst
 
     logger.info("Minimizing and determinizing")
-    fst = fst.filter_accessible().determinize().minimize()
+    fst = fst.filter_accessible().minimize()
 
     logger.info(f"Created FST with {len(fst.states)} states")
 
@@ -229,7 +228,6 @@ def extract_fst(
     accepted_input = 0  # Proportion where the transducer accepts the input
     correct_count = 0  # Number of examples where correct output is produced
     average_num_generations = 0  # Number of total generations per input
-    matched_prefix_length = 0  # Average length of matched prefix
     for example in tqdm(eval_examples, "Evaluating"):
         input_string = (
             example.features + ["<sep>"] + [c[0] for c in example.aligned_chars]
@@ -249,12 +247,13 @@ def extract_fst(
 
     accepted = accepted_input / len(eval_examples)
     correct = correct_count / len(eval_examples)
-    average_gens = average_num_generations / accepted_input if accepted_input > 0 else 0
+    average_gens = (
+        average_num_generations / accepted_input if accepted_input > 0 else 0.0
+    )
     logger.info(f"""Stats:
 Accepted: {accepted:.2%}
 Correct: {correct:.2%}
 Average num generations: {average_gens:.2}/input""")
-
     if visualize:
         logger.info("Rendering")
         fst.render(view=True, filename="fst")

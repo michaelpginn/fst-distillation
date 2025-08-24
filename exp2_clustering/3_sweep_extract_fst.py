@@ -17,21 +17,25 @@ num_clusters_options = [
     1500,
 ]
 
-top_k_options = range(2, 7)
+top_p_options = [0.1, 0.3, 0.5, 0.7]
 
 for num_clusters in num_clusters_options:
-    for top_k in top_k_options:
+    for top_p in top_p_options:
         params = ExtractionHyperparameters(
             num_initial_clusters=num_clusters,
             pca_components=64,  # model dim, aka no pca
-            transitions_top_k=top_k,
-            transitions_top_p=None,
+            transitions_top_k=None,
+            transitions_top_p=top_p,
             transitions_min_n=None,
         )
         wandb.init(
             entity="lecs-general",
             project="fst-distillation.exp2.extraction-sweep",
-            config={**asdict(params), "model_id": args.model_id},
+            config={
+                **asdict(params),
+                "model_id": args.model_id,
+                "language": args.language,
+            },
             group=args.language,
         )
         results = extract_fst(
