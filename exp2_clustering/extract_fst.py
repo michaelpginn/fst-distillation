@@ -269,8 +269,8 @@ if __name__ == "__main__":
     extract_fst(
         hyperparams=ExtractionHyperparameters(
             num_initial_clusters=1000,
-            transitions_top_k=None,
-            transitions_top_p=0.1,
+            transitions_top_k=1,
+            transitions_top_p=None,
         ),
         language=args.language,
         model_id=args.model_id,
