@@ -28,6 +28,8 @@ def create_negative_examples(
     syncretic_example_lookup: dict[str, list[tuple]],
     num_tag_swaps_per_ex=5,
     num_random_perturbs_per_ex=5,
+    num_insertions_per_ex=5,
+    num_deletions_per_ex=2,
     seed=13,
 ):
     random.seed(13)
@@ -70,19 +72,59 @@ def create_negative_examples(
                 perturbed_pairs.append((in_char, out_char))
         return perturbed_pairs
 
+    def random_insert(pairs: list[tuple[str, str]]):
+        """Randomly insert (" ", character) tuples to the start or end"""
+        k = random.randint(1, len(pairs))
+        new_pairs = [(" ", random.choice(list(all_symbols))) for _ in range(k)]
+        if random.random() > 0.5:
+            return pairs + new_pairs
+        else:
+            return new_pairs + pairs
+
+    def random_delete(pairs: list[tuple[str, str]]):
+        """Randomly delete characters from the start or end"""
+        k = random.randint(1, len(pairs))
+        if random.random() > 0.5:
+            return pairs[k:]
+        else:
+            return pairs[:-k]
+
+    def is_valid(example: AlignedInflectionExample):
+        return (
+            tuple(synthetic_example.features)
+            in syncretic_example_lookup[
+                "".join(synthetic_example.aligned_chars_as_strs)
+            ]
+        )
+
     for ex in positive_examples:
         for _ in range(num_random_perturbs_per_ex):
-            perturbed_chars = random_perturb(ex.aligned_chars)
             synthetic_example = AlignedInflectionExample(
-                aligned_chars=perturbed_chars, features=ex.features, label=False
+                aligned_chars=random_perturb(ex.aligned_chars),
+                features=ex.features,
+                label=False,
             )
-            # Check if we accidentally made a valid example (rare but possible)
-            if (
-                tuple(synthetic_example.features)
-                in syncretic_example_lookup[
-                    "".join(synthetic_example.aligned_chars_as_strs)
-                ]
-            ):
+            if is_valid(synthetic_example):
+                continue
+            all_examples.append(synthetic_example)
+
+        for _ in range(num_insertions_per_ex):
+            synthetic_example = AlignedInflectionExample(
+                aligned_chars=random_insert(ex.aligned_chars),
+                features=ex.features,
+                label=False,
+            )
+            if is_valid(synthetic_example):
+                continue
+            all_examples.append(synthetic_example)
+
+        for _ in range(num_deletions_per_ex):
+            synthetic_example = AlignedInflectionExample(
+                aligned_chars=random_delete(ex.aligned_chars),
+                features=ex.features,
+                label=False,
+            )
+            if is_valid(synthetic_example):
                 continue
             all_examples.append(synthetic_example)
 
@@ -108,7 +150,12 @@ class AlignedInflectionDataset(Dataset):
             self.tokenizer.learn_vocab(positive_examples)
 
         negative_examples = create_negative_examples(
-            positive_examples, syncretic_example_lookup
+            positive_examples,
+            syncretic_example_lookup,
+            num_tag_swaps_per_ex=5,
+            num_random_perturbs_per_ex=10,
+            num_insertions_per_ex=10,
+            num_deletions_per_ex=3,
         )
         print(f"Created {len(negative_examples)} negative examples")
         self.examples = [

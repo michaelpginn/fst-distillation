@@ -1,10 +1,12 @@
+from os import PathLike
+
 from torch.utils.data import Dataset
 
 from .example import InflectionExample
 from .tokenizer import SharedTaskInflectionTokenizer
 
 
-def load_examples_from_file(path: str):
+def load_examples_from_file(path: PathLike):
     """Loads `InflectionExample` instances from a TSV file"""
     examples: list[InflectionExample] = []
     with open(path, "r") as f:

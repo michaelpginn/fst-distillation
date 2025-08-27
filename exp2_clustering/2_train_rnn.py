@@ -105,10 +105,10 @@ if __name__ == "__main__":
     args = parser.parse_args()
     train_rnn(
         language=args.language,
-        batch_size=args.batch_size,
-        epochs=args.epochs,
-        d_model=args.hidden_dim,
-        num_layers=args.num_layers,
-        dropout=args.dropout,
-        learning_rate=args.learning_rate,
+        batch_size=int(args.batch_size),
+        epochs=int(args.epochs),
+        d_model=int(args.hidden_dim),
+        num_layers=int(args.num_layers),
+        dropout=float(args.dropout),
+        learning_rate=float(args.learning_rate),
     )

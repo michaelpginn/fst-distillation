@@ -1,3 +1,5 @@
+from os import PathLike
+
 import torch
 from torch.utils.data import DataLoader
 
@@ -8,7 +10,7 @@ from .tokenizer import AlignedInflectionTokenizer
 
 
 def create_dataloader(
-    aligned_data_path: str,
+    aligned_data_path: PathLike,
     batch_size: int,
     syncretic_example_lookup: dict[str, list[tuple]],
     pretrained_tokenizer: AlignedInflectionTokenizer | None = None,
