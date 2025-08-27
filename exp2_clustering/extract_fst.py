@@ -6,8 +6,10 @@ You should run `train_rnn.py` first to train a model and produce a checkpoint.
 """
 
 import argparse
+import itertools
 import logging
 import pathlib
+import pprint
 import re
 from collections import Counter, defaultdict
 from dataclasses import dataclass
@@ -27,6 +29,9 @@ from src.learn import standard_scale
 from src.modeling.rnn import RNNModel
 from src.tasks.inflection_classification.dataset import load_examples_from_file
 from src.tasks.inflection_classification.tokenizer import AlignedInflectionTokenizer
+from src.tasks.inflection_seq2seq.dataset import (
+    load_examples_from_file as load_unaligned,
+)
 from src.training_classifier.train import device
 
 logging.basicConfig()
@@ -71,6 +76,7 @@ def extract_fst(
     eval_path = (
         pathlib.Path(__file__).parent / f"aligned_data/{language}.dev.aligned.jsonl"
     )
+    test_path = pathlib.Path(__file__).parent.parent / "task0-data/GOLD-TEST/swe.tst"
 
     # Load stuff
     checkpoint_dict = torch.load(model_path, weights_only=True)
@@ -82,6 +88,7 @@ def extract_fst(
     model.eval()
     train_examples = load_examples_from_file(train_path)
     eval_examples = load_examples_from_file(eval_path)
+    test_examples = load_unaligned(test_path)
 
     # 1. For each training example, collect activations
     activations = []
@@ -213,51 +220,68 @@ def extract_fst(
     for state in fst.states:
         state.finalweight = 0.0
 
-    # 6. Compose with space insertion FST for alignment
-    # FIXME: We don't need to insert spaces by tags
-    logger.info("Composing with space inserter")
-    space_inserter = FST.regex("('':' ')*(. ('':' ')*)*")
-    # fst = space_inserter @ fst
-
     logger.info("Minimizing and determinizing")
     fst = fst.filter_accessible().minimize()
 
     logger.info(f"Created FST with {len(fst.states)} states")
 
-    # 7. Evaluate on the dev set
-    accepted_input = 0  # Proportion where the transducer accepts the input
-    correct_count = 0  # Number of examples where correct output is produced
-    average_num_generations = 0  # Number of total generations per input
+    # 6. Evaluate on the dev set
+    eval_labels: list[str] = []
+    eval_preds: list[list[str]] = []
     for example in tqdm(eval_examples, "Evaluating"):
         input_string = (
             example.features + ["<sep>"] + [c[0] for c in example.aligned_chars]
         )
-        correct_output = (
+        correct_output = "".join(
             example.features + ["<sep>"] + [c[1] for c in example.aligned_chars]
         )
-        correct_output = "".join(correct_output)
-        generated_outputs = list(fst.generate(input_string))
+        eval_labels.append(correct_output)
+        eval_preds.append(list(fst.generate(input_string)))  # type:ignore
+    eval_metrics = evaluate(eval_labels, eval_preds)
+    logger.info(f"Eval metrics: {pprint.pformat(eval_metrics)}")
 
-        if len(generated_outputs) > 0:
-            accepted_input += 1
-            if correct_output in generated_outputs:
-                correct_count += 1
-            average_num_generations += len(generated_outputs)
-            # TODO: Why are we getting multiple outputs? Shouldn't it be deterministic?
+    # 7. Compose with space inserter and eval on test set
+    logger.info("Composing with space inserter")
+    space_inserter = FST.regex(".* '<sep>' (. ('':' '){0,10})*")
+    fst = (space_inserter @ fst).minimize()
+    logger.info(f"FST has {len(fst.states)} states after space inserter")
 
-    accepted = accepted_input / len(eval_examples)
-    correct = correct_count / len(eval_examples)
-    average_gens = (
-        average_num_generations / accepted_input if accepted_input > 0 else 0.0
-    )
-    logger.info(f"""Stats:
-Accepted: {accepted:.2%}
-Correct: {correct:.2%}
-Average num generations: {average_gens:.2}/input""")
+    test_labels: list[str] = []
+    test_preds: list[list[str]] = []
+    for example in tqdm(test_examples, "Evaluating on test"):
+        features = [f"[{f}]" for f in example.features]
+        input_string = features + ["<sep>"] + [c for c in example.lemma]
+        assert example.target is not None
+        correct_output = "".join(features + ["<sep>"] + [c for c in example.target])
+        test_labels.append(correct_output)
+        breakpoint()
+        test_preds.append(list(itertools.islice(fst.generate(input_string), 10)))  # type:ignore
+    test_metrics = evaluate(test_labels, test_preds)
+    logger.info(f"Test metrics: {pprint.pformat(test_metrics)}")
+
     if visualize:
         logger.info("Rendering")
         fst.render(view=True, filename="fst")
+    return eval_metrics
 
+
+def evaluate(labels: list[str], predictions: list[list[str]]):
+    assert len(labels) == len(predictions)
+    accepted_input = 0  # Proportion where the transducer accepts the input
+    correct_count = 0  # Number of examples where correct output is produced
+    average_num_generations = 0  # Number of total generations per input
+
+    for label, preds in zip(labels, predictions):
+        if len(preds) > 0:
+            accepted_input += 1
+            if label in preds:
+                correct_count += 1
+            average_num_generations += len(preds)
+    accepted = accepted_input / len(labels)
+    correct = correct_count / len(labels)
+    average_gens = (
+        average_num_generations / accepted_input if accepted_input > 0 else 0.0
+    )
     return {"accepted": accepted, "correct": correct, "average_num_gens": average_gens}
 
 
