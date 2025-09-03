@@ -70,7 +70,7 @@ def train_rnn(
         save_code=True,
         group=language,
     )
-    wandb.watch(models=model, log_freq=1)
+    # wandb.watch(models=model, log_freq=1)
     train(
         model=model,
         train_dataloader=train_dataloader,
@@ -90,6 +90,7 @@ def train_rnn(
         },
         checkpoint_path,
     )
+    return wandb.run.name  # type:ignore
 
 
 if __name__ == "__main__":

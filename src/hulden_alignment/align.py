@@ -18,7 +18,7 @@
 
 import itertools
 import pathlib
-from ctypes import cdll, c_void_p, POINTER, c_int
+from ctypes import POINTER, c_int, c_void_p, cdll
 
 lib_path = pathlib.Path(__file__).parent / "libalign.so"
 

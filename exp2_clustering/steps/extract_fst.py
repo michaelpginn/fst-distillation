@@ -6,13 +6,13 @@ You should run `train_rnn.py` first to train a model and produce a checkpoint.
 """
 
 import argparse
-import itertools
 import logging
-import pathlib
 import pprint
 import re
+import warnings
 from collections import Counter, defaultdict
 from dataclasses import dataclass
+from os import PathLike
 from pathlib import Path
 
 import matplotlib.pyplot as plt
@@ -25,6 +25,7 @@ from sklearn.cluster import k_means
 from sklearn.decomposition import PCA
 from tqdm import tqdm
 
+from exp2_clustering.util import find_data_file
 from src.learn import standard_scale
 from src.modeling.rnn import RNNModel
 from src.tasks.inflection_classification.dataset import load_examples_from_file
@@ -32,11 +33,11 @@ from src.tasks.inflection_classification.tokenizer import AlignedInflectionToken
 from src.tasks.inflection_seq2seq.dataset import (
     load_examples_from_file as load_unaligned,
 )
+from src.tasks.inflection_seq2seq.example import InflectionExample
 from src.training_classifier.train import device
 
-logging.basicConfig()
+warnings.filterwarnings("ignore", category=RuntimeWarning)
 logger = logging.getLogger(__file__)
-logger.setLevel(logging.INFO)
 
 
 @dataclass(frozen=True)
@@ -52,6 +53,9 @@ class ExtractionHyperparameters:
     transitions_min_n: int | None = None
     """For each (start state, input symbol), take transitions if they occur more than n times"""
 
+    generations_top_k: int = 1
+    """How many generations to pick, in increasing length order"""
+
     def __post_init__(self):
         modes_set = (
             (1 if self.transitions_top_k is not None else 0)
@@ -64,21 +68,13 @@ class ExtractionHyperparameters:
 
 def extract_fst(
     hyperparams: ExtractionHyperparameters,
-    language: str,
+    aligned_train_path: PathLike,
+    eval_path: PathLike,
+    test_path: PathLike,
     model_id: str,
     visualize: bool = False,
 ):
-    # Make paths
-    model_path = Path(__file__).parent / f"runs/{model_id}/model.pt"
-    train_path = (
-        pathlib.Path(__file__).parent / f"aligned_data/{language}.trn.aligned.jsonl"
-    )
-    eval_path = (
-        pathlib.Path(__file__).parent / f"aligned_data/{language}.dev.aligned.jsonl"
-    )
-    test_path = pathlib.Path(__file__).parent.parent / "task0-data/GOLD-TEST/swe.tst"
-
-    # Load stuff
+    model_path = Path(__file__).parent.parent / f"runs/{model_id}/model.pt"
     checkpoint_dict = torch.load(model_path, weights_only=True)
     tokenizer = AlignedInflectionTokenizer.from_state_dict(
         checkpoint_dict["tokenizer_dict"]
@@ -86,8 +82,8 @@ def extract_fst(
     model = RNNModel.load(checkpoint_dict, tokenizer)
     model.to(device)
     model.eval()
-    train_examples = load_examples_from_file(train_path)
-    eval_examples = load_examples_from_file(eval_path)
+    train_examples = load_examples_from_file(aligned_train_path)
+    eval_examples = load_unaligned(eval_path)
     test_examples = load_unaligned(test_path)
 
     # 1. For each training example, collect activations
@@ -162,6 +158,10 @@ def extract_fst(
                 input_symbol = transition_label
                 output_symbol = transition_label
 
+            # For the FST, convert alignment symbols to epsilons.
+            input_symbol = "" if input_symbol == "~" else input_symbol
+            output_symbol = "" if output_symbol == "~" else output_symbol
+
             transition_counts[
                 _TransitionKey(
                     start_state_label=start_state_label, input_symbol=input_symbol
@@ -222,67 +222,55 @@ def extract_fst(
 
     logger.info("Minimizing and determinizing")
     fst = fst.filter_accessible().minimize()
-
     logger.info(f"Created FST with {len(fst.states)} states")
 
-    # 6. Evaluate on the dev set
-    eval_labels: list[str] = []
-    eval_preds: list[list[str]] = []
-    for example in tqdm(eval_examples, "Evaluating"):
-        input_string = (
-            example.features + ["<sep>"] + [c[0] for c in example.aligned_chars]
-        )
-        correct_output = "".join(
-            example.features + ["<sep>"] + [c[1] for c in example.aligned_chars]
-        )
-        eval_labels.append(correct_output)
-        eval_preds.append(list(fst.generate(input_string)))  # type:ignore
-    eval_metrics = evaluate(eval_labels, eval_preds)
+    eval_metrics = evaluate_all(fst, eval_examples, hyperparams.generations_top_k)
     logger.info(f"Eval metrics: {pprint.pformat(eval_metrics)}")
-
-    # 7. Compose with space inserter and eval on test set
-    logger.info("Composing with space inserter")
-    space_inserter = FST.regex(".* '<sep>' (. ('':' '){0,10})*")
-    fst = (space_inserter @ fst).minimize()
-    logger.info(f"FST has {len(fst.states)} states after space inserter")
-
-    test_labels: list[str] = []
-    test_preds: list[list[str]] = []
-    for example in tqdm(test_examples, "Evaluating on test"):
-        features = [f"[{f}]" for f in example.features]
-        input_string = features + ["<sep>"] + [c for c in example.lemma]
-        assert example.target is not None
-        correct_output = "".join(features + ["<sep>"] + [c for c in example.target])
-        test_labels.append(correct_output)
-        breakpoint()
-        test_preds.append(list(itertools.islice(fst.generate(input_string), 10)))  # type:ignore
-    test_metrics = evaluate(test_labels, test_preds)
+    test_metrics = evaluate_all(fst, test_examples, hyperparams.generations_top_k)
     logger.info(f"Test metrics: {pprint.pformat(test_metrics)}")
 
     if visualize:
         logger.info("Rendering")
         fst.render(view=True, filename="fst")
-    return eval_metrics
+    return eval_metrics, test_metrics
 
 
-def evaluate(labels: list[str], predictions: list[list[str]]):
+def evaluate_all(fst: FST, examples: list[InflectionExample], generations_top_k: int):
+    labels: list[str] = []
+    preds: list[set[str]] = []
+    for example in tqdm(examples, "Evaluating"):
+        features = [f"[{f}]" for f in example.features]
+        input_string = features + ["<sep>"] + [c for c in example.lemma]
+        assert example.target is not None
+        correct_output = "".join(features + ["<sep>"] + [c for c in example.target])
+        labels.append(correct_output)
+
+        # Generate outputs by composing input acceptor with transducer
+        input_fsa = FST.re("".join(f"'{c}'" for c in input_string))
+        output_fst = FST.re(
+            "$^output($in @ $inflect)", {"in": input_fsa, "inflect": fst}
+        )
+        example_preds = output_fst.words_nbest(generations_top_k)
+        example_preds = ["".join(c[0] for c in chars) for _, chars in example_preds]
+        preds.append(set(example_preds))
+    return compute_metrics(labels, preds)
+
+
+def compute_metrics(labels: list[str], predictions: list[set[str]]):
     assert len(labels) == len(predictions)
-    accepted_input = 0  # Proportion where the transducer accepts the input
-    correct_count = 0  # Number of examples where correct output is produced
-    average_num_generations = 0  # Number of total generations per input
+    precision_sum = 0
+    recall_sum = 0
 
     for label, preds in zip(labels, predictions):
-        if len(preds) > 0:
-            accepted_input += 1
-            if label in preds:
-                correct_count += 1
-            average_num_generations += len(preds)
-    accepted = accepted_input / len(labels)
-    correct = correct_count / len(labels)
-    average_gens = (
-        average_num_generations / accepted_input if accepted_input > 0 else 0.0
-    )
-    return {"accepted": accepted, "correct": correct, "average_num_gens": average_gens}
+        if label not in preds:
+            # Add 0 to both prec and recall
+            continue
+        precision_sum += 1 / len(preds)
+        recall_sum += 1
+    precision = precision_sum / len(labels)
+    recall = recall_sum / len(labels)
+    f1 = (2 * precision * recall) / (precision + recall)
+    return {"precision": precision, "recall": recall, "f1": f1}
 
 
 if __name__ == "__main__":
@@ -290,12 +278,20 @@ if __name__ == "__main__":
     parser.add_argument("model_id", help="WandB ID for the training run")
     parser.add_argument("--language", default="swe", help="Isocode for the language")
     args = parser.parse_args()
+    train_path = (
+        Path(__file__).parent.parent / "aligned_data" / f"{args.language}.trn.aligned"
+    )
+    eval_path = find_data_file(f"{args.language}.dev")
+    test_path = find_data_file(f"{args.language}.tst")
+
     extract_fst(
         hyperparams=ExtractionHyperparameters(
-            num_initial_clusters=1000,
+            num_initial_clusters=500,
             transitions_top_k=1,
             transitions_top_p=None,
         ),
-        language=args.language,
+        aligned_train_path=train_path,
+        eval_path=eval_path,
+        test_path=test_path,
         model_id=args.model_id,
     )

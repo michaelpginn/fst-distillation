@@ -29,7 +29,6 @@ def create_negative_examples(
     num_tag_swaps_per_ex=5,
     num_random_perturbs_per_ex=5,
     num_insertions_per_ex=5,
-    num_deletions_per_ex=2,
     seed=13,
 ):
     random.seed(13)
@@ -81,14 +80,6 @@ def create_negative_examples(
         else:
             return new_pairs + pairs
 
-    def random_delete(pairs: list[tuple[str, str]]):
-        """Randomly delete characters from the start or end"""
-        k = random.randint(1, len(pairs))
-        if random.random() > 0.5:
-            return pairs[k:]
-        else:
-            return pairs[:-k]
-
     def is_valid(example: AlignedInflectionExample):
         return (
             tuple(synthetic_example.features)
@@ -111,16 +102,6 @@ def create_negative_examples(
         for _ in range(num_insertions_per_ex):
             synthetic_example = AlignedInflectionExample(
                 aligned_chars=random_insert(ex.aligned_chars),
-                features=ex.features,
-                label=False,
-            )
-            if is_valid(synthetic_example):
-                continue
-            all_examples.append(synthetic_example)
-
-        for _ in range(num_deletions_per_ex):
-            synthetic_example = AlignedInflectionExample(
-                aligned_chars=random_delete(ex.aligned_chars),
                 features=ex.features,
                 label=False,
             )
@@ -155,7 +136,6 @@ class AlignedInflectionDataset(Dataset):
             num_tag_swaps_per_ex=5,
             num_random_perturbs_per_ex=10,
             num_insertions_per_ex=10,
-            num_deletions_per_ex=3,
         )
         print(f"Created {len(negative_examples)} negative examples")
         self.examples = [
