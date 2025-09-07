@@ -21,3 +21,19 @@ Our initial work consists of two main goals:
 pip install -r requirements.txt
 python -m exp1-student-teacher.train_transformer
 ```
+
+# Experiments
+
+## Exp 2: Clustering
+Main results:
+- RNN accuracy score
+- F1 score of best extracted FSTs across langauges
+
+Analysis
+- Impact of PCA
+- Impact of hidden state size
+- Impact of standardization
+- Impact of clustering process/n clusters
+- Negative example ablations (important!)
+- State splitting ablation (important)
+- Maybe correlation of hopkins statistic and performance

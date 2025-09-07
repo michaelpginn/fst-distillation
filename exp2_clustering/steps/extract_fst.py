@@ -14,18 +14,21 @@ from collections import Counter, defaultdict
 from dataclasses import dataclass
 from os import PathLike
 from pathlib import Path
+from typing import Literal
 
 import matplotlib.pyplot as plt
 import pandas
 import seaborn
 import torch
+from hdbscan import HDBSCAN
 from pyfoma._private.states import State
 from pyfoma.fst import FST
-from sklearn.cluster import k_means
+from sklearn.cluster import OPTICS, k_means
 from sklearn.decomposition import PCA
 from tqdm import tqdm
 
 from exp2_clustering.util import find_data_file
+from src.hopkins import hopkins
 from src.learn import standard_scale
 from src.modeling.rnn import RNNModel
 from src.tasks.inflection_classification.dataset import load_examples_from_file
@@ -42,8 +45,11 @@ logger = logging.getLogger(__file__)
 
 @dataclass(frozen=True)
 class ExtractionHyperparameters:
-    num_initial_clusters: int
-    pca_components: int = 30
+    clustering_method: Literal["kmeans", "optics", "hdbscan"]
+    kmeans_num_clusters: int | None = None
+    min_samples: int | None = None
+
+    pca_components: int | None = None
 
     # Only one of the following should be set
     transitions_top_k: int | None = None
@@ -64,6 +70,10 @@ class ExtractionHyperparameters:
         )
         if modes_set != 1:
             raise ValueError("Must set exactly one transition mode!")
+        if self.clustering_method == "kmeans" and self.kmeans_num_clusters is None:
+            raise ValueError("Must set `kmeans_num_clusters` when using k-means!")
+        if self.clustering_method == "optics" and (self.min_samples is None):
+            raise ValueError("Must set `optics_min_pts` when using OPTICS!")
 
 
 def extract_fst(
@@ -93,18 +103,44 @@ def extract_fst(
         hidden_states, _ = model.rnn(
             model.embedding(torch.tensor(inputs["input_ids"]).to(device))
         )
-        activations.append(hidden_states)
+        activations.append(hidden_states.cpu().detach())
     activations = torch.concat(activations)
 
     # 2. Perform standardization -> dim reduction -> clustering
-    activations = standard_scale(activations).cpu().detach().numpy()
-    if hyperparams.pca_components < activations.shape[-1]:
+    logger.info("Standardizing...")
+    activations = standard_scale(activations).numpy()
+    if (
+        hyperparams.pca_components
+        and hyperparams.pca_components < activations.shape[-1]
+    ):
+        logger.info(f"Reducing dimensionality (PC = {hyperparams.pca_components})...")
         pca = PCA(n_components=hyperparams.pca_components, whiten=True)
         activations = pca.fit_transform(activations)
-    _, labels, _ = k_means(activations, n_clusters=hyperparams.num_initial_clusters)  # type:ignore
+
+    hopkins_stat = hopkins(activations)
+    logger.info(f"Hopkins statistic: {hopkins_stat}")
+
+    logger.info(f"Clustering with '{hyperparams.clustering_method}'")
+    if hyperparams.clustering_method == "kmeans":
+        _, labels, _ = k_means(activations, n_clusters=hyperparams.kmeans_num_clusters)  # type:ignore
+    elif hyperparams.clustering_method == "optics":
+        labels = OPTICS(
+            min_samples=hyperparams.min_samples,  # type:ignore
+            n_jobs=-1,
+        ).fit_predict(activations)
+    elif hyperparams.clustering_method == "hdbscan":
+        labels = HDBSCAN(
+            min_cluster_size=50,
+            min_samples=hyperparams.min_samples,
+            core_dist_n_jobs=-1,
+        ).fit_predict(activations)
+    else:
+        raise ValueError()
+
     assert labels is not None
 
     if visualize:
+        logger.info("Visualizing principle components")
         pca_data = pandas.DataFrame(activations[:, :2], columns=["PC1", "PC2"])  # type:ignore
         pca_data["cluster"] = pandas.Categorical(labels)
         seaborn.scatterplot(x="PC1", y="PC2", hue="cluster", data=pca_data)
@@ -179,10 +215,6 @@ def extract_fst(
         offset += len(transition_labels_as_list)
 
     # 5. Use the transition reduction heuristic to reduce the number of transitions and thus produce the final FST
-    #
-    # FIXME: for now, I use "all transitions"
-    # FIXME: Probably want pick based on unique input symbols, not pairs
-    # We should implement "k most common", "threshold", etc
     for transition_key, counter in tqdm(
         transition_counts.items(), "Creating transitions"
     ):
@@ -224,6 +256,9 @@ def extract_fst(
     fst = fst.filter_accessible().minimize()
     logger.info(f"Created FST with {len(fst.states)} states")
 
+    fst.save("checkpoint.fst")
+    logger.info(f"Saved to {Path('checkpoint.fst')}")
+
     eval_metrics = evaluate_all(fst, eval_examples, hyperparams.generations_top_k)
     logger.info(f"Eval metrics: {pprint.pformat(eval_metrics)}")
     test_metrics = evaluate_all(fst, test_examples, hyperparams.generations_top_k)
@@ -246,11 +281,17 @@ def evaluate_all(fst: FST, examples: list[InflectionExample], generations_top_k:
         labels.append(correct_output)
 
         # Generate outputs by composing input acceptor with transducer
+        logger.debug(f"Composing input string: {input_string}")
         input_fsa = FST.re("".join(f"'{c}'" for c in input_string))
+        logger.debug("Composing input @ output")
         output_fst = FST.re(
             "$^output($in @ $inflect)", {"in": input_fsa, "inflect": fst}
         )
+        logger.debug("Minimizing")
+        output_fst = output_fst.minimize()
+        logger.debug("Generating top k words")
         example_preds = output_fst.words_nbest(generations_top_k)
+        logger.debug(f"Words: {example_preds}")
         example_preds = ["".join(c[0] for c in chars) for _, chars in example_preds]
         preds.append(set(example_preds))
     return compute_metrics(labels, preds)
@@ -277,6 +318,7 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("model_id", help="WandB ID for the training run")
     parser.add_argument("--language", default="swe", help="Isocode for the language")
+    parser.add_argument("--visualize", action="store_true")
     args = parser.parse_args()
     train_path = (
         Path(__file__).parent.parent / "aligned_data" / f"{args.language}.trn.aligned"
@@ -286,12 +328,17 @@ if __name__ == "__main__":
 
     extract_fst(
         hyperparams=ExtractionHyperparameters(
-            num_initial_clusters=500,
+            clustering_method="hdbscan",
+            kmeans_num_clusters=1000,
+            min_samples=1000,
+            pca_components=30,
             transitions_top_k=1,
             transitions_top_p=None,
+            generations_top_k=10,
         ),
         aligned_train_path=train_path,
         eval_path=eval_path,
         test_path=test_path,
         model_id=args.model_id,
+        visualize=args.visualize,
     )

@@ -4,6 +4,9 @@ import torch
 from torch.utils.data import DataLoader
 
 from src.modeling.input_processing import pad_batch_collate_fn
+from src.tasks.inflection_classification.balanced_sampler import (
+    BalancedResampledSampler,
+)
 
 from .dataset import AlignedInflectionDataset
 from .tokenizer import AlignedInflectionTokenizer
@@ -36,7 +39,13 @@ def create_dataloader(
         )
         return collated_batch
 
+    positive_indices = list(range(dataset.num_positives))
+    negative_indices = list(range(dataset.num_positives, len(dataset)))
+    sampler = BalancedResampledSampler(
+        pos_indices=positive_indices, neg_indices=negative_indices
+    )
+
     train_dataloader = DataLoader(
-        dataset=dataset, batch_size=batch_size, shuffle=True, collate_fn=collate_fn
+        dataset=dataset, batch_size=batch_size, sampler=sampler, collate_fn=collate_fn
     )
     return train_dataloader, tokenizer

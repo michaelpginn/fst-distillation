@@ -1,3 +1,4 @@
+import logging
 import random
 import re
 from os import PathLike
@@ -6,6 +7,8 @@ from torch.utils.data import Dataset
 
 from .example import AlignedInflectionExample
 from .tokenizer import AlignedInflectionTokenizer
+
+logger = logging.getLogger(__file__)
 
 
 def load_examples_from_file(path: str | PathLike):
@@ -113,7 +116,11 @@ def create_negative_examples(
 
 
 class AlignedInflectionDataset(Dataset):
-    """Represents pre-aligned inflection data. Data should be provided in a TSV file without headers."""
+    """
+    Represents pre-aligned inflection data. Data should be provided in a TSV file without headers.
+
+    The dataset will include positive and negative examples, IN THAT ORDER. Use `num_positives` to determine where the negative examples start.
+    """
 
     def __init__(
         self,
@@ -123,7 +130,7 @@ class AlignedInflectionDataset(Dataset):
     ):
         """Initialize a dataset. If a pretrained `tokenizer` is provided, will use to tokenize, otherwise, a new one will be created."""
         positive_examples = load_examples_from_file(path)
-        print(f"Loaded {len(positive_examples)} rows.")
+        logger.info(f"Loaded {len(positive_examples)} rows.")
         if tokenizer is not None:
             self.tokenizer = tokenizer
         else:
@@ -137,10 +144,11 @@ class AlignedInflectionDataset(Dataset):
             num_random_perturbs_per_ex=10,
             num_insertions_per_ex=10,
         )
-        print(f"Created {len(negative_examples)} negative examples")
+        logger.info(f"Created {len(negative_examples)} negative examples")
         self.examples = [
             self.tokenizer.tokenize(ex) for ex in positive_examples + negative_examples
         ]
+        self.num_positives = len(positive_examples)
 
     def __len__(self):
         return len(self.examples)

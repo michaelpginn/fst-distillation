@@ -52,7 +52,7 @@ for combo in all_combos:
     )
     for num_clusters in [100, 500, 750, 1000, 1250]:
         params = ExtractionHyperparameters(
-            num_initial_clusters=num_clusters,
+            kmeans_num_clusters=num_clusters,
             pca_components=64,  # model dim, aka no pca
             transitions_top_k=1,
             transitions_top_p=None,

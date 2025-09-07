@@ -1,3 +1,4 @@
+import logging
 import tempfile
 
 import torch
@@ -8,6 +9,8 @@ from src.modeling.tokenizer import Tokenizer
 from src.optional_wandb import wandb
 
 device = "cuda" if torch.cuda.is_available() else "mps"
+
+logger = logging.getLogger(__file__)
 
 
 def training_loop(
@@ -39,8 +42,9 @@ def validation_loop(
 ):
     model.eval()
     epoch_loss = 0
-    epoch_num_correct = 0
-    epoch_total_items = 0
+    epoch_pos = 0  # Number of positive examples
+    epoch_pred_pos = 0  # Number of predicted positives
+    epoch_true_pos = 0  # Number of true positives
     all_incorrect: list[str] = []
     with torch.no_grad():
         for batch in tqdm(dataloader, "Evaluating"):
@@ -54,11 +58,12 @@ def validation_loop(
             loss = torch.nn.functional.binary_cross_entropy_with_logits(out, labels)
             epoch_loss += loss.detach().item()
 
-            # Compute accuracy on the fly
-            correct = (torch.nn.functional.sigmoid(out) > 0.5) == labels.bool()
-            num_correct = torch.sum(correct).item()
-            epoch_num_correct += num_correct
-            epoch_total_items += labels.size(-1)
+            # Compute F1 on the fly
+            epoch_pos += sum(labels)
+            preds = torch.nn.functional.sigmoid(out) > 0.5
+            correct = preds == labels.bool()
+            epoch_pred_pos += sum(preds)
+            epoch_true_pos += sum(correct & labels.bool())
 
             # Log incorrect predictions
             incorrect_inputs = [
@@ -71,9 +76,13 @@ def validation_loop(
                     for char_string, label in zip(incorrect_inputs, incorrect_labels)
                 ]
             )
+    precision = epoch_true_pos / epoch_pred_pos
+    recall = epoch_true_pos / epoch_pos
+    f1 = 2 * precision * recall / (precision + recall)
+    stats = {"f1": f1, "precision": precision, "recall": recall}
     return (
         epoch_loss / len(dataloader),
-        epoch_num_correct / epoch_total_items,
+        stats,
         all_incorrect,
     )
 
@@ -95,27 +104,28 @@ def train(
 
     model = model.to(device)
 
-    print("Training...")
+    logger.info("Training...")
     for epoch in range(epochs):
-        print("-" * 25, f"Epoch {epoch}", "-" * 25)
+        logger.info(("-" * 25) + f"Epoch {epoch}" + ("-" * 25))
         train_loss = training_loop(
             model=model,
             dataloader=train_dataloader,
             optimizer=optimizer,
         )
-        validation_loss, validation_accuracy, incorrect_examples = validation_loop(
+        validation_loss, validation_stats, incorrect_examples = validation_loop(
             model=model, dataloader=eval_dataloader, tokenizer=tokenizer
         )
-        print(f"Training loss: {train_loss:.4f}")
-        print(f"Validation loss: {validation_loss:.4f}")
-        print(f"Validation accuracy: {validation_accuracy:.1%}")
-        print("Incorrect val instances: " + "\n".join(incorrect_examples))
+        logger.info(f"Training loss: {train_loss:.4f}")
+        logger.info(f"Validation loss: {validation_loss:.4f}")
+        logger.info(f"Validation F1: {validation_stats['f1']:.1%}")
+        logger.info(
+            "Some incorrect val instances:\n" + "\n".join(incorrect_examples[:5])
+        )
         wandb.log(
             {
                 "epoch": epoch,
-                "train_loss": train_loss,
-                "validation_loss": validation_loss,
-                "validation_accuracy": validation_accuracy,
+                "train": {"loss": train_loss},
+                "validation": {"loss": validation_loss, **validation_stats},
             }
         )
 

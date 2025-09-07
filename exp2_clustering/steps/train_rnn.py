@@ -34,10 +34,10 @@ def train_rnn(
     # In order to create negative examples, we need to pre-load all of the examples so
     # we don't accidentally create negative examples that are valid
     aligned_train_path = (
-        pathlib.Path(__file__).parent / f"aligned_data/{language}.trn.aligned.jsonl"
+        pathlib.Path(__file__).parent.parent / f"aligned_data/{language}.trn.aligned"
     )
     aligned_eval_path = (
-        pathlib.Path(__file__).parent / f"aligned_data/{language}.dev.aligned.jsonl"
+        pathlib.Path(__file__).parent.parent / f"aligned_data/{language}.dev.aligned"
     )
     all_examples = load_examples_from_file(
         aligned_train_path
@@ -80,7 +80,9 @@ def train_rnn(
         learning_rate=learning_rate,
         seed=seed,
     )
-    checkpoint_path = pathlib.Path(__file__).parent / f"runs/{wandb.run.name}/model.pt"  # type:ignore
+    checkpoint_path = (
+        pathlib.Path(__file__).parent.parent / f"runs/{wandb.run.name}/model.pt"  # type:ignore
+    )
     checkpoint_path.parent.mkdir(exist_ok=True, parents=True)
     torch.save(
         {

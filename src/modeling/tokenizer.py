@@ -1,5 +1,8 @@
 import abc
+import logging
 from typing import Any, List, Literal
+
+logger = logging.getLogger(__file__)
 
 
 class Tokenizer(metaclass=abc.ABCMeta):
@@ -24,7 +27,7 @@ class Tokenizer(metaclass=abc.ABCMeta):
         self.id_to_token = {
             id: token for id, token in zip(range(len(vocabulary)), vocabulary)
         }
-        print("Created vocabulary.")
+        logger.info("Created vocabulary.")
 
     @abc.abstractmethod
     def create_vocab(self, examples: list[Any]) -> list[str]:
@@ -44,7 +47,7 @@ class Tokenizer(metaclass=abc.ABCMeta):
     ):
         if self.id_to_token is None:
             raise Exception("Need to learn vocab with `create_vocab` first!")
-        decoded = str("") if return_as is str else list[str]()
+        decoded = str("") if return_as == "str" else list[str]()
 
         for id in token_ids:
             if skip_special_tokens and id <= len(self.special_tokens):
@@ -58,7 +61,7 @@ class Tokenizer(metaclass=abc.ABCMeta):
 
     def __len__(self):
         if self.token_to_id is None:
-            print("Warning: length of empty tokenizer is 0.")
+            logger.warning("Length of empty tokenizer is 0.")
             return 0
         return len(self.token_to_id)
 
