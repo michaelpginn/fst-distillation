@@ -31,6 +31,7 @@ from exp2_clustering.util import find_data_file
 from src.hopkins import hopkins
 from src.learn import standard_scale
 from src.modeling.rnn import RNNModel
+from src.remove_epsilon_loops import remove_epsilon_loops
 from src.tasks.inflection_classification.dataset import load_examples_from_file
 from src.tasks.inflection_classification.tokenizer import AlignedInflectionTokenizer
 from src.tasks.inflection_seq2seq.dataset import (
@@ -254,6 +255,7 @@ def extract_fst(
 
     logger.info("Minimizing and determinizing")
     fst = fst.filter_accessible().minimize()
+    remove_epsilon_loops(fst)
     logger.info(f"Created FST with {len(fst.states)} states")
 
     fst.save("checkpoint.fst")
@@ -284,11 +286,13 @@ def evaluate_all(fst: FST, examples: list[InflectionExample], generations_top_k:
         logger.debug(f"Composing input string: {input_string}")
         input_fsa = FST.re("".join(f"'{c}'" for c in input_string))
         logger.debug("Composing input @ output")
-        output_fst = FST.re(
-            "$^output($in @ $inflect)", {"in": input_fsa, "inflect": fst}
-        )
+        output_fst = input_fsa @ fst
         logger.debug("Minimizing")
         output_fst = output_fst.minimize()
+        logger.debug("Removing epsilon loops")
+        remove_epsilon_loops(output_fst)
+        output_fst = output_fst.project(-1)
+        output_fst.render()
         logger.debug("Generating top k words")
         example_preds = output_fst.words_nbest(generations_top_k)
         logger.debug(f"Words: {example_preds}")

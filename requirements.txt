@@ -1,7 +1,7 @@
 numpy==2.1.1
 torch==2.4.1
 tqdm==4.66.4
-pyfoma
+git+https://github.com/mhulden/pyfoma.git@documentation
 seaborn
 pandas
 matplotlib
