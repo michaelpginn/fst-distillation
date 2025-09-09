@@ -258,8 +258,8 @@ def extract_fst(
     remove_epsilon_loops(fst)
     logger.info(f"Created FST with {len(fst.states)} states")
 
-    fst.save("checkpoint.fst")
-    logger.info(f"Saved to {Path('checkpoint.fst')}")
+    # fst.save("checkpoint.fst")
+    # logger.info(f"Saved to {Path('checkpoint.fst')}")
 
     eval_metrics = evaluate_all(fst, eval_examples, hyperparams.generations_top_k)
     logger.info(f"Eval metrics: {pprint.pformat(eval_metrics)}")
@@ -291,8 +291,8 @@ def evaluate_all(fst: FST, examples: list[InflectionExample], generations_top_k:
         output_fst = output_fst.minimize()
         logger.debug("Removing epsilon loops")
         remove_epsilon_loops(output_fst)
+        output_fst.render(view=False)
         output_fst = output_fst.project(-1)
-        output_fst.render()
         logger.debug("Generating top k words")
         example_preds = output_fst.words_nbest(generations_top_k)
         logger.debug(f"Words: {example_preds}")
@@ -334,11 +334,11 @@ if __name__ == "__main__":
         hyperparams=ExtractionHyperparameters(
             clustering_method="hdbscan",
             kmeans_num_clusters=1000,
-            min_samples=1000,
+            min_samples=500,
             pca_components=30,
             transitions_top_k=1,
             transitions_top_p=None,
-            generations_top_k=10,
+            generations_top_k=1,
         ),
         aligned_train_path=train_path,
         eval_path=eval_path,

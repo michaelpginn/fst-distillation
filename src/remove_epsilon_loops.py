@@ -4,10 +4,10 @@ from pyfoma.fst import FST
 
 def remove_epsilon_loops(fst: FST):
     """Removes loops whose inputs consist solely of epsilons."""
-    process_state(fst.initialstate, visited=set())
+    process_state(fst, fst.initialstate, visited=set())
 
 
-def process_state(state: State, visited: set[State]):
+def process_state(fst: FST, state: State, visited: set[State]):
     if state in visited:
         return
 
@@ -29,7 +29,7 @@ def process_state(state: State, visited: set[State]):
                 detect_epsilon_loop(fst, transition.targetstate, epsilon_stack=[state])
 
             # Recursive DFS
-            process_state(transition.targetstate, visited=visited)
+            process_state(fst, transition.targetstate, visited=visited)
 
 
 def detect_epsilon_loop(fst: FST, state: State, epsilon_stack: list[State]):
@@ -44,7 +44,6 @@ def detect_epsilon_loop(fst: FST, state: State, epsilon_stack: list[State]):
         for label, transition_set in epsilon_stack[-1].transitions.items():
             if label[0] == "":
                 for transition in transition_set:
-                    breakpoint()
                     if transition.targetstate == state:
                         transition.targetstate = new_state
         return
