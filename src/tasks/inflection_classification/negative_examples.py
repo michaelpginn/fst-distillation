@@ -1,4 +1,7 @@
 import random
+from collections import defaultdict
+
+from tqdm import tqdm
 
 from .example import ALIGNMENT_SYMBOL, AlignedInflectionExample
 
@@ -14,14 +17,18 @@ def create_negative_examples(
 ):
     random.seed(seed)
 
+    lemma_lookup: dict[str, list[AlignedInflectionExample]] = defaultdict(lambda: [])
     for ex in positive_examples:
+        lemma_lookup[ex.lemma].append(ex)
+
+    for ex in tqdm(positive_examples, "Creating negatives through tag swapping"):
         invalid_features = []
 
         # Select features that we have defined on this lemma (unless syncretic)
-        invalid_features += [
+        invalid_features = [
             ex2.features
-            for ex2 in positive_examples
-            if ex2.lemma == ex.lemma and ex2.aligned_chars != ex.aligned_chars
+            for ex2 in lemma_lookup[ex.lemma]
+            if ex2.aligned_chars != ex.aligned_chars
         ]
         if len(invalid_features) > num_tag_swaps_per_ex:
             invalid_features = random.sample(invalid_features, k=num_tag_swaps_per_ex)
@@ -36,7 +43,7 @@ def create_negative_examples(
     all_symbols = set(
         char for ex in positive_examples for pair in ex.aligned_chars for char in pair
     )
-    for ex in positive_examples:
+    for ex in tqdm(positive_examples, "Creating negatives through perturbation"):
         for _ in range(num_random_perturbs_per_ex):
             synthetic_example = AlignedInflectionExample(
                 aligned_chars=random_perturb(ex.aligned_chars, all_symbols=all_symbols),

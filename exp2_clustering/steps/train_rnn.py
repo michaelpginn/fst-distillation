@@ -60,7 +60,6 @@ def train_rnn(
     )
     train_dataloader = create_dataloader(train_dataset, batch_size=batch_size)
     eval_dataloader = create_dataloader(eval_dataset, batch_size=batch_size)
-
     model = RNNModel(
         tokenizer=tokenizer, d_model=d_model, num_layers=num_layers, dropout=dropout
     )
@@ -96,7 +95,7 @@ if __name__ == "__main__":
     parser.add_argument("--hidden-dim", default=64)
     parser.add_argument("--num-layers", default=2)
     parser.add_argument("--dropout", default=0.5)
-    parser.add_argument("--learning-rate", default=0.0001)
+    parser.add_argument("--learning-rate", default=0.0002)
 
     args = parser.parse_args()
     train_rnn(
