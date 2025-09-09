@@ -1,3 +1,5 @@
+from os import PathLike
+
 from torch.utils.data import DataLoader
 
 from src.modeling.input_processing import create_pad_mask, pad_batch_collate_fn
@@ -7,7 +9,7 @@ from .tokenizer import SharedTaskInflectionTokenizer
 
 
 def create_dataloader(
-    data_path: str,
+    data_path: PathLike,
     batch_size: int,
     pretrained_tokenizer: SharedTaskInflectionTokenizer | None = None,
 ):

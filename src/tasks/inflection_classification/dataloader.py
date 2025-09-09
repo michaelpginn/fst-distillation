@@ -1,5 +1,3 @@
-from os import PathLike
-
 import torch
 from torch.utils.data import DataLoader
 
@@ -9,14 +7,11 @@ from src.tasks.inflection_classification.balanced_sampler import (
 )
 
 from .dataset import AlignedInflectionDataset
-from .tokenizer import AlignedInflectionTokenizer
 
 
 def create_dataloader(
-    aligned_data_path: PathLike,
+    dataset: AlignedInflectionDataset,
     batch_size: int,
-    syncretic_example_lookup: dict[str, list[tuple]],
-    pretrained_tokenizer: AlignedInflectionTokenizer | None = None,
 ):
     """Notably, this dataloader will include (organic) positive and (synthetic) negative examples.
 
@@ -25,11 +20,6 @@ def create_dataloader(
         batch_size: int
         pretrained_tokenizer: AlignedInflectionTokenizer | None, if provided, uses a pretrained tokenizer rather than training a new one
     """
-    dataset = AlignedInflectionDataset(
-        path=aligned_data_path,
-        tokenizer=pretrained_tokenizer,
-        syncretic_example_lookup=syncretic_example_lookup,
-    )
     tokenizer = dataset.tokenizer
 
     def collate_fn(batch: list[dict[str, int | list[int]]]):
@@ -44,8 +34,7 @@ def create_dataloader(
     sampler = BalancedResampledSampler(
         pos_indices=positive_indices, neg_indices=negative_indices
     )
-
-    train_dataloader = DataLoader(
+    dataloader = DataLoader(
         dataset=dataset, batch_size=batch_size, sampler=sampler, collate_fn=collate_fn
     )
-    return train_dataloader, tokenizer
+    return dataloader

@@ -7,15 +7,16 @@ You must run `run_alignment.py` first to produce aligned data files.
 
 import pathlib
 from argparse import ArgumentParser
-from collections import defaultdict
-from typing import DefaultDict
 
 import torch
 
 from src.modeling import RNNModel
 from src.optional_wandb import wandb
 from src.tasks.inflection_classification import create_dataloader
-from src.tasks.inflection_classification.dataset import load_examples_from_file
+from src.tasks.inflection_classification.dataset import (
+    AlignedInflectionDataset,
+    load_examples_from_file,
+)
 from src.training_classifier import train
 
 
@@ -30,39 +31,6 @@ def train_rnn(
     seed=0,
 ):
     hyperparams = locals()
-
-    # In order to create negative examples, we need to pre-load all of the examples so
-    # we don't accidentally create negative examples that are valid
-    aligned_train_path = (
-        pathlib.Path(__file__).parent.parent / f"aligned_data/{language}.trn.aligned"
-    )
-    aligned_eval_path = (
-        pathlib.Path(__file__).parent.parent / f"aligned_data/{language}.dev.aligned"
-    )
-    all_examples = load_examples_from_file(
-        aligned_train_path
-    ) + load_examples_from_file(aligned_eval_path)
-    syncretic_example_lookup: DefaultDict[str, list[tuple]] = defaultdict(lambda: [])
-    for ex in all_examples:
-        syncretic_example_lookup["".join(ex.aligned_chars_as_strs)].append(
-            tuple(ex.features)
-        )
-
-    # Create dataloaders
-    train_dataloader, tokenizer = create_dataloader(
-        aligned_data_path=aligned_train_path,
-        batch_size=batch_size,
-        syncretic_example_lookup=syncretic_example_lookup,
-    )
-    eval_dataloader, _ = create_dataloader(
-        aligned_data_path=aligned_eval_path,
-        batch_size=batch_size,
-        pretrained_tokenizer=tokenizer,
-        syncretic_example_lookup=syncretic_example_lookup,
-    )
-    model = RNNModel(
-        tokenizer=tokenizer, d_model=d_model, num_layers=num_layers, dropout=dropout
-    )
     wandb.init(
         entity="lecs-general",
         project="fst-distillation.exp2",
@@ -70,7 +38,32 @@ def train_rnn(
         save_code=True,
         group=language,
     )
-    # wandb.watch(models=model, log_freq=1)
+
+    # In order to create negative examples, we need to pre-load all of the examples so
+    # we don't accidentally create negative examples that are valid
+    train_examples = load_examples_from_file(
+        pathlib.Path(__file__).parent.parent / f"aligned_data/{language}.trn.aligned"
+    )
+    eval_examples = load_examples_from_file(
+        pathlib.Path(__file__).parent.parent / f"aligned_data/{language}.dev.aligned"
+    )
+    train_dataset = AlignedInflectionDataset(
+        positive_examples=train_examples,
+        all_positive_examples=train_examples + eval_examples,
+        tokenizer=None,
+    )
+    tokenizer = train_dataset.tokenizer
+    eval_dataset = AlignedInflectionDataset(
+        positive_examples=eval_examples,
+        all_positive_examples=train_examples + eval_examples,
+        tokenizer=tokenizer,
+    )
+    train_dataloader = create_dataloader(train_dataset, batch_size=batch_size)
+    eval_dataloader = create_dataloader(eval_dataset, batch_size=batch_size)
+
+    model = RNNModel(
+        tokenizer=tokenizer, d_model=d_model, num_layers=num_layers, dropout=dropout
+    )
     train(
         model=model,
         train_dataloader=train_dataloader,

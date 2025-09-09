@@ -26,7 +26,7 @@ def load_examples_from_file(path: PathLike):
 class SharedTaskInflectionDataset(Dataset):
     """Represents data from the SIGMORPHON shared tasks. Data should be provided in a TSV file without headers."""
 
-    def __init__(self, path: str, tokenizer: SharedTaskInflectionTokenizer | None):
+    def __init__(self, path: PathLike, tokenizer: SharedTaskInflectionTokenizer | None):
         """Initialize a dataset. If a pretrained `tokenizer` is provided, will use to tokenize, otherwise, a new one will be created."""
         self.raw_examples = load_examples_from_file(path)
         print(f"Loaded {len(self.raw_examples)} rows.")

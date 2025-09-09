@@ -20,12 +20,13 @@ import pathlib
 from os import PathLike
 
 from src.hulden_alignment import Aligner
+from src.tasks.inflection_classification.example import ALIGNMENT_SYMBOL
 from src.tasks.inflection_seq2seq.dataset import load_examples_from_file
 
 logger = logging.getLogger(__name__)
 
 
-def run_alignment(file_paths: list[PathLike], alignment_character="~"):
+def run_alignment(file_paths: list[PathLike], alignment_character=ALIGNMENT_SYMBOL):
     output_folder = pathlib.Path(__file__).parent.parent / "aligned_data"
     output_folder.mkdir(exist_ok=True)
 
