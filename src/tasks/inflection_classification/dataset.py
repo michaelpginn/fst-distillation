@@ -57,6 +57,7 @@ class AlignedInflectionDataset(Dataset):
             self.tokenizer = AlignedInflectionTokenizer()
             self.tokenizer.learn_vocab(positive_examples)
 
+        logger.info("Creating negative examples")
         negative_examples = create_negative_examples(
             positive_examples,
             all_examples=all_positive_examples,

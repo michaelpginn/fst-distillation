@@ -10,7 +10,7 @@ import logging
 import pprint
 import re
 import warnings
-from collections import Counter, defaultdict
+import weakref
 from dataclasses import dataclass
 from os import PathLike
 from pathlib import Path
@@ -21,17 +21,22 @@ import pandas
 import seaborn
 import torch
 from hdbscan import HDBSCAN
-from pyfoma._private.states import State
 from pyfoma.fst import FST
 from sklearn.cluster import OPTICS, k_means
 from sklearn.decomposition import PCA
 from tqdm import tqdm
 
 from exp2_clustering.util import find_data_file
-from src.hopkins import hopkins
 from src.learn import standard_scale
 from src.modeling.rnn import RNNModel
 from src.remove_epsilon_loops import remove_epsilon_loops
+from src.state_clustering.build_fst import build_fst
+from src.state_clustering.hopkins import hopkins
+from src.state_clustering.types import (
+    Macrostate,
+    Microstate,
+    Microtransition,
+)
 from src.tasks.inflection_classification.dataset import load_examples_from_file
 from src.tasks.inflection_classification.tokenizer import AlignedInflectionTokenizer
 from src.tasks.inflection_seq2seq.dataset import (
@@ -60,6 +65,9 @@ class ExtractionHyperparameters:
     transitions_min_n: int | None = None
     """For each (start state, input symbol), take transitions if they occur more than n times"""
 
+    minimum_transition_count: int = 100
+    """Minimum count for a given transition to be guaranteed to be included"""
+
     generations_top_k: int = 1
     """How many generations to pick, in increasing length order"""
 
@@ -86,7 +94,9 @@ def extract_fst(
     visualize: bool = False,
 ):
     model_path = Path(__file__).parent.parent / f"runs/{model_id}/model.pt"
-    checkpoint_dict = torch.load(model_path, weights_only=True)
+    checkpoint_dict = torch.load(
+        model_path, weights_only=True, map_location=torch.device("cpu")
+    )
     tokenizer = AlignedInflectionTokenizer.from_state_dict(
         checkpoint_dict["tokenizer_dict"]
     )
@@ -148,110 +158,99 @@ def extract_fst(
         plt.show()
 
     # 3. Create states
-    fst = FST()
-    state_lookup = {
-        f"cluster-{label}": State(name=f"cluster-{label}") for label in set(labels)
+    microstates: list[Microstate] = []
+    macrostates: dict[str, Macrostate] = {
+        f"cluster-{label}": Macrostate(label=f"cluster-{label}")
+        for label in set(labels)
     }
-    fst.states = set(state_lookup.values())
-    fst.initialstate = state_lookup[
-        f"cluster-{labels[0]}"
-    ]  # Use the label of the <bos> cluster
-
-    # 4. Use the original inputs to produce a counter of transitions between each pair of states
-    #
-    # Notably, we will reduce so that each state has some number n of transitions associated with a given input label
-    # That means that the resulting FST is guaranteed deterministic (which it should be realistically)
-    @dataclass(frozen=True)
-    class _TransitionKey:
-        start_state_label: str
-        input_symbol: str
-
-    @dataclass(frozen=True)
-    class _TransitionValue:
-        end_state_label: str
-        output_symbol: str
-
-    transition_counts: defaultdict[_TransitionKey, Counter[_TransitionValue]] = (
-        defaultdict(lambda: Counter())
-    )
-    final_state_labels: set[str] = set()
+    initial_macrostate = macrostates[f"cluster-{labels[0]}"]
     offset = 0
-    for example in tqdm(train_examples, "Collecting transitions"):
-        # Either a feature label ("[PST]"), special char, or (input:output) pair
+    for example in tqdm(train_examples, "Collecting microstates"):
+        # <bos> [TAG1] [TAG2] ... (c:c) (c:c) ...
         transition_labels_as_list: list[str] = model.tokenizer.decode(
             model.tokenizer.tokenize(example)["input_ids"],  # type:ignore
             skip_special_tokens=False,
             return_as="list",
         )
-        for symbol_index in range(len(transition_labels_as_list) - 1):
-            start_state_label = f"cluster-{labels[offset + symbol_index]}"
-            end_state_label = f"cluster-{labels[offset + symbol_index + 1]}"
-            transition_label = transition_labels_as_list[symbol_index + 1]
-
-            if match := re.match(r"\((.*),(.*)\)", transition_label):
-                input_symbol = match.group(1)
-                output_symbol = match.group(2)
-            else:
-                input_symbol = transition_label
-                output_symbol = transition_label
-
-            # For the FST, convert alignment symbols to epsilons.
-            input_symbol = "" if input_symbol == "~" else input_symbol
-            output_symbol = "" if output_symbol == "~" else output_symbol
-
-            transition_counts[
-                _TransitionKey(
-                    start_state_label=start_state_label, input_symbol=input_symbol
-                )
-            ].update(
-                [
-                    _TransitionValue(
-                        end_state_label=end_state_label, output_symbol=output_symbol
-                    )
-                ]
+        previous_microstate: Microstate | None = None
+        for symbol_index, transition_label in enumerate(transition_labels_as_list):
+            microstate = Microstate(
+                position=activations[offset + symbol_index],
+                is_final=symbol_index == len(transition_labels_as_list) - 1,
             )
-        final_state_labels.add(
-            f"cluster-{labels[offset + len(transition_labels_as_list) - 1]}"
-        )
+            # Add incoming transition
+            if symbol_index != 0:
+                assert previous_microstate is not None
+                if match := re.match(r"\((.*),(.*)\)", transition_label):
+                    input_symbol = match.group(1)
+                    output_symbol = match.group(2)
+                else:
+                    input_symbol = transition_label
+                    output_symbol = transition_label
+                input_symbol = "" if input_symbol == "~" else input_symbol
+                output_symbol = "" if output_symbol == "~" else output_symbol
+                transition = Microtransition(
+                    input_symbol=input_symbol,
+                    output_symbol=output_symbol,
+                    source=weakref.ref(previous_microstate),
+                    target=weakref.ref(microstate),
+                )
+                microstate.incoming = transition
+                previous_microstate.outgoing = weakref.ref(transition)
+
+            microstates.append(microstate)
+            assigned_macrostate = macrostates[
+                f"cluster-{labels[offset + symbol_index]}"
+            ]
+            assigned_macrostate.microstates.add(microstate)
+            microstate.macrostate = weakref.ref(assigned_macrostate)
+            previous_microstate = microstate
         offset += len(transition_labels_as_list)
 
+    # 4. Materialize states
+    fst = build_fst(
+        initial_macrostate,
+        macrostates=macrostates,
+        minimum_transition_count=hyperparams.minimum_transition_count,
+    )
+
     # 5. Use the transition reduction heuristic to reduce the number of transitions and thus produce the final FST
-    for transition_key, counter in tqdm(
-        transition_counts.items(), "Creating transitions"
-    ):
-        if top_k := hyperparams.transitions_top_k:
-            chosen_transitions = [k for k, v in counter.most_common(top_k)]
-        elif top_p := hyperparams.transitions_top_p:
-            # Compute the highest prob transitions s.t. cumprob > top_p
-            total_count = sum(counter.values())
-            probs = [(k, v / total_count) for k, v in counter.items()]
-            probs_sorted = sorted(probs, key=lambda t: t[1], reverse=True)
-            cum_prob = 0
-            chosen_transitions: list[_TransitionValue] = []
-            while cum_prob < top_p:
-                next_transition, prob = probs_sorted.pop(0)
-                chosen_transitions.append(next_transition)
-                cum_prob += prob
-        elif min_n := hyperparams.transitions_min_n:
-            chosen_transitions = [k for k, v in counter.items() if v >= min_n]
-        else:
-            raise ValueError()
+    # for transition_key, counter in tqdm(
+    #     transition_counts.items(), "Creating transitions"
+    # ):
+    #     if top_k := hyperparams.transitions_top_k:
+    #         chosen_transitions = [k for k, v in counter.most_common(top_k)]
+    #     elif top_p := hyperparams.transitions_top_p:
+    #         # Compute the highest prob transitions s.t. cumprob > top_p
+    #         total_count = sum(counter.values())
+    #         probs = [(k, v / total_count) for k, v in counter.items()]
+    #         probs_sorted = sorted(probs, key=lambda t: t[1], reverse=True)
+    #         cum_prob = 0
+    #         chosen_transitions: list[_TransitionValue] = []
+    #         while cum_prob < top_p:
+    #             next_transition, prob = probs_sorted.pop(0)
+    #             chosen_transitions.append(next_transition)
+    #             cum_prob += prob
+    #     elif min_n := hyperparams.transitions_min_n:
+    #         chosen_transitions = [k for k, v in counter.items() if v >= min_n]
+    #     else:
+    #         raise ValueError()
 
-        for transition_value in chosen_transitions:
-            fst.alphabet.update(
-                {transition_key.input_symbol, transition_value.output_symbol}
-            )
-            if transition_key.input_symbol == transition_value.output_symbol:
-                label = (transition_key.input_symbol,)
-            else:
-                label = (transition_key.input_symbol, transition_value.output_symbol)
-            start_state = state_lookup[transition_key.start_state_label]
-            end_state = state_lookup[transition_value.end_state_label]
-            start_state.add_transition(end_state, label=label, weight=0.0)
+    #     for transition_value in chosen_transitions:
+    #         fst.alphabet.update(
+    #             {transition_key.input_symbol, transition_value.output_symbol}
+    #         )
+    #         if transition_key.input_symbol == transition_value.output_symbol:
+    #             label = (transition_key.input_symbol,)
+    #         else:
+    #             label = (transition_key.input_symbol, transition_value.output_symbol)
+    #         start_state = state_lookup[transition_key.start_state_label]
+    #         end_state = state_lookup[transition_value.end_state_label]
+    #         start_state.add_transition(end_state, label=label, weight=0.0)
 
-    fst.finalstates = {state_lookup[label] for label in final_state_labels}
-    for state in fst.states:
-        state.finalweight = 0.0
+    # fst.finalstates = {state_lookup[label] for label in final_state_labels}
+    # for state in fst.states:
+    #     state.finalweight = 0.0
 
     logger.info("Minimizing and determinizing")
     fst = fst.filter_accessible().minimize()
@@ -320,7 +319,7 @@ def compute_metrics(labels: list[str], predictions: list[set[str]]):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
-    parser.add_argument("model_id", help="WandB ID for the training run")
+    parser.add_argument("model_id", help="WandB shortname for the training run")
     parser.add_argument("--language", default="swe", help="Isocode for the language")
     parser.add_argument("--visualize", action="store_true")
     args = parser.parse_args()
@@ -332,12 +331,13 @@ if __name__ == "__main__":
 
     extract_fst(
         hyperparams=ExtractionHyperparameters(
-            clustering_method="hdbscan",
+            clustering_method="kmeans",
             kmeans_num_clusters=1000,
             min_samples=500,
             pca_components=30,
             transitions_top_k=1,
             transitions_top_p=None,
+            minimum_transition_count=100,
             generations_top_k=1,
         ),
         aligned_train_path=train_path,
