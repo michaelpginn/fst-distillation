@@ -1,11 +1,12 @@
 import logging
 import weakref
-from typing import Counter
+from collections import Counter
+from typing import Literal
 
 import numpy as np
 from pyfoma._private.states import State
 from pyfoma.fst import FST
-from sklearn import svm
+from sklearn import linear_model, svm
 
 from src.state_clustering.types import Macrostate, Macrotransition
 
@@ -15,7 +16,8 @@ logger = logging.getLogger(__file__)
 def build_fst(
     initial_macrostate: Macrostate,
     macrostates: dict[str, Macrostate],
-    minimum_transition_count: int = 20,
+    state_splitting_classifier: Literal["svm", "logistic"],
+    minimum_transition_count: int | None,
 ) -> FST:
     """Processes an initial grouping of macrostates,
     adding transitions and splitting states if necessary. Returns an FST."""
@@ -40,7 +42,7 @@ def build_fst(
             outputs_over_threshold = [
                 output
                 for output in outputs_sorted
-                if output[1] > minimum_transition_count
+                if minimum_transition_count and output[1] > minimum_transition_count
             ]
             if len(outputs_over_threshold) <= 1:
                 # If we don't have any over threshold, use the most common
@@ -55,23 +57,6 @@ def build_fst(
                 )
             else:
                 nondeterministic_input_symbols.add(input_symbol)
-
-            # for (
-            #     output_symbol,
-            #     target_state_label,
-            # ), probability in outputs_sorted:
-            #     if probability > transition_split_threshold:
-            #         chosen_transitions.add(
-            #             Macrotransition(
-            #                 input_symbol=input_symbol,
-            #                 output_symbol=output_symbol,
-            #                 source=weakref.ref(current_macrostate),
-            #                 target=weakref.ref(macrostates[target_state_label]),
-            #             )
-            #         )
-            #         break
-            # else:
-            #     nondeterministic_input_symbols.add(input_symbol)
 
         if len(nondeterministic_input_symbols) == 0:
             # No problems! Assign macrotransitions...
@@ -91,6 +76,7 @@ def build_fst(
             new_macrostates, macrostates_to_recheck = split_state(
                 current_macrostate,
                 offending_input_symbols=nondeterministic_input_symbols,
+                state_splitting_classifier=state_splitting_classifier,
                 minimum_transition_count=minimum_transition_count,
             )
             # logger.info(
@@ -139,7 +125,8 @@ def build_fst(
 def split_state(
     macrostate: Macrostate,
     offending_input_symbols: set[str],
-    minimum_transition_count: int,
+    state_splitting_classifier: Literal["svm", "logistic"],
+    minimum_transition_count: int | None,
 ):
     """Splits a state, possibly recursively.
 
@@ -164,7 +151,7 @@ def split_state(
         outputs_over_threshold = [
             output[0]
             for output in outputs_sorted
-            if output[1] > minimum_transition_count
+            if minimum_transition_count and output[1] > minimum_transition_count
         ]
         if len(outputs_over_threshold) > most_over_threshold_input_symbol[0]:
             most_over_threshold_input_symbol = (
@@ -217,13 +204,19 @@ def split_state(
     # 4. SVM
     # TODO: Make this a configurable hyperparameter
     print(f"Labels to split: {Counter(labels)}")
-    clf = svm.SVC(class_weight="balanced")
+    if state_splitting_classifier == "svm":
+        clf = svm.LinearSVC(class_weight="balanced")
+    else:
+        clf = linear_model.LogisticRegression(class_weight="balanced", max_iter=1000)
+
     clf = clf.fit(np.stack(states_to_split), labels)
     preds = clf.predict(
         np.stack([microstate.position for microstate in macrostate.microstates])
     )
     print(f"Scores: {clf.score(states_to_split, labels)}")
     print(f"Preds: {Counter(preds)}")
+    if len(set(preds)) == 1:
+        breakpoint()
 
     # 5. Create n new macrostates for points
     new_macrostates = [

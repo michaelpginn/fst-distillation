@@ -22,7 +22,7 @@ import seaborn
 import torch
 from hdbscan import HDBSCAN
 from pyfoma.fst import FST
-from sklearn.cluster import OPTICS, k_means
+from sklearn.cluster import DBSCAN, OPTICS, k_means
 from sklearn.decomposition import PCA
 from tqdm import tqdm
 
@@ -51,34 +51,22 @@ logger = logging.getLogger(__file__)
 
 @dataclass(frozen=True)
 class ExtractionHyperparameters:
-    clustering_method: Literal["kmeans", "optics", "hdbscan"]
+    clustering_method: Literal["kmeans", "optics", "hdbscan", "dbscan"]
     kmeans_num_clusters: int | None = None
     min_samples: int | None = None
+    eps: float | None = None
 
     pca_components: int | None = None
 
-    # Only one of the following should be set
-    transitions_top_k: int | None = None
-    """For each (start state, input symbol), take the top k most common transitions"""
-    transitions_top_p: float | None = None
-    """For each (start state, input symbol), take transitions within the top p% of transitions"""
-    transitions_min_n: int | None = None
-    """For each (start state, input symbol), take transitions if they occur more than n times"""
-
-    minimum_transition_count: int = 100
+    minimum_transition_count: int | None = 100
     """Minimum count for a given transition to be guaranteed to be included"""
+
+    state_split_classifier: Literal["svm", "logistic"] = "svm"
 
     generations_top_k: int = 1
     """How many generations to pick, in increasing length order"""
 
     def __post_init__(self):
-        modes_set = (
-            (1 if self.transitions_top_k is not None else 0)
-            + (1 if self.transitions_top_p is not None else 0)
-            + (1 if self.transitions_min_n is not None else 0)
-        )
-        if modes_set != 1:
-            raise ValueError("Must set exactly one transition mode!")
         if self.clustering_method == "kmeans" and self.kmeans_num_clusters is None:
             raise ValueError("Must set `kmeans_num_clusters` when using k-means!")
         if self.clustering_method == "optics" and (self.min_samples is None):
@@ -144,6 +132,12 @@ def extract_fst(
             min_cluster_size=50,
             min_samples=hyperparams.min_samples,
             core_dist_n_jobs=-1,
+        ).fit_predict(activations)
+    elif hyperparams.clustering_method == "dbscan":
+        assert hyperparams.eps is not None
+        assert hyperparams.min_samples is not None
+        labels = DBSCAN(
+            eps=hyperparams.eps, min_samples=hyperparams.min_samples
         ).fit_predict(activations)
     else:
         raise ValueError()
@@ -211,46 +205,9 @@ def extract_fst(
     fst = build_fst(
         initial_macrostate,
         macrostates=macrostates,
+        state_splitting_classifier=hyperparams.state_split_classifier,
         minimum_transition_count=hyperparams.minimum_transition_count,
     )
-
-    # 5. Use the transition reduction heuristic to reduce the number of transitions and thus produce the final FST
-    # for transition_key, counter in tqdm(
-    #     transition_counts.items(), "Creating transitions"
-    # ):
-    #     if top_k := hyperparams.transitions_top_k:
-    #         chosen_transitions = [k for k, v in counter.most_common(top_k)]
-    #     elif top_p := hyperparams.transitions_top_p:
-    #         # Compute the highest prob transitions s.t. cumprob > top_p
-    #         total_count = sum(counter.values())
-    #         probs = [(k, v / total_count) for k, v in counter.items()]
-    #         probs_sorted = sorted(probs, key=lambda t: t[1], reverse=True)
-    #         cum_prob = 0
-    #         chosen_transitions: list[_TransitionValue] = []
-    #         while cum_prob < top_p:
-    #             next_transition, prob = probs_sorted.pop(0)
-    #             chosen_transitions.append(next_transition)
-    #             cum_prob += prob
-    #     elif min_n := hyperparams.transitions_min_n:
-    #         chosen_transitions = [k for k, v in counter.items() if v >= min_n]
-    #     else:
-    #         raise ValueError()
-
-    #     for transition_value in chosen_transitions:
-    #         fst.alphabet.update(
-    #             {transition_key.input_symbol, transition_value.output_symbol}
-    #         )
-    #         if transition_key.input_symbol == transition_value.output_symbol:
-    #             label = (transition_key.input_symbol,)
-    #         else:
-    #             label = (transition_key.input_symbol, transition_value.output_symbol)
-    #         start_state = state_lookup[transition_key.start_state_label]
-    #         end_state = state_lookup[transition_value.end_state_label]
-    #         start_state.add_transition(end_state, label=label, weight=0.0)
-
-    # fst.finalstates = {state_lookup[label] for label in final_state_labels}
-    # for state in fst.states:
-    #     state.finalweight = 0.0
 
     logger.info("Minimizing and determinizing")
     fst = fst.filter_accessible().minimize()
@@ -288,8 +245,8 @@ def evaluate_all(fst: FST, examples: list[InflectionExample], generations_top_k:
         output_fst = input_fsa @ fst
         logger.debug("Minimizing")
         output_fst = output_fst.minimize()
-        logger.debug("Removing epsilon loops")
-        remove_epsilon_loops(output_fst)
+        # logger.debug("Removing epsilon loops")
+        # remove_epsilon_loops(output_fst)
         output_fst.render(view=False)
         output_fst = output_fst.project(-1)
         logger.debug("Generating top k words")
@@ -334,11 +291,9 @@ if __name__ == "__main__":
             clustering_method="kmeans",
             kmeans_num_clusters=1000,
             min_samples=500,
-            pca_components=30,
-            transitions_top_k=1,
-            transitions_top_p=None,
             minimum_transition_count=100,
-            generations_top_k=1,
+            state_split_classifier="svm",
+            generations_top_k=10,
         ),
         aligned_train_path=train_path,
         eval_path=eval_path,

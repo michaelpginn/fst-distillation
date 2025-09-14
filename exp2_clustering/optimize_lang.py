@@ -3,8 +3,10 @@
 import argparse
 import itertools
 import logging
+from dataclasses import asdict
 from pathlib import Path
 
+import wandb
 from exp2_clustering.steps.align_data import run_alignment
 from exp2_clustering.steps.extract_fst import ExtractionHyperparameters, extract_fst
 from exp2_clustering.steps.train_rnn import train_rnn
@@ -32,15 +34,21 @@ if (not train_path.exists()) or (not dev_path.exists()):
 
 # Train model
 training_hyperparam_options: list[tuple[str, list]] = [
-    ("num_layers", [1, 2, 4, 8]),
-    ("d_model", [16, 32, 64, 128, 256]),
-    ("dropout", [0, 0.1, 0.2, 0.5, 0.75, 0.9]),
-    ("learning_rate", [2e-5, 1e-4, 1e-3, 1e-2]),
+    ("num_layers", [1, 2, 4]),
+    ("d_model", [32, 64, 128]),
+    ("dropout", [0, 0.1, 0.5]),
+    ("learning_rate", [1e-4, 2e-4, 1e-3]),
 ]
 all_combos = itertools.product(*[opts for _, opts in training_hyperparam_options])
 for combo in all_combos:
     logger.info(f"Training with params: {combo}")
     num_layers, d_model, dropout, learning_rate = combo
+    rnn_config = {
+        "rnn.num_layers": num_layers,
+        "rnn.d_model": d_model,
+        "rnn.dropout": dropout,
+        "rnn.learning_rate": learning_rate,
+    }
     run_name = train_rnn(
         language=args.language,
         batch_size=2048,
@@ -50,20 +58,93 @@ for combo in all_combos:
         dropout=dropout,
         learning_rate=learning_rate,
     )
-    for num_clusters in [100, 500, 750, 1000, 1250]:
-        params = ExtractionHyperparameters(
-            kmeans_num_clusters=num_clusters,
-            pca_components=None,  # model dim, aka no pca
-            transitions_top_k=1,
-            transitions_top_p=None,
-            transitions_min_n=None,
-        )
-        eval_result, test_results = extract_fst(
-            hyperparams=params,
-            aligned_train_path=train_path,
-            eval_path=raw_dev_path,
-            test_path=raw_test_path,
-            model_id=args.model_id,
-        )
-        # TODO: Log only the best F1 score
-        logger.info(f"Extracted with {num_clusters=}, eval f1 = {eval_result['f1']}")
+    for clustering_method in ["kmeans", "dbscan"]:
+        clustering_hyperparam_options: list[tuple[str, list]] = [
+            ("state_split_classifier", ["svm", "logistic"]),
+            ("pca_components", [None, 32, 16]),
+            ("minimum_transition_count", [None, 50, 100, 1000]),
+        ]
+        if clustering_method == "kmeans":
+            clustering_hyperparam_options.extend(
+                [("kmeans_num_clusters", [500, 1000, 1500])]
+            )
+            all_extraction_combos = itertools.product(
+                *[opts for _, opts in clustering_hyperparam_options]
+            )
+            for combo in all_extraction_combos:
+                (
+                    state_split_classifier,
+                    pca_components,
+                    minimum_transition_count,
+                    kmeans_num_clusters,
+                ) = combo
+                hyperparams = ExtractionHyperparameters(
+                    clustering_method="kmeans",
+                    state_split_classifier=state_split_classifier,
+                    pca_components=pca_components,
+                    minimum_transition_count=minimum_transition_count,
+                    kmeans_num_clusters=kmeans_num_clusters,
+                )
+                wandb.init(
+                    entity="lecs-general",
+                    project="fst-distillation.exp2.extraction",
+                    config={
+                        **asdict(hyperparams),
+                        **rnn_config,
+                        "language": args.language,
+                        "model_name": run_name,
+                    },
+                )
+                eval_results, test_results = extract_fst(
+                    hyperparams=hyperparams,
+                    aligned_train_path=train_path,
+                    eval_path=raw_dev_path,
+                    test_path=raw_test_path,
+                    model_id=args.model_id,
+                )
+                wandb.log({"eval": eval_results, "test": test_results})
+                wandb.finish()
+        elif clustering_method == "dbscan":
+            clustering_hyperparam_options.extend(
+                [("eps", [1, 5, 10]), ("min_samples", [100, 500, 1000])]
+            )
+            all_extraction_combos = itertools.product(
+                *[opts for _, opts in clustering_hyperparam_options]
+            )
+            for combo in all_extraction_combos:
+                (
+                    state_split_classifier,
+                    pca_components,
+                    minimum_transition_count,
+                    eps,
+                    min_samples,
+                ) = combo
+                hyperparams = ExtractionHyperparameters(
+                    clustering_method="dbscan",
+                    state_split_classifier=state_split_classifier,
+                    pca_components=pca_components,
+                    minimum_transition_count=minimum_transition_count,
+                    eps=eps,
+                    min_samples=min_samples,
+                )
+                wandb.init(
+                    entity="lecs-general",
+                    project="fst-distillation.exp2.extraction",
+                    config={
+                        **asdict(hyperparams),
+                        **rnn_config,
+                        "language": args.language,
+                        "model_name": run_name,
+                    },
+                )
+                eval_results, test_results = extract_fst(
+                    hyperparams=hyperparams,
+                    aligned_train_path=train_path,
+                    eval_path=raw_dev_path,
+                    test_path=raw_test_path,
+                    model_id=args.model_id,
+                )
+                wandb.log({"eval": eval_results, "test": test_results})
+                wandb.finish()
+        else:
+            raise ValueError()
