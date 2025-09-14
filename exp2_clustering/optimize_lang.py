@@ -7,7 +7,6 @@ from dataclasses import asdict
 from pathlib import Path
 
 import wandb
-from exp2_clustering.steps.align_data import run_alignment
 from exp2_clustering.steps.extract_fst import ExtractionHyperparameters, extract_fst
 from exp2_clustering.steps.train_rnn import train_rnn
 from exp2_clustering.util import find_data_file
@@ -28,6 +27,8 @@ train_path = aligned_data_folder / f"{args.language}.trn.aligned"
 dev_path = aligned_data_folder / f"{args.language}.dev.aligned"
 
 if (not train_path.exists()) or (not dev_path.exists()):
+    from exp2_clustering.steps.align_data import run_alignment
+
     logger.info("Couldn't find aligned data, running alignment!")
     run_alignment([raw_train_path, raw_dev_path])
     # The aligned paths should exist now, we can just use the paths from before
