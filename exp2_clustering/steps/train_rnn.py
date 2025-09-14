@@ -84,7 +84,9 @@ def train_rnn(
         },
         checkpoint_path,
     )
-    return wandb.run.name  # type:ignore
+    run_name = wandb.run.name  # type:ignore
+    wandb.finish()
+    return run_name
 
 
 if __name__ == "__main__":
