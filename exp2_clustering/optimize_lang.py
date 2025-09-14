@@ -59,6 +59,7 @@ for combo in all_combos:
         dropout=dropout,
         learning_rate=learning_rate,
     )
+    assert run_name is not None
     for clustering_method in ["kmeans", "dbscan"]:
         clustering_hyperparam_options: list[tuple[str, list]] = [
             ("state_split_classifier", ["svm", "logistic"]),
@@ -101,7 +102,7 @@ for combo in all_combos:
                     aligned_train_path=train_path,
                     eval_path=raw_dev_path,
                     test_path=raw_test_path,
-                    model_id=args.model_id,
+                    model_id=run_name,
                 )
                 wandb.log({"eval": eval_results, "test": test_results})
                 wandb.finish()
@@ -143,7 +144,7 @@ for combo in all_combos:
                     aligned_train_path=train_path,
                     eval_path=raw_dev_path,
                     test_path=raw_test_path,
-                    model_id=args.model_id,
+                    model_id=run_name,
                 )
                 wandb.log({"eval": eval_results, "test": test_results})
                 wandb.finish()
