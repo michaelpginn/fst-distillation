@@ -33,7 +33,7 @@ def train_rnn(
     hyperparams = locals()
     wandb.init(
         entity="lecs-general",
-        project="fst-distillation.exp2",
+        project="fst-distillation.exp2.rnn_classifier",
         config={**hyperparams},
         save_code=True,
         group=language,
