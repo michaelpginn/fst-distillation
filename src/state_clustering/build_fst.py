@@ -1,12 +1,12 @@
 import logging
 import weakref
-from collections import Counter
 from typing import Literal
 
 import numpy as np
 from pyfoma._private.states import State
 from pyfoma.fst import FST
 from sklearn import linear_model, svm
+from sklearn.neighbors import KNeighborsClassifier
 
 from src.state_clustering.types import Macrostate, Macrotransition
 
@@ -159,31 +159,12 @@ def split_state(
                 symbol,
                 outputs_over_threshold,
             )
-        # counts = outgoing_distributions[symbol].values()
-        # probs = [c / sum(counts) for c in counts]
-        # entropy = -1 * sum(p * log2(p) for p in probs)
-        # if entropy > highest_entropy_input_symbol[0]:
-        #     highest_entropy_input_symbol = (entropy, symbol)
     logger.info(f"Splitting on {most_over_threshold_input_symbol}")
     _, input_symbol_to_split, outputs_to_split = most_over_threshold_input_symbol
     assert input_symbol_to_split is not None
     assert outputs_to_split is not None
 
-    # 2. Find top n outputs that have cum prob > threshold
-    # top_n_outputs: list[tuple[str, str]] = []
-    # outputs_sorted = sorted(
-    #     outgoing_distributions[highest_entropy_input_symbol[1]].items(),
-    #     key=lambda x: x[1],
-    #     reverse=True,
-    # )
-    # total_prob = 0
-    # for output, prob in outputs_sorted:
-    #     top_n_outputs.append(output)
-    #     total_prob += prob
-    #     if total_prob > transition_split_threshold:
-    #         break
-
-    # 3. Find microstates corresponding to each selected output
+    # 2. Find microstates corresponding to each selected output
     states_to_split: list[np.ndarray] = []
     labels = []
     for microstate in macrostate.microstates:
@@ -201,9 +182,8 @@ def split_state(
             label = outputs_to_split.index(output_key)
             labels.append(label)
 
-    # 4. SVM
-    # TODO: Make this a configurable hyperparameter
-    print(f"Labels to split: {Counter(labels)}")
+    # 3. SVM
+    # print(f"Labels to split: {Counter(labels)}")
     if state_splitting_classifier == "svm":
         clf = svm.LinearSVC(class_weight="balanced")
     else:
@@ -213,12 +193,19 @@ def split_state(
     preds = clf.predict(
         np.stack([microstate.position for microstate in macrostate.microstates])
     )
-    print(f"Scores: {clf.score(states_to_split, labels)}")
-    print(f"Preds: {Counter(preds)}")
+    # print(f"Scores: {clf.score(states_to_split, labels)}")
+    # print(f"Preds: {Counter(preds)}")
     if len(set(preds)) == 1:
-        breakpoint()
+        logger.warning(
+            f"Splitting state {macrostate.label} failed. Falling back to k-NN."
+        )
+        knn = KNeighborsClassifier(n_neighbors=5, n_jobs=3)
+        knn.fit(np.stack(states_to_split), labels)
+        preds = knn.predict(
+            np.stack([microstate.position for microstate in macrostate.microstates])
+        )
 
-    # 5. Create n new macrostates for points
+    # 4. Create n new macrostates for points
     new_macrostates = [
         Macrostate(label=macrostate.label + f"-{index}")
         for index in range(len(outputs_to_split))
@@ -231,7 +218,7 @@ def split_state(
         f"New macrostates: {[m.label + ': ' + str(len(m.microstates)) + 'μ-states' for m in new_macrostates]}"
     )
 
-    # 6. Remove all outgoing from this macrostate, so that we don't accidentally reference it later
+    # 5. Remove all outgoing from this macrostate, so that we don't accidentally reference it later
     for outgoing in macrostate.outgoing:
         if (target := outgoing.target()) is not None:
             target.incoming = {
@@ -240,7 +227,7 @@ def split_state(
                 if (t := transition()) and t.source() != macrostate
             }
 
-    # 7. For all previous states to current state, check recursively if needs split
+    # 6. For all previous states to current state, check recursively if needs split
     macrostates_to_recheck: list[Macrostate] = []
     for incoming in macrostate.incoming:
         if (incoming := incoming()) is not None and (
