@@ -1,4 +1,4 @@
-"""Usage: python -m exp2-clustering.train_rnn
+"""Usage: python -m exp1_clustering.train_rnn
 
 Trains an RNN acceptor to do binary classification on aligned inflection data. Saves model checkpoint to the `checkpoints/` directory.
 

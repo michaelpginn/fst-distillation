@@ -19,4 +19,4 @@ cd "/projects/$USER/fst-distillation"
 set -x
 
 echo Running for language: $1
-python -m exp2_clustering.optimize_lang $1
+python -m exp1_clustering.optimize_lang $1

@@ -1,4 +1,4 @@
-"""Usage: python -m exp2-clustering.extract_fst <checkpoint path> <train dataset path>
+"""Usage: python -m exp1_clustering.extract_fst <checkpoint path> <train dataset path>
 
 Runs the Giles (1991) clustering algorithm to produce an FST from a trained RNN.
 
@@ -26,7 +26,7 @@ from sklearn.cluster import DBSCAN, OPTICS, k_means
 from sklearn.decomposition import PCA
 from tqdm import tqdm
 
-from exp2_clustering.util import find_data_file
+from exp1_clustering.util import find_data_file
 from src.learn import standard_scale
 from src.modeling.rnn import RNNModel
 from src.remove_epsilon_loops import remove_epsilon_loops
@@ -292,8 +292,9 @@ if __name__ == "__main__":
 
     extract_fst(
         hyperparams=ExtractionHyperparameters(
+            pca_components=16,
             clustering_method="kmeans",
-            kmeans_num_clusters=500,
+            kmeans_num_clusters=1500,
             min_samples=500,
             minimum_transition_count=50,
             state_split_classifier="svm",

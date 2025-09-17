@@ -1,18 +1,25 @@
+import logging
+
 from pyfoma._private.states import State
 from pyfoma.fst import FST
+
+logger = logging.getLogger(__file__)
 
 
 def remove_epsilon_loops(fst: FST):
     """Removes loops whose inputs consist solely of epsilons."""
-    process_state(fst, fst.initialstate, visited=set())
+    queue = [fst.initialstate]
+    visited: set[State] = set()
+    while len(queue) > 0:
+        state = queue.pop(0)
+        visited.add(state)
+        next_states = process_state(fst, state)
+        next_states -= visited
+        queue.extend(list(next_states))
 
 
-def process_state(fst: FST, state: State, visited: set[State]):
-    if state in visited:
-        return
-
-    visited.add(state)
-
+def process_state(fst: FST, state: State):
+    next_states: set[State] = set()
     for label, transition_set in list(state.transitions.items()):
         for transition in list(transition_set):
             # Single-state loop (ε:whatever)*
@@ -29,10 +36,14 @@ def process_state(fst: FST, state: State, visited: set[State]):
                 detect_epsilon_loop(fst, transition.targetstate, epsilon_stack=[state])
 
             # Recursive DFS
-            process_state(fst, transition.targetstate, visited=visited)
+            next_states.add(transition.targetstate)
+    return next_states
 
 
 def detect_epsilon_loop(fst: FST, state: State, epsilon_stack: list[State]):
+    logger.debug(
+        f"Processing state: {state.name}. Stack has {len(epsilon_stack)} items."
+    )
     if state in epsilon_stack:
         # We have a loop!
         new_state = State()
