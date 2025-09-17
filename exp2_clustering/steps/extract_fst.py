@@ -293,9 +293,9 @@ if __name__ == "__main__":
     extract_fst(
         hyperparams=ExtractionHyperparameters(
             clustering_method="kmeans",
-            kmeans_num_clusters=1000,
+            kmeans_num_clusters=500,
             min_samples=500,
-            minimum_transition_count=100,
+            minimum_transition_count=50,
             state_split_classifier="svm",
             generations_top_k=1,
         ),

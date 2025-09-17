@@ -53,7 +53,7 @@ for combo in all_combos:
     run_name = train_rnn(
         language=args.language,
         batch_size=2048,
-        epochs=150,
+        epochs=200,
         d_model=d_model,
         num_layers=num_layers,
         dropout=dropout,
