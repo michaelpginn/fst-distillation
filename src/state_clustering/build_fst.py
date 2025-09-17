@@ -70,8 +70,8 @@ def build_fst(
                         queue.append(target)
         else:
             # Problems! We have to split
-            logger.info(f"Splitting state: {current_macrostate.label}")
-            logger.info(f"Bad symbols: {outgoing_distributions}")
+            logger.debug(f"Splitting state: {current_macrostate.label}")
+            logger.debug(f"Bad symbols: {outgoing_distributions}")
             # logger.info(f"Distribution: {pprint.pformat(outgoing_distributions)}")
             new_macrostates, macrostates_to_recheck = split_state(
                 current_macrostate,
@@ -159,7 +159,7 @@ def split_state(
                 symbol,
                 outputs_over_threshold,
             )
-    logger.info(f"Splitting on {most_over_threshold_input_symbol}")
+    logger.debug(f"Splitting on {most_over_threshold_input_symbol}")
     _, input_symbol_to_split, outputs_to_split = most_over_threshold_input_symbol
     assert input_symbol_to_split is not None
     assert outputs_to_split is not None
@@ -214,7 +214,7 @@ def split_state(
         new_macrostates[predicted_label].microstates.add(microstate)
         microstate.macrostate = weakref.ref(new_macrostates[predicted_label])
 
-    logger.info(
+    logger.debug(
         f"New macrostates: {[m.label + ': ' + str(len(m.microstates)) + 'μ-states' for m in new_macrostates]}"
     )
 

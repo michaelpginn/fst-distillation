@@ -245,9 +245,13 @@ def evaluate_all(fst: FST, examples: list[InflectionExample], generations_top_k:
         output_fst = input_fsa @ fst
         logger.debug("Minimizing")
         output_fst = output_fst.minimize()
-        # logger.debug("Removing epsilon loops")
-        # remove_epsilon_loops(output_fst)
-        output_fst.render(view=False)
+        if len(output_fst.finalstates) == 0:
+            logger.warning(
+                f"FST has no accepting states for input {''.join(input_string)}"
+            )
+            preds.append(set())
+            continue
+        # output_fst.render(view=False)
         output_fst = output_fst.project(-1)
         logger.debug("Generating top k words")
         example_preds = output_fst.words_nbest(generations_top_k)
@@ -293,7 +297,7 @@ if __name__ == "__main__":
             min_samples=500,
             minimum_transition_count=100,
             state_split_classifier="svm",
-            generations_top_k=10,
+            generations_top_k=1,
         ),
         aligned_train_path=train_path,
         eval_path=eval_path,
