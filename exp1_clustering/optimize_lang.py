@@ -19,7 +19,7 @@ args = parser.parse_args()
 
 # Check if we've already aligned the language. If not, run alignment on raw files.
 raw_train_path = find_data_file(f"{args.language}.trn")
-raw_dev_path = find_data_file(f"{args.language}.dev")
+raw_eval_path = find_data_file(f"{args.language}.dev")
 raw_test_path = find_data_file(f"{args.language}.tst")
 
 aligned_data_folder = Path(__file__).parent / "aligned_data"
@@ -30,7 +30,7 @@ if (not train_path.exists()) or (not dev_path.exists()):
     from exp1_clustering.steps.align_data import run_alignment
 
     logger.info("Couldn't find aligned data, running alignment!")
-    run_alignment([raw_train_path, raw_dev_path])
+    run_alignment([raw_train_path, raw_eval_path])
     # The aligned paths should exist now, we can just use the paths from before
 
 # Train model
@@ -97,14 +97,15 @@ for combo in all_combos:
                         "model_name": run_name,
                     },
                 )
-                eval_results, test_results = extract_fst(
+                results = extract_fst(
                     hyperparams=hyperparams,
                     aligned_train_path=train_path,
-                    eval_path=raw_dev_path,
-                    test_path=raw_test_path,
+                    raw_train_path=raw_train_path,
+                    raw_eval_path=raw_eval_path,
+                    raw_test_path=raw_test_path,
                     model_id=run_name,
                 )
-                wandb.log({"eval": eval_results, "test": test_results})
+                wandb.log(results)
                 wandb.finish()
         elif clustering_method == "dbscan":
             clustering_hyperparam_options.extend(
@@ -139,14 +140,15 @@ for combo in all_combos:
                         "model_name": run_name,
                     },
                 )
-                eval_results, test_results = extract_fst(
+                results = extract_fst(
                     hyperparams=hyperparams,
                     aligned_train_path=train_path,
-                    eval_path=raw_dev_path,
-                    test_path=raw_test_path,
+                    raw_train_path=raw_train_path,
+                    raw_eval_path=raw_eval_path,
+                    raw_test_path=raw_test_path,
                     model_id=run_name,
                 )
-                wandb.log({"eval": eval_results, "test": test_results})
+                wandb.log(results)
                 wandb.finish()
         else:
             raise ValueError()

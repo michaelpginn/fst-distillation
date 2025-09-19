@@ -76,8 +76,9 @@ class ExtractionHyperparameters:
 def extract_fst(
     hyperparams: ExtractionHyperparameters,
     aligned_train_path: PathLike,
-    eval_path: PathLike,
-    test_path: PathLike,
+    raw_train_path: PathLike,
+    raw_eval_path: PathLike,
+    raw_test_path: PathLike,
     model_id: str,
     visualize: bool = False,
 ):
@@ -91,13 +92,14 @@ def extract_fst(
     model = RNNModel.load(checkpoint_dict, tokenizer)
     model.to(device)
     model.eval()
-    train_examples = load_examples_from_file(aligned_train_path)
-    eval_examples = load_unaligned(eval_path)
-    test_examples = load_unaligned(test_path)
+    aligned_train_examples = load_examples_from_file(aligned_train_path)
+    raw_train_examples = load_unaligned(raw_train_path)
+    raw_eval_examples = load_unaligned(raw_eval_path)
+    raw_test_examples = load_unaligned(raw_test_path)
 
     # 1. For each training example, collect activations
     activations = []
-    for example in tqdm(train_examples, "Computing hidden states"):
+    for example in tqdm(aligned_train_examples, "Computing hidden states"):
         inputs = model.tokenizer.tokenize(example)
         hidden_states, _ = model.rnn(
             model.embedding(torch.tensor(inputs["input_ids"]).to(device))
@@ -161,7 +163,7 @@ def extract_fst(
     }
     initial_macrostate = macrostates[f"cluster-{labels[0]}"]
     offset = 0
-    for example in tqdm(train_examples, "Collecting microstates"):
+    for example in tqdm(aligned_train_examples, "Collecting microstates"):
         # <bos> [TAG1] [TAG2] ... (c:c) (c:c) ...
         transition_labels_as_list: list[str] = model.tokenizer.decode(
             model.tokenizer.tokenize(example)["input_ids"],  # type:ignore
@@ -219,15 +221,17 @@ def extract_fst(
     # fst.save("checkpoint.fst")
     # logger.info(f"Saved to {Path('checkpoint.fst')}")
 
-    eval_metrics = evaluate_all(fst, eval_examples, hyperparams.generations_top_k)
+    train_metrics = evaluate_all(fst, raw_train_examples, hyperparams.generations_top_k)
+    logger.info(f"Train metrics: {pprint.pformat(train_metrics)}")
+    eval_metrics = evaluate_all(fst, raw_eval_examples, hyperparams.generations_top_k)
     logger.info(f"Eval metrics: {pprint.pformat(eval_metrics)}")
-    test_metrics = evaluate_all(fst, test_examples, hyperparams.generations_top_k)
+    test_metrics = evaluate_all(fst, raw_test_examples, hyperparams.generations_top_k)
     logger.info(f"Test metrics: {pprint.pformat(test_metrics)}")
 
     if visualize:
         logger.info("Rendering")
         fst.render(view=True, filename="fst")
-    return eval_metrics, test_metrics
+    return {"train": train_metrics, "eval": eval_metrics, "test": test_metrics}
 
 
 def evaluate_all(fst: FST, examples: list[InflectionExample], generations_top_k: int):
@@ -289,8 +293,9 @@ if __name__ == "__main__":
     train_path = (
         Path(__file__).parent.parent / "aligned_data" / f"{args.language}.trn.aligned"
     )
-    eval_path = find_data_file(f"{args.language}.dev")
-    test_path = find_data_file(f"{args.language}.tst")
+    raw_train_path = find_data_file(f"{args.language}.trn")
+    raw_eval_path = find_data_file(f"{args.language}.dev")
+    raw_test_path = find_data_file(f"{args.language}.tst")
 
     extract_fst(
         hyperparams=ExtractionHyperparameters(
@@ -303,8 +308,9 @@ if __name__ == "__main__":
             generations_top_k=1,
         ),
         aligned_train_path=train_path,
-        eval_path=eval_path,
-        test_path=test_path,
+        raw_train_path=raw_train_path,
+        raw_eval_path=raw_eval_path,
+        raw_test_path=raw_test_path,
         model_id=args.model_id,
         visualize=args.visualize,
     )
