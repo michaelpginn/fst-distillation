@@ -113,7 +113,7 @@ def extract_fst(
         and hyperparams.pca_components < activations.shape[-1]
     ):
         logger.info(f"Reducing dimensionality (PC = {hyperparams.pca_components})...")
-        pca = PCA(n_components=hyperparams.pca_components, whiten=True)
+        pca = PCA(n_components=hyperparams.pca_components, whiten=True, random_state=0)
         activations = pca.fit_transform(activations)
 
     hopkins_stat = hopkins(activations)
@@ -121,7 +121,9 @@ def extract_fst(
 
     logger.info(f"Clustering with '{hyperparams.clustering_method}'")
     if hyperparams.clustering_method == "kmeans":
-        _, labels, _ = k_means(activations, n_clusters=hyperparams.kmeans_num_clusters)  # type:ignore
+        _, labels, _ = k_means(  # type:ignore
+            activations, n_clusters=hyperparams.kmeans_num_clusters, random_state=0
+        )
     elif hyperparams.clustering_method == "optics":
         labels = OPTICS(
             min_samples=hyperparams.min_samples,  # type:ignore
@@ -294,7 +296,7 @@ if __name__ == "__main__":
         hyperparams=ExtractionHyperparameters(
             pca_components=16,
             clustering_method="kmeans",
-            kmeans_num_clusters=1500,
+            kmeans_num_clusters=500,
             min_samples=500,
             minimum_transition_count=50,
             state_split_classifier="svm",

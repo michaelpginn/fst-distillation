@@ -1,6 +1,6 @@
 import logging
 
-from pyfoma._private.states import State
+from pyfoma.atomic import State
 from pyfoma.fst import FST
 
 logger = logging.getLogger(__file__)

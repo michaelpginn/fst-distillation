@@ -3,7 +3,7 @@ import weakref
 from typing import Literal
 
 import numpy as np
-from pyfoma._private.states import State
+from pyfoma.atomic import State
 from pyfoma.fst import FST
 from sklearn import linear_model, svm
 from sklearn.neighbors import KNeighborsClassifier
@@ -127,6 +127,7 @@ def split_state(
     offending_input_symbols: set[str],
     state_splitting_classifier: Literal["svm", "logistic"],
     minimum_transition_count: int | None,
+    seen_states: set[str] = set(),
 ):
     """Splits a state, possibly recursively.
 
@@ -140,6 +141,11 @@ def split_state(
         1. The new Macrostates created by splitting
         2. Macrostates that need to re-compute transitions
     """
+    # This depends on the fact that the default parameter is shared across function calls
+    if macrostate.label in seen_states:
+        return
+    seen_states.add(macrostate.label)
+
     outgoing_distributions = macrostate.compute_outgoing_distributions()
 
     # 1. Find worst input symbol (by entropy)
