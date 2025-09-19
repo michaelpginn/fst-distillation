@@ -60,7 +60,7 @@ class AlignedInflectionDataset(Dataset):
         logger.info("Creating negative examples")
         negative_examples = create_negative_examples(
             positive_examples,
-            all_examples=all_positive_examples,
+            all_positive_examples=all_positive_examples,
             num_tag_swaps_per_ex=5,
             num_random_perturbs_per_ex=10,
             num_insertions_per_ex=10,
