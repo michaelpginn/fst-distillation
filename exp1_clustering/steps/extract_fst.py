@@ -224,8 +224,8 @@ def extract_fst(
     # fst.save("checkpoint.fst")
     # logger.info(f"Saved to {Path('checkpoint.fst')}")
 
-    train_metrics = evaluate_all(fst, raw_train_examples, hyperparams.generations_top_k)
-    logger.info(f"Train metrics: {pprint.pformat(train_metrics)}")
+    # train_metrics = evaluate_all(fst, raw_train_examples, hyperparams.generations_top_k)
+    # logger.info(f"Train metrics: {pprint.pformat(train_metrics)}")
     eval_metrics = evaluate_all(fst, raw_eval_examples, hyperparams.generations_top_k)
     logger.info(f"Eval metrics: {pprint.pformat(eval_metrics)}")
     test_metrics = evaluate_all(fst, raw_test_examples, hyperparams.generations_top_k)
@@ -234,7 +234,7 @@ def extract_fst(
     if visualize:
         logger.info("Rendering")
         fst.render(view=True, filename="fst")
-    return {"train": train_metrics, "eval": eval_metrics, "test": test_metrics}
+    return {"eval": eval_metrics, "test": test_metrics}
 
 
 def evaluate_all(fst: FST, examples: list[InflectionExample], generations_top_k: int):
