@@ -50,7 +50,7 @@ class Tokenizer(metaclass=abc.ABCMeta):
         decoded = str("") if return_as == "str" else list[str]()
 
         for id in token_ids:
-            if skip_special_tokens and id <= len(self.special_tokens):
+            if skip_special_tokens and id < len(self.special_tokens):
                 continue
             if isinstance(decoded, str):
                 decoded += self.id_to_token[id]

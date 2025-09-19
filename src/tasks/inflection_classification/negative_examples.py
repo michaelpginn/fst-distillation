@@ -8,7 +8,7 @@ from .example import ALIGNMENT_SYMBOL, AlignedInflectionExample
 
 def create_negative_examples(
     positive_examples: list[AlignedInflectionExample],
-    all_examples: list[AlignedInflectionExample],
+    all_positive_examples: list[AlignedInflectionExample],
     num_tag_swaps_per_ex=5,
     num_random_perturbs_per_ex=5,
     num_insertions_per_ex=5,
@@ -18,8 +18,10 @@ def create_negative_examples(
     random.seed(seed)
 
     lemma_lookup: dict[str, list[AlignedInflectionExample]] = defaultdict(lambda: [])
-    for ex in positive_examples:
+    for ex in all_positive_examples:
         lemma_lookup[ex.lemma].append(ex)
+
+    negative_examples: list[AlignedInflectionExample] = []
 
     for ex in tqdm(positive_examples, "Creating negatives through tag swapping"):
         invalid_features = []
@@ -33,7 +35,7 @@ def create_negative_examples(
         if len(invalid_features) > num_tag_swaps_per_ex:
             invalid_features = random.sample(invalid_features, k=num_tag_swaps_per_ex)
         for feat in invalid_features:
-            all_examples.append(
+            negative_examples.append(
                 AlignedInflectionExample(
                     aligned_chars=ex.aligned_chars, features=list(feat), label=False
                 )
@@ -50,7 +52,7 @@ def create_negative_examples(
                 features=ex.features,
                 label=False,
             )
-            all_examples.append(synthetic_example)
+            negative_examples.append(synthetic_example)
 
         for _ in range(num_insertions_per_ex):
             synthetic_example = AlignedInflectionExample(
@@ -58,7 +60,7 @@ def create_negative_examples(
                 features=ex.features,
                 label=False,
             )
-            all_examples.append(synthetic_example)
+            negative_examples.append(synthetic_example)
 
         num_alignment_symbols_on_input = sum(1 for c in ex.aligned_chars if c[0] == "~")
         if num_alignment_symbols_on_input > 0:
@@ -69,9 +71,9 @@ def create_negative_examples(
                         features=ex.features,
                         label=False,
                     )
-                    all_examples.append(synthetic_example)
+                    negative_examples.append(synthetic_example)
 
-    return all_examples
+    return negative_examples
 
 
 def random_perturb(pairs: list[tuple[str, str]], all_symbols: set[str]):

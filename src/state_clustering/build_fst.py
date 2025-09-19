@@ -127,7 +127,7 @@ def split_state(
     offending_input_symbols: set[str],
     state_splitting_classifier: Literal["svm", "logistic"],
     minimum_transition_count: int | None,
-    seen_states: set[str] = set(),
+    unsplittable_states: set[str] = set(),
 ):
     """Splits a state, possibly recursively.
 
@@ -142,9 +142,8 @@ def split_state(
         2. Macrostates that need to re-compute transitions
     """
     # This depends on the fact that the default parameter is shared across function calls
-    if macrostate.label in seen_states:
-        return
-    seen_states.add(macrostate.label)
+    if macrostate.label in unsplittable_states:
+        return [], []
 
     outgoing_distributions = macrostate.compute_outgoing_distributions()
 
@@ -210,6 +209,9 @@ def split_state(
         preds = knn.predict(
             np.stack([microstate.position for microstate in macrostate.microstates])
         )
+        if len(set(preds)) == 1:
+            unsplittable_states.add(macrostate.label)
+            return [], []
 
     # 4. Create n new macrostates for points
     new_macrostates = [

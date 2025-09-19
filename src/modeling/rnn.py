@@ -48,7 +48,7 @@ class RNNModel(nn.Module):
 
     @classmethod
     def load(cls, checkpoint_dict: dict, tokenizer: Tokenizer):
-        assert "state_dict", "config_dict" in checkpoint_dict
+        assert "state_dict" in checkpoint_dict and "config_dict" in checkpoint_dict
         model = cls(**checkpoint_dict["config_dict"], tokenizer=tokenizer)
         model.load_state_dict(checkpoint_dict["state_dict"])
         return model

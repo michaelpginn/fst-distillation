@@ -99,12 +99,15 @@ def extract_fst(
 
     # 1. For each training example, collect activations
     activations = []
-    for example in tqdm(aligned_train_examples, "Computing hidden states"):
-        inputs = model.tokenizer.tokenize(example)
-        hidden_states, _ = model.rnn(
-            model.embedding(torch.tensor(inputs["input_ids"]).to(device))
-        )
-        activations.append(hidden_states.cpu().detach())
+    with torch.no_grad():
+        for example in tqdm(aligned_train_examples, "Computing hidden states"):
+            inputs = model.tokenizer.tokenize(example)
+            hidden_states, _ = model.rnn(
+                model.embedding(
+                    torch.tensor(inputs["input_ids"]).unsqueeze(0).to(device)
+                )
+            )
+            activations.append(hidden_states.squeeze(0).cpu().detach())
     activations = torch.concat(activations)
 
     # 2. Perform standardization -> dim reduction -> clustering
@@ -115,7 +118,7 @@ def extract_fst(
         and hyperparams.pca_components < activations.shape[-1]
     ):
         logger.info(f"Reducing dimensionality (PC = {hyperparams.pca_components})...")
-        pca = PCA(n_components=hyperparams.pca_components, whiten=True, random_state=0)
+        pca = PCA(n_components=hyperparams.pca_components, random_state=0)
         activations = pca.fit_transform(activations)
 
     hopkins_stat = hopkins(activations)
