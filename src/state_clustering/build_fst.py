@@ -24,15 +24,12 @@ def build_fst(
     queue: list[Macrostate] = [initial_macrostate]
     visited_labels: set[str] = set()
     while len(queue) > 0:
-        print(f"\rItems in queue: {len(queue)}", end="", flush=True)
-        # logger.info(f"Queue: {[m.label for m in queue]}")
         current_macrostate = queue.pop(0)
         if current_macrostate.label in visited_labels:
             continue
         visited_labels.add(current_macrostate.label)
         outgoing_distributions = current_macrostate.compute_outgoing_distributions()
-        # logger.info(f"Processing state: {current_macrostate.label}")
-        # logger.info(f"Outgoing: {outgoing_distributions}")
+        logger.debug(f"Processing state: {current_macrostate.label}")
         chosen_transitions: set[Macrotransition] = set()
         nondeterministic_input_symbols: set[str] = set()
         for input_symbol, distribution in outgoing_distributions.items():
@@ -79,12 +76,6 @@ def build_fst(
                 state_splitting_classifier=state_splitting_classifier,
                 minimum_transition_count=minimum_transition_count,
             )
-            # logger.info(
-            #     f"Split into new macrostates: {[m.label for m in new_macrostates]}"
-            # )
-            # logger.info(
-            #     f"Re-adding to queue: {[m.label for m in macrostates_to_recheck]}"
-            # )
             del macrostates[current_macrostate.label]
             for m in new_macrostates:
                 assert m.label not in macrostates
