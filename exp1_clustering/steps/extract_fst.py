@@ -21,6 +21,7 @@ import pandas
 import seaborn
 import torch
 from hdbscan import HDBSCAN
+from pyfoma._private import algorithms
 from pyfoma.fst import FST
 from sklearn.cluster import DBSCAN, OPTICS, k_means
 from sklearn.decomposition import PCA
@@ -47,6 +48,8 @@ from src.training_classifier.train import device
 
 warnings.filterwarnings("ignore", category=RuntimeWarning)
 logger = logging.getLogger(__file__)
+
+DEBUG = False
 
 
 @dataclass(frozen=True)
@@ -248,7 +251,7 @@ def evaluate_all(fst: FST, examples: list[InflectionExample], generations_top_k:
         labels.append(correct_output)
 
         # Generate outputs by composing input acceptor with transducer
-        logger.debug(f"Composing input string: {input_string}")
+        logger.debug(f"Composing input string: {''.join(input_string)}")
         input_fsa = FST.re("".join(f"'{c}'" for c in input_string))
         logger.debug("Composing input @ output")
         output_fst = input_fsa @ fst
@@ -260,13 +263,21 @@ def evaluate_all(fst: FST, examples: list[InflectionExample], generations_top_k:
             )
             preds.append(set())
             continue
-        # output_fst.render(view=False)
+        if DEBUG:
+            output_fst.render(view=False)
         output_fst = output_fst.project(-1)
-        logger.debug("Generating top k words")
-        example_preds = output_fst.words_nbest(generations_top_k)
-        logger.debug(f"Words: {example_preds}")
-        example_preds = ["".join(c[0] for c in chars) for _, chars in example_preds]
-        preds.append(set(example_preds))
+
+        # The following runs endlessly for very long inputs
+        #
+        # logger.debug(f"Generating top k words ({len(output_fst.states)} states)")
+        # example_preds = output_fst.words_nbest(generations_top_k)
+        # logger.debug(f"Words: {example_preds}")
+        # example_preds = ["".join(c[0] for c in chars) for _, chars in example_preds]
+        # preds.append(set(example_preds))
+        #
+        # I've replaced it with just finding the shortest path
+        best_word = "".join(c[0] for c in algorithms.best_word(output_fst))
+        preds.append(set([best_word]))
     return compute_metrics(labels, preds)
 
 
@@ -302,11 +313,12 @@ if __name__ == "__main__":
 
     extract_fst(
         hyperparams=ExtractionHyperparameters(
-            pca_components=16,
-            clustering_method="kmeans",
+            pca_components=None,
+            clustering_method="dbscan",
             kmeans_num_clusters=500,
-            min_samples=500,
-            minimum_transition_count=50,
+            min_samples=100,
+            eps=1,
+            minimum_transition_count=None,
             state_split_classifier="svm",
             generations_top_k=1,
         ),

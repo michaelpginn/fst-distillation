@@ -111,6 +111,7 @@ def build_fst(
                 fst_states[macrostate.label].add_transition(
                     other=fst_states[target.label],
                     label=(transition.input_symbol, transition.output_symbol),
+                    weight=1,
                 )
             alphabet.update([transition.input_symbol, transition.output_symbol])
     fst = FST()
