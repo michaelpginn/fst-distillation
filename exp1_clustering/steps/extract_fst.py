@@ -9,6 +9,7 @@ import argparse
 import logging
 import pprint
 import re
+import typing
 import warnings
 import weakref
 from dataclasses import dataclass
@@ -17,9 +18,11 @@ from pathlib import Path
 from typing import Literal
 
 import matplotlib.pyplot as plt
+import numpy as np
 import pandas
 import seaborn
 import torch
+import umap
 from hdbscan import HDBSCAN
 from pyfoma._private import algorithms
 from pyfoma.fst import FST
@@ -59,7 +62,10 @@ class ExtractionHyperparameters:
     min_samples: int | None = None
     eps: float | None = None
 
-    pca_components: int | None = None
+    dim_reduction_method: Literal["pca", "umap", "none"] = "none"
+    n_components: int | None = None
+    umap_n_neighbors: int | None = None
+    umap_min_distance: float | None = None
 
     minimum_transition_count: int | None = 100
     """Minimum count for a given transition to be guaranteed to be included"""
@@ -117,12 +123,17 @@ def extract_fst(
     logger.info("Standardizing...")
     activations = standard_scale(activations).numpy()
     if (
-        hyperparams.pca_components
-        and hyperparams.pca_components < activations.shape[-1]
+        hyperparams.dim_reduction_method != "none"
+        and hyperparams.n_components < activations.shape[-1]
     ):
-        logger.info(f"Reducing dimensionality (PC = {hyperparams.pca_components})...")
-        pca = PCA(n_components=hyperparams.pca_components, random_state=0)
-        activations = pca.fit_transform(activations)
+        logger.info(f"Reducing dimensionality (PC = {hyperparams.n_components})...")
+        if hyperparams.dim_reduction_method == "pca":
+            pca = PCA(n_components=hyperparams.n_components, random_state=0)
+            activations = pca.fit_transform(activations)
+        elif hyperparams.dim_reduction_method == "umap":
+            map = umap.UMAP()
+            activations = map.fit_transform(activations)
+        activations = typing.cast(np.ndarray, activations)
 
     hopkins_stat = hopkins(activations)
     logger.info(f"Hopkins statistic: {hopkins_stat}")
@@ -147,7 +158,7 @@ def extract_fst(
         assert hyperparams.eps is not None
         assert hyperparams.min_samples is not None
         labels = DBSCAN(
-            eps=hyperparams.eps, min_samples=hyperparams.min_samples
+            eps=hyperparams.eps, min_samples=hyperparams.min_samples, n_jobs=-1
         ).fit_predict(activations)
     else:
         raise ValueError()
@@ -313,7 +324,10 @@ if __name__ == "__main__":
 
     extract_fst(
         hyperparams=ExtractionHyperparameters(
-            pca_components=None,
+            dim_reduction_method="pca",
+            n_components=16,
+            umap_n_neighbors=10,
+            umap_min_distance=0.01,
             clustering_method="dbscan",
             kmeans_num_clusters=500,
             min_samples=100,

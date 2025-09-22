@@ -60,7 +60,7 @@ for combo in all_combos:
         learning_rate=learning_rate,
     )
     assert run_name is not None
-    for clustering_method in ["kmeans", "dbscan"]:
+    for clustering_method in ["kmeans"]:
         clustering_hyperparam_options: list[tuple[str, list]] = [
             ("state_split_classifier", ["svm", "logistic"]),
             ("pca_components", [None, 32, 16]),
@@ -83,7 +83,7 @@ for combo in all_combos:
                 hyperparams = ExtractionHyperparameters(
                     clustering_method="kmeans",
                     state_split_classifier=state_split_classifier,
-                    pca_components=pca_components,
+                    n_components=pca_components,
                     minimum_transition_count=minimum_transition_count,
                     kmeans_num_clusters=kmeans_num_clusters,
                 )
@@ -125,7 +125,7 @@ for combo in all_combos:
                 hyperparams = ExtractionHyperparameters(
                     clustering_method="dbscan",
                     state_split_classifier=state_split_classifier,
-                    pca_components=pca_components,
+                    n_components=pca_components,
                     minimum_transition_count=minimum_transition_count,
                     eps=eps,
                     min_samples=min_samples,
