@@ -13,7 +13,6 @@ import typing
 import warnings
 import weakref
 from dataclasses import dataclass
-from os import PathLike
 from pathlib import Path
 from typing import Literal
 
@@ -30,24 +29,23 @@ from sklearn.cluster import DBSCAN, OPTICS, k_means
 from sklearn.decomposition import PCA
 from tqdm import tqdm
 
-from exp1_clustering.util import find_data_file
-from src.learn import standard_scale
+from experiments.shared import DataFiles, add_task_parser, get_data_files
+from src.data.classification.example import load_examples_from_file
+from src.data.classification.tokenizer import AlignedInflectionTokenizer
+from src.data.seq2seq.example import String2StringExample
+from src.data.seq2seq.example import (
+    load_examples_from_file as load_unaligned,
+)
 from src.modeling.rnn import RNNModel
-from src.remove_epsilon_loops import remove_epsilon_loops
 from src.state_clustering.build_fst import build_fst
 from src.state_clustering.hopkins import hopkins
+from src.state_clustering.remove_epsilon_loops import remove_epsilon_loops
 from src.state_clustering.types import (
     Macrostate,
     Microstate,
     Microtransition,
 )
-from src.tasks.inflection_classification.dataset import load_examples_from_file
-from src.tasks.inflection_classification.tokenizer import AlignedInflectionTokenizer
-from src.tasks.inflection_seq2seq.dataset import (
-    load_examples_from_file as load_unaligned,
-)
-from src.tasks.inflection_seq2seq.example import InflectionExample
-from src.training_classifier.train import device
+from src.training.classifier.train import device
 
 warnings.filterwarnings("ignore", category=RuntimeWarning)
 logger = logging.getLogger(__file__)
@@ -84,10 +82,7 @@ class ExtractionHyperparameters:
 
 def extract_fst(
     hyperparams: ExtractionHyperparameters,
-    aligned_train_path: PathLike,
-    raw_train_path: PathLike,
-    raw_eval_path: PathLike,
-    raw_test_path: PathLike,
+    data_files: DataFiles,
     model_id: str,
     visualize: bool = False,
 ):
@@ -101,10 +96,10 @@ def extract_fst(
     model = RNNModel.load(checkpoint_dict, tokenizer)
     model.to(device)
     model.eval()
-    aligned_train_examples = load_examples_from_file(aligned_train_path)
-    raw_train_examples = load_unaligned(raw_train_path)
-    raw_eval_examples = load_unaligned(raw_eval_path)
-    raw_test_examples = load_unaligned(raw_test_path)
+    aligned_train_examples = load_examples_from_file(data_files["train_aligned"])
+    # raw_train_examples = load_unaligned(data_files["train"], data_files["has_features"])
+    raw_eval_examples = load_unaligned(data_files["eval"], data_files["has_features"])
+    raw_test_examples = load_unaligned(data_files["test"], data_files["has_features"])
 
     # 1. For each training example, collect activations
     activations = []
@@ -121,7 +116,8 @@ def extract_fst(
 
     # 2. Perform standardization -> dim reduction -> clustering
     logger.info("Standardizing...")
-    activations = standard_scale(activations).numpy()
+    activations = (activations - activations.mean(dim=0)) / activations.std(dim=0)
+    activations = activations.numpy()
     if (
         hyperparams.dim_reduction_method != "none"
         and hyperparams.n_components < activations.shape[-1]
@@ -251,15 +247,20 @@ def extract_fst(
     return {"eval": eval_metrics, "test": test_metrics}
 
 
-def evaluate_all(fst: FST, examples: list[InflectionExample], generations_top_k: int):
+def evaluate_all(
+    fst: FST, examples: list[String2StringExample], generations_top_k: int
+):
     labels: list[str] = []
     preds: list[set[str]] = []
     for example in tqdm(examples, "Evaluating"):
-        features = [f"[{f}]" for f in example.features]
-        input_string = features + ["<sep>"] + [c for c in example.lemma]
-        assert example.target is not None
-        correct_output = "".join(features + ["<sep>"] + [c for c in example.target])
-        labels.append(correct_output)
+        input_string = [c for c in example.input_string]
+        assert example.output_string is not None
+        correct_output = [c for c in example.output_string]
+        if example.features is not None:
+            features = [f"[{f}]" for f in example.features]
+            input_string = features + ["<sep>"] + input_string
+            correct_output = features + ["<sep>"] + correct_output
+        labels.append("".join(correct_output))
 
         # Generate outputs by composing input acceptor with transducer
         logger.debug(f"Composing input string: {''.join(input_string)}")
@@ -311,24 +312,18 @@ def compute_metrics(labels: list[str], predictions: list[set[str]]):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
-    parser.add_argument("model_id", help="WandB shortname for the training run")
-    parser.add_argument("--language", default="swe", help="Isocode for the language")
+    add_task_parser(parser)
+    parser.add_argument("--model", help="WandB shortname for the training run")
     parser.add_argument("--visualize", action="store_true")
     args = parser.parse_args()
-    train_path = (
-        Path(__file__).parent.parent / "aligned_data" / f"{args.language}.trn.aligned"
-    )
-    raw_train_path = find_data_file(f"{args.language}.trn")
-    raw_eval_path = find_data_file(f"{args.language}.dev")
-    raw_test_path = find_data_file(f"{args.language}.tst")
 
     extract_fst(
         hyperparams=ExtractionHyperparameters(
-            dim_reduction_method="pca",
+            dim_reduction_method="umap",
             n_components=16,
             umap_n_neighbors=10,
             umap_min_distance=0.01,
-            clustering_method="dbscan",
+            clustering_method="kmeans",
             kmeans_num_clusters=500,
             min_samples=100,
             eps=1,
@@ -336,10 +331,7 @@ if __name__ == "__main__":
             state_split_classifier="svm",
             generations_top_k=1,
         ),
-        aligned_train_path=train_path,
-        raw_train_path=raw_train_path,
-        raw_eval_path=raw_eval_path,
-        raw_test_path=raw_test_path,
+        data_files=get_data_files(args),
         model_id=args.model_id,
         visualize=args.visualize,
     )

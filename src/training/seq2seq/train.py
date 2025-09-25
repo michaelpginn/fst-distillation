@@ -2,10 +2,12 @@ import tempfile
 from typing import Callable
 
 import torch
+from torch.optim.adamw import AdamW
+from torch.optim.optimizer import Optimizer
 from torch.utils.data import DataLoader
 from tqdm import tqdm
 
-from src.optional_wandb import wandb
+import wandb
 
 device = "cuda" if torch.cuda.is_available() else "mps"
 
@@ -14,7 +16,7 @@ def training_loop(
     model: torch.nn.Module,
     dataloader: DataLoader,
     loss_fn: Callable,
-    optimizer: torch.optim.Optimizer,
+    optimizer: Optimizer,
 ):
     model.train()
     epoch_loss = 0
@@ -77,7 +79,7 @@ def train(
     torch.cuda.manual_seed(seed)
 
     loss_fn = torch.nn.CrossEntropyLoss()
-    optimizer = torch.optim.AdamW(model.parameters(), lr=learning_rate)
+    optimizer = AdamW(model.parameters(), lr=learning_rate)
 
     model = model.to(device)
 

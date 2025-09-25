@@ -1,10 +1,10 @@
 import torch
 from torch.utils.data import DataLoader
 
-from src.modeling.input_processing import pad_batch_collate_fn
-from src.tasks.inflection_classification.balanced_sampler import (
+from src.data.classification.balanced_sampler import (
     BalancedResampledSampler,
 )
+from src.modeling.input_processing import pad_batch_collate_fn
 
 from .dataset import AlignedInflectionDataset
 

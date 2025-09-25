@@ -1,4 +1,4 @@
-"""Usage: python -m exp1_clustering.train_rnn
+"""Usage: python -m experiments.clustering.train_rnn
 
 Trains an RNN acceptor to do binary classification on aligned inflection data. Saves model checkpoint to the `checkpoints/` directory.
 
@@ -10,18 +10,19 @@ from argparse import ArgumentParser
 
 import torch
 
-from src.modeling import RNNModel
-from src.optional_wandb import wandb
-from src.tasks.inflection_classification import create_dataloader
-from src.tasks.inflection_classification.dataset import (
+import wandb
+from experiments.shared import DataFiles, add_task_parser, get_data_files
+from src.data.classification.dataloader import create_dataloader
+from src.data.classification.dataset import (
     AlignedInflectionDataset,
-    load_examples_from_file,
 )
-from src.training_classifier import train
+from src.data.classification.example import load_examples_from_file
+from src.modeling import RNNModel
+from src.training.classifier.train import train
 
 
 def train_rnn(
-    language: str,
+    data_files: DataFiles,
     batch_size: int,
     epochs: int,
     d_model: int,
@@ -33,20 +34,15 @@ def train_rnn(
     hyperparams = locals()
     wandb.init(
         entity="lecs-general",
-        project="fst-distillation.exp2.rnn_classifier",
+        project="fst-distillation.clustering.rnn_classifier",
         config={**hyperparams},
         save_code=True,
-        group=language,
     )
 
     # In order to create negative examples, we need to pre-load all of the examples so
     # we don't accidentally create negative examples that are valid
-    train_examples = load_examples_from_file(
-        pathlib.Path(__file__).parent.parent / f"aligned_data/{language}.trn.aligned"
-    )
-    eval_examples = load_examples_from_file(
-        pathlib.Path(__file__).parent.parent / f"aligned_data/{language}.dev.aligned"
-    )
+    train_examples = load_examples_from_file(data_files["train_aligned"])
+    eval_examples = load_examples_from_file(data_files["eval_aligned"])
     train_dataset = AlignedInflectionDataset(
         positive_examples=train_examples,
         all_positive_examples=train_examples + eval_examples,
@@ -91,17 +87,16 @@ def train_rnn(
 
 if __name__ == "__main__":
     parser = ArgumentParser()
-    parser.add_argument("--language", default="swe")
+    add_task_parser(parser)
     parser.add_argument("--batch-size", default=1024)
     parser.add_argument("--epochs", default=150)
     parser.add_argument("--hidden-dim", default=64)
     parser.add_argument("--num-layers", default=2)
     parser.add_argument("--dropout", default=0.5)
     parser.add_argument("--learning-rate", default=0.0002)
-
     args = parser.parse_args()
     train_rnn(
-        language=args.language,
+        data_files=get_data_files(args),
         batch_size=int(args.batch_size),
         epochs=int(args.epochs),
         d_model=int(args.hidden_dim),

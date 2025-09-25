@@ -1,4 +1,4 @@
-"""Usage: python -m exp1_clustering.run_alignment <train_file> <eval_file> ...
+"""Usage: python -m experiments.clustering.run_alignment <train_file> <eval_file> ...
 Given one or more files in the shared task format, runs Hulden alignment over all examples (from any file), excluding tags.
 
 Given the inputs:
@@ -19,23 +19,27 @@ import logging
 import pathlib
 from os import PathLike
 
+from src.data.classification.example import ALIGNMENT_SYMBOL
+from src.data.seq2seq.example import load_examples_from_file
 from src.hulden_alignment import Aligner
-from src.tasks.inflection_classification.example import ALIGNMENT_SYMBOL
-from src.tasks.inflection_seq2seq.dataset import load_examples_from_file
 
 logger = logging.getLogger(__name__)
 
 
-def run_alignment(file_paths: list[PathLike], alignment_character=ALIGNMENT_SYMBOL):
+def run_alignment(
+    file_paths: list[PathLike], has_features: bool, alignment_character=ALIGNMENT_SYMBOL
+):
     output_folder = pathlib.Path(__file__).parent.parent / "aligned_data"
     output_folder.mkdir(exist_ok=True)
 
     logger.info("Running alignment")
-    examples_per_file = [load_examples_from_file(path) for path in file_paths]
+    examples_per_file = [
+        load_examples_from_file(path, has_features) for path in file_paths
+    ]
     all_examples = [ex for file_examples in examples_per_file for ex in file_examples]
-    assert not any(ex.target is None for ex in all_examples)
+    assert not any(ex.output_string is None for ex in all_examples)
     aligner = Aligner(
-        wordpairs=[(ex.lemma, ex.target) for ex in all_examples],  # type:ignore
+        wordpairs=[(ex.input_string, ex.output_string) for ex in all_examples],  # type:ignore
         iterations=100,
         align_symbol=alignment_character,
     )
@@ -55,13 +59,18 @@ def run_alignment(file_paths: list[PathLike], alignment_character=ALIGNMENT_SYMB
                         for in_char, out_char in zip(*aligned_strings)
                     ]
                 )
-                features_string = ";".join(all_examples[example_index].features)
-                f.write(f"{aligned_tuples}\t{features_string}\n")
+                if (features := all_examples[example_index].features) is not None:
+                    features_string = ";".join(features)
+                    f.write(f"{aligned_tuples}\t{features_string}\n")
+                else:
+                    f.write(f"{aligned_tuples}\n")
+
         current_offset += num_examples
 
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
+    parser.add_argument("--features", action="store_true")
     parser.add_argument("files", nargs="+")
     args = parser.parse_args()
-    run_alignment(args.files)
+    run_alignment(args.files, has_features=args.features)

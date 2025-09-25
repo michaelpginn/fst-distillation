@@ -4,33 +4,31 @@ import argparse
 import itertools
 import logging
 from dataclasses import asdict
-from pathlib import Path
 
 import wandb
-from exp1_clustering.steps.extract_fst import ExtractionHyperparameters, extract_fst
-from exp1_clustering.steps.train_rnn import train_rnn
-from exp1_clustering.util import find_data_file
+
+from ..shared import add_task_parser, get_data_files
+from .steps.extract_fst import ExtractionHyperparameters, extract_fst
+from .steps.train_rnn import train_rnn
 
 logger = logging.getLogger(__name__)
 
 parser = argparse.ArgumentParser()
-parser.add_argument("language", help="Isocode for the language")
+add_task_parser(parser)
 args = parser.parse_args()
+data_files = get_data_files(args)
 
 # Check if we've already aligned the language. If not, run alignment on raw files.
-raw_train_path = find_data_file(f"{args.language}.trn")
-raw_eval_path = find_data_file(f"{args.language}.dev")
-raw_test_path = find_data_file(f"{args.language}.tst")
-
-aligned_data_folder = Path(__file__).parent / "aligned_data"
-train_path = aligned_data_folder / f"{args.language}.trn.aligned"
-dev_path = aligned_data_folder / f"{args.language}.dev.aligned"
-
-if (not train_path.exists()) or (not dev_path.exists()):
-    from exp1_clustering.steps.align_data import run_alignment
+if (not data_files["train_aligned"].exists()) or (
+    not data_files["eval_aligned"].exists()
+):
+    from .steps.align_data import run_alignment
 
     logger.info("Couldn't find aligned data, running alignment!")
-    run_alignment([raw_train_path, raw_eval_path])
+    run_alignment(
+        [data_files["train"], data_files["eval"]],
+        has_features=data_files["has_features"],
+    )
     # The aligned paths should exist now, we can just use the paths from before
 
 # Train model
@@ -51,7 +49,7 @@ for combo in all_combos:
         "rnn.learning_rate": learning_rate,
     }
     run_name = train_rnn(
-        language=args.language,
+        data_files=data_files,
         batch_size=2048,
         epochs=200,
         d_model=d_model,
@@ -89,7 +87,7 @@ for combo in all_combos:
                 )
                 wandb.init(
                     entity="lecs-general",
-                    project="fst-distillation.exp2.extraction",
+                    project="fst-distillation.clustering.extraction",
                     config={
                         **asdict(hyperparams),
                         **rnn_config,
@@ -99,10 +97,7 @@ for combo in all_combos:
                 )
                 results = extract_fst(
                     hyperparams=hyperparams,
-                    aligned_train_path=train_path,
-                    raw_train_path=raw_train_path,
-                    raw_eval_path=raw_eval_path,
-                    raw_test_path=raw_test_path,
+                    data_files=data_files,
                     model_id=run_name,
                 )
                 wandb.log(results)
@@ -132,7 +127,7 @@ for combo in all_combos:
                 )
                 wandb.init(
                     entity="lecs-general",
-                    project="fst-distillation.exp2.extraction",
+                    project="fst-distillation.clustering.extraction",
                     config={
                         **asdict(hyperparams),
                         **rnn_config,
@@ -142,10 +137,7 @@ for combo in all_combos:
                 )
                 results = extract_fst(
                     hyperparams=hyperparams,
-                    aligned_train_path=train_path,
-                    raw_train_path=raw_train_path,
-                    raw_eval_path=raw_eval_path,
-                    raw_test_path=raw_test_path,
+                    data_files=data_files,
                     model_id=run_name,
                 )
                 wandb.log(results)

@@ -1,32 +1,14 @@
 import logging
-import re
-from os import PathLike
 
 from torch.utils.data import Dataset
 
-from src.tasks.inflection_classification.negative_examples import (
+from .example import AlignedStringExample
+from .negative_examples import (
     create_negative_examples,
 )
-
-from .example import AlignedInflectionExample
 from .tokenizer import AlignedInflectionTokenizer
 
 logger = logging.getLogger(__file__)
-
-
-def load_examples_from_file(path: str | PathLike):
-    """Loads `AlignedInflectionExample` instances from a TSV file"""
-    examples: list[AlignedInflectionExample] = []
-    with open(path, "r") as f:
-        for line in f:
-            row = line.strip().split("\t")
-            if len(row) != 2:
-                raise ValueError("File must be TSV with two columns")
-            [chars, features] = row
-            char_pairs: list[tuple[str, str]] = re.findall(r"\((.*?),(.*?)\)", chars)
-            features = [f"[{f}]" for f in features.split(";")]
-            examples.append(AlignedInflectionExample(char_pairs, features, label=True))
-    return examples
 
 
 class AlignedInflectionDataset(Dataset):
@@ -38,8 +20,8 @@ class AlignedInflectionDataset(Dataset):
 
     def __init__(
         self,
-        positive_examples: list[AlignedInflectionExample],
-        all_positive_examples: list[AlignedInflectionExample],
+        positive_examples: list[AlignedStringExample],
+        all_positive_examples: list[AlignedStringExample],
         tokenizer: AlignedInflectionTokenizer | None,
     ):
         """
@@ -48,7 +30,7 @@ class AlignedInflectionDataset(Dataset):
 
         Args:
             positive_examples: The examples to use for *this dataset*
-            all_positive_examples: All seen positive examples across datasets
+            all_positive_examples: All seen positive examples across dataset splits
         """
         logger.info(f"Loaded {len(positive_examples)} rows.")
         if tokenizer is not None:

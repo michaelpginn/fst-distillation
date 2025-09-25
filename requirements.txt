@@ -8,3 +8,4 @@ matplotlib
 scikit-learn
 wandb
 hdbscan
+umap-learn
