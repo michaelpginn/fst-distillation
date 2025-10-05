@@ -3,7 +3,7 @@ from src.modeling.tokenizer import Tokenizer
 from .example import String2StringExample
 
 
-class SharedTaskInflectionTokenizer(Tokenizer):
+class String2StringTokenizer(Tokenizer):
     def create_vocab(self, examples: list[String2StringExample]) -> list[str]:
         vocab: set[str] = set()
         for example in examples:
@@ -26,7 +26,7 @@ class SharedTaskInflectionTokenizer(Tokenizer):
         target_input_ids = None
         target_label_ids = None
 
-        # Source should be `<bos> features <sep> lemma`
+        # Source should be `<bos> features <sep> chars`
         if example.features is not None:
             source_input_ids += [
                 self.token_to_id.get(feature, self.unk_token_id)

@@ -28,7 +28,6 @@ def add_task_parser(parser: ArgumentParser):
     parser.add_argument("task", choices=["inflection"])
     parser.add_argument(
         "dataset",
-        required=True,
         help="The key for the dataset. Probably an isocode or other name.",
     )
 
@@ -49,10 +48,14 @@ def get_data_files(args: Namespace) -> DataFiles:
         "eval": find_data_file(args.task, f"{args.dataset}.dev"),
         "test": find_data_file(args.task, f"{args.dataset}.tst"),
         "train_aligned": Path(__file__).parent
-        / f"clustering/aligned_data/{args.language}.trn.aligned",
+        / f"clustering/aligned_data/{args.dataset}.trn.aligned",
         "eval_aligned": Path(__file__).parent
-        / f"clustering/aligned_data/{args.language}.dev.aligned",
+        / f"clustering/aligned_data/{args.dataset}.dev.aligned",
         "test_aligned": Path(__file__).parent
-        / f"clustering/aligned_data/{args.language}.tst.aligned",
+        / f"clustering/aligned_data/{args.dataset}.tst.aligned",
         "has_features": args.task == "inflection",
     }
+
+
+def get_identifier(args: Namespace):
+    return f"{args.task}.{args.dataset}"

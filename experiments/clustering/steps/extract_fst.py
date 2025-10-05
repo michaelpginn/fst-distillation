@@ -1,4 +1,4 @@
-"""Usage: python -m exp1_clustering.extract_fst <checkpoint path> <train dataset path>
+"""Usage: python -m experiments.clustering.extract_fst <checkpoint path> <train dataset path>
 
 Runs the Giles (1991) clustering algorithm to produce an FST from a trained RNN.
 
@@ -23,23 +23,23 @@ import seaborn
 import torch
 import umap
 from hdbscan import HDBSCAN
-from pyfoma._private import algorithms
-from pyfoma.fst import FST
 from sklearn.cluster import DBSCAN, OPTICS, k_means
 from sklearn.decomposition import PCA
 from tqdm import tqdm
 
 from experiments.shared import DataFiles, add_task_parser, get_data_files
-from src.data.classification.example import load_examples_from_file
-from src.data.classification.tokenizer import AlignedInflectionTokenizer
-from src.data.seq2seq.example import String2StringExample
-from src.data.seq2seq.example import (
+from src.data.aligned.classification.tokenizer import AlignedClassificationTokenizer
+from src.data.aligned.example import ALIGNMENT_SYMBOL, load_examples_from_file
+from src.data.aligned.language_modeling.tokenizer import (
+    AlignedLanguageModelingTokenizer,
+)
+from src.data.unaligned.example import (
     load_examples_from_file as load_unaligned,
 )
+from src.evaluate import evaluate_all
 from src.modeling.rnn import RNNModel
 from src.state_clustering.build_fst import build_fst
 from src.state_clustering.hopkins import hopkins
-from src.state_clustering.remove_epsilon_loops import remove_epsilon_loops
 from src.state_clustering.types import (
     Macrostate,
     Microstate,
@@ -90,14 +90,23 @@ def extract_fst(
     checkpoint_dict = torch.load(
         model_path, weights_only=True, map_location=torch.device("cpu")
     )
-    tokenizer = AlignedInflectionTokenizer.from_state_dict(
-        checkpoint_dict["tokenizer_dict"]
-    )
+    if (
+        task := checkpoint_dict["config_dict"].get("output_head", "classification")
+    ) == "classification":
+        tokenizer = AlignedClassificationTokenizer.from_state_dict(
+            checkpoint_dict["tokenizer_dict"]
+        )
+    elif task == "lm":
+        tokenizer = AlignedLanguageModelingTokenizer.from_state_dict(
+            checkpoint_dict["tokenizer_dict"]
+        )
+    else:
+        raise ValueError(f"Unknown model head: {task}")
     model = RNNModel.load(checkpoint_dict, tokenizer)
     model.to(device)
     model.eval()
     aligned_train_examples = load_examples_from_file(data_files["train_aligned"])
-    # raw_train_examples = load_unaligned(data_files["train"], data_files["has_features"])
+    raw_train_examples = load_unaligned(data_files["train"], data_files["has_features"])
     raw_eval_examples = load_unaligned(data_files["eval"], data_files["has_features"])
     raw_test_examples = load_unaligned(data_files["test"], data_files["has_features"])
 
@@ -106,10 +115,11 @@ def extract_fst(
     with torch.no_grad():
         for example in tqdm(aligned_train_examples, "Computing hidden states"):
             inputs = model.tokenizer.tokenize(example)
-            hidden_states, _ = model.rnn(
-                model.embedding(
-                    torch.tensor(inputs["input_ids"]).unsqueeze(0).to(device)
-                )
+            hidden_states = model.compute_hidden_states(
+                embeddings=model.embedding(
+                    torch.tensor(inputs["input_ids"], device=device).unsqueeze(0)
+                ),
+                seq_lengths=torch.tensor([len(inputs["input_ids"])], device=device),  # type:ignore
             )
             activations.append(hidden_states.squeeze(0).cpu().detach())
     activations = torch.concat(activations)
@@ -176,6 +186,7 @@ def extract_fst(
     }
     initial_macrostate = macrostates[f"cluster-{labels[0]}"]
     offset = 0
+    labels_to_debug_ = {}
     for example in tqdm(aligned_train_examples, "Collecting microstates"):
         # <bos> [TAG1] [TAG2] ... (c:c) (c:c) ...
         transition_labels_as_list: list[str] = model.tokenizer.decode(
@@ -198,8 +209,10 @@ def extract_fst(
                 else:
                     input_symbol = transition_label
                     output_symbol = transition_label
-                input_symbol = "" if input_symbol == "~" else input_symbol
-                output_symbol = "" if output_symbol == "~" else output_symbol
+                input_symbol = "" if input_symbol == ALIGNMENT_SYMBOL else input_symbol
+                output_symbol = (
+                    "" if output_symbol == ALIGNMENT_SYMBOL else output_symbol
+                )
                 transition = Microtransition(
                     input_symbol=input_symbol,
                     output_symbol=output_symbol,
@@ -215,6 +228,8 @@ def extract_fst(
             ]
             assigned_macrostate.microstates.add(microstate)
             microstate.macrostate = weakref.ref(assigned_macrostate)
+            if example.input_string == "tyngdkraft":
+                labels_to_debug_[assigned_macrostate.label] = microstate
             previous_microstate = microstate
         offset += len(transition_labels_as_list)
 
@@ -224,21 +239,22 @@ def extract_fst(
         macrostates=macrostates,
         state_splitting_classifier=hyperparams.state_split_classifier,
         minimum_transition_count=hyperparams.minimum_transition_count,
+        breakpoint_on=labels_to_debug_,
     )
 
     logger.info("Minimizing and determinizing")
     fst = fst.filter_accessible().minimize()
-    remove_epsilon_loops(fst)
+    # remove_epsilon_loops(fst)
     logger.info(f"Created FST with {len(fst.states)} states")
 
     # fst.save("checkpoint.fst")
     # logger.info(f"Saved to {Path('checkpoint.fst')}")
 
-    # train_metrics = evaluate_all(fst, raw_train_examples, hyperparams.generations_top_k)
+    # train_metrics = evaluate_all(fst, raw_train_examples)
     # logger.info(f"Train metrics: {pprint.pformat(train_metrics)}")
-    eval_metrics = evaluate_all(fst, raw_eval_examples, hyperparams.generations_top_k)
+    eval_metrics = evaluate_all(fst, raw_eval_examples)
     logger.info(f"Eval metrics: {pprint.pformat(eval_metrics)}")
-    test_metrics = evaluate_all(fst, raw_test_examples, hyperparams.generations_top_k)
+    test_metrics = evaluate_all(fst, raw_test_examples)
     logger.info(f"Test metrics: {pprint.pformat(test_metrics)}")
 
     if visualize:
@@ -247,88 +263,25 @@ def extract_fst(
     return {"eval": eval_metrics, "test": test_metrics}
 
 
-def evaluate_all(
-    fst: FST, examples: list[String2StringExample], generations_top_k: int
-):
-    labels: list[str] = []
-    preds: list[set[str]] = []
-    for example in tqdm(examples, "Evaluating"):
-        input_string = [c for c in example.input_string]
-        assert example.output_string is not None
-        correct_output = [c for c in example.output_string]
-        if example.features is not None:
-            features = [f"[{f}]" for f in example.features]
-            input_string = features + ["<sep>"] + input_string
-            correct_output = features + ["<sep>"] + correct_output
-        labels.append("".join(correct_output))
-
-        # Generate outputs by composing input acceptor with transducer
-        logger.debug(f"Composing input string: {''.join(input_string)}")
-        input_fsa = FST.re("".join(f"'{c}'" for c in input_string))
-        logger.debug("Composing input @ output")
-        output_fst = input_fsa @ fst
-        logger.debug("Minimizing")
-        output_fst = output_fst.minimize()
-        if len(output_fst.finalstates) == 0:
-            logger.warning(
-                f"FST has no accepting states for input {''.join(input_string)}"
-            )
-            preds.append(set())
-            continue
-        if DEBUG:
-            output_fst.render(view=False)
-        output_fst = output_fst.project(-1)
-
-        # The following runs endlessly for very long inputs
-        #
-        # logger.debug(f"Generating top k words ({len(output_fst.states)} states)")
-        # example_preds = output_fst.words_nbest(generations_top_k)
-        # logger.debug(f"Words: {example_preds}")
-        # example_preds = ["".join(c[0] for c in chars) for _, chars in example_preds]
-        # preds.append(set(example_preds))
-        #
-        # I've replaced it with just finding the shortest path
-        best_word = "".join(c[0] for c in algorithms.best_word(output_fst))
-        preds.append(set([best_word]))
-    return compute_metrics(labels, preds)
-
-
-def compute_metrics(labels: list[str], predictions: list[set[str]]):
-    assert len(labels) == len(predictions)
-    precision_sum = 0
-    recall_sum = 0
-
-    for label, preds in zip(labels, predictions):
-        if label not in preds:
-            # Add 0 to both prec and recall
-            continue
-        precision_sum += 1 / len(preds)
-        recall_sum += 1
-    precision = precision_sum / len(labels)
-    recall = recall_sum / len(labels)
-    f1 = (2 * precision * recall) / (precision + recall)
-    return {"precision": precision, "recall": recall, "f1": f1}
-
-
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     add_task_parser(parser)
-    parser.add_argument("--model", help="WandB shortname for the training run")
+    parser.add_argument("--model-id", help="WandB shortname for the training run")
     parser.add_argument("--visualize", action="store_true")
     args = parser.parse_args()
 
     extract_fst(
         hyperparams=ExtractionHyperparameters(
-            dim_reduction_method="umap",
+            dim_reduction_method="none",
             n_components=16,
             umap_n_neighbors=10,
             umap_min_distance=0.01,
             clustering_method="kmeans",
-            kmeans_num_clusters=500,
+            kmeans_num_clusters=1000,
             min_samples=100,
             eps=1,
-            minimum_transition_count=None,
-            state_split_classifier="svm",
+            minimum_transition_count=25,
+            state_split_classifier="logistic",
             generations_top_k=1,
         ),
         data_files=get_data_files(args),

@@ -1,0 +1,380 @@
+(~,k)(~,ɔ)(w,w)(o,o)(~,e)(~,e)	V;PST;LGSPEC1
+(n,n)(o,o)(m,m)	V;HAB;PRS
+(y,y)(e,e)(w,w)(~,e)(~,e)	V;HAB;PST
+(~,n)(~,n)(~,a)(~, )(~,r)(~,e)(~,m)(~,m)(~,b)(~,ɛ)(n,n)(a,a)(n,n)(t,t)(e,e)(w,w)	V;PROG;NEG;PST+IMMED
+(~,n)(h,h)(y,y)(ɛ,ɛ)( , )(a,a)(s,s)(e,e)	V;SBJV;PRS
+(~,k)(~,ɔ)(t,t)(ɔ,ɔ)(n,n)	V;PRS;LGSPEC1
+(~,k)(~,ɔ)(b,b)(i,i)(s,s)(a,a)	V;PRS;LGSPEC1
+(~,r)(~,e)(~,b)(~,ɛ)(t,t)(i,i)(e,e)	V;PROG;PRS+IMMED
+(~,n)(~,n)(~,a)(~, )(~,r)(~,e)(~,m)(~,m)(~,b)(~,ɛ)(f,f)(r,r)(ɛ,ɛ)	V;PROG;NEG;PST+IMMED
+(~,r)(~,e)(~,b)(~,ɛ)(d,d)(a,a)( , )(a,a)(s,s)(e,e)	V;PROG;PRS+IMMED
+(~,r)(~,e)(~,m)(~,m)(b,b)(i,i)(s,s)(a,a)	V;HAB;NEG;FUT
+(~,n)(~,n)(~,a)(~, )(~,a)(~,b)(~,ɛ)(k,k)(a,a)(s,s)(a,a)	V;PRF;PST+IMMED
+(~,m)(~,m)(~,b)(~,ɛ)(y,y)(ɛ,ɛ)(~,e)(~,e)	V;PRF;NEG;PRS+IMMED
+(m,m)(i,i)(a,a)	V;HAB;PRS
+(~,m)(f,f)(r,r)(a,a)	V;SBJV;PRS
+(~,k)(~,ɔ)(s,s)(e,e)(r,r)(e,e)(w,w)	V;PRS;LGSPEC1
+(~,n)(~,n)(~,a)(~, )(~,r)(~,e)(~,m)(~,m)(~,b)(~,ɛ)(w,w)(o,o)	V;PROG;NEG;PST+IMMED
+(~,n)(~,n)(h,h)(i,i)(a,a)(~,e)(~,e)	V;HAB+PRF;NEG;PRS
+(~,n)(~,n)(~,a)(~, )(~,r)(~,e)(~,k)(~,ɔ)(f,f)(a,a)	V;PROG;PST;LGSPEC1
+(~,a)(t,t)(w,w)(e,e)(ɔ,ɔ)(n,n)	V;HAB+PRF;PRS
+(~,b)(~,ɛ)(t,t)(u,u)( , )(n,n)(g,g)(u,u)(a,a)(n,n)	V;HAB;FUT
+(~,n)(~,n)(~,a)(~, )(~,r)(~,e)(~,n)(~,n)(k,k)(y,y)(i,i)(r,r)(i,i)	V;HAB+PROG;NEG;PST
+(t,t)(e,e)(n,n)(a,a)	V;IMP;PRS
+(~,r)(~,e)(~,b)(~,ɛ)(t,t)(i,i)(n,n)(t,t)(i,i)(m,m)	V;PROG;PRS+IMMED
+(h,h)(i,i)(a,a)	V;NFIN
+(~,a)(~,n)(~,n)(d,d)(u,u)(m,m)	V;HAB;NEG;PST
+(s,s)(u,u)(~,e)(~,e)	V;HAB;PST
+(~,r)(~,e)(~,m)(~,m)(~,b)(~,ɛ)(s,s)(u,u)(m,m)(a,a)	V;PROG;NEG;PRS+IMMED
+(~,r)(~,e)(~,n)(~,n)(t,t)(w,w)(e,e)(r,r)(ɛ,ɛ)(w,w)	V;HAB;NEG;FUT
+(~,n)(~,n)(~,k)(~,ɔ)(n,n)(y,y)(a,a)(m,m)	V;NEG;PRS;LGSPEC1
+(~,a)(~,m)(~,m)(~,k)(~,ɔ)(h,h)(a,a)(t,t)(a,a)	V;NEG;PST;LGSPEC1
+(~,n)(~,n)(~,k)(~,ɔ)(s,s)(o,o)(ɛ,ɛ)(r,r)(~,e)(~,e)	V;PRF;NEG;PRS;LGSPEC1
+(~,m)(~,m)(~,a)(~, )(~,n)(~,n)(t,t)(i,i)(n,n)(t,t)(i,i)(m,m)	V;SBJV;NEG;PRS
+(~,r)(~,e)(~,n)(~,n)(~,k)(~,ɔ)(y,y)(i,i)( , )(a,a)(y,y)(ɛ,ɛ)(w,w)	V;PROG;NEG;PRS;LGSPEC1
+(~,r)(~,e)(~,n)(~,n)(d,d)(i,i)	V;HAB;NEG;FUT
+(~,n)(~,n)(k,k)(y,y)(i,i)(a,a)	V;HAB;NEG;PRS
+(s,s)(u,u)(a,a)(~,e)(~,e)	V;HAB;PST
+(~,m)(~,m)(~,a)(~, )(~,n)(~,n)(y,y)(ɛ,ɛ)	V;IMP;NEG;PRS
+(~,n)(~,n)(~,a)(~, )(~,r)(~,e)(~,m)(~,m)(~,b)(~,ɛ)(p,p)(e,e)(p,p)(a,a)	V;PROG;NEG;PST+IMMED
+(~,r)(~,e)(~,m)(~,m)(b,b)(ɔ,ɔ)( , )(m,m)(p,p)(a,a)(e,e)	V;HAB+PROG;NEG;PRS
+(~,a)(t,t)(ɔ,ɔ)	V;HAB+PRF;PRS
+(~,n)(~,n)(~,k)(~,ɔ)(p,p)(e,e)(p,p)(a,a)	V;NEG;PRS;LGSPEC1
+(~,a)(~,m)(~,m)(b,b)(~,ɛ)(~,b)(ɔ,ɔ)( , )(w,w)(a,a)(w,w)	V;NEG;PST+IMMED
+(~,r)(~,e)(~,m)(~,m)(~,b)(~,ɛ)(t,t)(e,e)(n,n)(a,a)	V;PROG;NEG;PRS+IMMED
+(~,n)(~,n)(~,a)(~, )(~,r)(~,e)(d,d)(u,u)(m,m)	V;HAB+PROG;PST
+(~,r)(~,e)(~,m)(~,m)(b,b)(~,ɛ)(~,b)(ɔ,ɔ)( , )(m,m)(p,p)(a,a)(e,e)	V;PROG;NEG;PRS+IMMED
+(~,b)(~,ɛ)(t,t)(u,u)( , )(n,n)(g,g)(u,u)(a,a)(n,n)(~,e)(~,e)	V;PST+IMMED
+(~,n)(~,n)(~,a)(~, )(~,r)(~,e)(~,n)(~,n)(~,k)(~,ɔ)(k,k)(y,y)(i,i)(r,r)(i,i)	V;PROG;NEG;PST;LGSPEC1
+(~,n)(~,n)(~,a)(~, )(~,m)(~,m)(~,b)(~,ɛ)(h,h)(u,u)(r,r)(u,u)(w,w)(~,e)(~,e)	V;PRF;NEG;PST+IMMED
+(~,n)(~,n)(~,k)(~,ɔ)(k,k)(e,e)(n,n)(k,k)(a,a)(n,n)	V;NEG;PRS;LGSPEC1
+(~,n)(~,n)(~,a)(~, )(~,m)(~,m)(~,b)(~,ɛ)(k,k)(y,y)(e,e)(r,r)(ɛ,ɛ)(~,e)(~,e)	V;PRF;NEG;PST+IMMED
+(~,a)(g,g)(u,u)( , )(n,n)(s,s)(u,u)	V;HAB+PRF;PRS
+(b,b)(ɔ,ɔ)	V;NFIN
+(~,n)(n,n)(~,a)(~, )(~,a)(~,k)(~,ɔ)(~,n)(a,a)(n,n)(t,t)(e,e)(w,w)	V;PRF;PST;LGSPEC1
+(~,n)(~,n)(~,a)(~, )(~,r)(~,e)(~,m)(~,m)(~,b)(~,ɛ)(k,k)(ɔ,ɔ)	V;PROG;NEG;PST+IMMED
+(~,n)(~,n)(~,a)(~, )(~,r)(~,e)(b,b)(o,o)(r,r)(o,o)	V;HAB+PROG;PST
+(k,k)(e,e)(k,k)(a,a)(m,m)(u,u)	V;HAB;PRS
+(k,k)(a,a)(e,e)	V;NFIN
+(~,b)(~,ɛ)(s,s)(i,i)(w,w)	V;HAB;FUT
+(~,r)(~,e)(~,n)(~,n)(~,k)(~,ɔ)(f,f)(r,r)(ɛ,ɛ)	V;PROG;NEG;PRS;LGSPEC1
+(~,r)(~,e)(~,n)(n,n)(~,n)(a,a)(n,n)(t,t)(e,e)(w,w)	V;HAB;NEG;FUT
+(~,n)(~,n)(~,a)(~, )(~,a)(d,d)(a,a)	V;HAB+PRF;PST
+(~,m)(~,m)(~,a)(~, )(~,n)(~,n)(t,t)(a,a)(f,f)(e,e)(e,e)(r,r)(e,e)	V;SBJV;NEG;PRS
+(~,m)(~,m)(~,a)(~, )(~,n)(~,n)(s,s)(e,e)(n,n)(s,s)(e,e)(n,n)	V;SBJV;NEG;PRS
+(n,n)(a,a)(n,n)(t,t)(e,e)(w,w)(~,e)(~,e)	V;HAB;PST
+(~,b)(~,ɛ)(y,y)(e,e)(w,w)	V;HAB;FUT
+(h,h)(u,u)(n,n)(t,t)(i,i)(~,e)(~,e)	V;HAB;PST
+(~,r)(~,e)(~,k)(~,ɔ)(t,t)(e,e)(n,n)(a,a)	V;PROG;PRS;LGSPEC1
+(~,n)(~,n)(~,a)(~, )(~,a)(~,b)(~,ɛ)(k,k)(e,e)(k,k)(a,a)(m,m)(u,u)	V;PRF;PST+IMMED
+(~,n)(~,n)(s,s)(u,u)(o,o)( , )(m,m)(u,u)(~,e)(~,e)	V;HAB+PRF;NEG;PRS
+(~,r)(~,e)(n,n)(y,y)(i,i)(m,m)	V;HAB+PROG;PRS
+(~,n)(~,n)(~,a)(~, )(~,r)(~,e)(~,b)(~,ɛ)(s,s)(e,e)(n,n)(s,s)(e,e)(n,n)	V;PROG;PST+IMMED
+(~,n)(~,n)(~,k)(~,ɔ)(t,t)(o,o)(w,w)(~,e)(~,e)	V;PRF;NEG;PRS;LGSPEC1
+(f,f)(r,r)(a,a)	V;NFIN
+(~,a)(~,b)(~,ɛ)(m,m)(e,e)(n,n)(e,e)	V;PRF;PRS+IMMED
+(~,a)(k,k)(ɔ,ɔ)( , )(t,t)(i,i)(e,e)(f,f)(i,i)	V;HAB+PRF;PRS
+(~,m)(~,m)(b,b)(ɔ,ɔ)( , )(m,m)(p,p)(a,a)(~,e)(e,e)	V;HAB+PRF;NEG;PRS
+(~,r)(~,e)(~,k)(~,ɔ)(n,n)(y,y)(i,i)(m,m)	V;PROG;PRS;LGSPEC1
+(~,n)(~,n)(~,a)(~, )(~,r)(~,e)(~,m)(~,m)(~,b)(~,ɛ)(h,h)(w,w)(e,e)(h,h)(w,w)(ɛ,ɛ)	V;PROG;NEG;PST+IMMED
+(~,a)(~,k)(~,ɔ)(f,f)(r,r)(ɛ,ɛ)	V;PRF;PRS;LGSPEC1
+(~,r)(~,e)(d,d)(i,i)	V;HAB+PROG;PRS
+(~,n)(~,n)(~,a)(~, )(~,n)(~,n)(~,k)(~,ɔ)(s,s)(u,u)(~,e)(~,e)	V;PRF;NEG;PST;LGSPEC1
+(~,n)(~,n)(~,a)(~, )(~,a)(~,k)(~,ɔ)(h,h)(w,w)(e,e)(h,h)(w,w)(ɛ,ɛ)	V;PRF;PST;LGSPEC1
+(~,a)(~,n)(~,n)(k,k)(e,e)(n,n)(k,k)(a,a)(n,n)	V;HAB;NEG;PST
+(~,n)(~,n)(~,a)(~, )(~,n)(~,n)(g,g)(u,u)(a,a)(r,r)(~,e)(e,e)	V;HAB+PRF;NEG;PST
+(~,b)(~,ɛ)(y,y)(ɛ,ɛ)( , )(a,a)(d,d)(w,w)(u,u)(m,m)(a,a)	V;HAB;FUT
+(~,a)(y,y)(i,i)	V;HAB+PRF;PRS
+(y,y)(e,e)(w,w)	V;IMP;PRS
+(~,a)(~,n)(~,n)(k,k)(ɔ,ɔ)	V;HAB;NEG;PST
+(~,n)(~,n)(~,a)(~, )(~,n)(~,n)(~,k)(~,ɔ)(y,y)(e,e)(w,w)(~,e)(~,e)	V;PRF;NEG;PST;LGSPEC1
+(~,n)(s,s)(e,e)(r,r)(e,e)(w,w)	V;SBJV;PRS
+(h,h)(u,u)(a,a)(n,n)(e,e)	V;HAB;PRS
+(n,n)(y,y)(a,a)(m,m)(~,e)(~,e)	V;HAB;PST
+(k,k)(u,u)(~,e)(~,e)	V;HAB;PST
+(~,n)(~,n)(~,a)(~, )(~,r)(~,e)(~,m)(~,m)(~,b)(~,ɛ)(g,g)(u,u)(a,a)(r,r)(e,e)	V;PROG;NEG;PST+IMMED
+(~,a)(~,b)(~,ɛ)(m,m)(a,a)	V;PRF;PRS+IMMED
+(~,n)(~,n)(~,a)(~, )(~,n)(~,n)(~,k)(~,ɔ)(k,k)(e,e)(k,k)(a,a)(m,m)(u,u)(~,e)(~,e)	V;PRF;NEG;PST;LGSPEC1
+(~,m)(~,m)(~,a)(~, )(~,n)(~,n)(h,h)(o,o)(h,h)(o,o)(r,r)(o,o)	V;SBJV;NEG;PRS
+(~,m)(~,m)(~,a)(~, )(~,n)(~,n)(t,t)(ɔ,ɔ)	V;IMP;NEG;PRS
+(~,n)(~,n)(~,a)(~, )(~,r)(~,e)(~,m)(~,m)(~,b)(~,ɛ)(k,k)(a,a)(s,s)(a,a)	V;PROG;NEG;PST+IMMED
+(~,n)(~,n)(~,a)(~, )(~,a)(~,b)(~,ɛ)(y,y)(ɛ,ɛ)( , )(a,a)(d,d)(w,w)(u,u)(m,m)(a,a)	V;PRF;PST+IMMED
+(~,n)(~,n)(~,a)(~, )(~,a)(~,k)(~,ɔ)(t,t)(w,w)(e,e)(r,r)(ɛ,ɛ)(w,w)	V;PRF;PST;LGSPEC1
+(~,n)(~,n)(~,a)(~, )(~,r)(~,e)(~,n)(~,n)(w,w)(o,o)	V;HAB+PROG;NEG;PST
+(~,r)(~,e)(~,b)(~,ɛ)(f,f)(r,r)(a,a)	V;PROG;PRS+IMMED
+(~,a)(~,b)(~,ɛ)(g,g)(y,y)(e,e)	V;PRF;PRS+IMMED
+(~,n)(~,n)(~,a)(~, )(~,n)(~,n)(t,t)(i,i)(~,e)(e,e)	V;HAB+PRF;NEG;PST
+(w,w)(e,e)	V;NFIN
+(~,n)(~,n)(~,a)(~, )(~,r)(~,e)(~,n)(~,n)(~,k)(~,ɔ)(m,m)(a,a)( , )(s,s)(o,o)	V;PROG;NEG;PST;LGSPEC1
+(~,n)(~,n)(~,k)(~,ɔ)(t,t)(i,i)(n,n)(t,t)(i,i)(m,m)	V;NEG;PRS;LGSPEC1
+(~,r)(~,e)(~,n)(~,n)(y,y)(ɛ,ɛ)( , )(a,a)(d,d)(w,w)(u,u)(m,m)(a,a)	V;HAB+PROG;NEG;PRS
+(~,r)(~,e)(~,n)(~,n)(t,t)(ɔ,ɔ)	V;HAB+PROG;NEG;PRS
+(~,r)(~,e)(~,n)(~,n)(t,t)(i,i)(n,n)(t,t)(i,i)(m,m)	V;HAB+PROG;NEG;PRS
+(~,r)(~,e)(~,n)(~,n)(h,h)(u,u)(a,a)	V;HAB+PROG;NEG;PRS
+(~,m)(~,m)(~,a)(~, )(~,n)(~,n)(h,h)(u,u)(a,a)	V;SBJV;NEG;PRS
+(h,h)(a,a)(t,t)(a,a)	V;HAB;PRS
+(s,s)(o,o)(ɛ,ɛ)(r,r)	V;HAB;PRS
+(~,k)(~,ɔ)(d,d)(i,i)( , )(n,n)(k,k)(o,o)(n,n)(i,i)(m,m)	V;PRS;LGSPEC1
+(~,n)(~,n)(~,a)(~, )(~,r)(~,e)(k,k)(y,y)(i,i)(a,a)	V;HAB+PROG;PST
+(~,r)(~,e)(b,b)(o,o)(b,b)(ɔ,ɔ)(w,w)	V;HAB+PROG;PRS
+(~,a)(~,m)(~,m)(~,k)(~,ɔ)(s,s)(u,u)(a,a)	V;NEG;PST;LGSPEC1
+(~,m)(~,m)(~,a)(~, )(~,n)(~,n)(t,t)(i,i)(n,n)(t,t)(i,i)(m,m)	V;IMP;NEG;PRS
+(~,a)(~,b)(~,ɛ)(f,f)(a,a)	V;PRF;PRS+IMMED
+(~,r)(~,e)(~,n)(~,n)(t,t)(e,e)(w,w)	V;HAB;NEG;FUT
+(~,r)(~,e)(m,m)(~,m)(~,b)(~,ɛ)(~,m)(a,a)	V;PROG;NEG;PRS+IMMED
+(~,a)(~,k)(~,ɔ)(h,h)(w,w)(ɛ,ɛ)	V;PRF;PRS;LGSPEC1
+(g,g)(u,u)( , )(n,n)(s,s)(u,u)	V;IMP;PRS
+(~,n)(~,n)(~,a)(~, )(~,n)(~,n)(~,k)(~,ɔ)(m,m)(i,i)(a,a)(~,e)(~,e)	V;PRF;NEG;PST;LGSPEC1
+(~,r)(~,e)(~,b)(~,ɛ)(f,f)(r,r)(ɛ,ɛ)	V;PROG;PRS+IMMED
+(t,t)(w,w)(e,e)(ɔ,ɔ)(n,n)	V;HAB;PRS
+(~,r)(~,e)(~,n)(~,n)(s,s)(u,u)(m,m)(a,a)	V;HAB;NEG;FUT
+(~,n)(~,n)(~,a)(~, )(~,n)(~,n)(~,k)(~,ɔ)(w,w)(i,i)(~,e)(e,e)	V;PRF;NEG;PST;LGSPEC1
+(~,r)(~,e)(~,n)(~,n)(~,k)(~,ɔ)(b,b)(o,o)(a,a)	V;PROG;NEG;PRS;LGSPEC1
+(~,n)(~,n)(~,k)(~,ɔ)(m,m)(i,i)(a,a)(~,e)(~,e)	V;PRF;NEG;PRS;LGSPEC1
+(~,n)(~,n)(~,a)(~, )(~,r)(~,e)(t,t)(o,o)(w,w)	V;HAB+PROG;PST
+(~,n)(~,n)(~,a)(~, )(~,r)(~,e)(~,m)(~,m)(m,m)(a,a)	V;HAB+PROG;NEG;PST
+(~,r)(~,e)(~,k)(~,ɔ)(n,n)(a,a)(n,n)(t,t)(e,e)(w,w)	V;PROG;PRS;LGSPEC1
+(~,r)(~,e)(~,n)(~,n)(t,t)(u,u)( , )(n,n)(g,g)(u,u)(a,a)(n,n)	V;HAB;NEG;FUT
+(~,r)(~,e)(~,b)(~,ɛ)(n,n)(y,y)(i,i)(m,m)	V;PROG;PRS+IMMED
+(~,a)(~,b)(~,ɛ)(m,m)(i,i)(a,a)	V;PRF;PRS+IMMED
+(~,n)(~,n)(~,a)(~, )(~,a)(k,k)(a,a)(s,s)(a,a)	V;HAB+PRF;PST
+(~,n)(~,n)(~,a)(~, )(~,m)(~,m)(~,b)(~,ɛ)(t,t)(o,o)(w,w)(~,e)(~,e)	V;PRF;NEG;PST+IMMED
+(~,k)(~,ɔ)(h,h)(y,y)(ɛ,ɛ)( , )(a,a)(s,s)(~,e)(e,e)	V;PST;LGSPEC1
+(~,n)(~,n)(~,a)(~, )(~,r)(~,e)(~,k)(~,ɔ)(k,k)(ɔ,ɔ)	V;PROG;PST;LGSPEC1
+(~,r)(~,e)(~,k)(~,ɔ)(f,f)(a,a)	V;PROG;PRS;LGSPEC1
+(~,b)(~,ɛ)(b,b)(i,i)(s,s)(a,a)	V;HAB;FUT
+(~,n)(~,n)(~,a)(~, )(~,r)(~,e)(~,n)(~,n)(~,k)(~,ɔ)(h,h)(w,w)(ɛ,ɛ)	V;PROG;NEG;PST;LGSPEC1
+(~,b)(~,ɛ)(d,d)(u,u)(m,m)(~,e)(~,e)	V;PST+IMMED
+(~,n)(~,n)(h,h)(y,y)(ɛ,ɛ)( , )(a,a)(s,s)(~,e)(e,e)	V;HAB+PRF;NEG;PRS
+(~,a)(~,m)(~,m)(b,b)(~,ɛ)(~,b)(u,u)(e,e)	V;NEG;PST+IMMED
+(~,n)(~,n)(~,a)(~, )(~,r)(~,e)(~,n)(~,n)(w,w)(o,o)(s,s)(o,o)(w,w)	V;HAB+PROG;NEG;PST
+(~,r)(~,e)(~,k)(~,ɔ)(s,s)(a,a)(n,n)	V;PROG;PRS;LGSPEC1
+(~,a)(~,m)(~,m)(~,k)(~,ɔ)(k,k)(e,e)(k,k)(a,a)(m,m)(u,u)	V;NEG;PST;LGSPEC1
+(~,n)(~,n)(~,a)(~, )(~,a)(y,y)(e,e)(w,w)	V;HAB+PRF;PST
+(~,r)(~,e)(~,m)(~,m)(~,b)(~,ɛ)(k,k)(a,a)(e,e)	V;PROG;NEG;PRS+IMMED
+(~,r)(~,e)(~,b)(~,ɛ)(s,s)(u,u)(m,m)(a,a)	V;PROG;PRS+IMMED
+(~,m)(~,m)(~,a)(~, )(~,m)(~,m)(b,b)(o,o)(r,r)(o,o)	V;SBJV;NEG;PRS
+(~,n)(~,n)(~,a)(~, )(~,m)(~,m)(~,b)(~,ɛ)(k,k)(e,e)(k,k)(a,a)(m,m)(u,u)(~,e)(~,e)	V;PRF;NEG;PST+IMMED
+(~,a)(~,b)(~,ɛ)(d,d)(i,i)	V;PRF;PRS+IMMED
+(~,n)(~,n)(~,k)(~,ɔ)(h,h)(w,w)(ɛ,ɛ)	V;NEG;PRS;LGSPEC1
+(~,n)(~,n)(~,a)(~, )(~,a)(~,k)(~,ɔ)(t,t)(e,e)( , )(a,a)(s,s)(e,e)	V;PRF;PST;LGSPEC1
+(~,n)(~,n)(~,k)(~,ɔ)(y,y)(ɛ,ɛ)	V;NEG;PRS;LGSPEC1
+(~,n)(~,n)(~,a)(~, )(~,r)(~,e)(~,n)(~,n)(~,k)(~,ɔ)(t,t)(i,i)(n,n)(t,t)(i,i)(m,m)	V;PROG;NEG;PST;LGSPEC1
+(~,n)(~,n)(~,a)(~, )(~,r)(~,e)(~,b)(~,ɛ)(s,s)(u,u)(a,a)	V;PROG;PST+IMMED
+(~,n)(~,n)(~,a)(~, )(~,r)(~,e)(y,y)(i,i)	V;HAB+PROG;PST
+(~,n)(~,n)(~,a)(~, )(~,r)(~,e)(~,b)(~,ɛ)(k,k)(a,a)(s,s)(a,a)	V;PROG;PST+IMMED
+(~,r)(~,e)(k,k)(ɔ,ɔ)	V;HAB+PROG;PRS
+(~,n)(~,n)(~,k)(~,ɔ)(f,f)(r,r)(ɛ,ɛ)	V;NEG;PRS;LGSPEC1
+(~,k)(~,ɔ)(y,y)(ɛ,ɛ)	V;PRS;LGSPEC1
+(~,n)(~,n)(~,a)(~, )(~,r)(~,e)(s,s)(u,u)(m,m)(a,a)	V;HAB+PROG;PST
+(~,n)(~,n)(~,k)(~,ɔ)(g,g)(u,u)(a,a)(r,r)(~,e)(e,e)	V;PRF;NEG;PRS;LGSPEC1
+(~,r)(~,e)(s,s)(a,a)(w,w)	V;HAB+PROG;PRS
+(~,k)(~,ɔ)(s,s)(e,e)(n,n)(s,s)(e,e)(n,n)	V;PRS;LGSPEC1
+(~,n)(~,n)(~,a)(~, )(~,n)(~,n)(~,k)(~,ɔ)(k,k)(y,y)(e,e)(r,r)(e,e)(ɛ,ɛ)(w,w)(~,e)(~,e)	V;PRF;NEG;PST;LGSPEC1
+(~,n)(~,n)(~,a)(~, )(~,r)(~,e)(~,k)(~,ɔ)(b,b)(o,o)(b,b)(ɔ,ɔ)(w,w)	V;PROG;PST;LGSPEC1
+(~,a)(~,k)(~,ɔ)(t,t)(ɔ,ɔ)	V;PRF;PRS;LGSPEC1
+(~,a)(t,t)(a,a)(r,r)(e,e)	V;HAB+PRF;PRS
+(~,n)(~,n)(~,k)(~,ɔ)(s,s)(e,e)(n,n)(s,s)(e,e)(n,n)(~,e)(~,e)	V;PRF;NEG;PRS;LGSPEC1
+(~,n)(~,n)(~,a)(~, )(~,r)(~,e)(~,n)(~,n)(t,t)(w,w)(e,e)(ɔ,ɔ)(n,n)	V;HAB+PROG;NEG;PST
+(~,a)(~,b)(~,ɛ)(k,k)(e,e)(k,k)(a,a)(m,m)(u,u)	V;PRF;PRS+IMMED
+(~,n)(~,n)(~,a)(~, )(~,n)(~,n)(t,t)(e,e)( , )(a,a)(s,s)(~,e)(e,e)	V;HAB+PRF;NEG;PST
+(~,m)(~,m)(~,a)(~, )(~,m)(~,m)(f,f)(r,r)(ɛ,ɛ)	V;IMP;NEG;PRS
+(~,n)(~,n)(~,a)(~, )(~,r)(~,e)(s,s)(o,o)(ɛ,ɛ)(r,r)	V;HAB+PROG;PST
+(~,n)(~,n)(~,k)(~,ɔ)(y,y)(ɛ,ɛ)( , )(a,a)(d,d)(w,w)(u,u)(m,m)(a,a)	V;NEG;PRS;LGSPEC1
+(~,a)(~,n)(~,n)(t,t)(w,w)(e,e)(ɔ,ɔ)(n,n)	V;HAB;NEG;PST
+(~,n)(~,n)(~,a)(~, )(~,a)(~,b)(~,ɛ)(h,h)(w,w)(ɛ,ɛ)	V;PRF;PST+IMMED
+(~,r)(~,e)(~,n)(~,n)(k,k)(y,y)(e,e)(r,r)(ɛ,ɛ)	V;HAB;NEG;FUT
+(~,b)(~,ɛ)(n,n)(y,y)(a,a)(m,m)(~,e)(~,e)	V;PST+IMMED
+(~,n)(~,n)(~,k)(~,ɔ)(k,k)(e,e)(k,k)(a,a)(m,m)(u,u)	V;NEG;PRS;LGSPEC1
+(~,m)(~,m)(~,b)(~,ɛ)(b,b)(o,o)(r,r)(o,o)(~,e)(~,e)	V;PRF;NEG;PRS+IMMED
+(~,m)(~,m)(~,b)(~,ɛ)(y,y)(i,i)( , )(a,a)(y,y)(ɛ,ɛ)(w,w)(~,e)(~,e)	V;PRF;NEG;PRS+IMMED
+(~,m)(~,m)(~,a)(~, )(~,n)(~,n)(t,t)(ɔ,ɔ)( , )(n,n)(k,k)(o,o)	V;SBJV;NEG;PRS
+(~,a)(~,n)(~,n)(w,w)(o,o)(s,s)(o,o)(w,w)	V;HAB;NEG;PST
+(~,n)(~,n)(s,s)(u,u)(o,o)( , )(m,m)(u,u)	V;HAB;NEG;PRS
+(~,n)(~,n)(~,a)(~, )(~,r)(~,e)(~,b)(~,ɛ)(b,b)(ɔ,ɔ)( , )(m,m)(p,p)(a,a)(e,e)	V;PROG;PST+IMMED
+(~,k)(~,ɔ)(k,k)(y,y)(e,e)(r,r)(ɛ,ɛ)	V;PRS;LGSPEC1
+(~,a)(~,n)(~,n)(s,s)(u,u)(a,a)	V;HAB;NEG;PST
+(~,b)(~,ɛ)(h,h)(a,a)(t,t)(a,a)	V;HAB;FUT
+(~,n)(~,n)(~,a)(~, )(~,r)(~,e)(~,b)(~,ɛ)(t,t)(i,i)(e,e)	V;PROG;PST+IMMED
+(~,n)(~,n)(~,a)(~, )(~,r)(~,e)(~,b)(~,ɛ)(h,h)(a,a)(t,t)(a,a)	V;PROG;PST+IMMED
+(~,k)(~,ɔ)(t,t)(w,w)(e,e)(ɔ,ɔ)(n,n)(~,e)(~,e)	V;PST;LGSPEC1
+(~,n)(~,n)(d,d)(u,u)(a,a)	V;HAB;NEG;PRS
+(~,n)(~,n)(~,a)(~, )(~,r)(~,e)(~,b)(~,ɛ)(y,y)(e,e)(w,w)	V;PROG;PST+IMMED
+(~,n)(~,n)(~,a)(~, )(~,r)(~,e)(~,n)(~,n)(s,s)(o,o)( , )(d,d)(a,a)(e,e)	V;HAB+PROG;NEG;PST
+(h,h)(a,a)(t,t)(a,a)(~,e)(~,e)	V;HAB;PST
+(~,r)(~,e)(~,m)(~,m)(~,b)(~,ɛ)(g,g)(u,u)( , )(n,n)(s,s)(u,u)	V;PROG;NEG;PRS+IMMED
+(~,a)(~,m)(~,m)(~,k)(~,ɔ)(k,k)(a,a)(s,s)(a,a)	V;NEG;PST;LGSPEC1
+(~,r)(~,e)(~,b)(~,ɛ)(k,k)(ɔ,ɔ)( , )(t,t)(i,i)(e,e)(f,f)(i,i)	V;PROG;PRS+IMMED
+(d,d)(i,i)	V;NFIN
+(~,a)(~,k)(~,ɔ)(y,y)(i,i)	V;PRF;PRS;LGSPEC1
+(~,m)(~,m)(~,a)(~, )(~,n)(~,n)(t,t)(ɔ,ɔ)( , )(n,n)(k,k)(o,o)	V;IMP;NEG;PRS
+(~,n)(~,n)(~,a)(~, )(~,r)(~,e)(~,n)(~,n)(~,k)(~,ɔ)(s,s)(u,u)	V;PROG;NEG;PST;LGSPEC1
+(~,r)(~,e)(~,b)(~,ɛ)(h,h)(y,y)(i,i)(n,n)(a,a)	V;PROG;PRS+IMMED
+(~,n)(~,n)(~,a)(~, )(~,r)(~,e)(t,t)(ɔ,ɔ)( , )(n,n)(k,k)(o,o)	V;HAB+PROG;PST
+(~,n)(~,n)(~,k)(~,ɔ)(h,h)(u,u)	V;NEG;PRS;LGSPEC1
+(~,n)(~,n)(~,a)(~, )(~,r)(~,e)(~,n)(~,n)(t,t)(i,i)(n,n)(t,t)(i,i)(m,m)	V;HAB+PROG;NEG;PST
+(~,r)(~,e)(h,h)(w,w)(ɛ,ɛ)	V;HAB+PROG;PRS
+(~,n)(~,n)(~,a)(~, )(~,r)(~,e)(~,b)(~,ɛ)(s,s)(u,u)(o,o)( , )(m,m)(u,u)	V;PROG;PST+IMMED
+(~,n)(~,n)(~,a)(~, )(~,n)(~,n)(~,k)(~,ɔ)(h,h)(o,o)(h,h)(o,o)(r,r)(o,o)(~,e)(~,e)	V;PRF;NEG;PST;LGSPEC1
+(d,d)(a,a)( , )(a,a)(s,s)(e,e)	V;IMP;PRS
+(~,n)(~,n)(~,a)(~, )(~,n)(~,n)(k,k)(y,y)(i,i)(r,r)(i,i)(~,e)(~,e)	V;HAB+PRF;NEG;PST
+(~,m)(~,m)(~,a)(~, )(~,n)(~,n)(k,k)(ɔ,ɔ)( , )(t,t)(i,i)(e,e)(f,f)(i,i)	V;SBJV;NEG;PRS
+(~,a)(~,n)(~,n)(n,n)(a,a)(n,n)(t,t)(e,e)(w,w)	V;HAB;NEG;PST
+(~,n)(~,n)(k,k)(y,y)(i,i)(a,a)(~,e)(~,e)	V;HAB+PRF;NEG;PRS
+(~,b)(~,ɛ)(t,t)(o,o)(w,w)(~,e)(~,e)	V;PST+IMMED
+(~,r)(~,e)(~,n)(n,n)(~,n)(y,y)(a,a)(m,m)	V;HAB;NEG;FUT
+(~,a)(~,k)(~,ɔ)(s,s)(a,a)(w,w)	V;PRF;PRS;LGSPEC1
+(~,a)(~,m)(~,m)(~,k)(~,ɔ)(f,f)(a,a)	V;NEG;PST;LGSPEC1
+(~,n)(~,n)(~,a)(~, )(~,a)(k,k)(ɔ,ɔ)	V;HAB+PRF;PST
+(~,a)(~,m)(~,m)(~,k)(~,ɔ)(t,t)(i,i)(n,n)(t,t)(i,i)(m,m)	V;NEG;PST;LGSPEC1
+(~,m)(~,m)(~,a)(~, )(~,n)(~,n)(n,n)(y,y)(i,i)(m,m)	V;IMP;NEG;PRS
+(t,t)(w,w)(e,e)(ɔ,ɔ)(n,n)	V;NFIN
+(~,n)(~,n)(~,a)(~, )(~,a)(~,k)(~,ɔ)(s,s)(u,u)(m,m)(a,a)	V;PRF;PST;LGSPEC1
+(~,n)(~,n)(~,a)(~, )(~,a)(~,k)(~,ɔ)(y,y)(i,i)	V;PRF;PST;LGSPEC1
+(~,a)(~,m)(~,m)(~,b)(~,ɛ)(d,d)(u,u)(m,m)	V;NEG;PST+IMMED
+(~,n)(~,n)(~,k)(~,ɔ)(t,t)(ɔ,ɔ)( , )(n,n)(k,k)(o,o)(~,e)(~,e)	V;PRF;NEG;PRS;LGSPEC1
+(~,b)(~,ɛ)(m,m)(a,a)( , )(s,s)(o,o)	V;HAB;FUT
+(~,r)(~,e)(~,b)(~,ɛ)(w,w)(o,o)	V;PROG;PRS+IMMED
+(~,b)(~,ɛ)(k,k)(e,e)(n,n)(k,k)(a,a)(n,n)(~,e)(~,e)	V;PST+IMMED
+(~,n)(~,n)(~,a)(~, )(~,n)(~,n)(~,k)(~,ɔ)(w,w)(o,o)(s,s)(o,o)(w,w)(~,e)(~,e)	V;PRF;NEG;PST;LGSPEC1
+(k,k)(u,u)	V;HAB;PRS
+(s,s)(e,e)(r,r)(e,e)(w,w)	V;HAB;PRS
+(~,n)(~,n)(~,a)(~, )(~,r)(~,e)(~,k)(~,ɔ)(n,n)(y,y)(a,a)(m,m)	V;PROG;PST;LGSPEC1
+(~,r)(~,e)(~,b)(~,ɛ)(b,b)(o,o)(a,a)	V;PROG;PRS+IMMED
+(~,a)(~,b)(~,ɛ)(p,p)(ɛ,ɛ)	V;PRF;PRS+IMMED
+(~,r)(~,e)(~,k)(~,ɔ)(y,y)(ɛ,ɛ)( , )(a,a)(d,d)(w,w)(u,u)(m,m)(a,a)	V;PROG;PRS;LGSPEC1
+(~,r)(~,e)(~,n)(~,n)(~,k)(~,ɔ)(t,t)(ɔ,ɔ)( , )(n,n)(k,k)(o,o)	V;PROG;NEG;PRS;LGSPEC1
+(~,a)(y,y)(ɛ,ɛ)( , )(a,a)(d,d)(w,w)(u,u)(m,m)(a,a)	V;HAB+PRF;PRS
+(~,n)(~,n)(~,a)(~, )(~,a)(~,b)(~,ɛ)(w,w)(o,o)(s,s)(o,o)(w,w)	V;PRF;PST+IMMED
+(~,n)(~,n)(~,a)(~, )(~,r)(~,e)(~,m)(~,m)(~,b)(~,ɛ)(w,w)(i,i)(e,e)	V;PROG;NEG;PST+IMMED
+(~,n)(~,n)(~,a)(~, )(~,n)(~,n)(~,k)(~,ɔ)(b,b)(ɔ,ɔ)( , )(w,w)(a,a)(w,w)(~,e)(~,e)	V;PRF;NEG;PST;LGSPEC1
+(~,n)(~,n)(~,a)(~, )(~,r)(~,e)(~,n)(~,n)(~,k)(~,ɔ)(t,t)(ɔ,ɔ)(n,n)	V;PROG;NEG;PST;LGSPEC1
+(~,n)(~,n)(~,a)(~, )(~,r)(~,e)(~,n)(~,n)(h,h)(u,u)(a,a)	V;HAB+PROG;NEG;PST
+(~,n)(~,n)(~,a)(~, )(~,m)(~,m)(~,b)(~,ɛ)(p,p)(i,i)(a,a)(~,e)(~,e)	V;PRF;NEG;PST+IMMED
+(~,n)(~,n)(~,a)(~, )(~,r)(~,e)(~,b)(~,ɛ)(b,b)(i,i)(s,s)(a,a)	V;PROG;PST+IMMED
+(~,n)(~,n)(~,a)(~, )(~,a)(d,d)(i,i)( , )(n,n)(k,k)(o,o)(n,n)(i,i)(m,m)	V;HAB+PRF;PST
+(~,k)(~,ɔ)(g,g)(u,u)(a,a)(r,r)(~,e)(e,e)	V;PST;LGSPEC1
+(~,k)(~,ɔ)(p,p)(ɛ,ɛ)	V;PRS;LGSPEC1
+(~,k)(~,ɔ)(b,b)(o,o)(a,a)	V;PRS;LGSPEC1
+(~,n)(~,n)(~,a)(~, )(~,r)(~,e)(~,m)(~,m)(~,b)(~,ɛ)(m,m)(i,i)(a,a)	V;PROG;NEG;PST+IMMED
+(~,r)(~,e)(~,k)(~,ɔ)(y,y)(i,i)	V;PROG;PRS;LGSPEC1
+(~,n)(~,n)(~,a)(~, )(~,r)(~,e)(~,m)(~,m)(~,b)(~,ɛ)(s,s)(u,u)(m,m)(a,a)	V;PROG;NEG;PST+IMMED
+(~,n)(~,n)(~,a)(~, )(~,r)(~,e)(~,b)(~,ɛ)(t,t)(i,i)(n,n)(t,t)(i,i)(m,m)	V;PROG;PST+IMMED
+(~,n)(~,n)(~,a)(~, )(~,r)(~,e)(k,k)(y,y)(e,e)(r,r)(ɛ,ɛ)	V;HAB+PROG;PST
+(~,n)(~,n)(~,a)(~, )(~,r)(~,e)(~,n)(~,n)(t,t)(o,o)(w,w)	V;HAB+PROG;NEG;PST
+(~,n)(~,n)(~,a)(~, )(~,n)(~,n)(h,h)(u,u)(n,n)(t,t)(i,i)(~,e)(~,e)	V;HAB+PRF;NEG;PST
+(~,n)(~,n)(~,a)(~, )(~,r)(~,e)(m,m)(i,i)(a,a)	V;HAB+PROG;PST
+(~,n)(~,n)(~,a)(~, )(~,m)(~,m)(~,b)(~,ɛ)(b,b)(a,a)(~,e)(~,e)	V;PRF;NEG;PST+IMMED
+(~,n)(~,n)(~,a)(~, )(~,n)(~,n)(~,k)(~,ɔ)(p,p)(i,i)(a,a)(~,e)(~,e)	V;PRF;NEG;PST;LGSPEC1
+(~,n)(k,k)(y,y)(e,e)(r,r)(e,e)(ɛ,ɛ)(w,w)	V;SBJV;PRS
+(b,b)(o,o)(b,b)(ɔ,ɔ)(w,w)(~,e)(~,e)	V;HAB;PST
+(~,k)(~,ɔ)(f,f)(r,r)(ɛ,ɛ)(~,e)(~,e)	V;PST;LGSPEC1
+(~,r)(~,e)(~,n)(~,n)(g,g)(u,u)(a,a)(r,r)(e,e)	V;HAB;NEG;FUT
+(~,n)(~,n)(t,t)(w,w)(e,e)	V;HAB;NEG;PRS
+(y,y)(i,i)(~,e)(~,e)	V;HAB;PST
+(~,r)(~,e)(~,n)(~,n)(h,h)(u,u)(n,n)(t,t)(i,i)	V;HAB+PROG;NEG;PRS
+(~,n)(~,n)(~,a)(~, )(~,r)(~,e)(~,m)(~,m)(~,b)(~,ɛ)(g,g)(y,y)(e,e)	V;PROG;NEG;PST+IMMED
+(~,a)(~,k)(~,ɔ)(k,k)(e,e)(n,n)(k,k)(a,a)(n,n)	V;PRF;PRS;LGSPEC1
+(~,n)(~,n)(s,s)(u,u)(~,e)(~,e)	V;HAB+PRF;NEG;PRS
+(~,r)(~,e)(~,b)(~,ɛ)(t,t)(w,w)(a,a)	V;PROG;PRS+IMMED
+(~,n)(~,n)(~,a)(~, )(~,r)(~,e)(n,n)(o,o)(m,m)	V;HAB+PROG;PST
+(~,a)(~,b)(~,ɛ)(t,t)(u,u)( , )(n,n)(g,g)(u,u)(a,a)(n,n)	V;PRF;PRS+IMMED
+(~,a)(~,k)(~,ɔ)(b,b)(a,a)	V;PRF;PRS;LGSPEC1
+(~,n)(~,n)(~,k)(~,ɔ)(b,b)(i,i)(s,s)(a,a)(~,e)(~,e)	V;PRF;NEG;PRS;LGSPEC1
+(~,n)(~,n)(~,a)(~, )(~,r)(~,e)(~,n)(~,n)(k,k)(a,a)(e,e)	V;HAB+PROG;NEG;PST
+(~,r)(~,e)(~,m)(~,m)(~,b)(~,ɛ)(k,k)(e,e)(k,k)(a,a)(m,m)(u,u)	V;PROG;NEG;PRS+IMMED
+(~,a)(~,b)(~,ɛ)(t,t)(i,i)(n,n)(t,t)(i,i)(m,m)	V;PRF;PRS+IMMED
+(g,g)(u,u)(a,a)(r,r)(e,e)	V;HAB;PRS
+(g,g)(u,u)( , )(n,n)(s,s)(u,u)	V;NFIN
+(~,a)(t,t)(i,i)(n,n)(t,t)(i,i)(m,m)	V;HAB+PRF;PRS
+(~,n)(~,n)(~,a)(~, )(~,r)(~,e)(~,k)(~,ɔ)(b,b)(a,a)	V;PROG;PST;LGSPEC1
+(~,a)(~,n)(~,n)(t,t)(ɔ,ɔ)(n,n)	V;HAB;NEG;PST
+(~,k)(~,ɔ)(h,h)(u,u)(a,a)(n,n)(~,e)(e,e)	V;PST;LGSPEC1
+(~,n)(~,n)(~,a)(~, )(~,a)(t,t)(w,w)(e,e)	V;HAB+PRF;PST
+(t,t)(u,u)( , )(n,n)(g,g)(u,u)(a,a)(n,n)(~,e)(~,e)	V;HAB;PST
+(~,n)(~,n)(~,a)(~, )(~,r)(~,e)(~,k)(~,ɔ)(d,d)(a,a)	V;PROG;PST;LGSPEC1
+(~,n)(~,n)(w,w)(~,e)(e,e)	V;HAB+PRF;NEG;PRS
+(~,n)(~,n)(~,a)(~, )(~,r)(~,e)(m,m)(a,a)( , )(s,s)(o,o)	V;HAB+PROG;PST
+(~,n)(~,n)(~,a)(~, )(~,a)(f,f)(r,r)(ɛ,ɛ)	V;HAB+PRF;PST
+(~,n)(~,n)(~,a)(~, )(~,r)(~,e)(~,k)(~,ɔ)(h,h)(u,u)(r,r)(u,u)(w,w)	V;PROG;PST;LGSPEC1
+(s,s)(u,u)(o,o)( , )(m,m)(u,u)	V;NFIN
+(~,m)(~,m)(~,a)(~, )(~,n)(~,n)(y,y)(i,i)	V;IMP;NEG;PRS
+(~,a)(~,b)(~,ɛ)(y,y)(e,e)(w,w)	V;PRF;PRS+IMMED
+(~,n)(~,n)(~,a)(~, )(~,r)(~,e)(~,n)(~,n)(~,k)(~,ɔ)(y,y)(e,e)(w,w)	V;PROG;NEG;PST;LGSPEC1
+(~,n)(~,n)(~,a)(~, )(~,r)(~,e)(~,n)(~,n)(~,k)(~,ɔ)(b,b)(u,u)(e,e)	V;PROG;NEG;PST;LGSPEC1
+(~,n)(~,n)(~,a)(~, )(~,r)(~,e)(g,g)(u,u)(a,a)(r,r)(e,e)	V;HAB+PROG;PST
+(~,n)(~,n)(~,a)(~, )(~,a)(~,b)(~,ɛ)(t,t)(e,e)( , )(a,a)(s,s)(e,e)	V;PRF;PST+IMMED
+(~,b)(~,ɛ)(y,y)(ɛ,ɛ)(~,e)(~,e)	V;PST+IMMED
+(~,m)(~,m)(~,a)(~, )(~,n)(~,n)(g,g)(y,y)(e,e)	V;IMP;NEG;PRS
+(~,n)(~,n)(~,a)(~, )(~,r)(~,e)(~,n)(~,n)(~,k)(~,ɔ)(h,h)(u,u)	V;PROG;NEG;PST;LGSPEC1
+(~,r)(~,e)(~,b)(~,ɛ)(d,d)(i,i)( , )(n,n)(k,k)(o,o)(n,n)(i,i)(m,m)	V;PROG;PRS+IMMED
+(~,n)(~,n)(~,a)(~, )(~,m)(~,m)(~,b)(~,ɛ)(s,s)(o,o)( , )(d,d)(a,a)(~,e)(e,e)	V;PRF;NEG;PST+IMMED
+(~,n)(~,n)(~,a)(~, )(~,r)(~,e)(~,n)(~,n)(~,k)(~,ɔ)(g,g)(y,y)(e,e)	V;PROG;NEG;PST;LGSPEC1
+(~,n)(~,n)(~,a)(~, )(~,r)(~,e)(~,n)(~,n)(~,k)(~,ɔ)(b,b)(ɔ,ɔ)( , )(n,n)(s,s)(a,a)(m,m)(u,u)	V;PROG;NEG;PST;LGSPEC1
+(~,r)(~,e)(~,k)(~,ɔ)(s,s)(i,i)(w,w)	V;PROG;PRS;LGSPEC1
+(~,a)(~,n)(~,n)(t,t)(o,o)(w,w)	V;HAB;NEG;PST
+(~,n)(~,n)(~,a)(~, )(~,n)(~,n)(d,d)(u,u)(a,a)(~,e)(~,e)	V;HAB+PRF;NEG;PST
+(~,r)(~,e)(~,k)(~,ɔ)(t,t)(ɔ,ɔ)	V;PROG;PRS;LGSPEC1
+(~,b)(~,ɛ)(b,b)(a,a)(~,e)(~,e)	V;PST+IMMED
+(~,r)(~,e)(~,k)(~,ɔ)(f,f)(r,r)(a,a)	V;PROG;PRS;LGSPEC1
+(~,r)(~,e)(p,p)(ɛ,ɛ)	V;HAB+PROG;PRS
+(~,n)(~,n)(~,a)(~, )(~,m)(~,m)(~,b)(~,ɛ)(s,s)(o,o)(ɛ,ɛ)(r,r)(~,e)(~,e)	V;PRF;NEG;PST+IMMED
+(t,t)(a,a)(f,f)(e,e)(e,e)(r,r)(~,e)(e,e)	V;HAB;PST
+(~,n)(~,n)(~,a)(~, )(~,r)(~,e)(t,t)(w,w)(e,e)(ɔ,ɔ)(n,n)	V;HAB+PROG;PST
+(~,n)(~,n)(~,a)(~, )(~,a)(s,s)(u,u)	V;HAB+PRF;PST
+(~,r)(~,e)(~,k)(~,ɔ)(f,f)(r,r)(ɛ,ɛ)	V;PROG;PRS;LGSPEC1
+(~,n)(~,n)(~,a)(~, )(~,a)(~,b)(~,ɛ)(t,t)(ɔ,ɔ)	V;PRF;PST+IMMED
+(k,k)(a,a)(~,e)(e,e)	V;HAB;PST
+(~,n)(~,n)(~,a)(~, )(~,r)(~,e)(~,n)(~,n)(~,k)(~,ɔ)(b,b)(o,o)(r,r)(o,o)	V;PROG;NEG;PST;LGSPEC1
+(~,n)(~,n)(~,a)(~, )(~,a)(~,k)(~,ɔ)(t,t)(ɔ,ɔ)	V;PRF;PST;LGSPEC1
+(~,a)(~,b)(~,ɛ)(b,b)(ɔ,ɔ)	V;PRF;PRS+IMMED
+(~,n)(~,n)(~,a)(~, )(~,n)(~,n)(~,k)(~,ɔ)(f,f)(o,o)(w,w)(~,e)(~,e)	V;PRF;NEG;PST;LGSPEC1
+(~,n)(~,n)(~,a)(~, )(~,r)(~,e)(n,n)(y,y)(i,i)(m,m)	V;HAB+PROG;PST
+(~,m)(~,m)(~,a)(~, )(~,n)(~,n)(t,t)(e,e)( , )(a,a)(s,s)(e,e)	V;IMP;NEG;PRS
+(~,r)(~,e)(~,n)(~,n)(~,k)(~,ɔ)(m,m)(i,i)(a,a)	V;PROG;NEG;PRS;LGSPEC1
+(~,n)(~,n)(t,t)(w,w)(e,e)(ɔ,ɔ)(n,n)	V;HAB;NEG;PRS
+(~,r)(~,e)(~,k)(~,ɔ)(p,p)(i,i)(a,a)	V;PROG;PRS;LGSPEC1
+(~,m)(~,m)(~,b)(~,ɛ)(k,k)(y,y)(i,i)(a,a)(~,e)(~,e)	V;PRF;NEG;PRS+IMMED
+(~,r)(~,e)(~,m)(~,m)(~,b)(~,ɛ)(h,h)(a,a)(t,t)(a,a)	V;PROG;NEG;PRS+IMMED
+(~,n)(~,n)(~,k)(~,ɔ)(h,h)(y,y)(i,i)(n,n)(a,a)	V;NEG;PRS;LGSPEC1
+(~,n)(~,n)(~,a)(~, )(~,r)(~,e)(~,k)(~,ɔ)(g,g)(u,u)(a,a)(r,r)(e,e)	V;PROG;PST;LGSPEC1
+(s,s)(e,e)(n,n)(s,s)(e,e)(n,n)	V;HAB;PRS
+(~,a)(~,k)(~,ɔ)(p,p)(e,e)(p,p)(a,a)	V;PRF;PRS;LGSPEC1
+(~,n)(~,n)(~,a)(~, )(~,r)(~,e)(~,n)(~,n)(t,t)(ɔ,ɔ)	V;HAB+PROG;NEG;PST
+(~,m)(~,m)(~,a)(~, )(~,n)(~,n)(s,s)(a,a)(w,w)	V;SBJV;NEG;PRS
+(~,n)(~,n)(~,a)(~, )(~,r)(~,e)(h,h)(a,a)(t,t)(a,a)	V;HAB+PROG;PST
+(~,r)(~,e)(~,k)(~,ɔ)(w,w)(o,o)(s,s)(o,o)(w,w)	V;PROG;PRS;LGSPEC1
+(~,n)(~,n)(~,a)(~, )(~,m)(~,m)(~,b)(~,ɛ)(t,t)(w,w)(a,a)(~,e)(~,e)	V;PRF;NEG;PST+IMMED
+(~,b)(~,ɛ)(t,t)(w,w)(a,a)(~,e)(~,e)	V;PST+IMMED
+(~,n)(~,n)(~,a)(~, )(~,r)(~,e)(t,t)(i,i)(n,n)(t,t)(i,i)(m,m)	V;HAB+PROG;PST
+(~,n)(~,n)(~,a)(~, )(~,n)(~,n)(~,k)(~,ɔ)(h,h)(u,u)(r,r)(u,u)(w,w)(~,e)(~,e)	V;PRF;NEG;PST;LGSPEC1
+(~,n)(~,n)(~,a)(~, )(~,r)(~,e)(~,m)(~,m)(~,b)(~,ɛ)(t,t)(o,o)(w,w)	V;PROG;NEG;PST+IMMED
+(~,n)(~,n)(~,a)(~, )(~,n)(~,n)(y,y)(i,i)( , )(a,a)(y,y)(ɛ,ɛ)(w,w)(~,e)(~,e)	V;HAB+PRF;NEG;PST
+(~,m)(~,m)(~,a)(~, )(~,m)(~,m)(p,p)(ɛ,ɛ)	V;IMP;NEG;PRS
+(~,r)(~,e)(f,f)(r,r)(ɛ,ɛ)	V;HAB+PROG;PRS
+(m,m)(a,a)	V;HAB;PRS
+(~,n)(~,n)(k,k)(ɔ,ɔ)(~,e)(~,e)	V;HAB+PRF;NEG;PRS
+(~,r)(~,e)(m,m)(i,i)(a,a)	V;HAB+PROG;PRS
+(~,r)(~,e)(~,n)(~,n)(~,k)(~,ɔ)(f,f)(r,r)(a,a)	V;PROG;NEG;PRS;LGSPEC1
+(~,m)(~,m)(~,b)(~,ɛ)(f,f)(r,r)(ɛ,ɛ)(~,e)(~,e)	V;PRF;NEG;PRS+IMMED
+(~,m)(~,m)(b,b)(u,u)(~,e)(e,e)	V;HAB+PRF;NEG;PRS
+(~,a)(p,p)(ɛ,ɛ)	V;HAB+PRF;PRS
+(f,f)(a,a)(~,e)(~,e)	V;HAB;PST
+(~,k)(~,ɔ)(t,t)(e,e)(w,w)(~,e)(~,e)	V;PST;LGSPEC1
+(~,n)(~,n)(~,a)(~, )(~,a)(~,k)(~,ɔ)(s,s)(u,u)	V;PRF;PST;LGSPEC1
+(~,n)(~,n)(~,a)(~, )(~,r)(~,e)(b,b)(o,o)(b,b)(ɔ,ɔ)(w,w)	V;HAB+PROG;PST
+(~,n)(~,n)(~,a)(~, )(~,r)(~,e)(~,n)(~,n)(~,k)(~,ɔ)(b,b)(ɔ,ɔ)( , )(m,m)(p,p)(a,a)(e,e)	V;PROG;NEG;PST;LGSPEC1
+(~,a)(~,b)(~,ɛ)(m,m)(a,a)( , )(s,s)(o,o)	V;PRF;PRS+IMMED
+(~,n)(~,n)(~,a)(~, )(~,m)(~,m)(~,b)(~,ɛ)(k,k)(y,y)(e,e)(r,r)(e,e)(ɛ,ɛ)(w,w)(~,e)(~,e)	V;PRF;NEG;PST+IMMED
+(~,r)(~,e)(~,m)(~,m)(~,b)(~,ɛ)(t,t)(w,w)(a,a)	V;PROG;NEG;PRS+IMMED
+(~,n)(~,n)(~,a)(~, )(~,r)(~,e)(k,k)(y,y)(e,e)(r,r)(e,e)(ɛ,ɛ)(w,w)	V;HAB+PROG;PST
+(~,k)(~,ɔ)(h,h)(i,i)(a,a)	V;PRS;LGSPEC1
+(~,n)(~,n)(~,a)(~, )(~,r)(~,e)(~,m)(~,m)(~,b)(~,ɛ)(f,f)(r,r)(a,a)	V;PROG;NEG;PST+IMMED
+(~,n)(~,n)(~,a)(~, )(~,r)(~,e)(~,k)(~,ɔ)(k,k)(a,a)(e,e)	V;PROG;PST;LGSPEC1
+(~,n)(~,n)(~,a)(~, )(~,r)(~,e)(~,n)(~,n)(~,k)(~,ɔ)(t,t)(e,e)(n,n)(a,a)	V;PROG;NEG;PST;LGSPEC1
+(~,k)(~,ɔ)(t,t)(o,o)(w,w)( , )(.,.)(.,.)( , )(m,m)(u,u)	V;PRS;LGSPEC1
+(~,k)(~,ɔ)(h,h)(u,u)(a,a)(n,n)(e,e)	V;PRS;LGSPEC1
+(n,n)(y,y)(a,a)(m,m)	V;NFIN
+(~,n)(~,n)(~,a)(~, )(~,a)(~,b)(~,ɛ)(f,f)(o,o)(w,w)	V;PRF;PST+IMMED
+(~,r)(~,e)(~,n)(~,n)(~,k)(~,ɔ)(b,b)(i,i)(s,s)(a,a)	V;PROG;NEG;PRS;LGSPEC1
+(k,k)(a,a)(s,s)(a,a)	V;NFIN

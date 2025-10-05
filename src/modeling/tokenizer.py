@@ -11,12 +11,13 @@ class Tokenizer(metaclass=abc.ABCMeta):
     token_to_id: dict[str, int] | None = None
     id_to_token: dict[int, str] | None = None
 
-    special_tokens = ["<unk>", "<bos>", "<eos>", "<pad>", "<sep>"]
+    special_tokens = ["<unk>", "<bos>", "<eos>", "<pad>", "<sep>", "<sink>"]
     unk_token_id = 0
     bos_token_id = 1
     eos_token_id = 2
     pad_token_id = 3
     sep_token_id = 4
+    sink_token_id = 5
 
     def learn_vocab(self, examples: list[Any]):
         """Fit the tokenizer to a training dataset. Fills `token_to_id` and `id_to_token`."""

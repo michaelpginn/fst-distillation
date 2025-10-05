@@ -1,17 +1,15 @@
-from os import PathLike
-
 from torch.utils.data import DataLoader
 
 from src.modeling.input_processing import create_pad_mask, pad_batch_collate_fn
 
-from .dataset import SharedTaskInflectionDataset
-from .tokenizer import SharedTaskInflectionTokenizer
+from .dataset import String2StringDataset
+from .tokenizer import String2StringTokenizer
 
 
 def create_dataloader(
-    data_path: PathLike,
+    dataset: String2StringDataset,
     batch_size: int,
-    pretrained_tokenizer: SharedTaskInflectionTokenizer | None = None,
+    pretrained_tokenizer: String2StringTokenizer | None = None,
 ):
     """
     Arguments:
@@ -19,9 +17,6 @@ def create_dataloader(
         batch_size: int
         pretrained_tokenizer: Tokenizer | None, if provided, uses a pretrained tokenizer rather than training a new one
     """
-    dataset = SharedTaskInflectionDataset(
-        path=data_path, tokenizer=pretrained_tokenizer
-    )
     tokenizer = dataset.tokenizer
     pad_token_id = tokenizer.pad_token_id
 
@@ -37,7 +32,7 @@ def create_dataloader(
         )
         return collated_batch
 
-    train_dataloader = DataLoader(
+    dataloader = DataLoader(
         dataset=dataset, batch_size=batch_size, shuffle=True, collate_fn=collate_fn
     )
-    return train_dataloader, tokenizer
+    return dataloader, tokenizer

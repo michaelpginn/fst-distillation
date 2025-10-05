@@ -1,10 +1,15 @@
+import logging
+import time
 from collections import defaultdict
 
 from pyfoma.atomic import State, Transition
 from pyfoma.fst import FST
+from tqdm import tqdm
+
+logger = logging.getLogger(__file__)
 
 
-def prefix(word: str):
+def prefix(word: list[str]):
     return [word[:i] for i in range(len(word) + 1)]
 
 
@@ -20,41 +25,45 @@ def lcp(strs: list[str]):
     return prefix
 
 
-def build_prefix_tree(samples: list[tuple[str, str]]):
+def build_prefix_tree(samples: list[tuple[list[str], list[str]]]):
     """Builds a tree sequential transducer (prefix tree),
     where outputs are delayed until the word-final symbol (#)."""
 
     # Create states for each prefix in the inputs
-    state_labels: set[str] = set()
-    alphabet = set(["#"])
+    state_labels: set[tuple] = set()
+    alphabet = set("#")
+    # Track outputs so we can look them up quickly (O(n) space, O(1) time)
+    label_to_outputs: dict[tuple, str] = dict()
     for sample in samples:
         if "#" in sample[0]:
             raise ValueError("Inputs should not contain reserved `#` symbol")
-        state_labels.update(prefix(sample[0] + "#"))
+        state_labels.update(tuple(p) for p in prefix(sample[0] + ["#"]))
         alphabet.update(sample[0] + sample[1])
-    states = {label: State(name=label) for label in state_labels}
+        if (label := tuple(sample[0])) not in label_to_outputs:
+            label_to_outputs[label] = "".join(sample[1])
+        else:
+            raise ValueError(f"Provided samples are ambiguous for input {label}!!")
+
+    states = {label: State(name="".join(label)) for label in state_labels}
 
     # Create transitions to form prefix tree
     for label, state in states.items():
         if len(label) >= 1:
             prior_state = states[label[:-1]]
             # Determine the output: empty string unless final state
-            if label.endswith("#"):
+            if label[-1] == "#":
                 state.finalweight = 0
-                outputs = [output for input, output in samples if input == label[:-1]]
-                if len(outputs) > 1:
-                    raise ValueError(
-                        f"Provided samples are ambiguous for input {label[:-1]}!!"
-                    )
-                transition_output = outputs[0]
+                transition_output = label_to_outputs[label[:-1]]
             else:
                 transition_output = ""
             prior_state.add_transition(state, label=(label[-1], transition_output))
 
     fst = FST(alphabet=alphabet)
     fst.states = set(states.values())
-    fst.initialstate = states[""]
-    fst.finalstates = {s for label, s in states.items() if label.endswith("#")}
+    fst.initialstate = states[()]
+    fst.finalstates = {
+        s for label, s in states.items() if len(label) > 0 and label[-1] == "#"
+    }
     return fst
 
 
@@ -94,7 +103,9 @@ def convert_to_otst(fst: FST):
     return fst
 
 
-def dedupe_transitions(state: State) -> State:
+def dedupe_transitions(
+    state: State, incoming_transition_lookup: dict[str, set[tuple[Transition, State]]]
+) -> State:
     new_transitions_dict = defaultdict(set)
     for label, transitions in state.transitions.items():
         for transition in transitions:
@@ -103,28 +114,48 @@ def dedupe_transitions(state: State) -> State:
                 for t in new_transitions_dict[label]
             ):
                 new_transitions_dict[label].add(transition)
+            else:
+                # Transition is a dupe, remove from lookup
+                assert transition.targetstate.name is not None
+                incoming_transition_lookup[transition.targetstate.name].remove(
+                    (transition, state)
+                )
     state.transitions = new_transitions_dict
     return state
 
 
-def merge(fst: FST, p: State, q: State) -> FST:
+def merge(
+    fst: FST,
+    p: State,
+    q: State,
+    incoming_transition_lookup: dict[str, set[tuple[Transition, State]]],
+) -> FST:
     """Merges state q into state p"""
     # Any incoming edges to q will now go to p
     needs_deduping = set()
-    for state in fst.states:
-        for _, transition in state.all_transitions():
-            if transition.targetstate == q:
-                transition.targetstate = p
-                needs_deduping.add(state)
-    for state in needs_deduping:
-        dedupe_transitions(state)
+    assert q.name is not None and p.name is not None
+    assert q.name in incoming_transition_lookup and q in fst.states
+    assert p.name in incoming_transition_lookup and p in fst.states
+    for transition, source_state in list(incoming_transition_lookup[q.name]):
+        transition.targetstate = p
+        incoming_transition_lookup[p.name].add((transition, source_state))
+        needs_deduping.add(source_state)
 
     # Copy all outgoing from q to p
-    for _, transition in q.all_transitions():
-        p.add_transition(transition.targetstate, transition.label)
-    p = dedupe_transitions(p)
+    for label, transition in list(q.all_transitions()):
+        assert transition.targetstate.name is not None
+        incoming_transition_lookup[transition.targetstate.name].remove((transition, q))
+        if label not in p.transitions:
+            p.transitions[label] = set()
+        p.transitions[label].add(transition)
+        incoming_transition_lookup[transition.targetstate.name].add((transition, p))
+
+    needs_deduping.add(p)
+    for state in needs_deduping:
+        dedupe_transitions(state, incoming_transition_lookup=incoming_transition_lookup)
 
     # Clean up
+    del incoming_transition_lookup[q.name]
     if q is fst.initialstate:
         fst.initialstate = p
     if q in fst.finalstates:
@@ -149,7 +180,13 @@ def subseq_violations(fst: FST) -> tuple[State, tuple[Transition, Transition]] |
     return None
 
 
-def push_back(fst: FST, suffix: str, incoming: Transition, source: State) -> FST:
+def push_back(
+    fst: FST,
+    suffix: str,
+    incoming: Transition,
+    source: State,
+    incoming_transition_lookup: dict[str, set[tuple[Transition, State]]],
+) -> FST:
     """Removes a (output-side) suffix from the incoming edge and
     preprends it to all outgoing edges"""
     old_label = incoming.label
@@ -157,7 +194,7 @@ def push_back(fst: FST, suffix: str, incoming: Transition, source: State) -> FST
     incoming.label = new_label
     source.transitions[old_label].remove(incoming)
     source.transitions[new_label].add(incoming)
-    dedupe_transitions(source)
+    dedupe_transitions(source, incoming_transition_lookup=incoming_transition_lookup)
 
     new_transition_dict = defaultdict(set)
     for label, transition in incoming.targetstate.all_transitions():
@@ -165,43 +202,65 @@ def push_back(fst: FST, suffix: str, incoming: Transition, source: State) -> FST
         transition.label = new_label
         new_transition_dict[new_label].add(transition)
     incoming.targetstate.transitions = new_transition_dict
-    incoming.targetstate = dedupe_transitions(incoming.targetstate)
+    incoming.targetstate = dedupe_transitions(
+        incoming.targetstate, incoming_transition_lookup=incoming_transition_lookup
+    )
     return fst
 
 
-def ostia(samples: list[tuple[str, str]]):
-    T = build_prefix_tree(samples)
+def ostia(samples: list[tuple[str | list[str], str | list[str]]]):
+    """Runs the [OSTIA](https://www.jeffreyheinz.net/classes/24F/655/materials/Oncina-et-al-1993-OSTIA.pdf) algorithm to infer an FST from a dataset.
+
+    Args:
+        samples: A list of paired input/output strings, where each string is a `list[str]` or `str`.
+    """
+    samples_as_lists = [
+        (
+            list(input) if isinstance(input, str) else input,
+            list(output) if isinstance(output, str) else output,
+        )
+        for input, output in samples
+    ]
+    logger.info("Building prefix tree")
+    T = build_prefix_tree(samples_as_lists)
+    logger.info(f"Built prefix tree with {len(T.states)} states")
+    logger.info("Converting to onward tree sequential transducer")
     T = convert_to_otst(T)
+    logger.info(f"Built OTST with {len(T.states)} states")
 
-    def next_state(fst: FST, state: State):
-        states_sorted = sorted(fst.states, key=lambda s: s.name or "")
-        for s in states_sorted:
-            if state.name < s.name:  # type:ignore
-                return s
-        return None
+    def build_lookup_tables(fst: FST):
+        state_lookup = {s.name: s for s in fst.states}
+        incoming_transition_lookup: dict[str, set[tuple[Transition, State]]] = {
+            s.name: set() for s in fst.states if s.name is not None
+        }
+        for state in fst.states:
+            for _, transition in state.all_transitions():
+                if transition.targetstate.name is not None:
+                    incoming_transition_lookup[transition.targetstate.name].add(
+                        (transition, state)
+                    )
+        return state_lookup, incoming_transition_lookup
 
-    def first_state(fst: FST):
-        return sorted(fst.states, key=lambda s: s.name or "")[0]
+    # Consider merging states in lexicographic order ()
+    logger.info("Merging states")
+    state_names_sorted = sorted([s.name or "" for s in T.states])
+    state_lookup, incoming_transition_lookup = build_lookup_tables(T)
 
-    def last_state(fst: FST):
-        return sorted(fst.states, key=lambda s: s.name or "")[-1]
-
-    # Take states in lexicographic order
-    q = first_state(T)
-    while (q.name or "") < (last_state(T).name or ""):
-        q = next_state(T, q)
-        if not q:
-            break
-
+    for q_index, q_state_name in enumerate(tqdm(state_names_sorted)):
+        q = state_lookup.get(q_state_name)
+        if not q or q not in T.states:  # State must have been deleted
+            continue
         # Find p < q where q can merge into p
-        p = first_state(T)
-        while (p.name or "") < (q.name or ""):
-            if p is None:
-                break
+        for p_state_name in state_names_sorted[:q_index]:
+            p = state_lookup.get(p_state_name)
+            if p is None or p not in T.states:
+                continue
+            start = time.time()
             T_bar = T.__copy__()
-            print(f"==============Trying merge '{q.name}' -> '{p.name}'==============")
-            T = merge(T, p, q)
-            # breakpoint()
+            logger.debug(f"Copying took {time.time() - start} s")
+            logger.debug(f"Trying merge '{q.name}' -> '{p.name}'")
+            T = merge(T, p, q, incoming_transition_lookup=incoming_transition_lookup)
+            # Try to merge to fix all violations
             while (violations := subseq_violations(T)) is not None:
                 source_state, violating_edges = violations
                 a, v = violating_edges[0].label
@@ -213,22 +272,53 @@ def ostia(samples: list[tuple[str, str]]):
                 ):
                     break
                 u = lcp([v, w])
-                T = push_back(T, v.removeprefix(u), violating_edges[0], source_state)
-                T = push_back(T, w.removeprefix(u), violating_edges[1], source_state)
-                T = merge(T, s, t)
+                T = push_back(
+                    T,
+                    suffix=v.removeprefix(u),
+                    incoming=violating_edges[0],
+                    source=source_state,
+                    incoming_transition_lookup=incoming_transition_lookup,
+                )
+                T = push_back(
+                    T,
+                    suffix=w.removeprefix(u),
+                    incoming=violating_edges[1],
+                    source=source_state,
+                    incoming_transition_lookup=incoming_transition_lookup,
+                )
+                logger.debug(f"2nd-order merge '{t.name}' -> '{s.name}")
+                T = merge(
+                    T, p=s, q=t, incoming_transition_lookup=incoming_transition_lookup
+                )
+                del state_lookup[t.name]
+
             # If T is subsequent, we're good to go to the next merge
             # If not, revert
             if subseq_violations(T) is None:
-                print("Merged")
+                logger.debug(
+                    f"Merged successfully -- FST now has {len(T.states)} states"
+                )
+                if q_state_name in state_lookup:
+                    del state_lookup[q_state_name]
                 break
             else:
-                print("Aborting merge")
+                logger.debug("Aborting merge")
+                start = time.time()
                 T = T_bar
-                q = [s for s in T.states if s.name == q.name][0]
-                p = next_state(T, p)
+                state_lookup, incoming_transition_lookup = build_lookup_tables(T)
+                q = state_lookup[q_state_name]
+                logger.debug(f"Aborting took {time.time() - start}s")
     return T
 
 
-ostia(
-    [("", ""), ("a", "bb"), ("aa", "bbc"), ("aaa", "bbbb"), ("aaaa", "bbbbc")]
-).render()
+if __name__ == "__main__":
+    fst = ostia(
+        [
+            ("", ""),
+            (["AaA"], "bb"),
+            (["AaA", "AaA"], "bbc"),
+            (["AaA", "AaA", "AaA"], "bbbb"),
+            (["AaA", "AaA", "AaA", "AaA"], "bbbbc"),
+        ]
+    )
+    fst.render()

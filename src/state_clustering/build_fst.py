@@ -8,7 +8,7 @@ from pyfoma.fst import FST
 from sklearn import linear_model, svm
 from sklearn.neighbors import KNeighborsClassifier
 
-from src.state_clustering.types import Macrostate, Macrotransition
+from src.state_clustering.types import Macrostate, Macrotransition, Microstate
 
 logger = logging.getLogger(__file__)
 
@@ -18,6 +18,7 @@ def build_fst(
     macrostates: dict[str, Macrostate],
     state_splitting_classifier: Literal["svm", "logistic"],
     minimum_transition_count: int | None,
+    breakpoint_on: dict[str, Microstate] | None = None,
 ) -> FST:
     """Processes an initial grouping of macrostates,
     adding transitions and splitting states if necessary. Returns an FST."""
@@ -29,9 +30,12 @@ def build_fst(
             continue
         visited_labels.add(current_macrostate.label)
         outgoing_distributions = current_macrostate.compute_outgoing_distributions()
+        # if current_macrostate.label in (breakpoint_on or []):
+        #     breakpoint()
         logger.debug(f"Processing state: {current_macrostate.label}")
         chosen_transitions: set[Macrotransition] = set()
         nondeterministic_input_symbols: set[str] = set()
+
         for input_symbol, distribution in outgoing_distributions.items():
             outputs_sorted = sorted(
                 distribution.items(), key=lambda x: x[1], reverse=True
@@ -65,6 +69,8 @@ def build_fst(
                     # ...and continue to target states
                     if target.label not in visited_labels:
                         queue.append(target)
+                else:
+                    breakpoint()
         else:
             # Problems! We have to split
             logger.debug(f"Splitting state: {current_macrostate.label}")
@@ -80,7 +86,7 @@ def build_fst(
             for m in new_macrostates:
                 assert m.label not in macrostates
                 macrostates[m.label] = m
-            queue = macrostates_to_recheck + queue
+            queue = macrostates_to_recheck + new_macrostates + queue
             for m in macrostates_to_recheck:
                 if m.label in visited_labels:
                     visited_labels.remove(m.label)

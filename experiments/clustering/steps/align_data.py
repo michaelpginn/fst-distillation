@@ -19,8 +19,8 @@ import logging
 import pathlib
 from os import PathLike
 
-from src.data.classification.example import ALIGNMENT_SYMBOL
-from src.data.seq2seq.example import load_examples_from_file
+from src.data.aligned.example import ALIGNMENT_SYMBOL
+from src.data.unaligned.example import load_examples_from_file
 from src.hulden_alignment import Aligner
 
 logger = logging.getLogger(__name__)

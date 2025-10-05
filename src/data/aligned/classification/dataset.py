@@ -2,18 +2,18 @@ import logging
 
 from torch.utils.data import Dataset
 
-from .example import AlignedStringExample
+from ..example import AlignedStringExample
 from .negative_examples import (
     create_negative_examples,
 )
-from .tokenizer import AlignedInflectionTokenizer
+from .tokenizer import AlignedClassificationTokenizer
 
 logger = logging.getLogger(__file__)
 
 
-class AlignedInflectionDataset(Dataset):
+class AlignedClassificationDataset(Dataset):
     """
-    Represents pre-aligned inflection data. Data should be provided in a TSV file without headers.
+    Represents pre-aligned inflection data.
 
     The dataset will include positive and negative examples, IN THAT ORDER. Use `num_positives` to determine where the negative examples start.
     """
@@ -22,7 +22,7 @@ class AlignedInflectionDataset(Dataset):
         self,
         positive_examples: list[AlignedStringExample],
         all_positive_examples: list[AlignedStringExample],
-        tokenizer: AlignedInflectionTokenizer | None,
+        tokenizer: AlignedClassificationTokenizer | None,
     ):
         """
         Initialize a dataset. If a pretrained `tokenizer` is provided, will use to
@@ -36,7 +36,7 @@ class AlignedInflectionDataset(Dataset):
         if tokenizer is not None:
             self.tokenizer = tokenizer
         else:
-            self.tokenizer = AlignedInflectionTokenizer()
+            self.tokenizer = AlignedClassificationTokenizer()
             self.tokenizer.learn_vocab(positive_examples)
 
         logger.info("Creating negative examples")

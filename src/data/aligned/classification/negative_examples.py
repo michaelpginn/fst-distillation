@@ -3,7 +3,7 @@ from collections import defaultdict
 
 from tqdm import tqdm
 
-from .example import ALIGNMENT_SYMBOL, AlignedStringExample
+from ..example import ALIGNMENT_SYMBOL, AlignedStringExample
 
 
 def create_negative_examples(

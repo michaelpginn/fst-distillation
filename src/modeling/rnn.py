@@ -1,3 +1,6 @@
+from typing import Literal
+
+import torch
 from torch import Tensor, nn
 
 from .tokenizer import Tokenizer
@@ -10,13 +13,16 @@ class RNNModel(nn.Module):
         self,
         *args,
         tokenizer: Tokenizer | dict,
+        output_head: Literal["classification", "lm"],
         d_model: int,
         num_layers: int,
         dropout: float,
+        activation: Literal["relu", "tanh", "gelu"],
         **kwargs,
     ) -> None:
         super().__init__(*args, **kwargs)
 
+        self.output_head = output_head
         self.d_model = d_model
         self.num_layers = num_layers
         self.dropout = dropout
@@ -25,18 +31,42 @@ class RNNModel(nn.Module):
             if isinstance(tokenizer, Tokenizer)
             else Tokenizer.from_state_dict(tokenizer)
         )
+        self.activation = activation
 
         vocab_size = len(self.tokenizer)
         self.embedding = nn.Embedding(vocab_size, d_model)
-        self.rnn = nn.RNN(
-            input_size=d_model,
-            hidden_size=d_model,
-            num_layers=num_layers,
-            dropout=dropout,
-            batch_first=True,
-            # Do we want bidirectional?
+
+        self.W_x = nn.ModuleList(
+            [nn.Linear(d_model, d_model) for _ in range(num_layers)]
         )
-        self.out = nn.Linear(in_features=d_model, out_features=1)
+        self.W_h = nn.ModuleList(
+            [nn.Linear(d_model, d_model) for _ in range(num_layers)]
+        )
+        for i in range(num_layers):
+            nn.init.xavier_uniform_(self.W_x[i].weight)
+            nn.init.orthogonal_(self.W_h[i].weight)
+
+        self.layer_norms = nn.ModuleList(
+            [nn.LayerNorm(d_model) for _ in range(num_layers)]
+        )
+        self.dropouts = nn.ModuleList(
+            [
+                nn.Dropout(p=dropout if i < num_layers - 1 else 0)
+                for i in range(num_layers)
+            ]
+        )
+        match activation:
+            case "tanh":
+                self.activation_func = nn.Tanh()
+            case "relu":
+                self.activation_func = nn.ReLU()
+            case "gelu":
+                self.activation_func = nn.GELU()
+
+        if output_head == "classification":
+            self.out = nn.Linear(in_features=d_model, out_features=1)
+        elif output_head == "lm":
+            self.out = nn.Linear(in_features=d_model, out_features=vocab_size)
 
     @property
     def config_dict(self):
@@ -44,6 +74,8 @@ class RNNModel(nn.Module):
             "d_model": self.d_model,
             "num_layers": self.num_layers,
             "dropout": self.dropout,
+            "output_head": self.output_head,
+            "activation": self.activation,
         }
 
     @classmethod
@@ -53,11 +85,45 @@ class RNNModel(nn.Module):
         model.load_state_dict(checkpoint_dict["state_dict"])
         return model
 
+    def compute_hidden_states(self, embeddings: Tensor, seq_lengths: Tensor):
+        B, T, _ = embeddings.shape
+
+        # hidden state at current timestep (all layers), (B, L, d_model)
+        H_t = torch.zeros((B, self.num_layers, self.d_model), device=embeddings.device)
+
+        # last layer hidden state at each timestep (list of (B, d_model))
+        final_hidden_states = []
+        for t in range(T):
+            mask = (t < seq_lengths).float().unsqueeze(1)  # B, 1
+            H_t_new = []  # list of (B, d_model)
+            for layer_idx in range(self.num_layers):
+                if layer_idx == 0:
+                    x_t = embeddings[:, t]
+                else:
+                    x_t = H_t[:, layer_idx - 1]
+
+                # Transition using the input (previous layer hidden state) and hidden state (at previous timestep)
+                H_t_layer = self.W_x[layer_idx](x_t) + self.W_h[layer_idx](
+                    H_t[:, layer_idx]
+                )
+                # H_t_layer = self.layer_norms[layer_idx](H_t_layer)
+                H_t_layer = self.activation_func(H_t_layer)
+                if layer_idx < self.num_layers - 1:
+                    H_t_layer = self.dropouts[layer_idx](H_t_layer)
+
+                # Only update hidden state if the sequence is still going (not pad)
+                H_t_layer = H_t_layer * mask + H_t[:, layer_idx] * (1 - mask)
+                H_t_new.append(H_t_layer)
+            H_t = torch.stack(H_t_new, dim=1)
+            final_hidden_states.append(H_t[:, -1])
+        return torch.stack(final_hidden_states, dim=1)
+
+    @torch.compile(disable=not torch.cuda.is_available())
     def forward(
         self,
         input_ids: Tensor,
         seq_lengths: Tensor,
-    ):
+    ) -> torch.Tensor:
         """
         Arguments:
             input_ids: Tensor, shape ``[batch_size, seq_length]``
@@ -65,9 +131,12 @@ class RNNModel(nn.Module):
         Returns:
             torch.Tensor, shape ``[batch_size]``: Output tensor with the predicted sequence probabilities.
         """
-        src_embeddings = self.embedding(input_ids)
-        packed = nn.utils.rnn.pack_padded_sequence(
-            src_embeddings, lengths=seq_lengths, batch_first=True, enforce_sorted=False
-        )
-        _, hidden_states = self.rnn.forward(input=packed)
-        return self.out(hidden_states[-1]).squeeze(-1)
+        src_embeddings = self.embedding(input_ids)  # (B, T, d_model)
+        final_hidden_states = self.compute_hidden_states(src_embeddings, seq_lengths)
+
+        if self.output_head == "classification":
+            return self.out(final_hidden_states[:, -1]).squeeze(-1)
+        elif self.output_head == "lm":
+            return self.out(final_hidden_states)
+        else:
+            raise ValueError()
