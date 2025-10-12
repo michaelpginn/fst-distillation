@@ -1,4 +1,4 @@
-"""Usage: python -m experiments.clustering.run_alignment <train_file> <eval_file> ...
+"""Usage: python -m src.alignment.run_alignment <task> <dataset>
 Given one or more files in the shared task format, runs Hulden alignment over all examples (from any file), excluding tags.
 
 Given the inputs:
@@ -14,34 +14,32 @@ This script will produce the output file:
 (d,d)(o,o)(g,g)( ,s)    V:PL
 """
 
-import argparse
 import logging
 import pathlib
-from os import PathLike
 
-from src.data.aligned.example import ALIGNMENT_SYMBOL
-from src.data.unaligned.example import load_examples_from_file
-from src.hulden_alignment import Aligner
+from .data.unaligned.example import load_examples_from_file
+from .hulden_alignment import Aligner
+from .paths import Paths, create_arg_parser, create_paths_from_args
 
 logger = logging.getLogger(__name__)
 
 
-def run_alignment(
-    file_paths: list[PathLike], has_features: bool, alignment_character=ALIGNMENT_SYMBOL
-):
-    output_folder = pathlib.Path(__file__).parent.parent / "aligned_data"
-    output_folder.mkdir(exist_ok=True)
-
+def run_alignment(paths: Paths):
     logger.info("Running alignment")
+
+    output_folder = paths["aligned_folder"]
+    output_folder.mkdir(exist_ok=True)
+    file_paths = [paths["train"], paths["eval"]]
     examples_per_file = [
-        load_examples_from_file(path, has_features) for path in file_paths
+        load_examples_from_file(path, has_features=paths["has_features"])
+        for path in file_paths
     ]
     all_examples = [ex for file_examples in examples_per_file for ex in file_examples]
     assert not any(ex.output_string is None for ex in all_examples)
     aligner = Aligner(
         wordpairs=[(ex.input_string, ex.output_string) for ex in all_examples],  # type:ignore
         iterations=100,
-        align_symbol=alignment_character,
+        align_symbol=paths["alignment_symbol"],
     )
     alignments: list[tuple[str, str]] = aligner.alignedpairs
 
@@ -69,8 +67,8 @@ def run_alignment(
 
 
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser()
-    parser.add_argument("--features", action="store_true")
-    parser.add_argument("files", nargs="+")
+    parser = create_arg_parser()
     args = parser.parse_args()
-    run_alignment(args.files, has_features=args.features)
+    run_alignment(
+        paths=create_paths_from_args(args),
+    )

@@ -14,7 +14,7 @@ def predict(
     dataloader: DataLoader,
     tokenizer: Tokenizer,
     max_length: int,
-) -> Tuple[List[List[int]], List[List[int]]]:
+) -> Tuple[List[List[int]], List[List[int]] | None]:
     """Runs inference. Returns a list of predicted token IDs in the same order as the inputs, and the label IDs."""
     model.eval()
 
@@ -49,6 +49,10 @@ def predict(
 
             # Greedy decoding, may want to change
             next_tokens = torch.argmax(next_token_logits, dim=-1)
+
+            # Replace any finished sequences with <pad>
+            next_tokens[finished] = tokenizer.pad_token_id
+
             output_sequence = torch.cat(
                 [output_sequence, next_tokens.unsqueeze(1)], dim=1
             )
@@ -58,6 +62,7 @@ def predict(
                 break
 
         # We have generated seqs for this batch. Let's add to a full list of preds.
-        predicted_ids += output_sequence.tolist()
-        label_ids += batch["target_input_ids"].tolist()
-    return predicted_ids, label_ids
+        predicted_ids += output_sequence[:, 1:].tolist()
+        if "target_label_ids" in batch:
+            label_ids += batch["target_label_ids"].tolist()
+    return predicted_ids, label_ids if len(label_ids) > 0 else None

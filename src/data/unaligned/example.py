@@ -18,17 +18,27 @@ def load_examples_from_file(path: PathLike, has_features: bool):
             output_string = None
             features = None
             if has_features:
-                if len(row) == 2:
-                    # Test data, no target forms
-                    [input_string, features] = row
-                else:
-                    [input_string, output_string, features] = row
-                features = features.split(";")
+                try:
+                    if len(row) == 2:
+                        # Test data, no target forms
+                        [input_string, features] = row
+                    else:
+                        [input_string, output_string, features] = row
+                    features = features.split(";")
+                except ValueError:
+                    raise ValueError(
+                        "Wrong number of columns, you probably should remove --features"
+                    )
             else:
-                if len(row) == 1:
-                    [input_string] = row
-                else:
-                    [input_string, output_string] = row
+                try:
+                    if len(row) == 1:
+                        [input_string] = row
+                    else:
+                        [input_string, output_string] = row
+                except ValueError:
+                    raise ValueError(
+                        "Wrong number of columsn, you probably want --features"
+                    )
             examples.append(String2StringExample(input_string, features, output_string))
 
     return examples

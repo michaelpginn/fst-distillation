@@ -13,7 +13,7 @@ class TransformerModel(nn.Module):
     def __init__(
         self,
         *args,
-        tokenizer: Tokenizer,
+        tokenizer: Tokenizer | dict,
         d_model: int,
         nhead: int,
         num_encoder_layers: int,
@@ -24,7 +24,17 @@ class TransformerModel(nn.Module):
         super().__init__(*args, **kwargs)
 
         self.d_model = d_model
-        vocab_size = len(tokenizer)
+        self.nhead = nhead
+        self.num_encoder_layers = num_encoder_layers
+        self.num_decoder_layers = num_decoder_layers
+        self.dropout = dropout
+        self.tokenizer = (
+            tokenizer
+            if isinstance(tokenizer, Tokenizer)
+            else Tokenizer.from_state_dict(tokenizer)
+        )
+
+        vocab_size = len(self.tokenizer)
         self.embedding = nn.Embedding(vocab_size, d_model)
         self.positional_encoding = PositionalEncoding(d_model=d_model, dropout=dropout)
         self.transformer = nn.Transformer(
@@ -36,6 +46,23 @@ class TransformerModel(nn.Module):
             batch_first=True,
         )
         self.out = nn.Linear(in_features=d_model, out_features=vocab_size)
+
+    @property
+    def config_dict(self):
+        return {
+            "d_model": self.d_model,
+            "nhead": self.nhead,
+            "dropout": self.dropout,
+            "num_encoder_layers": self.num_encoder_layers,
+            "num_decoder_layers": self.num_decoder_layers,
+        }
+
+    @classmethod
+    def load(cls, checkpoint_dict: dict, tokenizer: Tokenizer):
+        assert "state_dict" in checkpoint_dict and "config_dict" in checkpoint_dict
+        model = cls(**checkpoint_dict["config_dict"], tokenizer=tokenizer)
+        model.load_state_dict(checkpoint_dict["state_dict"])
+        return model
 
     def forward(
         self,

@@ -1,25 +1,22 @@
-import argparse
 import pprint
 from logging import getLogger
 
 from pyfoma.fst import FST
 
-from experiments.ostia.ostia import ostia
-from experiments.shared import add_task_parser, get_data_files
-from src.data.unaligned.example import load_examples_from_file
-from src.evaluate import evaluate_all
+from ..data.unaligned.example import load_examples_from_file
+from ..evaluate import evaluate_all
+from ..paths import create_arg_parser, create_paths_from_args
+from .ostia import ostia
 
 logger = getLogger(__name__)
 
-parser = argparse.ArgumentParser()
-add_task_parser(parser)
+parser = create_arg_parser()
 args = parser.parse_args()
-data_files = get_data_files(args)
+paths = create_paths_from_args(args)
 
-train_examples = load_examples_from_file(
-    data_files["train"], data_files["has_features"]
-)
-eval_examples = load_examples_from_file(data_files["eval"], data_files["has_features"])
+train_examples = load_examples_from_file(paths["train"], paths["has_features"])
+eval_examples = load_examples_from_file(paths["eval"], paths["has_features"])
+test_examples = load_examples_from_file(paths["test"], paths["has_features"])
 
 samples: list[tuple[str | list[str], str | list[str]]] = []
 for ex in train_examples:
@@ -38,3 +35,5 @@ train_metrics = evaluate_all(fst, train_examples, output_raw_string=True)
 logger.info(f"Train metrics: {pprint.pformat(train_metrics)}")
 eval_metrics = evaluate_all(fst, eval_examples, output_raw_string=True)
 logger.info(f"Eval metrics: {pprint.pformat(eval_metrics)}")
+eval_metrics = evaluate_all(fst, test_examples, output_raw_string=True)
+logger.info(f"Test metrics: {pprint.pformat(eval_metrics)}")

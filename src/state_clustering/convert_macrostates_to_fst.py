@@ -13,7 +13,7 @@ from src.state_clustering.types import Macrostate, Macrotransition, Microstate
 logger = logging.getLogger(__file__)
 
 
-def build_fst(
+def convert_macrostates_to_fst(
     initial_macrostate: Macrostate,
     macrostates: dict[str, Macrostate],
     state_splitting_classifier: Literal["svm", "logistic"],
@@ -82,6 +82,9 @@ def build_fst(
                 state_splitting_classifier=state_splitting_classifier,
                 minimum_transition_count=minimum_transition_count,
             )
+            if len(new_macrostates) == len(macrostates_to_recheck) == 0:
+                # Splitting failed
+                continue
             del macrostates[current_macrostate.label]
             for m in new_macrostates:
                 assert m.label not in macrostates
@@ -105,9 +108,13 @@ def build_fst(
     for macrostate in macrostates.values():
         for transition in macrostate.outgoing:
             if (target := transition.target()) is not None:
+                if transition.input_symbol == transition.output_symbol:
+                    label = (transition.input_symbol,)
+                else:
+                    label = (transition.input_symbol, transition.output_symbol)
                 fst_states[macrostate.label].add_transition(
                     other=fst_states[target.label],
-                    label=(transition.input_symbol, transition.output_symbol),
+                    label=label,
                     weight=1,
                 )
             alphabet.update([transition.input_symbol, transition.output_symbol])
@@ -117,6 +124,10 @@ def build_fst(
     fst.finalstates = final_states
     fst = fst.filter_accessible()
     logger.info(f"After splitting, FST has {len(fst.states)} states")
+    logger.info("Minimizing and determinizing")
+    # TODO: Add back epsilon loop thing
+    fst = fst.filter_accessible().minimize()
+    logger.info(f"Created FST with {len(fst.states)} states")
     return fst
 
 

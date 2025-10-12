@@ -19,4 +19,4 @@ cd "/projects/$USER/fst-distillation"
 set -x
 
 echo Running for language: $1
-python -m experiments.clustering.sweep inflection $1
+python -m src.sweep data/inflection $1 --features

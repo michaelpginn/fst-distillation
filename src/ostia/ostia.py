@@ -41,8 +41,11 @@ def build_prefix_tree(samples: list[tuple[list[str], list[str]]]):
         alphabet.update(sample[0] + sample[1])
         if (label := tuple(sample[0])) not in label_to_outputs:
             label_to_outputs[label] = "".join(sample[1])
-        else:
-            raise ValueError(f"Provided samples are ambiguous for input {label}!!")
+        elif label_to_outputs[label] != "".join(sample[1]):
+            logger.warning(
+                "Provided samples are ambiguous for input {label}!! Ignoring subsequent samples."
+            )
+            # raise ValueError(f"Provided samples are ambiguous for input {label}!!")
 
     states = {label: State(name="".join(label)) for label in state_labels}
 

@@ -1,3 +1,5 @@
+import re
+
 from src.modeling.tokenizer import Tokenizer
 
 from ..example import AlignedStringExample
@@ -11,8 +13,6 @@ class AlignedLanguageModelingTokenizer(Tokenizer):
         labels (list[str]): Labels for autoregressive LM, format `features <sep> chars <sink> <eos>`
     }
     """
-
-    sink_token_id = 5
 
     def create_vocab(self, examples: list[AlignedStringExample]) -> list[str]:
         vocab: set[str] = set()
@@ -38,13 +38,25 @@ class AlignedLanguageModelingTokenizer(Tokenizer):
                 self.token_to_id.get(feature, self.unk_token_id)
                 for feature in example.features
             ]
-        if example.aligned_chars[0][0] != "<sep>":
+        if len(example.aligned_chars) == 0 or example.aligned_chars[0][0] != "<sep>":
             input_ids.append(self.sep_token_id)
         input_ids += [
             self.token_to_id.get(pair, self.unk_token_id)
             for pair in example.aligned_chars_as_strs
         ]
-        if example.aligned_chars[-1][0] != "<sink>":
+        if len(example.aligned_chars) == 0 or example.aligned_chars[-1][0] != "<sink>":
             input_ids.append(self.sink_token_id)
         labels = input_ids[1:] + [self.eos_token_id]
         return {"input_ids": input_ids, "labels": labels}
+
+    def token_ids_matching_input(self, input_char: str) -> list[int]:
+        """Gets the tokens that have a given char on the input side"""
+        # TODO: Might want to cache this ahead of time
+        assert self.token_to_id is not None
+        ids = []
+        for token, id in self.token_to_id.items():
+            if (match := re.match(r"\((.*),(.*)\)", token)) is not None and match.group(
+                1
+            ) == input_char:
+                ids.append(id)
+        return ids

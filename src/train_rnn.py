@@ -1,33 +1,26 @@
-"""Usage: python -m experiments.clustering.train_rnn
+"""Usage: python -m src.training.train_rnn
 
-Trains an RNN acceptor to do binary classification on aligned inflection data. Saves model checkpoint to the `checkpoints/` directory.
+Trains an RNN on aligned data. Saves model checkpoint to the `checkpoints/` directory.
 
 You must run `run_alignment.py` first to produce aligned data files.
 """
 
-import pathlib
-from argparse import ArgumentParser
 from logging import getLogger
 from typing import Literal
 
 import torch
 
 import wandb
-from experiments.shared import (
-    DataFiles,
-    add_task_parser,
-    get_data_files,
-    get_identifier,
-)
-from src.data.aligned.example import load_examples_from_file
-from src.modeling import RNNModel
+
+from .data.aligned.example import load_examples_from_file
+from .modeling import RNNModel
+from .paths import Paths, create_arg_parser, create_paths_from_args
 
 logger = getLogger(__name__)
 
 
 def train_rnn(
-    identifier: str,
-    data_files: DataFiles,
+    paths: Paths,
     objective: Literal["classification", "lm"],
     batch_size: int,
     epochs: int,
@@ -40,7 +33,7 @@ def train_rnn(
     spectral_norm_weight: float | None,
     seed=0,
 ) -> tuple[wandb.Run | None, float]:
-    logger.info(f"Training on {identifier}")
+    logger.info(f"Training on {paths['identifier']}")
     hyperparams = locals()
     project_name = f"fst-distillation.clustering.rnn_{objective}"
 
@@ -79,10 +72,10 @@ def train_rnn(
     # In order to create negative examples (for classification), we need to pre-load all of the examples so
     # we don't accidentally create negative examples that are valid
     train_examples = load_examples_from_file(
-        data_files["train_aligned"], remove_epsilons=no_epsilon_inputs
+        paths["train_aligned"], remove_epsilons=no_epsilon_inputs
     )
     eval_examples = load_examples_from_file(
-        data_files["eval_aligned"], remove_epsilons=no_epsilon_inputs
+        paths["eval_aligned"], remove_epsilons=no_epsilon_inputs
     )
     wandb.log({"train_size": len(train_examples)})
 
@@ -140,7 +133,7 @@ def train_rnn(
         spectral_norm_weight=spectral_norm_weight,
     )
     checkpoint_path = (
-        pathlib.Path(__file__).parent.parent / f"runs/{wandb.run.name}/model.pt"  # type:ignore
+        paths["models_folder"] / f"{wandb.run.name}/model.pt"  # type:ignore
     )
     checkpoint_path.parent.mkdir(exist_ok=True, parents=True)
     torch.save(
@@ -157,9 +150,8 @@ def train_rnn(
 
 
 if __name__ == "__main__":
-    parser = ArgumentParser()
-    add_task_parser(parser)
-    parser.add_argument("--objective", choices=["classification", "lm"])
+    parser = create_arg_parser()
+    parser.add_argument("--objective", choices=["classification", "lm"], required=True)
     parser.add_argument("--batch-size", default=2048)
     parser.add_argument("--epochs", default=200)
     parser.add_argument("--hidden-dim", default=64)
@@ -170,8 +162,7 @@ if __name__ == "__main__":
     parser.add_argument("--spec-weight", default=0.1)
     args = parser.parse_args()
     train_rnn(
-        identifier=get_identifier(args),
-        data_files=get_data_files(args),
+        paths=create_paths_from_args(args),
         objective=args.objective,
         batch_size=int(args.batch_size),
         epochs=int(args.epochs),
