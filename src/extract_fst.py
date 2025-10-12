@@ -202,7 +202,7 @@ def _collect_activations(
                     ),
                 )
                 for char, _ in example.aligned_chars:
-                    logits: torch.Tensor = model.out(hidden_states[:, -1])
+                    logits: torch.Tensor = model.out(hidden_states[:, -1]).squeeze(0)
                     # Mask to only allowed next symbols (which start with the input symbol)
                     possible_ids = tokenizer.token_ids_matching_input(char)
                     mask = torch.ones(logits.size(0), dtype=torch.bool)
@@ -302,8 +302,6 @@ def _collect_microstates(
         for label in set(labels)
     }
     initial_macrostate = macrostates[f"cluster-{labels[0]}"]
-
-    breakpoint()
 
     offset = 0
     for ex_transition_labels in tqdm(all_transition_labels, "Collecting microstates"):
