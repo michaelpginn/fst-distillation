@@ -28,56 +28,58 @@ def train_rnn(
     num_layers: int,
     dropout: float,
     learning_rate: float,
-    no_epsilon_inputs: bool,
+    use_many_to_many_transitions: bool,
     activation: Literal["relu", "gelu", "tanh"],
     spectral_norm_weight: float | None,
+    wandb_run: wandb.Run | None = None,
     seed=0,
 ) -> tuple[wandb.Run | None, float]:
     logger.info(f"Training on {paths['identifier']}")
     hyperparams = locals()
     project_name = f"fst-distillation.clustering.rnn_{objective}"
 
-    # Check if this run is a duplicate
-    try:
-        filters = {
-            f"config.{key}": value
-            for key, value in hyperparams.items()
-            if isinstance(value, (str, float, int))
-        }
-        runs = wandb.Api().runs(
-            path=f"lecs-general/{project_name}",
-            filters=filters,
-        )
-        if len(runs) > 0 and any(
-            r._state == "finished" or r._state == "running" for r in runs
-        ):
-            logger.info("Skipping run, identical run already found!!")
-            eval_loss = (
-                runs[0]
-                .history(keys=["validation.loss"])["validation.loss"]
-                .iloc[-1]
-                .item()
+    if wandb_run is None:
+        # Check if this run is a duplicate
+        try:
+            filters = {
+                f"config.{key}": value
+                for key, value in hyperparams.items()
+                if isinstance(value, (str, float, int))
+            }
+            runs = wandb.Api().runs(
+                path=f"lecs-general/{project_name}",
+                filters=filters,
             )
-            return runs[0], eval_loss
-    except:
-        print("Project does not exist yet")
+            if len(runs) > 0 and any(
+                r._state == "finished" or r._state == "running" for r in runs
+            ):
+                logger.info("Skipping run, identical run already found!!")
+                eval_loss = (
+                    runs[0]
+                    .history(keys=["validation.loss"])["validation.loss"]
+                    .iloc[-1]
+                    .item()
+                )
+                return runs[0], eval_loss
+        except:
+            print("Project does not exist yet")
 
-    wandb.init(
-        entity="lecs-general",
-        project=project_name,
-        config={**hyperparams},
-        save_code=True,
-    )
+        wandb_run = wandb.init(
+            entity="lecs-general",
+            project=project_name,
+            config={**hyperparams},
+            save_code=True,
+        )
 
     # In order to create negative examples (for classification), we need to pre-load all of the examples so
     # we don't accidentally create negative examples that are valid
     train_examples = load_examples_from_file(
-        paths["train_aligned"], remove_epsilons=no_epsilon_inputs
+        paths["train_aligned"], remove_epsilons=use_many_to_many_transitions
     )
     eval_examples = load_examples_from_file(
-        paths["eval_aligned"], remove_epsilons=no_epsilon_inputs
+        paths["eval_aligned"], remove_epsilons=use_many_to_many_transitions
     )
-    wandb.log({"train_size": len(train_examples)})
+    wandb_run.log({"train_size": len(train_examples)})
 
     if objective == "classification":
         from src.data.aligned.classification.dataloader import create_dataloader
@@ -133,7 +135,7 @@ def train_rnn(
         spectral_norm_weight=spectral_norm_weight,
     )
     checkpoint_path = (
-        paths["models_folder"] / f"{wandb.run.name}/model.pt"  # type:ignore
+        paths["models_folder"] / f"{wandb_run.name}/model.pt"  # type:ignore
     )
     checkpoint_path.parent.mkdir(exist_ok=True, parents=True)
     torch.save(
@@ -144,9 +146,8 @@ def train_rnn(
         },
         checkpoint_path,
     )
-    run = wandb.run
-    wandb.finish()
-    return run, last_eval_loss
+    wandb_run.finish()
+    return wandb_run, last_eval_loss
 
 
 if __name__ == "__main__":
@@ -170,7 +171,7 @@ if __name__ == "__main__":
         num_layers=int(args.num_layers),
         dropout=float(args.dropout),
         learning_rate=float(args.learning_rate),
-        no_epsilon_inputs=False,
+        use_many_to_many_transitions=False,
         activation=args.activation,
         spectral_norm_weight=args.spec_weight,
     )

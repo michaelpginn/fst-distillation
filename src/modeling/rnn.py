@@ -104,7 +104,7 @@ class RNNModel(nn.Module):
                 H_t_layer = self.dropouts[layer_idx](H_t_layer)
 
             # Only update hidden state if the sequence is still going (not pad)
-            if mask:
+            if mask is not None:
                 H_t_layer = H_t_layer * mask + H_t_min1[:, layer_idx] * (1 - mask)
             H_t.append(H_t_layer)
         return torch.stack(H_t, dim=1)

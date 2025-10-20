@@ -37,7 +37,6 @@ def evaluate_all(
             logger.debug(
                 f"FST has no accepting states for input {''.join(input_string)}"
             )
-            breakpoint()
             preds.append(set())
             continue
         output_fst = output_fst.project(-1)
