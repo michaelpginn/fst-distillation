@@ -22,6 +22,8 @@ This package provides an algorithm for FST induction using a neural surrogate mo
 # Python >=3.11
 pip install -r requirements.txt
 
+gcc -O3 -Wall -Wextra -fPIC -shared src/crpalign/align.c -o src/crpalign/libalign.so
+
 # Run a full extraction on some dataset
 python -m src.sweep <data/inflection> <ceb> --objective <lm>
 ```

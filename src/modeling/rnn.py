@@ -5,6 +5,9 @@ from torch import Tensor, nn
 
 from .tokenizer import Tokenizer
 
+if torch.cuda.is_available():
+    torch.set_float32_matmul_precision("high")
+
 
 class RNNModel(nn.Module):
     MODEL_TYPE = "rnn"

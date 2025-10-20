@@ -37,7 +37,7 @@ def load_examples_from_file(path: PathLike, has_features: bool):
                         [input_string, output_string] = row
                 except ValueError:
                     raise ValueError(
-                        "Wrong number of columsn, you probably want --features"
+                        "Wrong number of columns, you probably want --features"
                     )
             examples.append(String2StringExample(input_string, features, output_string))
 

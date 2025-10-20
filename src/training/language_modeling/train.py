@@ -20,7 +20,7 @@ def compute_loss(
 ):
     input_ids = batch["input_ids"].to(device)
     seq_lengths = batch["seq_lengths"].to(device)
-    labels = batch["labels"].float().to(device)
+    labels = batch["labels"].to(device)
     out = model(
         input_ids=input_ids,
         seq_lengths=seq_lengths,
