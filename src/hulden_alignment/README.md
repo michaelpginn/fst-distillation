@@ -1,5 +1,5 @@
 # alignment
-Module related to the Hulden alignment of a string-to-string dataset.
+Module related to the Chinese Restaurant Process Alignment of a string-to-string dataset.
 
 Mans's description:
 

@@ -7,33 +7,38 @@ FSTs have traditionally been popular for tasks such as morphological inflection,
 
 With careful design, FSTs can often achieve near-perfect accuracy and compete with SOTA neural systems, as in [Beemer et al., 2020](https://aclanthology.org/2020.sigmorphon-1.18.pdf). However, creating FSTs is a laborious and painstaking process, requiring expert knowledge of both the target domain and finite-state theory. While algorithms for automatic induction of FSTs exist, they are generally very sample inefficient, requiring huge amounts of labeled pairs to converge to an accurate solution.
 
-Meanwhile, neural models have achieved impressive performance on these sorts of tasks, even with limited data. We seek to leverage this behavior for FST construction through **knowledge distillation**, where a trained neural model becomes a teacher in order to train an FST, which enjoys the benefits mentioned earlier.
+# Method
+This package provides an algorithm for FST induction using a neural surrogate model (specifically, an Elman RNN) and the state-clustering algorithm of Giles et al. (1991).
 
-# Goals
-
-Our initial work consists of two main goals:
-
-1. We will compare the **sample efficiency** of **neural and finite-state learning algorithms**, by studying how performance of these systems varies with the size of the provided training set and the amount of data needed to converge.
-2. We will train high-quality neural models and perform **knowledge distillation to FSTs** by sampling novel forms from the neural model in order to vastly increase the amount of labeled data. To this end, we will study various finite-state induction algorithms, also including those which utilize negative samples and uncertainty estimates.
+1. Align the input and output strings using **CRPAlign**.
+2. Train an **alignment prediction model** (seq2seq transformer) to predict the aligned input string from the unaligned string. Use this model to predict aligned inputs for the full domain (or a large sample if infinite).
+3. Train an **Elman RNN** on language modeling or binary classification.
+4. Extract activations from the RNN for both the training data and full domain as predicted in (2).
+5. Cluster activations into *macrostates* and aggregate *microtransitions* for each macrostate.
+6. Run the *state splitting algorithm* to split any macrostates with non-deterministic outgoing transitions.
 
 # Usage
 ```shell
+# Python >=3.11
 pip install -r requirements.txt
-python -m exp1-student-teacher.train_transformer
+
+# Run a full extraction on some dataset
+python -m src.sweep <data/inflection> <ceb> --objective <lm>
 ```
+
+- The first parameter `<data/inflection>` is the path to a folder containing the raw data files.
+- The second parameter `<ceb>` is the name of the dataset. Files named `ceb.trn`, `ceb.dev`, and `ceb.tst` must exist. The format is the 2020 SIGMORPHON shared task format (see files for an example).
+- The RNN training objective may either be `lm` or `classification`
+
 
 # Experiments
 
-## Exp 2: Clustering
-Main results:
-- RNN accuracy score
-- F1 score of best extracted FSTs across langauges
-
 Analysis
-- Impact of PCA
 - Impact of hidden state size
 - Impact of standardization
 - Impact of clustering process/n clusters
-- Negative example ablations (important!)
-- State splitting ablation (important)
-- Maybe correlation of hopkins statistic and performance
+
+Ablations
+- State splitting
+- Full coverage
+- Spec norm

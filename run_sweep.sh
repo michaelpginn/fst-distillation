@@ -18,5 +18,5 @@ cd "/projects/$USER/fst-distillation"
 
 set -x
 
-echo Running for language: $1
-python -m src.sweep data/inflection $1 --features
+echo Running for '$1' with objective '$2'
+python -m src.sweep data/inflection $1 --features --objective $2
