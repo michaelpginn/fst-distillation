@@ -56,12 +56,12 @@ def train(
     model = model.to(device)
 
     logger.info("Training...")
-    for epoch in range(epochs):
+    for epoch in tqdm(range(epochs)):
         logger.info(("-" * 25) + f"Epoch {epoch}" + ("-" * 25))
 
         model.train()
         epoch_loss = 0
-        for batch in tqdm(train_dataloader, "Training"):
+        for batch in train_dataloader:
             optimizer.zero_grad()
             loss = compute_loss(
                 model,
@@ -78,7 +78,7 @@ def train(
         model.eval()
         epoch_loss = 0
         with torch.no_grad():
-            for batch in tqdm(eval_dataloader, "Evaluating"):
+            for batch in eval_dataloader:
                 loss = compute_loss(
                     model,
                     batch,
