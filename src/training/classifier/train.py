@@ -31,11 +31,7 @@ def compute_loss(
 
     if spectral_norm_weight is not None:
         spec_loss = 0.0
-        if hasattr(model, "_orig_model"):
-            W_h = model._orig_model.W_h
-        else:
-            W_h = model.W_h
-        for m in W_h:
+        for m in model.W_h:
             spec_penalty, spec_norm = spectral_penalty(m.weight)
             spec_loss += spec_penalty
         loss += spectral_norm_weight * spec_loss
@@ -62,7 +58,6 @@ def compute_loss(
 
 def train(
     model: RNNModel,
-    compiled_model: Module,
     train_dataloader: DataLoader,
     eval_dataloader: DataLoader,
     tokenizer: Tokenizer,
@@ -74,28 +69,27 @@ def train(
     """Trains the model with the specified parameters."""
     torch.manual_seed(seed)
     torch.cuda.manual_seed(seed)
-
-    optimizer = torch.optim.AdamW(model.parameters(), lr=learning_rate)  # type:ignore
-
     model = model.to(device)
+    if torch.cuda.is_available():
+        model.compile(dynamic=True)
+    optimizer = torch.optim.AdamW(model.parameters(), lr=learning_rate)  # type:ignore
 
     logger.info("Training...")
     for epoch in trange(epochs):
         logger.info(("-" * 25) + f"Epoch {epoch}" + ("-" * 25))
-
-        compiled_model.train()
+        model.train()
         epoch_loss = 0
         for batch in train_dataloader:
             optimizer.zero_grad()
             stats = compute_loss(
-                compiled_model,
+                model,
                 batch,
                 epoch=epoch,
                 tokenizer=tokenizer,
                 spectral_norm_weight=spectral_norm_weight,
             )
             stats["loss"].backward()
-            torch.nn.utils.clip_grad_norm_(compiled_model.parameters(), max_norm=1.0)
+            torch.nn.utils.clip_grad_norm_(model.parameters(), max_norm=1.0)
             optimizer.step()
             epoch_loss += stats["loss"].detach().item()
         train_loss = epoch_loss / len(train_dataloader)

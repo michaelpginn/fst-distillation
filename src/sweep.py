@@ -76,7 +76,7 @@ sweep_configuration = {
         "dropout": {"values": [0, 0.1, 0.3]},
         "learning_rate": {"values": [2e-4, 1e-3, 2e-3, 1e-2]},
         "batch_size": {
-            "values": [b for b in [4, 8, 16, 32, 64, 128] if b < max_batch_size]
+            "values": [b for b in [4, 8, 16, 32, 64, 128] if b < max_batch_size][-3:]
         },
         "epochs": {"values": [200, 600, 1000]},
     },
