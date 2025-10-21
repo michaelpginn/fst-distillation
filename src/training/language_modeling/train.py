@@ -51,9 +51,7 @@ def train(
     torch.cuda.manual_seed(seed)
     model = model.to(device)
     if torch.cuda.is_available():
-        model.compile(
-            dynamic=True, mode="reduce-overhead", options={"triton.cudagraphs": False}
-        )
+        model.compile(dynamic=True, options={"triton.cudagraphs": False})
     optimizer = torch.optim.AdamW(model.parameters(), lr=learning_rate)  # type:ignore
 
     logger.info("Training...")
