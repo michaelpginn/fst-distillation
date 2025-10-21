@@ -102,7 +102,6 @@ def train(
                 stats = compute_loss(
                     model,
                     batch,
-                    epoch=epoch,
                     tokenizer=tokenizer,
                     spectral_norm_weight=spectral_norm_weight,
                 )
