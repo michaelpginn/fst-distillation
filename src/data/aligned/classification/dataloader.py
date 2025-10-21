@@ -24,6 +24,9 @@ def create_dataloader(
 
     def collate_fn(batch: list[dict[str, int | list[int]]]):
         collated_batch = pad_batch_collate_fn(batch, tokenizer.pad_token_id)
+        for k, v in collated_batch.items():
+            if isinstance(v, torch.Tensor):
+                collated_batch[k] = v.contiguous()
         collated_batch["seq_lengths"] = torch.tensor(
             [len(ex["input_ids"]) for ex in batch]  # type:ignore
         )

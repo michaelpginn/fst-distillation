@@ -89,7 +89,7 @@ sweep_configuration = {
 sweep_id = wandb.sweep(
     sweep=sweep_configuration, entity="lecs-general", project=rnn_project_name
 )
-wandb.agent(sweep_id, function=single_run_train_rnn, count=100)
+wandb.agent(sweep_id, function=single_run_train_rnn, count=50)
 sweep = wandb.Api().sweep(f"lecs-general/{rnn_project_name}/sweeps/{sweep_id}")
 best_run = sweep.best_run()
 

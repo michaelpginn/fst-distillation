@@ -16,7 +16,7 @@ device = "cuda" if torch.cuda.is_available() else "mps"
 logger = logging.getLogger(__file__)
 
 
-def compute_loss(model: Module, batch, epoch: int, spectral_norm_weight: float | None):
+def compute_loss(model: Module, batch, spectral_norm_weight: float | None):
     input_ids = batch["input_ids"].to(device)
     seq_lengths = batch["seq_lengths"].to(device)
     labels = batch["labels"].to(device)
@@ -64,7 +64,6 @@ def train(
             loss = compute_loss(
                 model,
                 batch,
-                epoch=epoch,
                 spectral_norm_weight=spectral_norm_weight,
             )
             loss.backward()
