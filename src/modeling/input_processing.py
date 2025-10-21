@@ -8,12 +8,14 @@ def pad_batch_collate_fn(batch: list[dict[str, int | list[int]]], pad_token_id: 
     return {
         key: (
             pad_sequence(
-                [torch.tensor(example[key], dtype=torch.long) for example in batch],
+                [torch.as_tensor(example[key], dtype=torch.long) for example in batch],
                 batch_first=True,
                 padding_value=pad_token_id,
             )
+            .clone()
+            .contiguous()
             if isinstance(batch[0][key], list)
-            else torch.tensor([ex[key] for ex in batch])
+            else torch.as_tensor([ex[key] for ex in batch])
         )
         for key in batch[0].keys()
     }
