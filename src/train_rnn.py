@@ -79,7 +79,7 @@ def train_rnn(
     eval_examples = load_examples_from_file(
         paths["eval_aligned"], remove_epsilons=use_many_to_many_transitions
     )
-    wandb_run.log({"train_size": len(train_examples)})
+    wandb_run.log({"train_size": len(train_examples)}, commit=False)
 
     if objective == "classification":
         from src.data.aligned.classification.dataloader import create_dataloader
@@ -124,8 +124,13 @@ def train_rnn(
         dropout=dropout,
         activation=activation,
     )
+    if torch.cuda.is_available():
+        compiled_model = torch.compile(model)
+    else:
+        compiled_model = model
     last_eval_loss: float = train(
         model=model,
+        compiled_model=compiled_model,  # type:ignore
         train_dataloader=train_dataloader,
         eval_dataloader=eval_dataloader,
         tokenizer=tokenizer,

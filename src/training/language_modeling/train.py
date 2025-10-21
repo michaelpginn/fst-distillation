@@ -2,8 +2,9 @@ import logging
 import tempfile
 
 import torch
+from torch.nn import Module
 from torch.utils.data import DataLoader
-from tqdm import tqdm
+from tqdm import trange
 
 import wandb
 from src.modeling.rnn import RNNModel
@@ -15,9 +16,7 @@ device = "cuda" if torch.cuda.is_available() else "mps"
 logger = logging.getLogger(__file__)
 
 
-def compute_loss(
-    model: RNNModel, batch, epoch: int, spectral_norm_weight: float | None
-):
+def compute_loss(model: Module, batch, epoch: int, spectral_norm_weight: float | None):
     input_ids = batch["input_ids"].to(device)
     seq_lengths = batch["seq_lengths"].to(device)
     labels = batch["labels"].to(device)
@@ -29,7 +28,11 @@ def compute_loss(
 
     if spectral_norm_weight is not None:
         spec_loss = 0.0
-        for m in model.W_h:
+        if hasattr(model, "_orig_model"):
+            W_h = model._orig_model.W_h
+        else:
+            W_h = model.W_h
+        for m in W_h:
             spec_penalty, spec_norm = spectral_penalty(m.weight)
             spec_loss += spec_penalty
         loss += spectral_norm_weight * spec_loss
@@ -39,6 +42,7 @@ def compute_loss(
 
 def train(
     model: RNNModel,
+    compiled_model: Module,
     train_dataloader: DataLoader,
     eval_dataloader: DataLoader,
     tokenizer: Tokenizer,
@@ -56,21 +60,21 @@ def train(
     model = model.to(device)
 
     logger.info("Training...")
-    for epoch in tqdm(range(epochs)):
+    for epoch in trange(epochs):
         logger.info(("-" * 25) + f"Epoch {epoch}" + ("-" * 25))
 
-        model.train()
+        compiled_model.train()
         epoch_loss = 0
         for batch in train_dataloader:
             optimizer.zero_grad()
             loss = compute_loss(
-                model,
+                compiled_model,
                 batch,
                 epoch=epoch,
                 spectral_norm_weight=spectral_norm_weight,
             )
             loss.backward()
-            torch.nn.utils.clip_grad_norm_(model.parameters(), max_norm=1.0)
+            torch.nn.utils.clip_grad_norm_(compiled_model.parameters(), max_norm=1.0)
             optimizer.step()
             epoch_loss += loss.detach().item()
         train_loss = epoch_loss / len(train_dataloader)

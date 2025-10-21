@@ -132,7 +132,6 @@ class RNNModel(nn.Module):
             final_hidden_states.append(H_t[:, -1])
         return torch.stack(final_hidden_states, dim=1), H_t
 
-    @torch.compile(disable=not torch.cuda.is_available())
     def forward(
         self,
         input_ids: Tensor,
