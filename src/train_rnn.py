@@ -125,7 +125,7 @@ def train_rnn(
         activation=activation,
     )
     if torch.cuda.is_available():
-        compiled_model = torch.compile(model)
+        compiled_model = torch.nn.Module.compile(model, dynamic=True)
     else:
         compiled_model = model
     last_eval_loss: float = train(

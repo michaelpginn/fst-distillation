@@ -14,5 +14,5 @@ def spectral_penalty(W: torch.Tensor, iters=10, kappa=0.8):
         v = v / (torch.linalg.vector_norm(v) + 1e-8)
         u = W @ v
         u = u / (torch.linalg.vector_norm(u) + 1e-8)
-    spec_norm = u.T @ W @ v  # type:ignore
+    spec_norm = u @ W @ v  # type:ignore
     return torch.relu(spec_norm - kappa).pow(2), spec_norm
