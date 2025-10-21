@@ -1,5 +1,6 @@
 """Runs the full experiment for a given language"""
 
+import ast
 import logging
 from math import ceil
 from pprint import pformat
@@ -104,8 +105,10 @@ def single_run_extract_fst():
         project="fst-distillation.clustering.extraction",
         config={
             "rnn": {
-                **dict(best_run.config),
-                "eval.loss": best_run.summary_metrics["validation"]["loss"],
+                # **dict(best_run.config),
+                "eval.loss": ast.literal_eval(best_run.summary_metrics)["validation"][
+                    "loss"
+                ],
                 "name": best_run.name,
             },
             "identifier": paths["identifier"],
