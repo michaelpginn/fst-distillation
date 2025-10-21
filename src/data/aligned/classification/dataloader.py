@@ -38,6 +38,10 @@ def create_dataloader(
         pos_indices=positive_indices, neg_indices=negative_indices
     )
     dataloader = DataLoader(
-        dataset=dataset, batch_size=batch_size, sampler=sampler, collate_fn=collate_fn
+        dataset=dataset,
+        batch_size=batch_size,
+        sampler=sampler,
+        collate_fn=collate_fn,
+        pin_memory=True,
     )
     return dataloader

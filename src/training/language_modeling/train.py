@@ -4,7 +4,7 @@ import tempfile
 import torch
 from torch.nn import Module
 from torch.utils.data import DataLoader
-from tqdm import trange
+from tqdm import tqdm, trange
 
 import wandb
 from src.modeling.rnn import RNNModel
@@ -17,9 +17,9 @@ logger = logging.getLogger(__file__)
 
 
 def compute_loss(model: Module, batch, spectral_norm_weight: float | None):
-    input_ids = batch["input_ids"].to(device)
-    seq_lengths = batch["seq_lengths"].to(device)
-    labels = batch["labels"].to(device)
+    input_ids = batch["input_ids"].to(device, non_blocking=True)
+    seq_lengths = batch["seq_lengths"].to(device, non_blocking=True)
+    labels = batch["labels"].to(device, non_blocking=True)
     out = model(
         input_ids=input_ids,
         seq_lengths=seq_lengths,
@@ -59,7 +59,7 @@ def train(
         logger.info(("-" * 25) + f"Epoch {epoch}" + ("-" * 25))
         model.train()
         epoch_loss = 0
-        for batch in train_dataloader:
+        for batch in tqdm(train_dataloader, desc="Training"):
             optimizer.zero_grad()
             loss = compute_loss(
                 model,
@@ -75,7 +75,7 @@ def train(
         model.eval()
         epoch_loss = 0
         with torch.no_grad():
-            for batch in eval_dataloader:
+            for batch in tqdm(eval_dataloader, desc="Evaluating"):
                 loss = compute_loss(
                     model,
                     batch,

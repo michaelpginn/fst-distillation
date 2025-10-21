@@ -30,6 +30,9 @@ def create_dataloader(
         return collated_batch
 
     dataloader = DataLoader(
-        dataset=dataset, batch_size=batch_size, collate_fn=collate_fn
+        dataset=dataset,
+        batch_size=batch_size,
+        collate_fn=collate_fn,
+        pin_memory=True,
     )
     return dataloader
