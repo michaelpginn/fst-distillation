@@ -93,6 +93,7 @@ sweep_id = wandb.sweep(
 wandb.agent(sweep_id, function=single_run_train_rnn, count=50)
 sweep = wandb.Api().sweep(f"lecs-general/{rnn_project_name}/sweeps/{sweep_id}")
 best_run = sweep.best_run()
+best_run_loss = ast.literal_eval(best_run.summary_metrics)["validation"]["loss"]
 
 # =========================================
 # 4. FST EXTRACTION
@@ -106,9 +107,7 @@ def single_run_extract_fst():
         config={
             "rnn": {
                 # **dict(best_run.config),
-                "eval.loss": ast.literal_eval(best_run.summary_metrics)["validation"][
-                    "loss"
-                ],
+                "eval.loss": best_run_loss,
                 "name": best_run.name,
             },
             "identifier": paths["identifier"],

@@ -70,6 +70,8 @@ def train_rnn(
             config={**hyperparams},
             save_code=True,
         )
+    else:
+        wandb_run.config.update(hyperparams)
 
     # In order to create negative examples (for classification), we need to pre-load all of the examples so
     # we don't accidentally create negative examples that are valid
