@@ -17,8 +17,8 @@ This script will produce the output file:
 import logging
 import pathlib
 
+from .crpalign import Aligner
 from .data.unaligned.example import load_examples_from_file
-from .hulden_alignment import Aligner
 from .paths import Paths, create_arg_parser, create_paths_from_args
 
 logger = logging.getLogger(__name__)
