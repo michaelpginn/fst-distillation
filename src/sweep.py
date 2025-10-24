@@ -70,6 +70,7 @@ def single_run_train_rnn():
 
 max_batch_size = train_size // 25
 sweep_configuration = {
+    "name": paths["identifier"],
     "method": "bayes",
     "metric": {"goal": "minimize", "name": "validation.loss"},
     "parameters": {
@@ -130,6 +131,7 @@ def single_run_extract_fst():
 
 
 sweep_configuration = {
+    "name": paths["identifier"],
     "method": "grid",
     "metric": {"goal": "maximize", "name": "eval.f1"},
     "parameters": {
