@@ -19,4 +19,4 @@ cd "/projects/$USER/fst-distillation"
 set -x
 
 echo Running for $1 with objective $2
-python -m src.sweep data/inflection $1 --features --objective $2
+python -m src.sweep data/inflection $1 --features --objective $2 --models /scratch/alpine/$USER/fst-distillation/models/
