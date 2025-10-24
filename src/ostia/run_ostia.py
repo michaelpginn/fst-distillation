@@ -11,6 +11,12 @@ from .ostia import ostia
 logger = getLogger(__name__)
 
 parser = create_arg_parser()
+parser.add_argument(
+    "--order",
+    choices=["lex", "dd"],
+    required=True,
+    help="What order to merge states in? 'lex' is original OSTIA, 'dd' is DD-OSTIA",
+)
 args = parser.parse_args()
 paths = create_paths_from_args(args)
 
@@ -28,7 +34,7 @@ for ex in train_examples:
     assert ex.output_string is not None
     samples.append((input_string, ex.output_string))
 
-fst = ostia(samples)
+fst = ostia(samples, args.order)
 fst = FST.re(".* '<sink>':'#'") @ fst
 
 train_metrics = evaluate_all(fst, train_examples, output_raw_string=True)
