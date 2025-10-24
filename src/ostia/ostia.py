@@ -44,7 +44,7 @@ def build_prefix_tree(samples: list[tuple[list[str], list[str]]]):
             label_to_outputs[label] = "".join(sample[1])
         elif label_to_outputs[label] != "".join(sample[1]):
             logger.warning(
-                "Provided samples are ambiguous for input {label}!! Ignoring subsequent samples."
+                f"Provided samples are ambiguous for input {label}!! Ignoring subsequent samples."
             )
             # raise ValueError(f"Provided samples are ambiguous for input {label}!!")
 
