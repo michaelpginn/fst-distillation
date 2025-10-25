@@ -7,3 +7,4 @@ __pycache__
 *.fst
 *.xlsx
 logs
+src/crpalign/libalign.so

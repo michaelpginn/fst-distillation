@@ -48,7 +48,7 @@ libalign_align_init.restype = None
 class Aligner:
     def __init__(
         self,
-        wordpairs: list[tuple[str, str]],
+        wordpairs: list[tuple[str | list[str], str | list[str]]],
         align_symbol=" ",
         iterations=10,
         burnin=5,
@@ -56,7 +56,12 @@ class Aligner:
         mode="crp",
         random_seed=None,
     ):
-        s = set("".join((x[0] + x[1] for x in wordpairs)))
+        s = set()
+        for i, o in wordpairs:  # This work regardless if they are strings or lists
+            for c in i:
+                s.add(c)
+            for c in o:
+                s.add(c)
         self.symboltoint = dict(zip(s, range(1, len(s) + 1)))
         self.inttosymbol = {v: k for k, v in self.symboltoint.items()}
         self.inttosymbol[0] = align_symbol

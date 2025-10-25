@@ -35,9 +35,16 @@ def run_alignment(paths: Paths):
         for path in file_paths
     ]
     all_examples = [ex for file_examples in examples_per_file for ex in file_examples]
-    assert not any(ex.output_string is None for ex in all_examples)
+
+    wordpairs: list[tuple[list[str], list[str]]] = []
+    for ex in all_examples:
+        assert ex.output_string is not None
+        wordpairs.append(
+            (tokenize_to_chars(ex.input_string), tokenize_to_chars(ex.output_string))
+        )
+
     aligner = Aligner(
-        wordpairs=[(ex.input_string, ex.output_string) for ex in all_examples],  # type:ignore
+        wordpairs=wordpairs,
         iterations=100,
         align_symbol=paths["alignment_symbol"],
     )
@@ -50,11 +57,13 @@ def run_alignment(paths: Paths):
         file_name = pathlib.Path(file_paths[file_index]).name + ".aligned"
         with open(output_folder / file_name, "w") as f:
             for example_index in range(current_offset, current_offset + num_examples):
-                aligned_strings = alignments[example_index]
+                in_str, out_str = alignments[example_index]
                 aligned_tuples = "".join(
                     [
                         f"({in_char},{out_char})"
-                        for in_char, out_char in zip(*aligned_strings)
+                        for in_char, out_char in zip(
+                            tokenize_to_chars(in_str), tokenize_to_chars(out_str)
+                        )
                     ]
                 )
                 if (features := all_examples[example_index].features) is not None:
@@ -64,6 +73,19 @@ def run_alignment(paths: Paths):
                     f.write(f"{aligned_tuples}\n")
 
         current_offset += num_examples
+
+
+def tokenize_to_chars(s: str, post_diacritics: set[str] = {"¹", "²"}):
+    """Splits a string into chars.
+    Any symbols in `post_diacritics` will be attached to the previous character as a single symbol."""
+    chars = list(s)
+    new_chars: list[str] = []
+    for c in chars:
+        if c in post_diacritics:
+            new_chars[-1] += c
+        else:
+            new_chars.append(c)
+    return new_chars
 
 
 if __name__ == "__main__":
