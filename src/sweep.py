@@ -17,13 +17,18 @@ logger = logging.getLogger(__name__)
 
 parser = create_arg_parser()
 parser.add_argument("--objective", choices=["lm", "classification"], required=True)
+parser.add_argument("--override-alignment", action="store_true")
 args = parser.parse_args()
 paths = create_paths_from_args(args)
 
 # =========================================
 # 1. CRP ALIGNMENT
 # =========================================
-if (not paths["train_aligned"].exists()) or (not paths["eval_aligned"].exists()):
+if (
+    args.override_alignment
+    or (not paths["train_aligned"].exists())
+    or (not paths["eval_aligned"].exists())
+):
     from .run_alignment import run_alignment
 
     logger.info("Couldn't find aligned data, running alignment!")
@@ -33,7 +38,7 @@ train_size = len(load_examples_from_file(paths["train_aligned"]))
 # =========================================
 # 2. ALIGNMENT PREDICTOR TRAINING
 # =========================================
-if not paths["full_domain_aligned"].exists():
+if args.override_alignment or not paths["full_domain_aligned"].exists():
     # Scale based on the params I've found work pretty well
     lr = 0.001
     batch_size = ceil(train_size * 128 / 3000)
