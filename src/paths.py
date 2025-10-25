@@ -74,7 +74,7 @@ def create_paths(
         models_folder = Path(models_folder)
     else:
         models_folder = Path("./models")
-    models_folder.mkdir(exist_ok=True)
+    models_folder.mkdir(exist_ok=True, parents=True)
 
     return {
         "identifier": data_root.stem + "." + dataset,
