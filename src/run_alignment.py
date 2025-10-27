@@ -24,7 +24,7 @@ from .paths import Paths, create_arg_parser, create_paths_from_args
 logger = logging.getLogger(__name__)
 
 
-def run_alignment(paths: Paths):
+def run_alignment(paths: Paths, iterations: int):
     logger.info("Running alignment")
 
     output_folder = paths["aligned_folder"]
@@ -36,7 +36,7 @@ def run_alignment(paths: Paths):
     ]
     all_examples = [ex for file_examples in examples_per_file for ex in file_examples]
 
-    wordpairs: list[tuple[list[str], list[str]]] = []
+    wordpairs: list[tuple[str | list[str], str | list[str]]] = []
     for ex in all_examples:
         assert ex.output_string is not None
         wordpairs.append(
@@ -45,7 +45,7 @@ def run_alignment(paths: Paths):
 
     aligner = Aligner(
         wordpairs=wordpairs,
-        iterations=100,
+        iterations=iterations,
         align_symbol=paths["alignment_symbol"],
     )
     alignments: list[tuple[str, str]] = aligner.alignedpairs
@@ -90,7 +90,6 @@ def tokenize_to_chars(s: str, post_diacritics: set[str] = {"¹", "²"}):
 
 if __name__ == "__main__":
     parser = create_arg_parser()
+    parser.add_argument("--iterations", default=100)
     args = parser.parse_args()
-    run_alignment(
-        paths=create_paths_from_args(args),
-    )
+    run_alignment(paths=create_paths_from_args(args), iterations=int(args.iterations))

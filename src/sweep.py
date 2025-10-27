@@ -32,7 +32,7 @@ if (
     from .run_alignment import run_alignment
 
     logger.info("Couldn't find aligned data, running alignment!")
-    run_alignment(paths)
+    run_alignment(paths, iterations=100)
 train_size = len(load_examples_from_file(paths["train_aligned"]))
 
 # =========================================
