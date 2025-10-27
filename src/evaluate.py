@@ -1,4 +1,5 @@
 import logging
+from random import sample
 
 from pyfoma._private import algorithms
 from pyfoma.fst import FST
@@ -10,11 +11,15 @@ logger = logging.getLogger(__name__)
 
 
 def evaluate_all(
-    fst: FST, examples: list[String2StringExample], output_raw_string=False
+    fst: FST,
+    examples: list[String2StringExample],
+    output_raw_string=False,
+    log=False,
 ):
     labels: list[str] = []
     preds: list[set[str]] = []
-    for example in tqdm(examples, "Evaluating"):
+    indices_to_log = sample(range(len(examples)), k=10)
+    for idx, example in tqdm(enumerate(examples), "Evaluating"):
         input_string = [c for c in example.input_string]
         assert example.output_string is not None
         correct_output = [c for c in example.output_string]
@@ -37,13 +42,18 @@ def evaluate_all(
             logger.debug(
                 f"FST has no accepting states for input {''.join(input_string)}"
             )
-            preds.append(set())
-            continue
-        output_fst = output_fst.project(-1)
+            preds_for_example = set()
+        else:
+            output_fst = output_fst.project(-1)
 
-        # The following runs endlessly for very long inputs
-        best_word = "".join(c[0] for c in algorithms.best_word(output_fst))
-        preds.append(set([best_word]))
+            # The following runs endlessly for very long inputs
+            best_word = "".join(c[0] for c in algorithms.best_word(output_fst))
+            preds_for_example = set([best_word])
+        preds.append(preds_for_example)
+        if log and idx in indices_to_log:
+            logger.info(f"Input:\t{''.join(input_string)}")
+            logger.info(f"Gold:\t{''.join(correct_output)}")
+            logger.info(f"Predicted:\t{preds_for_example}")
     return compute_metrics(labels, preds)
 
 

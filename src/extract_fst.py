@@ -110,7 +110,7 @@ def extract_fst(
         minimum_transition_count=hyperparams.minimum_transition_count,
     )
     metrics = {
-        "eval": evaluate_all(fst, raw_eval_examples),
+        "eval": evaluate_all(fst, raw_eval_examples, log=True),
         "train": evaluate_all(fst, raw_train_examples),
         "test": evaluate_all(fst, raw_test_examples),
     }
