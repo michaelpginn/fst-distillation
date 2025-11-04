@@ -110,8 +110,8 @@ def extract_fst(
         minimum_transition_count=hyperparams.minimum_transition_count,
     )
     metrics = {
-        "eval": evaluate_all(fst, raw_eval_examples, log=True),
         "train": evaluate_all(fst, raw_train_examples),
+        "eval": evaluate_all(fst, raw_eval_examples, log=True),
         "test": evaluate_all(fst, raw_test_examples),
     }
     logger.info(pprint.pformat(metrics))
@@ -358,10 +358,10 @@ if __name__ == "__main__":
             umap_n_neighbors=10,
             umap_min_distance=0.01,
             clustering_method="kmeans",
-            kmeans_num_clusters=500,
+            kmeans_num_clusters=2000,
             min_samples=100,
             eps=1,
-            minimum_transition_count=None,
+            minimum_transition_count=2,
             state_split_classifier="svm",
             generations_top_k=1,
             visualize=args.visualize,

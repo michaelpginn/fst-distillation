@@ -44,3 +44,9 @@ Ablations
 - State splitting
 - Full coverage
 - Spec norm
+
+Datasets:
+- inflection
+- g2p
+- transliteration
+- historical normalization

@@ -1,7 +1,6 @@
 import logging
 from random import sample
 
-from pyfoma._private import algorithms
 from pyfoma.fst import FST
 from tqdm import tqdm
 
@@ -18,7 +17,10 @@ def evaluate_all(
 ):
     labels: list[str] = []
     preds: list[set[str]] = []
-    indices_to_log = sample(range(len(examples)), k=10)
+    if 10 < len(examples):
+        indices_to_log = sample(range(len(examples)), k=10)
+    else:
+        indices_to_log = list(range(len(examples)))
     for idx, example in tqdm(enumerate(examples), "Evaluating"):
         input_string = [c for c in example.input_string]
         assert example.output_string is not None
@@ -45,9 +47,7 @@ def evaluate_all(
             preds_for_example = set()
         else:
             output_fst = output_fst.project(-1)
-
-            # The following runs endlessly for very long inputs
-            best_word = "".join(c[0] for c in algorithms.best_word(output_fst))
+            best_word = "".join(c[0] for c in output_fst.words_nbest(1)[0][1])
             preds_for_example = set([best_word])
         preds.append(preds_for_example)
         if log and idx in indices_to_log:

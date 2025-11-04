@@ -2,6 +2,7 @@ import pprint
 from logging import getLogger
 from typing import Literal
 
+from pyfoma.algorithms import ostia
 from pyfoma.fst import FST
 
 import wandb
@@ -9,7 +10,6 @@ import wandb
 from ..data.unaligned.example import load_examples_from_file
 from ..evaluate import evaluate_all
 from ..paths import Paths, create_arg_parser, create_paths_from_args
-from .ostia import ostia
 
 logger = getLogger(__name__)
 
@@ -29,16 +29,14 @@ def run_ostia(paths: Paths, order: Literal["lex", "dd"]):
     for ex in train_examples:
         input_string = list(ex.input_string)
         if ex.features is not None:
-            input_string = (
-                [f"[{f}]" for f in ex.features] + ["<sep>"] + input_string + ["<sink>"]
-            )
+            input_string = [f"[{f}]" for f in ex.features] + ["<sep>"] + input_string
         assert ex.output_string is not None
         samples.append((input_string, ex.output_string))
 
-    fst = ostia(samples, order)
+    fst = ostia(samples, order, use_cython=True)
     fst = FST.re(".* '<sink>':'#'") @ fst
 
-    train_metrics = evaluate_all(fst, train_examples, output_raw_string=True)
+    train_metrics = evaluate_all(fst, train_examples, output_raw_string=True, log=True)
     logger.info(f"Train metrics: {pprint.pformat(train_metrics)}")
     eval_metrics = evaluate_all(fst, eval_examples, output_raw_string=True)
     logger.info(f"Eval metrics: {pprint.pformat(eval_metrics)}")
