@@ -2,7 +2,6 @@
 
 import ast
 import logging
-from math import ceil
 from pprint import pformat
 
 import wandb
@@ -34,18 +33,57 @@ if (
     logger.info("Couldn't find aligned data, running alignment!")
     run_alignment(paths, iterations=100)
 train_size = len(load_examples_from_file(paths["train_aligned"]))
+max_batch_size = train_size // 25
 
 # =========================================
 # 2. ALIGNMENT PREDICTOR TRAINING
 # =========================================
 if args.override_alignment or not paths["full_domain_aligned"].exists():
-    # Scale based on the params I've found work pretty well
-    lr = 0.001
-    batch_size = ceil(train_size * 128 / 3000)
-    num_batches = ceil(train_size / batch_size)
-    epochs = ceil((500 * num_batches / 20))
-    logger.info(f"Training with {lr=}, {batch_size=}, {epochs=}")
-    train_alignment_predictor(paths, batch_size, epochs=epochs, learning_rate=lr)
+
+    def single_run_train_alignment():
+        with wandb.init(
+            entity="lecs-general",
+            project="fst-distillation.clustering.alignment_prediction",
+        ) as run:
+            logger.info(f"Training with params: {pformat(run.config)}")
+            train_alignment_predictor(
+                paths,
+                run.config["batch_size"],
+                epochs=run.config["epochs"],
+                learning_rate=run.config["lr"],
+                wandb_run=run,
+            )
+
+    sweep_configuration = {
+        "name": paths["identifier"],
+        "method": "bayes",
+        "metric": {"goal": "minimize", "name": "validation.loss"},
+        "parameters": {
+            "learning_rate": {"values": [2e-4, 1e-3, 2e-3, 1e-2]},
+            "batch_size": {
+                "values": [
+                    b for b in [2, 4, 8, 16, 32, 64, 128] if b <= max_batch_size
+                ][-3:]
+            },
+            "epochs": {"distribution": "uniform", "min": 200, "max": 700},
+        },
+        "early_terminate": {
+            "type": "hyperband",
+            "min_iter": 100,  # minimum epochs before possible pruning
+            "max_iter": 700,  # maximum epochs (full resource)
+        },
+    }
+    sweep_id = wandb.sweep(
+        sweep=sweep_configuration,
+        entity="lecs-general",
+        project="fst-distillation.clustering.alignment_prediction",
+    )
+    wandb.agent(sweep_id, function=single_run_train_alignment, count=50)
+    sweep = wandb.Api().sweep(
+        f"lecs-general/fst-distillation.clustering.alignment_prediction/sweeps/{sweep_id}"
+    )
+    best_run = sweep.best_run()
+    best_run_loss = ast.literal_eval(best_run.summary_metrics)["validation"]["loss"]
 
 
 # =========================================
@@ -73,7 +111,6 @@ def single_run_train_rnn():
         )
 
 
-max_batch_size = train_size // 25
 sweep_configuration = {
     "name": paths["identifier"],
     "method": "bayes",

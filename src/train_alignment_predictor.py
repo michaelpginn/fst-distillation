@@ -32,15 +32,18 @@ def train_alignment_predictor(
     epochs: int,
     learning_rate: float,
     seed=0,
+    wandb_run: wandb.Run | None = None,
 ):
     logger.info(f"Training on {paths['identifier']}")
     hyperparams = locals()
-    wandb.init(
-        entity="lecs-general",
-        project="fst-distillation.clustering.alignment_prediction",
-        config={**hyperparams},
-        save_code=True,
-    )
+    if wandb_run is None:
+        wandb_run = wandb.init(
+            entity="lecs-general",
+            project="fst-distillation.clustering.alignment_prediction",
+            config={**hyperparams},
+        )
+    else:
+        wandb_run.config.update(hyperparams)
 
     # Load examples into alignment prediction format
     train_examples = load_examples_from_file(paths["train_aligned"])
@@ -51,7 +54,7 @@ def train_alignment_predictor(
     eval_examples = [
         AlignmentPredictionExample.from_aligned(ex) for ex in eval_examples
     ]
-    wandb.log({"train_size": len(train_examples)})
+    wandb_run.log({"train_size": len(train_examples)})
     train_dataset = AlignmentPredictionDataset(
         examples=train_examples,
         tokenizer=None,
@@ -92,7 +95,7 @@ def train_alignment_predictor(
         labels=labels,  # type:ignore
     )
     print(f"incorrect: {[(p, l) for p, l in zip(predicted, labels) if p != l]}")
-    wandb.log({"eval/accuracy": accuracy})
+    wandb_run.log({"eval/accuracy": accuracy})
 
     # Run on full domain and write to a file
     logger.info("Running prediction on full domain")
@@ -128,7 +131,7 @@ def train_alignment_predictor(
         f"Wrote {len(full_domain_predictions)} alignment preds to {paths['full_domain_aligned']}"
     )
 
-    checkpoint_path = paths["models_folder"] / f"{wandb.run.name}/model.pt"  # type:ignore
+    checkpoint_path = paths["models_folder"] / f"{wandb_run.name}/model.pt"  # type:ignore
     checkpoint_path.parent.mkdir(exist_ok=True, parents=True)
     torch.save(
         {
@@ -138,9 +141,8 @@ def train_alignment_predictor(
         },
         checkpoint_path,
     )
-    run = wandb.run
-    wandb.finish()
-    return run
+    wandb_run.finish()
+    return wandb_run
 
 
 if __name__ == "__main__":
