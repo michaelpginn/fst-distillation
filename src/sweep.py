@@ -1,13 +1,12 @@
 """Runs the full experiment for a given language"""
 
-import ast
 import logging
 from pprint import pformat
 
 import wandb
 from src.data.aligned.example import load_examples_from_file
 from src.paths import create_arg_parser, create_paths_from_args
-from src.train_alignment_predictor import train_alignment_predictor
+from src.train_alignment_predictor import predict_full_domain, train_alignment_predictor
 
 from .extract_fst import ExtractionHyperparameters, extract_fst
 from .train_rnn import train_rnn
@@ -65,7 +64,7 @@ if args.override_alignment or not paths["full_domain_aligned"].exists():
                     b for b in [2, 4, 8, 16, 32, 64, 128] if b <= max_batch_size
                 ][-3:]
             },
-            "epochs": {"distribution": "int_uniform", "min": 200, "max": 700},
+            "epochs": {"distribution": "int_uniform", "min": 1, "max": 2},
         },
         "early_terminate": {
             "type": "hyperband",
@@ -78,12 +77,13 @@ if args.override_alignment or not paths["full_domain_aligned"].exists():
         entity="lecs-general",
         project="fst-distillation.clustering.alignment_prediction",
     )
-    wandb.agent(sweep_id, function=single_run_train_alignment, count=50)
+    wandb.agent(sweep_id, function=single_run_train_alignment, count=2)
     sweep = wandb.Api().sweep(
         f"lecs-general/fst-distillation.clustering.alignment_prediction/sweeps/{sweep_id}"
     )
     best_run = sweep.best_run()
-    best_run_loss = ast.literal_eval(best_run.summary_metrics)["validation"]["loss"]
+    alignment_pred_loss = best_run.summary_metrics["validation"]["loss"]
+    predict_full_domain(paths, best_run.name, best_run.config["batch_size"])
 
 
 # =========================================
@@ -138,7 +138,7 @@ sweep_id = wandb.sweep(
 wandb.agent(sweep_id, function=single_run_train_rnn, count=50)
 sweep = wandb.Api().sweep(f"lecs-general/{rnn_project_name}/sweeps/{sweep_id}")
 best_run = sweep.best_run()
-best_run_loss = ast.literal_eval(best_run.summary_metrics)["validation"]["loss"]
+best_run_loss = best_run.summary_metrics["validation"]["loss"]
 
 # =========================================
 # 4. FST EXTRACTION

@@ -10,6 +10,7 @@ from logging import getLogger
 import torch
 
 import wandb
+from src.data.aligned.alignment_prediction.tokenizer import AlignmentPredictionTokenizer
 
 from .data.aligned.alignment_prediction.dataloader import create_dataloader
 from .data.aligned.alignment_prediction.dataset import (
@@ -83,7 +84,6 @@ def train_alignment_predictor(
         learning_rate=learning_rate,
         seed=seed,
     )
-
     predicted, labels = predict(
         model, eval_dataloader, tokenizer=tokenizer, max_length=1024
     )
@@ -95,7 +95,33 @@ def train_alignment_predictor(
         labels=labels,  # type:ignore
     )
     print(f"incorrect: {[(p, l) for p, l in zip(predicted, labels) if p != l]}")
-    wandb_run.log({"eval/accuracy": accuracy})
+    wandb_run.log({"validation/accuracy": accuracy})
+
+    checkpoint_path = paths["models_folder"] / f"{wandb_run.name}/model.pt"  # type:ignore
+    checkpoint_path.parent.mkdir(exist_ok=True, parents=True)
+    torch.save(
+        {
+            "state_dict": model.state_dict(),
+            "config_dict": model.config_dict,
+            "tokenizer_dict": model.tokenizer.state_dict,
+        },
+        checkpoint_path,
+    )
+    wandb_run.finish()
+    return wandb_run
+
+
+def predict_full_domain(paths: Paths, model_shortname: str, batch_size: int):
+    train_examples = load_examples_from_file(paths["train_aligned"])
+    train_examples = [
+        AlignmentPredictionExample.from_aligned(ex) for ex in train_examples
+    ]
+    model_path = paths["models_folder"] / f"{model_shortname}/model.pt"
+    checkpoint_dict = torch.load(model_path, weights_only=True)
+    tokenizer = AlignmentPredictionTokenizer.from_state_dict(
+        checkpoint_dict["tokenizer_dict"]
+    )
+    model = TransformerModel.load(checkpoint_dict, tokenizer)
 
     # Run on full domain and write to a file
     logger.info("Running prediction on full domain")
@@ -130,19 +156,6 @@ def train_alignment_predictor(
     logger.info(
         f"Wrote {len(full_domain_predictions)} alignment preds to {paths['full_domain_aligned']}"
     )
-
-    checkpoint_path = paths["models_folder"] / f"{wandb_run.name}/model.pt"  # type:ignore
-    checkpoint_path.parent.mkdir(exist_ok=True, parents=True)
-    torch.save(
-        {
-            "state_dict": model.state_dict(),
-            "config_dict": model.config_dict,
-            "tokenizer_dict": model.tokenizer.state_dict,
-        },
-        checkpoint_path,
-    )
-    wandb_run.finish()
-    return wandb_run
 
 
 if __name__ == "__main__":

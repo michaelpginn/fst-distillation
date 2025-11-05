@@ -100,8 +100,8 @@ def train(
         wandb.log(
             {
                 "epoch": epoch,
-                "train_loss": train_loss,
-                "validation_loss": validation_loss,
+                "train": {"loss": train_loss},
+                "validation": {"loss": validation_loss},
             }
         )
 

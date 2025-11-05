@@ -16,6 +16,7 @@ def predict(
     max_length: int,
 ) -> Tuple[List[List[int]], List[List[int]] | None]:
     """Runs inference. Returns a list of predicted token IDs in the same order as the inputs, and the label IDs."""
+    model.to(device)
     model.eval()
 
     predicted_ids: List[List[int]] = []
