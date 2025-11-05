@@ -50,7 +50,7 @@ if args.override_alignment or not paths["full_domain_aligned"].exists():
                 paths,
                 run.config["batch_size"],
                 epochs=run.config["epochs"],
-                learning_rate=run.config["lr"],
+                learning_rate=run.config["learning_rate"],
                 wandb_run=run,
             )
 
@@ -65,7 +65,7 @@ if args.override_alignment or not paths["full_domain_aligned"].exists():
                     b for b in [2, 4, 8, 16, 32, 64, 128] if b <= max_batch_size
                 ][-3:]
             },
-            "epochs": {"distribution": "uniform", "min": 200, "max": 700},
+            "epochs": {"distribution": "int_uniform", "min": 200, "max": 700},
         },
         "early_terminate": {
             "type": "hyperband",
