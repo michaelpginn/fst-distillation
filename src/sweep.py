@@ -50,6 +50,11 @@ if args.override_alignment or not paths["full_domain_aligned"].exists():
                 run.config["batch_size"],
                 epochs=run.config["epochs"],
                 learning_rate=run.config["learning_rate"],
+                weight_decay=run.config["weight_decay"],
+                d_model=run.config["d_model"],
+                num_layers=run.config["num_layers"],
+                num_heads=8,
+                dropout=run.config["dropout"],
                 wandb_run=run,
             )
 
@@ -59,17 +64,21 @@ if args.override_alignment or not paths["full_domain_aligned"].exists():
         "metric": {"goal": "minimize", "name": "validation.loss"},
         "parameters": {
             "learning_rate": {"values": [2e-4, 1e-3, 2e-3, 1e-2]},
+            "weight_decay": {"values": [0, 0.01, 0.1, 0.2]},
+            "d_model": {"values": [16, 32, 64]},
+            "num_layers": {"values": [1, 2, 3, 4]},
+            "dropout": {"values": [0, 0.1, 0.2]},
             "batch_size": {
                 "values": [
                     b for b in [2, 4, 8, 16, 32, 64, 128] if b <= max_batch_size
                 ][-3:]
             },
-            "epochs": {"distribution": "int_uniform", "min": 1, "max": 2},
+            "epochs": {"values": [200, 400, 600, 800]},
         },
         "early_terminate": {
             "type": "hyperband",
             "min_iter": 100,  # minimum epochs before possible pruning
-            "max_iter": 700,  # maximum epochs (full resource)
+            "max_iter": 800,  # maximum epochs (full resource)
         },
     }
     sweep_id = wandb.sweep(
@@ -77,7 +86,7 @@ if args.override_alignment or not paths["full_domain_aligned"].exists():
         entity="lecs-general",
         project="fst-distillation.clustering.alignment_prediction",
     )
-    wandb.agent(sweep_id, function=single_run_train_alignment, count=2)
+    wandb.agent(sweep_id, function=single_run_train_alignment, count=50)
     sweep = wandb.Api().sweep(
         f"lecs-general/fst-distillation.clustering.alignment_prediction/sweeps/{sweep_id}"
     )

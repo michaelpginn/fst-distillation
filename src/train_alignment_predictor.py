@@ -32,6 +32,11 @@ def train_alignment_predictor(
     batch_size: int,
     epochs: int,
     learning_rate: float,
+    weight_decay: float,
+    d_model: int,
+    num_layers: int,
+    num_heads: int,
+    dropout: float,
     seed=0,
     wandb_run: wandb.Run | None = None,
 ):
@@ -70,11 +75,11 @@ def train_alignment_predictor(
 
     model = TransformerModel(
         tokenizer=tokenizer,
-        d_model=16,
-        nhead=8,
-        num_encoder_layers=2,
-        num_decoder_layers=2,
-        dropout=0.1,
+        d_model=d_model,
+        nhead=num_heads,
+        num_encoder_layers=num_layers,
+        num_decoder_layers=num_layers,
+        dropout=dropout,
     )
     train(
         model=model,
@@ -82,6 +87,7 @@ def train_alignment_predictor(
         eval_dataloader=eval_dataloader,
         epochs=epochs,
         learning_rate=learning_rate,
+        weight_decay=weight_decay,
         seed=seed,
     )
     predicted, labels = predict(
@@ -163,10 +169,20 @@ if __name__ == "__main__":
     parser.add_argument("--batch-size", default=2048)
     parser.add_argument("--epochs", default=500)
     parser.add_argument("--learning-rate", default=0.001)
+    parser.add_argument("--weight-decay", default=0.1)
+    parser.add_argument("--d-model", default=32)
+    parser.add_argument("--num-layers", default=3)
+    parser.add_argument("--num-heads", default=8)
+    parser.add_argument("--dropout", default=0.1)
     args = parser.parse_args()
     train_alignment_predictor(
         paths=create_paths_from_args(args),
         batch_size=int(args.batch_size),
         epochs=int(args.epochs),
         learning_rate=float(args.learning_rate),
+        weight_decay=float(args.weight_decay),
+        d_model=int(args.d_model),
+        num_layers=int(args.num_layers),
+        num_heads=int(args.num_heads),
+        dropout=float(args.dropout),
     )
