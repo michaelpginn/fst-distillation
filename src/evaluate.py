@@ -47,7 +47,7 @@ def evaluate_all(
             preds_for_example = set()
         else:
             output_fst = output_fst.project(-1)
-            best_word: str = "".join(next(output_fst.words())[1])
+            best_word: str = "".join(c[0] for c in next(output_fst.words())[1])
             preds_for_example = set([best_word])
         preds.append(preds_for_example)
         if log and idx in indices_to_log:
