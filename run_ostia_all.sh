@@ -22,6 +22,7 @@ cd "/projects/$USER/fst-distillation"
 
 maxjobs=8
 jobcount=0
+jid=$SLURM_JOB_ID
 
 for lang in aka	ceb	crh	czn	dje	gaa	izh	kon	lin	mao	mlg	nya	ood	orm	ote	san	sot	swa	syc	tgk	tgl	xty	zpv	zul
 do
