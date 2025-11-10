@@ -170,7 +170,8 @@ def single_run_extract_fst():
         config={
             "rnn": {
                 # **dict(best_run.config),
-                "eval.loss": best_run_loss,
+                "rnn.loss": best_run_loss,
+                "alignment_predictor.loss": alignment_pred_loss,
                 "name": best_run.name,
             },
             "identifier": paths["identifier"],
