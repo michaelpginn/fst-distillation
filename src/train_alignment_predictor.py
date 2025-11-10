@@ -5,6 +5,7 @@ Trains a transformer to use for predicting input strings with alignment characte
 You must run `run_alignment.py` first to produce aligned data files.
 """
 
+import pprint
 from logging import getLogger
 
 import torch
@@ -60,7 +61,7 @@ def train_alignment_predictor(
     eval_examples = [
         AlignmentPredictionExample.from_aligned(ex) for ex in eval_examples
     ]
-    wandb_run.log({"train_size": len(train_examples)})
+    wandb_run.log({"train.size": len(train_examples)})
     train_dataset = AlignmentPredictionDataset(
         examples=train_examples,
         tokenizer=None,
@@ -100,8 +101,10 @@ def train_alignment_predictor(
         predictions=predicted,  # type:ignore
         labels=labels,  # type:ignore
     )
-    print(f"incorrect: {[(p, l) for p, l in zip(predicted, labels) if p != l]}")
-    wandb_run.log({"validation/accuracy": accuracy})
+    print(
+        f"incorrect (pred, lab): {pprint.pformat([(p, l) for p, l in zip(predicted, labels) if p != l])}"
+    )
+    wandb_run.log({"validation.accuracy": accuracy})
 
     checkpoint_path = paths["models_folder"] / f"{wandb_run.name}/model.pt"  # type:ignore
     checkpoint_path.parent.mkdir(exist_ok=True, parents=True)

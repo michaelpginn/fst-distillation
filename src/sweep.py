@@ -33,7 +33,7 @@ if (
     logger.info("Couldn't find aligned data, running alignment!")
     run_alignment(paths, iterations=100)
 train_size = len(load_examples_from_file(paths["train_aligned"]))
-max_batch_size = train_size // 25
+max_batch_size = train_size // 10
 
 # =========================================
 # 2. ALIGNMENT PREDICTOR TRAINING

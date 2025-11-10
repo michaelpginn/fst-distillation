@@ -24,7 +24,9 @@ from .paths import Paths, create_arg_parser, create_paths_from_args
 logger = logging.getLogger(__name__)
 
 
-def run_alignment(paths: Paths, iterations: int):
+def run_alignment(
+    paths: Paths, iterations: int, use_med: bool = False, burnin: int = 5, lag: int = 1
+):
     logger.info("Running alignment")
 
     output_folder = paths["aligned_folder"]
@@ -45,8 +47,11 @@ def run_alignment(paths: Paths, iterations: int):
 
     aligner = Aligner(
         wordpairs=wordpairs,
-        iterations=iterations,
         align_symbol=paths["alignment_symbol"],
+        iterations=iterations,
+        burnin=burnin,
+        lag=lag,
+        mode="med" if use_med else "crp",
     )
     alignments: list[tuple[str, str]] = aligner.alignedpairs
 
@@ -91,5 +96,14 @@ def tokenize_to_chars(s: str, post_diacritics: set[str] = {"¹", "²"}):
 if __name__ == "__main__":
     parser = create_arg_parser()
     parser.add_argument("--iterations", default=100)
+    parser.add_argument("--burnin", default=5)
+    parser.add_argument("--lag", default=1)
+    parser.add_argument("--use-med", action="store_true")
     args = parser.parse_args()
-    run_alignment(paths=create_paths_from_args(args), iterations=int(args.iterations))
+    run_alignment(
+        paths=create_paths_from_args(args),
+        iterations=int(args.iterations),
+        burnin=int(args.burnin),
+        lag=int(args.lag),
+        use_med=args.use_med or False,
+    )
