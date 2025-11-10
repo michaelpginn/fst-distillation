@@ -16,29 +16,15 @@ set -x
 
 module purge
 module load miniforge
-# mamba activate distillfst
-source activate distillfst
+mamba activate distillfst
+# source activate distillfst
 cd "/projects/$USER/fst-distillation"
-
-maxjobs=8
-jobcount=0
-jid=$SLURM_JOB_ID
 
 for lang in aka	ceb	crh	czn	dje	gaa	izh	kon	lin	mao	mlg	nya	ood	orm	ote	san	sot	swa	syc	tgk	tgl	xty	zpv	zul
 do
     for order in lex dd
     do
         echo "Running OSTIA-$order for $lang"
-        ((jobcount++))
-        logname="logs/${jid}_${jobcount}_${lang}_${order}.log"
-        srun --exclusive -N1 -n1 python -m src.ostia.run_ostia data/inflection $lang --features --order $order \
-              > "$logname" 2>&1 &
-        if (( jobcount % maxjobs == 0 )); then
-            echo "Reached $maxjobs concurrent jobs — waiting..."
-            wait
-        fi
+        python -m src.ostia.run_ostia data/inflection $lang --features --order $order
     done
 done
-
-wait
-echo "✅ All runs completed successfully"
