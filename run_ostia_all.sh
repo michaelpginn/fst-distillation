@@ -20,7 +20,7 @@ mamba activate distillfst
 # source activate distillfst
 cd "/projects/$USER/fst-distillation"
 
-for lang in aka	ceb	crh	czn	dje	gaa	izh	kon	lin	mao	mlg	nya	ood	orm	ote	san	sot	swa	syc	tgk	tgl	xty	zpv	zul
+for lang in ceb	crh	czn	dje	gaa	izh	kon	lin	mao	mlg	nya	ood	orm	ote	san	sot	swa	syc	tgk	tgl	xty	zpv	zul
 do
     for order in lex dd
     do
