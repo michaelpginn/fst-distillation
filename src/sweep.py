@@ -136,7 +136,7 @@ sweep_configuration = {
         "learning_rate": {"values": [2e-4, 1e-3, 2e-3, 1e-2]},
         "batch_size": {
             "values": [b for b in [2, 4, 8, 16, 32, 64, 128] if b <= max_batch_size][
-                -3:
+                -4:
             ]
         },
         "epochs": {"values": [200, 600, 1000]},
@@ -150,7 +150,7 @@ sweep_configuration = {
 sweep_id = wandb.sweep(
     sweep=sweep_configuration, entity="lecs-general", project=rnn_project_name
 )
-wandb.agent(sweep_id, function=single_run_train_rnn, count=50)
+wandb.agent(sweep_id, function=single_run_train_rnn, count=100)
 sweep = wandb.Api().sweep(f"lecs-general/{rnn_project_name}/sweeps/{sweep_id}")
 best_run = sweep.best_run()
 if isinstance(best_run.summary_metrics, str):
