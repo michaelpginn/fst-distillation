@@ -44,8 +44,10 @@ class TransformerModel(nn.Module):
             num_decoder_layers=num_decoder_layers,
             dropout=dropout,
             batch_first=True,
+            norm_first=True,
         )
         self.out = nn.Linear(in_features=d_model, out_features=vocab_size)
+        self.out.weight = self.embedding.weight
 
     @property
     def config_dict(self):

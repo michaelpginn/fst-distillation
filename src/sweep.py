@@ -54,7 +54,7 @@ if args.override_alignment or not paths["full_domain_aligned"].exists():
                 weight_decay=run.config["weight_decay"],
                 d_model=run.config["d_model"],
                 num_layers=run.config["num_layers"],
-                num_heads=8,
+                num_heads=2,
                 dropout=run.config["dropout"],
                 wandb_run=run,
             )

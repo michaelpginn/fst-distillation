@@ -1,3 +1,4 @@
+import math
 import tempfile
 from typing import Callable, Literal
 
@@ -36,6 +37,7 @@ def train(
     eval_dataloader: DataLoader,
     epochs: int,
     learning_rate: float = 0.0001,
+    min_learning_rate: float = 1e-5,
     weight_decay: float = 0.1,
     warmup_steps: int | Literal["auto"] | None = "auto",
     # early_stopping_patience: int = 100,
@@ -45,18 +47,20 @@ def train(
     torch.manual_seed(seed)
     torch.cuda.manual_seed(seed)
 
-    loss_fn = torch.nn.CrossEntropyLoss()
+    loss_fn = torch.nn.CrossEntropyLoss(label_smoothing=0.1)
     optimizer = AdamW(model.parameters(), lr=learning_rate, weight_decay=weight_decay)
+    total_steps = epochs * len(train_dataloader)
     if warmup_steps == "auto":
         # Set to 3% of total steps
-        warmup_steps = int(0.03 * epochs * len(train_dataloader))
+        warmup_steps = int(0.03 * total_steps)
+    elif warmup_steps is None:
+        warmup_steps = 0
     wandb.config.update({"warmup_steps": warmup_steps})
 
     model = model.to(device)
 
     print("Training...")
-    total_steps = 0
-    best_val_loss = None
+    step = 0
     for epoch in range(epochs):
         print("-" * 25, f"Epoch {epoch}", "-" * 25)
 
@@ -69,16 +73,22 @@ def train(
             loss.backward()
             torch.nn.utils.clip_grad_norm_(model.parameters(), max_norm=1.0)
 
-            # Linear warmup
-            if warmup_steps and total_steps < warmup_steps:
-                new_lr = learning_rate * (total_steps + 1) / warmup_steps
-                set_lr(optimizer, new_lr)
-                wandb.log({"train.lr": new_lr})
+            if warmup_steps and step < warmup_steps:
+                # Linear warmup
+                new_lr = learning_rate * step / warmup_steps
             else:
-                wandb.log({"train.lr": learning_rate})
+                # Cosine decay
+                progress = (step - warmup_steps) / (total_steps - warmup_steps)
+                cosine_decay = 0.5 * (1 + math.cos(math.pi * progress))
+                new_lr = (
+                    min_learning_rate
+                    + (learning_rate - min_learning_rate) * cosine_decay
+                )
+            wandb.log({"train.lr": new_lr})
+            set_lr(optimizer, new_lr)
             optimizer.step()
 
-            total_steps += 1
+            step += 1
             train_loss += loss.detach().item()
         train_loss /= len(train_dataloader)
 
