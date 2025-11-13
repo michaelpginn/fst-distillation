@@ -43,7 +43,7 @@ def convert_macrostates_to_fst(
             outputs_over_threshold = [
                 output
                 for output in outputs_sorted
-                if minimum_transition_count and output[1] > minimum_transition_count
+                if minimum_transition_count and output[1] >= minimum_transition_count
             ]
             if len(outputs_over_threshold) <= 1:
                 # If we don't have any over threshold, use the most common
@@ -61,6 +61,7 @@ def convert_macrostates_to_fst(
 
         if len(nondeterministic_input_symbols) == 0:
             # No problems! Assign macrotransitions...
+            logger.debug(f"Assigning transitions to m-state {current_macrostate.label}")
             current_macrostate.outgoing = chosen_transitions
             for transition in chosen_transitions:
                 target = transition.target()
@@ -165,7 +166,7 @@ def split_state(
         outputs_over_threshold = [
             output[0]
             for output in outputs_sorted
-            if minimum_transition_count and output[1] > minimum_transition_count
+            if minimum_transition_count and output[1] >= minimum_transition_count
         ]
         if len(outputs_over_threshold) > most_over_threshold_input_symbol[0]:
             most_over_threshold_input_symbol = (
@@ -213,12 +214,13 @@ def split_state(
         logger.warning(
             f"Splitting state {macrostate.label} failed. Falling back to k-NN."
         )
-        knn = KNeighborsClassifier(n_neighbors=5, n_jobs=3)
+        knn = KNeighborsClassifier(n_neighbors=1, n_jobs=1)
         knn.fit(np.stack(states_to_split), labels)
         preds = knn.predict(
             np.stack([microstate.position for microstate in macrostate.microstates])
         )
         if len(set(preds)) == 1:
+            logger.debug(f"Adding {macrostate.label} to unsplittable states")
             unsplittable_states.add(macrostate.label)
             return [], []
 
@@ -232,7 +234,7 @@ def split_state(
         microstate.macrostate = weakref.ref(new_macrostates[predicted_label])
 
     logger.debug(
-        f"New macrostates: {[m.label + ': ' + str(len(m.microstates)) + 'μ-states' for m in new_macrostates]}"
+        f"New macrostates: {[m.label + ': ' + str(len(m.microstates)) + ' μ-states' for m in new_macrostates]}"
     )
 
     # 5. Remove all outgoing from this macrostate, so that we don't accidentally reference it later
