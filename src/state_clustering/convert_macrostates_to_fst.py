@@ -95,6 +95,8 @@ def convert_macrostates_to_fst(
                 if m.label in visited_labels:
                     visited_labels.remove(m.label)
 
+    # generalize_transitions(macrostates)
+
     # Finally, build the actual FST
     fst_states: dict[str, State] = dict()
     final_states: set[State] = set()

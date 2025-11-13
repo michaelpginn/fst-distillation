@@ -25,6 +25,8 @@ from sklearn.cluster import DBSCAN, OPTICS, k_means
 from sklearn.decomposition import PCA
 from tqdm import tqdm
 
+from src.state_clustering.hopkins import hopkins
+
 from .data.aligned.classification.tokenizer import AlignedClassificationTokenizer
 from .data.aligned.example import (
     ALIGNMENT_SYMBOL,
@@ -42,7 +44,6 @@ from .modeling.rnn import RNNModel
 from .modeling.tokenizer import Tokenizer
 from .paths import Paths, create_arg_parser, create_paths_from_args
 from .state_clustering.convert_macrostates_to_fst import convert_macrostates_to_fst
-from .state_clustering.hopkins import hopkins
 from .state_clustering.types import (
     Macrostate,
     Microstate,
@@ -70,6 +71,7 @@ class ExtractionHyperparameters:
     minimum_transition_count: int | None = 100
     """Minimum count for a given transition to be guaranteed to be included"""
     state_split_classifier: Literal["svm", "logistic"] = "svm"
+    full_domain: bool = True
 
     generations_top_k: int = 1
     """How many generations to pick, in increasing length order"""
@@ -110,8 +112,8 @@ def extract_fst(
         minimum_transition_count=hyperparams.minimum_transition_count,
     )
     metrics = {
-        "train": evaluate_all(fst, raw_train_examples),
-        "eval": evaluate_all(fst, raw_eval_examples, log=True),
+        "train": evaluate_all(fst, raw_train_examples, log=True),
+        "eval": evaluate_all(fst, raw_eval_examples),
         "test": evaluate_all(fst, raw_test_examples),
     }
     logger.info(pprint.pformat(metrics))
@@ -175,7 +177,11 @@ def _collect_activations(
             all_transition_labels.append(transition_labels)
 
         # 1B. Also collect inputs for the whole domain
-        if task == "lm" and paths["full_domain_aligned"].exists():
+        if (
+            hyperparams.full_domain
+            and task == "lm"
+            and paths["full_domain_aligned"].exists()
+        ):
             full_alignment = load_examples_from_file(paths["full_domain_aligned"])
             for example in tqdm(
                 full_alignment, "Computing hidden states for full domain"
@@ -298,10 +304,9 @@ def _collect_microstates(
 ):
     microstates: list[Microstate] = []
     macrostates: dict[str, Macrostate] = {
-        f"cluster-{label}": Macrostate(label=f"cluster-{label}")
-        for label in set(labels)
+        f"state-{label}": Macrostate(label=f"state-{label}") for label in set(labels)
     }
-    initial_macrostate = macrostates[f"cluster-{labels[0]}"]
+    initial_macrostate = macrostates[f"state-{labels[0]}"]
 
     offset = 0
     for ex_transition_labels in tqdm(all_transition_labels, "Collecting microstates"):
@@ -334,9 +339,7 @@ def _collect_microstates(
                 previous_microstate.outgoing = weakref.ref(transition)
 
             microstates.append(microstate)
-            assigned_macrostate = macrostates[
-                f"cluster-{labels[offset + symbol_index]}"
-            ]
+            assigned_macrostate = macrostates[f"state-{labels[offset + symbol_index]}"]
             assigned_macrostate.microstates.add(microstate)
             microstate.macrostate = weakref.ref(assigned_macrostate)
             previous_microstate = microstate
@@ -358,12 +361,13 @@ if __name__ == "__main__":
             umap_n_neighbors=10,
             umap_min_distance=0.01,
             clustering_method="kmeans",
-            kmeans_num_clusters=2000,
-            min_samples=100,
+            kmeans_num_clusters=100,
+            min_samples=10,
             eps=1,
             minimum_transition_count=2,
-            state_split_classifier="svm",
+            state_split_classifier="logistic",
             generations_top_k=1,
+            full_domain=False,
             visualize=args.visualize,
         ),
         paths=create_paths_from_args(args),
