@@ -33,7 +33,7 @@ if (
     logger.info("Couldn't find aligned data, running alignment!")
     run_alignment(paths, iterations=100)
 train_size = len(load_examples_from_file(paths["train_aligned"]))
-max_batch_size = train_size // 10
+max_batch_size = train_size // 5
 
 # =========================================
 # 2. ALIGNMENT PREDICTOR TRAINING
@@ -72,7 +72,7 @@ if args.override_alignment or not paths["full_domain_aligned"].exists():
             "batch_size": {
                 "values": [
                     b for b in [2, 4, 8, 16, 32, 64, 128] if b <= max_batch_size
-                ][-3:]
+                ][-5:]
             },
             "epochs": {"values": [200, 400, 600, 800]},
         },
@@ -87,7 +87,7 @@ if args.override_alignment or not paths["full_domain_aligned"].exists():
         entity="lecs-general",
         project="fst-distillation.clustering.alignment_prediction",
     )
-    wandb.agent(sweep_id, function=single_run_train_alignment, count=50)
+    wandb.agent(sweep_id, function=single_run_train_alignment, count=100)
     sweep = wandb.Api().sweep(
         f"lecs-general/fst-distillation.clustering.alignment_prediction/sweeps/{sweep_id}"
     )
@@ -131,7 +131,7 @@ sweep_configuration = {
     "method": "bayes",
     "metric": {"goal": "minimize", "name": "validation.loss"},
     "parameters": {
-        "d_model": {"values": [16, 32, 64]},
+        "d_model": {"values": [16, 32, 64, 128]},
         "dropout": {"values": [0, 0.1, 0.3]},
         "learning_rate": {"values": [2e-4, 1e-3, 2e-3, 1e-2]},
         "batch_size": {
@@ -169,10 +169,11 @@ def single_run_extract_fst():
         project="fst-distillation.clustering.extraction",
         config={
             "rnn": {
-                # **dict(best_run.config),
-                "rnn.loss": best_run_loss,
-                "alignment_predictor.loss": alignment_pred_loss,
+                "eval.loss": best_run_loss,
                 "name": best_run.name,
+            },
+            "alignment_predictor": {
+                "eval.loss": alignment_pred_loss,
             },
             "identifier": paths["identifier"],
         },
