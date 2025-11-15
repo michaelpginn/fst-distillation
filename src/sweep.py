@@ -210,7 +210,7 @@ fst_sweep_id = wandb.sweep(
     entity="lecs-general",
     project="fst-distillation.clustering.extraction",
 )
-wandb.agent(fst_sweep_id, function=single_run_extract_fst)
+wandb.agent(fst_sweep_id, function=single_run_extract_fst, count=1000)
 sweep = wandb.Api().sweep(
     f"lecs-general/fst-distillation.clustering.extraction/sweeps/{fst_sweep_id}"
 )
