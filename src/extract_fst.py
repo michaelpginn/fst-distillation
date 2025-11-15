@@ -21,6 +21,7 @@ import seaborn
 import torch
 import umap
 from hdbscan import HDBSCAN
+from pyfoma.fst import FST
 from sklearn.cluster import DBSCAN, OPTICS, k_means
 from sklearn.decomposition import PCA
 from tqdm import tqdm
@@ -89,7 +90,7 @@ class ExtractionHyperparameters:
 def extract_fst(
     hparams: ExtractionHyperparameters,
     paths: Paths,
-):
+) -> tuple[dict[str, dict[str, int]], FST | None]:
     model, tokenizer, task = _load_model(hparams, paths)
 
     aligned_train_examples = load_examples_from_file(paths["train_aligned"])
@@ -107,7 +108,7 @@ def extract_fst(
     except ValueError:
         # Might fail if num clusters > num activations
         logger.warning("Clustering failed, setting all metrics to 0")
-        return fail_metrics()
+        return fail_metrics(), None
     macrostates, initial_macrostate = _collect_microstates(
         hparams, model, activations, all_transition_labels, labels
     )
