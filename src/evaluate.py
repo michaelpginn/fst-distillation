@@ -1,3 +1,4 @@
+import itertools
 import logging
 from random import sample
 
@@ -12,6 +13,7 @@ logger = logging.getLogger(__name__)
 def evaluate_all(
     fst: FST,
     examples: list[String2StringExample],
+    top_k: int = 1,
     output_raw_string=False,
     log=False,
 ):
@@ -47,8 +49,10 @@ def evaluate_all(
             preds_for_example = set()
         else:
             output_fst = output_fst.project(-1)
-            best_word: str = "".join(c[0] for c in next(output_fst.words())[1])
-            preds_for_example = set([best_word])
+            preds_for_example = {
+                "".join(c[0] for c in word[1])
+                for word in itertools.islice(output_fst.words(), top_k)
+            }
         preds.append(preds_for_example)
         if log and idx in indices_to_log:
             logger.info(f"Input:\t{''.join(input_string)}")
@@ -83,4 +87,18 @@ def compute_metrics(labels: list[str], predictions: list[set[str]]):
         "recall": recall,
         "f1": f1,
         "accepted_percentage": accepted_percentage,
+    }
+
+
+def fail_metrics():
+    metrics = {
+        "precision": 0,
+        "recall": 0,
+        "f1": 0,
+        "accepted_percentage": 0,
+    }
+    return {
+        "train": metrics,
+        "eval": metrics,
+        "test": metrics,
     }

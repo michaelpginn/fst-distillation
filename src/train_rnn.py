@@ -21,7 +21,7 @@ logger = getLogger(__name__)
 
 def train_rnn(
     paths: Paths,
-    objective: Literal["classification", "lm"],
+    objective: Literal["classification", "lm", "transduction"],
     batch_size: int,
     epochs: int,
     d_model: int,
@@ -115,6 +115,22 @@ def train_rnn(
             examples=eval_examples,
             tokenizer=tokenizer,
         )
+    elif objective == "transduction":
+        from src.data.aligned.transduction.dataloader import create_dataloader
+        from src.data.aligned.transduction.dataset import (
+            AlignedTransductionDataset,
+        )
+        from src.training.transduction.train import train
+
+        train_dataset = AlignedTransductionDataset(
+            examples=train_examples,
+            tokenizer=None,
+        )
+        tokenizer = train_dataset.tokenizer
+        eval_dataset = AlignedTransductionDataset(
+            examples=eval_examples,
+            tokenizer=tokenizer,
+        )
 
     train_dataloader = create_dataloader(train_dataset, batch_size=batch_size)  # type:ignore
     eval_dataloader = create_dataloader(eval_dataset, batch_size=batch_size)  # type:ignore
@@ -154,7 +170,9 @@ def train_rnn(
 
 if __name__ == "__main__":
     parser = create_arg_parser()
-    parser.add_argument("--objective", choices=["classification", "lm"], required=True)
+    parser.add_argument(
+        "--objective", choices=["classification", "lm", "transduction"], required=True
+    )
     parser.add_argument("--batch-size", default=2048)
     parser.add_argument("--epochs", default=200)
     parser.add_argument("--hidden-dim", default=64)

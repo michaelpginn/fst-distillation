@@ -16,7 +16,7 @@ class RNNModel(nn.Module):
         self,
         *args,
         tokenizer: Tokenizer | dict,
-        output_head: Literal["classification", "lm"],
+        output_head: Literal["classification", "lm", "transduction"],
         d_model: int,
         num_layers: int,
         dropout: float,
@@ -67,6 +67,8 @@ class RNNModel(nn.Module):
             self.out = nn.Linear(in_features=d_model, out_features=1)
         elif output_head == "lm":
             self.out = nn.Linear(in_features=d_model, out_features=vocab_size)
+        elif output_head == "transduction":
+            self.out = nn.Linear(in_features=2 * d_model, out_features=vocab_size)
 
     @property
     def config_dict(self):
@@ -96,7 +98,7 @@ class RNNModel(nn.Module):
         H_t = []  # list of (B, d_model)
         for layer_idx in range(self.num_layers):
             if layer_idx > 0:
-                x_t = H_t_min1[:, layer_idx - 1]
+                x_t = H_t[layer_idx - 1]
 
             # Transition using the input (previous layer hidden state) and hidden state (at previous timestep)
             H_t_layer = self.W_x[layer_idx](x_t) + self.W_h[layer_idx](
@@ -136,20 +138,39 @@ class RNNModel(nn.Module):
         self,
         input_ids: Tensor,
         seq_lengths: Tensor,
-    ) -> torch.Tensor:
+        next_input_ids: Tensor | None,
+        return_hidden_states: bool = False,
+    ) -> torch.Tensor | tuple[torch.Tensor, torch.Tensor]:
         """
         Arguments:
             input_ids: Tensor, shape ``[batch_size, seq_length]``
             seq_lengths: Tensor, shape ``[batch_size]``. Lengths (ignoring padding) for each sequence. Should be on cpu.
+
         Returns:
             torch.Tensor, shape ``[batch_size]``: Output tensor with the predicted sequence probabilities.
         """
+        if next_input_ids is not None and self.output_head != "transduction":
+            raise ValueError(
+                "`next_input_ids` should be None for any task besides transduction"
+            )
+        elif next_input_ids is None and self.output_head == "transduction":
+            raise ValueError("Must provide `next_input_ids`")
+
         src_embeddings = self.embedding(input_ids)  # (B, T, d_model)
         final_hidden_states, _ = self.compute_hidden_states(src_embeddings, seq_lengths)
 
         if self.output_head == "classification":
-            return self.out(final_hidden_states[:, -1]).squeeze(-1)
+            out = self.out(final_hidden_states[:, -1]).squeeze(-1)
         elif self.output_head == "lm":
-            return self.out(final_hidden_states)
+            out = self.out(final_hidden_states)
+        elif self.output_head == "transduction":
+            next_input_embeddings = self.embedding(next_input_ids)
+            out = self.out(
+                torch.cat([final_hidden_states, next_input_embeddings], dim=-1)
+            )
         else:
             raise ValueError()
+        if return_hidden_states:
+            return out, final_hidden_states
+        else:
+            return out

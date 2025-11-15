@@ -187,7 +187,7 @@ def single_run_extract_fst():
             kmeans_num_clusters=run.config["kmeans_num_clusters"],
         )
         results, _ = extract_fst(
-            hyperparams=hyperparams,
+            hparams=hyperparams,
             paths=paths,
         )
         run.log(results)
@@ -201,7 +201,7 @@ sweep_configuration = {
     "parameters": {
         "state_split_classifier": {"values": ["svm", "logistic"]},
         "minimum_transition_count": {"values": [None, 10, 25, 50]},
-        "kmeans_num_clusters": {"values": [50, 100, 250, 500, 1000, 1500]},
+        "kmeans_num_clusters": {"min": 50, "max": 10000},
     },
 }
 

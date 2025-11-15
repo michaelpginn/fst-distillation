@@ -8,6 +8,7 @@ from pyfoma.fst import FST
 from sklearn import linear_model, svm
 from sklearn.neighbors import KNeighborsClassifier
 
+from src.state_clustering.generalize_transitions import generalize_transitions
 from src.state_clustering.types import Macrostate, Macrotransition, Microstate
 
 logger = logging.getLogger(__file__)
@@ -95,7 +96,7 @@ def convert_macrostates_to_fst(
                 if m.label in visited_labels:
                     visited_labels.remove(m.label)
 
-    # generalize_transitions(macrostates)
+    generalize_transitions(macrostates)
 
     # Finally, build the actual FST
     fst_states: dict[str, State] = dict()
