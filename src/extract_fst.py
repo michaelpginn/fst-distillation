@@ -73,6 +73,7 @@ class ExtractionHyperparameters:
     minimum_transition_count: int | None = 100
     """Minimum count for a given transition to be guaranteed to be included"""
     state_split_classifier: Literal["svm", "logistic"] = "svm"
+    do_merge: bool = True
     full_domain: bool = True
 
     gen_top_k: int = 1
@@ -102,13 +103,14 @@ def extract_fst(
         hparams, paths, aligned_train_examples, model, tokenizer, task
     )
     activations = _standardize(hparams, activations)
-    logger.info(f"Hopkins statistic: {hopkins(activations)}")
-    try:
-        labels = _cluster(hparams, activations)
-    except ValueError:
+    if (hparams.kmeans_num_clusters or 0) > len(np.unique(activations, axis=0)):
         # Might fail if num clusters > num activations
-        logger.warning("Clustering failed, setting all metrics to 0")
+        logger.warning(
+            f"Clustering failed (only {len(np.unique(activations, axis=0))} unique), setting all metrics to 0"
+        )
         return fail_metrics(), None
+    logger.info(f"Hopkins statistic: {hopkins(activations)}")
+    labels = _cluster(hparams, activations)
     macrostates, initial_macrostate = _collect_microstates(
         hparams, model, activations, all_transition_labels, labels
     )
@@ -117,6 +119,7 @@ def extract_fst(
         macrostates=macrostates,
         state_splitting_classifier=hparams.state_split_classifier,
         minimum_transition_count=hparams.minimum_transition_count,
+        do_merge=hparams.do_merge,
     )
     metrics = {
         "train": evaluate_all(
@@ -424,13 +427,14 @@ if __name__ == "__main__":
             umap_n_neighbors=10,
             umap_min_distance=0.01,
             clustering_method="kmeans",
-            kmeans_num_clusters=10000,
+            kmeans_num_clusters=7860,
             min_samples=10,
             eps=1,
             minimum_transition_count=2,
             state_split_classifier="logistic",
             gen_top_k=1,
             full_domain=True,
+            do_merge=False,
             visualize=args.visualize,
         ),
         paths=create_paths_from_args(args),

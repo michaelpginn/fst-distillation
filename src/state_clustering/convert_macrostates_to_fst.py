@@ -8,7 +8,6 @@ from pyfoma.fst import FST
 from sklearn import linear_model, svm
 from sklearn.neighbors import KNeighborsClassifier
 
-from src.state_clustering.generalize_transitions import generalize_transitions
 from src.state_clustering.types import Macrostate, Macrotransition, Microstate
 
 logger = logging.getLogger(__file__)
@@ -19,10 +18,13 @@ def convert_macrostates_to_fst(
     macrostates: dict[str, Macrostate],
     state_splitting_classifier: Literal["svm", "logistic"],
     minimum_transition_count: int | None,
-    breakpoint_on: dict[str, Microstate] | None = None,
+    do_merge: bool = True,
 ) -> FST:
     """Processes an initial grouping of macrostates,
     adding transitions and splitting states if necessary. Returns an FST."""
+    if do_merge:
+        initial_macrostate = merge(initial_macrostate, macrostates)
+
     queue: list[Macrostate] = [initial_macrostate]
     visited_labels: set[str] = set()
     while len(queue) > 0:
@@ -31,8 +33,6 @@ def convert_macrostates_to_fst(
             continue
         visited_labels.add(current_macrostate.label)
         outgoing_distributions = current_macrostate.compute_outgoing_distributions()
-        # if current_macrostate.label in (breakpoint_on or []):
-        #     breakpoint()
         logger.debug(f"Processing state: {current_macrostate.label}")
         chosen_transitions: set[Macrotransition] = set()
         nondeterministic_input_symbols: set[str] = set()
@@ -96,7 +96,7 @@ def convert_macrostates_to_fst(
                 if m.label in visited_labels:
                     visited_labels.remove(m.label)
 
-    generalize_transitions(macrostates)
+    # generalize_transitions(macrostates)
 
     # Finally, build the actual FST
     fst_states: dict[str, State] = dict()
@@ -263,3 +263,73 @@ def split_state(
             if not any(m.label == source.label for m in macrostates_to_recheck):
                 macrostates_to_recheck.append(source)
     return new_macrostates, macrostates_to_recheck
+
+
+def merge(initial_macrostate: Macrostate, macrostates: dict[str, Macrostate]):
+    """Tries to merge states to resolve non-onward transitions"""
+    queue: list[Macrostate] = [initial_macrostate]
+    visited_labels: set[str] = set()
+    new_initial_macrostate = initial_macrostate
+    while len(queue) > 0:
+        current_macrostate = queue.pop(0)
+        if current_macrostate.label in visited_labels:
+            continue
+        visited_labels.add(current_macrostate.label)
+        for input_symbol in current_macrostate.compute_outgoing_distributions().keys():
+            # Recompute each time since it may have changed
+            outputs = current_macrostate.compute_outgoing_distributions()[
+                input_symbol
+            ].items()
+
+            # If we have multiple output symbols, we can't merge, so skip instead
+            output_symbols = set([o[0][0] for o in outputs])
+            if len(outputs) <= 1 or len(output_symbols) > 1:
+                for (_, target), _ in outputs:
+                    if target not in visited_labels:
+                        queue.append(macrostates[target])
+                continue
+
+            # If not, we can try merging the downstream states
+            downstream_states = [macrostates[o[0][1]] for o in outputs]
+            merged_state = perform_merge(downstream_states)
+            macrostates[merged_state.label] = merged_state
+            for s in downstream_states:
+                if s.label == new_initial_macrostate.label:
+                    new_initial_macrostate = merged_state
+                if s in queue:
+                    queue.remove(s)
+                del macrostates[s.label]
+            queue.append(merged_state)
+
+    return new_initial_macrostate
+
+
+def perform_merge(states: list[Macrostate]) -> Macrostate:
+    assert len(states) > 1
+    label = "[" + "+".join([s.label for s in states]) + "]"
+    logger.debug(f"Merging {[s.label for s in states]}")
+
+    microstates: set[Microstate] = set()
+    incoming: set[weakref.ReferenceType[Macrotransition]] = set()
+    outgoing: set[Macrotransition] = set()
+
+    for s in states:
+        microstates.update(s.microstates)
+        incoming.update(s.incoming)
+        outgoing.update(s.outgoing)
+
+    new_macrostate = Macrostate(
+        label=label,
+        microstates=microstates,
+        incoming=incoming,
+        outgoing=outgoing,
+    )
+    for m in new_macrostate.microstates:
+        m.macrostate = weakref.ref(new_macrostate)
+    for t in new_macrostate.incoming:
+        if (t := t()) is not None:
+            t.target = weakref.ref(new_macrostate)
+    for t in new_macrostate.outgoing:
+        t.source = weakref.ref(new_macrostate)
+
+    return new_macrostate
