@@ -15,7 +15,9 @@ from .train_rnn import train_rnn
 logger = logging.getLogger(__name__)
 
 parser = create_arg_parser()
-parser.add_argument("--objective", choices=["lm", "classification"], required=True)
+parser.add_argument(
+    "--objective", choices=["lm", "classification", "transducer"], required=True
+)
 parser.add_argument("--override-alignment", action="store_true")
 args = parser.parse_args()
 paths = create_paths_from_args(args)
