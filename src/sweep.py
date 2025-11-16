@@ -74,7 +74,7 @@ if args.override_alignment or not paths["full_domain_aligned"].exists():
             "batch_size": {
                 "values": [
                     b for b in [2, 4, 8, 16, 32, 64, 128] if b <= max_batch_size
-                ][-5:]
+                ][-4:]
             },
             "epochs": {"values": [200, 400, 600, 800]},
         },
