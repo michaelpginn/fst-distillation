@@ -130,7 +130,7 @@ def convert_macrostates_to_fst(
     logger.info(f"After splitting, FST has {len(fst.states)} states")
     logger.info("Minimizing and determinizing")
     # TODO: Add back epsilon loop thing
-    fst = fst.filter_accessible().minimize()
+    fst = fst.minimize()
     logger.info(f"Created FST with {len(fst.states)} states")
     return fst
 

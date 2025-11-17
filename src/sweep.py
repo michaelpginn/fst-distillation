@@ -16,7 +16,7 @@ logger = logging.getLogger(__name__)
 
 parser = create_arg_parser()
 parser.add_argument(
-    "--objective", choices=["lm", "classification", "transducer"], required=True
+    "--objective", choices=["lm", "classification", "transduction"], required=True
 )
 parser.add_argument("--override-alignment", action="store_true")
 args = parser.parse_args()
@@ -74,7 +74,7 @@ if args.override_alignment or not paths["full_domain_aligned"].exists():
             "batch_size": {
                 "values": [
                     b for b in [2, 4, 8, 16, 32, 64, 128] if b <= max_batch_size
-                ][-4:]
+                ][-3:]
             },
             "epochs": {"values": [200, 400, 600, 800]},
         },
