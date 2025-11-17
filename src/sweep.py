@@ -202,7 +202,9 @@ sweep_configuration = {
     "metric": {"goal": "maximize", "name": "eval.f1"},
     "parameters": {
         "state_split_classifier": {"values": ["svm", "logistic"]},
-        "minimum_transition_count": {"values": [None, 10, 25, 50]},
+        "minimum_transition_count": {
+            "values": [None, 2, 3, 4, 5, 10, 15, 20, 25, 30, 40, 50]
+        },
         "kmeans_num_clusters": {"min": 50, "max": 10000},
     },
 }
@@ -212,7 +214,7 @@ fst_sweep_id = wandb.sweep(
     entity="lecs-general",
     project="fst-distillation.clustering.extraction",
 )
-wandb.agent(fst_sweep_id, function=single_run_extract_fst, count=1000)
+wandb.agent(fst_sweep_id, function=single_run_extract_fst, count=500)
 sweep = wandb.Api().sweep(
     f"lecs-general/fst-distillation.clustering.extraction/sweeps/{fst_sweep_id}"
 )
