@@ -1,3 +1,4 @@
+import os
 import pprint
 from logging import getLogger
 from typing import Literal
@@ -15,10 +16,11 @@ logger = getLogger(__name__)
 
 
 def run_ostia(paths: Paths, order: Literal["lex", "dd"]):
+    slurm_job_id = os.environ.get("SLURM_JOB_ID")
     wandb.init(
         entity="lecs-general",
         project="fst-distillation.ostia",
-        config={**locals()},
+        config={**locals(), "slurm_job_id": slurm_job_id},
     )
 
     train_examples = load_examples_from_file(paths["train"], paths["has_features"])
