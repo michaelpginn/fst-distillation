@@ -127,6 +127,7 @@ def extract_fst(
         ),
         "eval": evaluate_all(fst, raw_eval_examples, top_k=hparams.gen_top_k),
         "test": evaluate_all(fst, raw_test_examples, top_k=hparams.gen_top_k),
+        "num_states": len(fst.states),
     }
     logger.info(pprint.pformat(metrics))
     if hparams.visualize:
