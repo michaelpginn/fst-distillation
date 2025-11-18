@@ -5,12 +5,14 @@ import logging
 import os
 from pprint import pformat
 
+import numpy as np
+
 import wandb
 from src.data.aligned.example import load_examples_from_file
 from src.paths import create_arg_parser, create_paths_from_args
 from src.train_alignment_predictor import predict_full_domain, train_alignment_predictor
 
-from .extract_fst import ExtractionHyperparameters, extract_fst
+from .extract_fst import ExtractionHyperparameters, compute_activations, extract_fst
 from .train_rnn import train_rnn
 
 logger = logging.getLogger(__name__)
@@ -38,7 +40,8 @@ if (
 
     logger.info("Couldn't find aligned data, running alignment!")
     run_alignment(paths, iterations=100)
-train_size = len(load_examples_from_file(paths["train_aligned"]))
+train_examples = load_examples_from_file(paths["train_aligned"])
+train_size = len(train_examples)
 max_batch_size = train_size // 5
 
 # =========================================
@@ -209,6 +212,18 @@ assert best_run is not None
 # 4. FST EXTRACTION
 # =========================================
 
+# Pre-compute activations since they shouldn't change across the sweep
+# the hparams don't matter except for the model name
+activations, transition_labels = compute_activations(
+    ExtractionHyperparameters(
+        model_shortname=best_run.name,  # type:ignore
+        clustering_method="kmeans",
+        n_components=None,
+    ),
+    paths,
+)
+max_clusters = len(np.unique(activations, axis=0))
+
 
 def single_run_extract_fst():
     with wandb.init(
@@ -237,6 +252,7 @@ def single_run_extract_fst():
         results, _ = extract_fst(
             hparams=hyperparams,
             paths=paths,
+            precomputed_activations=(activations, transition_labels),
         )
         run.log(results)
         run.summary["training_run"] = best_run.url  # type:ignore
@@ -251,7 +267,7 @@ sweep_configuration = {
         "minimum_transition_count": {
             "values": [None, 2, 3, 4, 5, 10, 15, 20, 25, 30, 40, 50]
         },
-        "kmeans_num_clusters": {"min": 50, "max": 10000},
+        "kmeans_num_clusters": {"min": 50, "max": max_clusters},
     },
 }
 

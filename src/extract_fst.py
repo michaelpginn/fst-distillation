@@ -88,21 +88,31 @@ class ExtractionHyperparameters:
             raise ValueError("Must set `optics_min_pts` when using OPTICS!")
 
 
+def compute_activations(hparams: ExtractionHyperparameters, paths: Paths):
+    """Collects and standardizes activations for the train and full domain"""
+    model, tokenizer, task = _load_model(hparams, paths)
+    aligned_train_examples = load_examples_from_file(paths["train_aligned"])
+    activations, all_transition_labels = _collect_activations(
+        hparams, paths, aligned_train_examples, model, tokenizer, task
+    )
+    return _standardize(hparams, activations), all_transition_labels
+
+
 def extract_fst(
     hparams: ExtractionHyperparameters,
     paths: Paths,
+    precomputed_activations: tuple[np.ndarray, list[list[str]]] | None = None,
 ) -> tuple[dict[str, dict[str, int]], FST | None]:
     model, tokenizer, task = _load_model(hparams, paths)
+    if precomputed_activations is None:
+        activations, all_transition_labels = compute_activations(hparams, paths)
+    else:
+        activations, all_transition_labels = precomputed_activations
 
-    aligned_train_examples = load_examples_from_file(paths["train_aligned"])
     raw_train_examples = load_unaligned(paths["train"], paths["has_features"])
     raw_eval_examples = load_unaligned(paths["eval"], paths["has_features"])
     raw_test_examples = load_unaligned(paths["test"], paths["has_features"])
 
-    activations, all_transition_labels = _collect_activations(
-        hparams, paths, aligned_train_examples, model, tokenizer, task
-    )
-    activations = _standardize(hparams, activations)
     if (hparams.kmeans_num_clusters or 0) > len(np.unique(activations, axis=0)):
         # Might fail if num clusters > num activations
         logger.warning(
