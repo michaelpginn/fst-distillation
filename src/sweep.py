@@ -218,6 +218,7 @@ activations, transition_labels = compute_activations(
     ExtractionHyperparameters(
         model_shortname=best_run.name,  # type:ignore
         clustering_method="kmeans",
+        kmeans_num_clusters=1,
         n_components=None,
     ),
     paths,
