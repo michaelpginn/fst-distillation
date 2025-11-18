@@ -2,6 +2,7 @@
 
 import ast
 import logging
+import os
 from pprint import pformat
 
 import wandb
@@ -23,6 +24,7 @@ args = parser.parse_args()
 paths = create_paths_from_args(args)
 
 WANDB_DIRECTORY = "/scratch/alpine/migi8081/fst-distillation/wandb/"
+os.environ["WANDB_DIR"] = os.path.abspath(WANDB_DIRECTORY)
 
 # =========================================
 # 1. CRP ALIGNMENT
