@@ -22,6 +22,8 @@ parser.add_argument("--override-alignment", action="store_true")
 args = parser.parse_args()
 paths = create_paths_from_args(args)
 
+WANDB_DIRECTORY = "/scratch/alpine/migi8081/fst-distillation/wandb/"
+
 # =========================================
 # 1. CRP ALIGNMENT
 # =========================================
@@ -46,6 +48,7 @@ if args.override_alignment or not paths["full_domain_aligned"].exists():
         with wandb.init(
             entity="lecs-general",
             project="fst-distillation.clustering.alignment_prediction",
+            dir=WANDB_DIRECTORY,
         ) as run:
             logger.info(f"Training with params: {pformat(run.config)}")
             train_alignment_predictor(
@@ -110,7 +113,9 @@ rnn_project_name = f"fst-distillation.clustering.rnn_{args.objective}"
 
 
 def single_run_train_rnn():
-    with wandb.init(entity="lecs-general", project=rnn_project_name) as run:
+    with wandb.init(
+        entity="lecs-general", project=rnn_project_name, dir=WANDB_DIRECTORY
+    ) as run:
         logger.info(f"Training with params: {pformat(run.config)}")
         train_rnn(
             paths=paths,
@@ -179,6 +184,7 @@ def single_run_extract_fst():
             },
             "identifier": paths["identifier"],
         },
+        dir=WANDB_DIRECTORY,
     ) as run:
         hyperparams = ExtractionHyperparameters(
             model_shortname=best_run.name,  # type:ignore
