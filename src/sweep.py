@@ -203,6 +203,7 @@ if isinstance(best_run.summary_metrics, str):
     best_run_loss = ast.literal_eval(best_run.summary_metrics)["validation"]["loss"]
 else:
     best_run_loss = best_run.summary_metrics["validation"]["loss"]
+assert best_run is not None
 
 # =========================================
 # 4. FST EXTRACTION
@@ -216,7 +217,7 @@ def single_run_extract_fst():
         config={
             "rnn": {
                 "eval.loss": best_run_loss,
-                "name": best_run.name,
+                "name": best_run.name,  # type:ignore
             },
             "alignment_predictor": {
                 "eval.loss": alignment_pred_loss,
@@ -238,12 +239,12 @@ def single_run_extract_fst():
             paths=paths,
         )
         run.log(results)
-        run.summary["training_run"] = best_run.url
+        run.summary["training_run"] = best_run.url  # type:ignore
 
 
 sweep_configuration = {
     "name": paths["identifier"],
-    "method": "grid",
+    "method": "bayes",
     "metric": {"goal": "maximize", "name": "eval.f1"},
     "parameters": {
         "state_split_classifier": {"values": ["svm", "logistic"]},
