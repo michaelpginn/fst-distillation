@@ -45,6 +45,7 @@ max_batch_size = train_size // 5
 # 2. ALIGNMENT PREDICTOR TRAINING
 # =========================================
 if args.override_alignment or not paths["full_domain_aligned"].exists():
+    logger.info("Running alignment predictor sweep")
 
     def single_run_train_alignment():
         with wandb.init(
@@ -99,69 +100,105 @@ if args.override_alignment or not paths["full_domain_aligned"].exists():
         f"lecs-general/fst-distillation.clustering.alignment_prediction/sweeps/{sweep_id}"
     )
     best_run = sweep.best_run()
-    if isinstance(best_run.summary_metrics, str):
-        alignment_pred_loss = ast.literal_eval(best_run.summary_metrics)["validation"][
-            "loss"
-        ]
-    else:
-        alignment_pred_loss = best_run.summary_metrics["validation"]["loss"]
     predict_full_domain(paths, best_run.name, best_run.config["batch_size"])
 
+else:
+    # Load the best run
+    best_run = None
+    for sweep in (
+        wandb.Api()
+        .project(
+            name="fst-distillation.clustering.alignment_prediction",
+            entity="lecs-general",
+        )
+        .sweeps()
+    ):
+        if sweep.name == paths["identifier"]:
+            logger.info(
+                f"Found existing alignment predictor sweep {paths['identifier']}"
+            )
+            best_run = sweep.best_run()
+            break
+
+assert best_run is not None
+if isinstance(best_run.summary_metrics, str):
+    alignment_pred_loss = ast.literal_eval(best_run.summary_metrics)["validation"][
+        "loss"
+    ]
+else:
+    alignment_pred_loss = best_run.summary_metrics["validation"]["loss"]
 
 # =========================================
 # 3. RNN TRAINING
 # =========================================
 rnn_project_name = f"fst-distillation.clustering.rnn_{args.objective}"
 
-
-def single_run_train_rnn():
-    with wandb.init(
-        entity="lecs-general", project=rnn_project_name, dir=WANDB_DIRECTORY
-    ) as run:
-        logger.info(f"Training with params: {pformat(run.config)}")
-        train_rnn(
-            paths=paths,
-            objective=args.objective,
-            batch_size=run.config["batch_size"],
-            epochs=run.config["epochs"],
-            d_model=run.config["d_model"],
-            num_layers=1,
-            dropout=run.config["dropout"],
-            learning_rate=run.config["learning_rate"],
-            use_many_to_many_transitions=False,
-            activation="tanh",
-            spectral_norm_weight=0.1,
-            wandb_run=run,
+# Load the best run
+best_run = None
+for sweep in wandb.Api().project(name=rnn_project_name, entity="lecs-general").sweeps():
+    if sweep.name == paths["identifier"]:
+        if any(r.state != "finished" for r in sweep.runs) or len(sweep.runs) < 100:
+            raise ValueError(
+                f"Found sweep for {paths['identifier']}, but sweep is not finished or crashed! Delete and try again."
+            )
+        logger.info(
+            f"Found existing finished sweep {paths['identifier']}, reusing best run instead of running."
         )
+        best_run = sweep.best_run()
+        break
 
+# If not, run the sweep
+if best_run is None:
+    logger.info(f"No sweep was found for {paths['identifier']}. Running now.")
 
-sweep_configuration = {
-    "name": paths["identifier"],
-    "method": "bayes",
-    "metric": {"goal": "minimize", "name": "validation.loss"},
-    "parameters": {
-        "d_model": {"values": [16, 32, 64, 128]},
-        "dropout": {"values": [0, 0.1, 0.3]},
-        "learning_rate": {"values": [2e-4, 1e-3, 2e-3, 1e-2]},
-        "batch_size": {
-            "values": [b for b in [2, 4, 8, 16, 32, 64, 128] if b <= max_batch_size][
-                -4:
-            ]
+    def single_run_train_rnn():
+        with wandb.init(
+            entity="lecs-general", project=rnn_project_name, dir=WANDB_DIRECTORY
+        ) as run:
+            logger.info(f"Training with params: {pformat(run.config)}")
+            train_rnn(
+                paths=paths,
+                objective=args.objective,
+                batch_size=run.config["batch_size"],
+                epochs=run.config["epochs"],
+                d_model=run.config["d_model"],
+                num_layers=1,
+                dropout=run.config["dropout"],
+                learning_rate=run.config["learning_rate"],
+                use_many_to_many_transitions=False,
+                activation="tanh",
+                spectral_norm_weight=0.1,
+                wandb_run=run,
+            )
+
+    sweep_configuration = {
+        "name": paths["identifier"],
+        "method": "bayes",
+        "metric": {"goal": "minimize", "name": "validation.loss"},
+        "parameters": {
+            "d_model": {"values": [16, 32, 64, 128]},
+            "dropout": {"values": [0, 0.1, 0.3]},
+            "learning_rate": {"values": [2e-4, 1e-3, 2e-3, 1e-2]},
+            "batch_size": {
+                "values": [
+                    b for b in [2, 4, 8, 16, 32, 64, 128] if b <= max_batch_size
+                ][-4:]
+            },
+            "epochs": {"values": [200, 600, 1000]},
         },
-        "epochs": {"values": [200, 600, 1000]},
-    },
-    "early_terminate": {
-        "type": "hyperband",
-        "min_iter": 75,  # minimum epochs before possible pruning
-        "max_iter": 1000,  # maximum epochs (full resource)
-    },
-}
-sweep_id = wandb.sweep(
-    sweep=sweep_configuration, entity="lecs-general", project=rnn_project_name
-)
-wandb.agent(sweep_id, function=single_run_train_rnn, count=100)
-sweep = wandb.Api().sweep(f"lecs-general/{rnn_project_name}/sweeps/{sweep_id}")
-best_run = sweep.best_run()
+        "early_terminate": {
+            "type": "hyperband",
+            "min_iter": 75,  # minimum epochs before possible pruning
+            "max_iter": 1000,  # maximum epochs (full resource)
+        },
+    }
+    sweep_id = wandb.sweep(
+        sweep=sweep_configuration, entity="lecs-general", project=rnn_project_name
+    )
+    wandb.agent(sweep_id, function=single_run_train_rnn, count=100)
+    sweep = wandb.Api().sweep(f"lecs-general/{rnn_project_name}/sweeps/{sweep_id}")
+    best_run = sweep.best_run()
+
 if isinstance(best_run.summary_metrics, str):
     best_run_loss = ast.literal_eval(best_run.summary_metrics)["validation"]["loss"]
 else:
