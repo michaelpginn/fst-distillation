@@ -82,7 +82,9 @@ if args.override_alignment or not paths["full_domain_aligned"].exists():
             "dropout": {"values": [0.1, 0.2, 0.3]},
             "batch_size": {
                 "values": [
-                    b for b in [2, 4, 8, 16, 32, 64, 128] if b <= max_batch_size
+                    b
+                    for b in [2, 4, 8, 16, 32, 64, 128, 256, 512, 1024]
+                    if b <= max_batch_size
                 ][-3:]
             },
             "epochs": {"values": [200, 400, 600, 800]},
@@ -184,7 +186,9 @@ if best_run is None:
             "learning_rate": {"values": [2e-4, 1e-3, 2e-3, 1e-2]},
             "batch_size": {
                 "values": [
-                    b for b in [2, 4, 8, 16, 32, 64, 128] if b <= max_batch_size
+                    b
+                    for b in [2, 4, 8, 16, 32, 64, 128, 256, 512, 1024]
+                    if b <= max_batch_size
                 ][-4:]
             },
             "epochs": {"values": [200, 600, 1000]},
