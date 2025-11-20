@@ -141,17 +141,22 @@ rnn_project_name = f"fst-distillation.rnn_{args.objective}"
 
 # Load the best run
 best_run = None
-for sweep in wandb.Api().project(name=rnn_project_name, entity="lecs-general").sweeps():
-    if sweep.name == paths["identifier"]:
-        if any(r.state != "finished" for r in sweep.runs) or len(sweep.runs) < 100:
-            raise ValueError(
-                f"Found sweep for {paths['identifier']}, but sweep is not finished or crashed! Delete and try again."
+try:
+    for sweep in (
+        wandb.Api().project(name=rnn_project_name, entity="lecs-general").sweeps()
+    ):
+        if sweep.name == paths["identifier"]:
+            if any(r.state != "finished" for r in sweep.runs) or len(sweep.runs) < 100:
+                raise ValueError(
+                    f"Found sweep for {paths['identifier']}, but sweep is not finished or crashed! Delete and try again."
+                )
+            logger.info(
+                f"Found existing finished sweep {paths['identifier']}, reusing best run instead of running."
             )
-        logger.info(
-            f"Found existing finished sweep {paths['identifier']}, reusing best run instead of running."
-        )
-        best_run = sweep.best_run()
-        break
+            best_run = sweep.best_run()
+            break
+except ValueError:
+    logger.warning(f"Didn't find project {rnn_project_name}, creating new!")
 
 # If not, run the sweep
 if best_run is None:
