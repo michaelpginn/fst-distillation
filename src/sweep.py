@@ -84,11 +84,9 @@ if args.override_alignment or not paths["full_domain_aligned"].exists():
             "num_layers": {"values": [2, 3, 4]},
             "dropout": {"values": [0.1, 0.2, 0.3]},
             "batch_size": {
-                "values": [
-                    b
-                    for b in [2, 4, 8, 16, 32, 64, 128, 256, 512, 1024]
-                    if b <= max_batch_size
-                ][-3:]
+                "values": [b for b in [2, 4, 8, 16, 32, 64, 96] if b <= max_batch_size][
+                    -3:
+                ]
             },
             "epochs": {"values": [200, 400, 600, 800]},
         },

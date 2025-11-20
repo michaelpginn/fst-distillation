@@ -68,26 +68,26 @@ def train(
         model.train()
         train_loss = 0
         for batch in tqdm(train_dataloader, "Training"):
-            loss = batch_forward(batch, model, loss_fn)
-            optimizer.zero_grad()
-            loss.backward()
-            torch.nn.utils.clip_grad_norm_(model.parameters(), max_norm=1.0)
+            with torch.autocast(device, dtype=torch.bfloat16):
+                loss = batch_forward(batch, model, loss_fn)
+                optimizer.zero_grad()
+                loss.backward()
+                torch.nn.utils.clip_grad_norm_(model.parameters(), max_norm=1.0)
 
-            if warmup_steps and step < warmup_steps:
-                # Linear warmup
-                new_lr = learning_rate * step / warmup_steps
-            else:
-                # Cosine decay
-                progress = (step - warmup_steps) / (total_steps - warmup_steps)
-                cosine_decay = 0.5 * (1 + math.cos(math.pi * progress))
-                new_lr = (
-                    min_learning_rate
-                    + (learning_rate - min_learning_rate) * cosine_decay
-                )
-            wandb.log({"train.lr": new_lr})
-            set_lr(optimizer, new_lr)
-            optimizer.step()
-
+                if warmup_steps and step < warmup_steps:
+                    # Linear warmup
+                    new_lr = learning_rate * step / warmup_steps
+                else:
+                    # Cosine decay
+                    progress = (step - warmup_steps) / (total_steps - warmup_steps)
+                    cosine_decay = 0.5 * (1 + math.cos(math.pi * progress))
+                    new_lr = (
+                        min_learning_rate
+                        + (learning_rate - min_learning_rate) * cosine_decay
+                    )
+                wandb.log({"train.lr": new_lr})
+                set_lr(optimizer, new_lr)
+                optimizer.step()
             step += 1
             train_loss += loss.detach().item()
         train_loss /= len(train_dataloader)
@@ -97,8 +97,9 @@ def train(
         validation_loss: float = 0
         with torch.no_grad():
             for batch in tqdm(eval_dataloader, "Training"):
-                loss = batch_forward(batch, model, loss_fn)
-                validation_loss += loss.detach().item()
+                with torch.autocast(device, dtype=torch.bfloat16):
+                    loss = batch_forward(batch, model, loss_fn)
+                    validation_loss += loss.detach().item()
         validation_loss /= len(eval_dataloader)
 
         print(f"Training loss: {train_loss:.4f}")
