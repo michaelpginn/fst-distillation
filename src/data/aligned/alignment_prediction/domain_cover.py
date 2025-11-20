@@ -31,14 +31,16 @@ def _domain_cover_features(train_examples: list[AlignmentPredictionExample]):
 
     as well, bc "cat" and "dog" share a feature bundle.
     """
-    lemma_to_features: dict[str, set[tuple[str, ...]]] = defaultdict(lambda: set())
+    lemma_to_features: dict[tuple[str, ...], set[tuple[str, ...]]] = defaultdict(
+        lambda: set()
+    )
     all_train_inputs = set()
     for ex in train_examples:
-        lemma = "".join(ex.unaligned)
+        lemma = tuple(ex.unaligned)
         lemma_to_features[lemma].add(tuple(ex.features))  # type:ignore
-        all_train_inputs.add(("".join(ex.unaligned), tuple(ex.features)))  # type:ignore
+        all_train_inputs.add((lemma, tuple(ex.features)))  # type:ignore
 
-    generated: set[tuple[str, tuple[str, ...]]] = set()
+    generated: set[tuple[tuple[str, ...], tuple[str, ...]]] = set()
     lemmas = list(lemma_to_features.keys())
     for i, lem1 in enumerate(lemmas):
         for lem2 in lemmas[i + 1 :]:
