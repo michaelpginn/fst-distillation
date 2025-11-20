@@ -55,7 +55,7 @@ if args.override_alignment or not paths["full_domain_aligned"].exists():
     def single_run_train_alignment():
         with wandb.init(
             entity="lecs-general",
-            project="fst-distillation.clustering.alignment_prediction",
+            project="fst-distillation.alignment_prediction",
             dir=WANDB_DIRECTORY,
         ) as run:
             run.config.update({"slurm_job_id": slurm_job_id})
@@ -99,11 +99,11 @@ if args.override_alignment or not paths["full_domain_aligned"].exists():
     sweep_id = wandb.sweep(
         sweep=sweep_configuration,
         entity="lecs-general",
-        project="fst-distillation.clustering.alignment_prediction",
+        project="fst-distillation.alignment_prediction",
     )
     wandb.agent(sweep_id, function=single_run_train_alignment, count=100)
     sweep = wandb.Api().sweep(
-        f"lecs-general/fst-distillation.clustering.alignment_prediction/sweeps/{sweep_id}"
+        f"lecs-general/fst-distillation.alignment_prediction/sweeps/{sweep_id}"
     )
     best_run = sweep.best_run()
     predict_full_domain(paths, best_run.name, best_run.config["batch_size"])
@@ -114,7 +114,7 @@ else:
     for sweep in (
         wandb.Api()
         .project(
-            name="fst-distillation.clustering.alignment_prediction",
+            name="fst-distillation.alignment_prediction",
             entity="lecs-general",
         )
         .sweeps()
@@ -137,7 +137,7 @@ else:
 # =========================================
 # 3. RNN TRAINING
 # =========================================
-rnn_project_name = f"fst-distillation.clustering.rnn_{args.objective}"
+rnn_project_name = f"fst-distillation.rnn_{args.objective}"
 
 # Load the best run
 best_run = None
@@ -235,7 +235,7 @@ max_clusters = len(np.unique(activations, axis=0))
 def single_run_extract_fst():
     with wandb.init(
         entity="lecs-general",
-        project="fst-distillation.clustering.extraction",
+        project="fst-distillation.extraction",
         config={
             "rnn": {
                 "eval.loss": best_run_loss,
@@ -282,11 +282,11 @@ sweep_configuration = {
 fst_sweep_id = wandb.sweep(
     sweep=sweep_configuration,
     entity="lecs-general",
-    project="fst-distillation.clustering.extraction",
+    project="fst-distillation.extraction",
 )
 wandb.agent(fst_sweep_id, function=single_run_extract_fst, count=500)
 sweep = wandb.Api().sweep(
-    f"lecs-general/fst-distillation.clustering.extraction/sweeps/{fst_sweep_id}"
+    f"lecs-general/fst-distillation.extraction/sweeps/{fst_sweep_id}"
 )
 best_run = sweep.best_run()
 print(f"Best run: {best_run.url}")
