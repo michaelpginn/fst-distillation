@@ -36,7 +36,7 @@ def train_rnn(
 ) -> tuple[wandb.Run | None, float]:
     logger.info(f"Training on {paths['identifier']}")
     hyperparams = locals()
-    project_name = f"fst-distillation.clustering.rnn_{objective}"
+    project_name = f"fst-distillation.rnn_{objective}"
 
     if wandb_run is None:
         # Check if this run is a duplicate
