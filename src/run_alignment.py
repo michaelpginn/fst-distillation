@@ -17,6 +17,8 @@ This script will produce the output file:
 import logging
 import pathlib
 
+from src.data.tokenize_with_diacritics import tokenize
+
 from .crpalign import Aligner
 from .data.unaligned.example import load_examples_from_file
 from .paths import Paths, create_arg_parser, create_paths_from_args
@@ -67,7 +69,7 @@ def run_alignment(
                     [
                         f"({in_char},{out_char})"
                         for in_char, out_char in zip(
-                            tokenize_to_chars(in_str), tokenize_to_chars(out_str)
+                            tokenize(in_str), tokenize(out_str)
                         )
                     ]
                 )
@@ -78,19 +80,6 @@ def run_alignment(
                     f.write(f"{aligned_tuples}\n")
 
         current_offset += num_examples
-
-
-def tokenize_to_chars(s: str, post_diacritics: set[str] = {"¹", "²"}):
-    """Splits a string into chars.
-    Any symbols in `post_diacritics` will be attached to the previous character as a single symbol."""
-    chars = list(s)
-    new_chars: list[str] = []
-    for c in chars:
-        if c in post_diacritics:
-            new_chars[-1] += c
-        else:
-            new_chars.append(c)
-    return new_chars
 
 
 if __name__ == "__main__":

@@ -5,6 +5,8 @@ from random import sample
 from pyfoma.fst import FST
 from tqdm import tqdm
 
+from src.data.tokenize_with_diacritics import tokenize
+
 from .data.unaligned.example import String2StringExample
 
 logger = logging.getLogger(__name__)
@@ -24,9 +26,9 @@ def evaluate_all(
     else:
         indices_to_log = list(range(len(examples)))
     for idx, example in tqdm(enumerate(examples), "Evaluating"):
-        input_string = [c for c in example.input_string]
+        input_string = tokenize(example.input_string)
         assert example.output_string is not None
-        correct_output = [c for c in example.output_string]
+        correct_output = tokenize(example.output_string)
         if example.features is not None:
             features = [f"[{f}]" for f in example.features]
             input_string = features + ["<sep>"] + input_string + ["<sink>"]
