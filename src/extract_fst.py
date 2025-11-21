@@ -132,10 +132,8 @@ def extract_fst(
         do_merge=hparams.do_merge,
     )
     metrics = {
-        "train": evaluate_all(
-            fst, raw_train_examples, log=True, top_k=hparams.gen_top_k
-        ),
-        "eval": evaluate_all(fst, raw_eval_examples, top_k=hparams.gen_top_k),
+        "train": evaluate_all(fst, raw_train_examples, top_k=hparams.gen_top_k),
+        "eval": evaluate_all(fst, raw_eval_examples, log=True, top_k=hparams.gen_top_k),
         "test": evaluate_all(fst, raw_test_examples, top_k=hparams.gen_top_k),
         "num_states": len(fst.states),
     }
