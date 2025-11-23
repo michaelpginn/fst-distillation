@@ -43,9 +43,7 @@ def run_alignment(
     wordpairs: list[tuple[str | list[str], str | list[str]]] = []
     for ex in all_examples:
         assert ex.output_string is not None
-        wordpairs.append(
-            (tokenize_to_chars(ex.input_string), tokenize_to_chars(ex.output_string))
-        )
+        wordpairs.append((tokenize(ex.input_string), tokenize(ex.output_string)))
 
     aligner = Aligner(
         wordpairs=wordpairs,
