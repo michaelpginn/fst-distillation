@@ -103,7 +103,6 @@ def extract_fst(
     paths: Paths,
     precomputed_activations: tuple[np.ndarray, list[list[str]]] | None = None,
 ) -> tuple[dict[str, dict[str, int]], FST | None]:
-    model, tokenizer, task = _load_model(hparams, paths)
     if precomputed_activations is None:
         activations, all_transition_labels = compute_activations(hparams, paths)
     else:
@@ -122,7 +121,7 @@ def extract_fst(
     logger.info(f"Hopkins statistic: {hopkins(activations)}")
     labels = _cluster(hparams, activations)
     macrostates, initial_macrostate = _collect_microstates(
-        hparams, model, activations, all_transition_labels, labels
+        activations, all_transition_labels, labels
     )
     fst = convert_macrostates_to_fst(
         initial_macrostate,
@@ -371,8 +370,6 @@ def _cluster(hyperparams: ExtractionHyperparameters, activations: np.ndarray):
 
 
 def _collect_microstates(
-    hyperparams: ExtractionHyperparameters,
-    model: RNNModel,
     activations: np.ndarray,
     all_transition_labels: list[list[str]],
     labels: np.ndarray,
