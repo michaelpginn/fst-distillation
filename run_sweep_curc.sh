@@ -3,7 +3,7 @@
 #SBATCH --ntasks-per-node=2
 #SBATCH --gres=gpu:1
 #SBATCH --mem-per-cpu=4GB
-#SBATCH --cpus-per-task=1
+#SBATCH --cpus-per-task=10
 #SBATCH --time=2-00:00:00
 #SBATCH --qos=blanca-curc-gpu
 #SBATCH --partition=blanca-curc-gpu
