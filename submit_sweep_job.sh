@@ -58,4 +58,4 @@ sbatch \
   --partition="$part" \
   --account="$acct" \
   $gres \
-  sweep_job.sh data/inflection "$lang" --objective "$objective" $override --models /scratch/alpine/$USER/fst-distillation/models/
+  sweep_job.sh data/inflection "$lang" --features --objective "$objective" $override --models /scratch/alpine/$USER/fst-distillation/models/
