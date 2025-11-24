@@ -258,7 +258,7 @@ def main():
         entity="lecs-general",
         project="fst-distillation.extraction",
     )
-    cpus = os.cpu_count() or 1
+    cpus = 10  # TODO: Don't hardcode this
     procs = []
     logger.info(f"Running extraction sweep in parallel with {cpus} agents")
     for _ in range(cpus):
