@@ -1,5 +1,5 @@
 #!/bin/bash
-#
+
 if [[ $# -ne 3 ]]; then
     echo "Usage: $0 <cluster> <lang> <objective>"
     echo "  cluster   : clearlab1 | curc-gpu | blast-lecs | curc"
@@ -49,12 +49,12 @@ if [[ "$need_gpu" == 1 ]]; then
     override="--override-alignment"
 else
     gres=""
-    override="--override-alignment"
+    override=""
 fi
 
 sbatch \
   --qos="$qos" \
   --partition="$part" \
   --account="$acct" \
-  $gres \
-  sweep_slurm.sh data/inflection "$lang" --objective "$objective" "$override" --models /scratch/alpine/$USER/fst-distillation/models/
+  "$gres" \
+  sweep_job.sh data/inflection "$lang" --objective "$objective" "$override" --models /scratch/alpine/$USER/fst-distillation/models/
