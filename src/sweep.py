@@ -21,6 +21,8 @@ logger = logging.getLogger(__name__)
 
 WANDB_DIRECTORY = "/scratch/alpine/migi8081/fst-distillation/wandb/"
 os.environ["WANDB_DIR"] = os.path.abspath(WANDB_DIRECTORY)
+os.environ["OMP_NUM_THREADS"] = "1"
+os.environ["MKL_NUM_THREADS"] = "1"
 
 
 def main():
@@ -258,7 +260,7 @@ def main():
         entity="lecs-general",
         project="fst-distillation.extraction",
     )
-    cpus = 10  # TODO: Don't hardcode this
+    cpus = int(os.environ["SLURM_CPUS_PER_TASK"])
     procs = []
     logger.info(f"Running extraction sweep in parallel with {cpus} agents")
     for _ in range(cpus):
