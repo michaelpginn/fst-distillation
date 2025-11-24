@@ -45,7 +45,14 @@ def run_ostia(paths: Paths, order: Literal["lex", "dd"]):
     test_metrics = evaluate_all(fst, test_examples, output_raw_string=True)
     logger.info(f"Test metrics: {pprint.pformat(test_metrics)}")
 
-    wandb.log({"train": train_metrics, "eval": eval_metrics, "test": test_metrics})
+    wandb.log(
+        {
+            "num_states": len(fst.states),
+            "train": train_metrics,
+            "eval": eval_metrics,
+            "test": test_metrics,
+        }
+    )
 
 
 if __name__ == "__main__":
