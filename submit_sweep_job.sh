@@ -1,5 +1,6 @@
 #!/bin/bash
 
+set -x
 if [[ $# -ne 3 ]]; then
     echo "Usage: $0 <cluster> <lang> <objective>"
     echo "  cluster   : clearlab1 | curc-gpu | blast-lecs | curc"
