@@ -1,9 +1,24 @@
 #!/bin/bash
 
 set -x
+
+no_override=0
+while [[ "$1" == --* ]]; do
+    case "$1" in
+        --no-override)
+            no_override=1
+            shift
+            ;;
+        *)
+            echo "Unknown flag: $1"
+            exit 1
+            ;;
+    esac
+done
+
 if [[ $# -ne 3 ]]; then
-    echo "Usage: $0 <cluster> <lang> <objective>"
-    echo "  cluster   : clearlab1 | curc-gpu | blast-lecs | curc"
+    echo "Usage: $0 [--no-override] <cluster> <lang> <objective>"
+    echo "  cluster   : clearlab1 | curc-gpu | blast-lecs"
     echo "  lang      : language code (e.g., ceb, lin, tgk)"
     echo "  objective : your sweep objective"
     exit 1
@@ -32,30 +47,25 @@ case "$cluster" in
     acct="blanca-blast-lecs"
     need_gpu=1
     ;;
-  curc)
-    qos="blanca-curc"
-    part="blanca-curc"
-    acct="blanca-curc"
-    need_gpu=0
-    ;;
   *)
     echo "Unknown cluster: $cluster"
-    echo "Expected: clearlab1, curc-gpu, blast-lecs, curc"
+    echo "Expected: clearlab1, curc-gpu, blast-lecs"
     exit 1
     ;;
 esac
 
-if [[ "$need_gpu" == 1 ]]; then
-    gres="--gres=gpu:1"
-    override="--override-alignment"
-else
-    gres=""
+if [[ "$no_override" == 1 ]]; then
     override=""
+else
+    override="--override-alignment"
 fi
 
 sbatch \
   --qos="$qos" \
   --partition="$part" \
   --account="$acct" \
-  $gres \
-  sweep_job.sh data/inflection "$lang" --features --objective "$objective" $override --models /scratch/alpine/$USER/fst-distillation/models/
+  --gres=gpu:1 \
+  sweep_job.sh data/inflection "$lang" --features \
+    --objective "$objective" \
+    $override \
+    --models /scratch/alpine/$USER/fst-distillation/models/
