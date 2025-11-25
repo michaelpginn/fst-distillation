@@ -2,8 +2,6 @@
 
 import ast
 import logging
-import math
-import multiprocessing
 import os
 from pprint import pformat
 
@@ -11,7 +9,7 @@ import numpy as np
 
 import wandb
 from src.data.aligned.example import load_examples_from_file
-from src.paths import Paths, create_arg_parser, create_paths_from_args
+from src.paths import create_arg_parser, create_paths_from_args
 from src.train_alignment_predictor import predict_full_domain, train_alignment_predictor
 
 from .extract_fst import ExtractionHyperparameters, compute_activations, extract_fst
@@ -21,8 +19,6 @@ logger = logging.getLogger(__name__)
 
 WANDB_DIRECTORY = "/scratch/alpine/migi8081/fst-distillation/wandb/"
 os.environ["WANDB_DIR"] = os.path.abspath(WANDB_DIRECTORY)
-os.environ["OMP_NUM_THREADS"] = "1"
-os.environ["MKL_NUM_THREADS"] = "1"
 
 
 def main():
@@ -260,47 +256,6 @@ def main():
         entity="lecs-general",
         project="fst-distillation.extraction",
     )
-    cpus = int(os.environ["SLURM_CPUS_PER_TASK"])
-    procs = []
-    logger.info(f"Running extraction sweep in parallel with {cpus} agents")
-    for _ in range(cpus):
-        p = multiprocessing.Process(
-            target=start_extract_fst_agent,
-            kwargs={
-                "sweep_id": fst_sweep_id,
-                "count": math.ceil(500 / cpus),
-                "paths": paths,
-                "precomputed_activations": (activations, transition_labels),
-                "alignment_pred_loss": alignment_pred_loss,
-                "best_run_fields": (best_run_loss, best_run.name, best_run.url),
-                "slurm_job_id": slurm_job_id,
-            },
-        )
-        p.start()
-        procs.append(p)
-
-    # Block until all finished
-    for p in procs:
-        p.join()
-
-    sweep = wandb.Api().sweep(
-        f"lecs-general/fst-distillation.extraction/sweeps/{fst_sweep_id}"
-    )
-    best_run = sweep.best_run()
-    print(f"Best run: {best_run.url}")
-
-
-# Has to be module-level since we use it with multiproc
-def start_extract_fst_agent(
-    sweep_id: str,
-    count: int,
-    paths: Paths,
-    precomputed_activations: tuple[np.ndarray, list[list[str]]],
-    alignment_pred_loss,
-    best_run_fields: tuple,
-    slurm_job_id,
-):
-    best_run_loss, best_run_name, best_run_url = best_run_fields
 
     def _run_extraction():
         with wandb.init(
@@ -309,7 +264,7 @@ def start_extract_fst_agent(
             config={
                 "rnn": {
                     "eval.loss": best_run_loss,
-                    "name": best_run_name,  # type:ignore
+                    "name": best_run.name,  # type:ignore
                 },
                 "alignment_predictor": {
                     "eval.loss": alignment_pred_loss,
@@ -320,8 +275,9 @@ def start_extract_fst_agent(
         ) as run:
             run.config.update({"slurm_job_id": slurm_job_id})
             hyperparams = ExtractionHyperparameters(
-                model_shortname=best_run_name,  # type:ignore
+                model_shortname=best_run.name,  # type:ignore
                 clustering_method="kmeans",
+                use_faiss=True,
                 state_split_classifier=run.config["state_split_classifier"],
                 n_components=None,
                 minimum_transition_count=run.config["minimum_transition_count"],
@@ -330,12 +286,17 @@ def start_extract_fst_agent(
             results, _ = extract_fst(
                 hparams=hyperparams,
                 paths=paths,
-                precomputed_activations=precomputed_activations,
+                precomputed_activations=(activations, transition_labels),
             )
             run.log(results)
-            run.summary["training_run"] = best_run_url  # type:ignore
+            run.summary["training_run"] = best_run.url  # type:ignore
 
-    wandb.agent(sweep_id, function=_run_extraction, count=count)
+    wandb.agent(fst_sweep_id, function=_run_extraction, count=500)
+    sweep = wandb.Api().sweep(
+        f"lecs-general/fst-distillation.extraction/sweeps/{fst_sweep_id}"
+    )
+    best_run = sweep.best_run()
+    print(f"Best run: {best_run.url}")
 
 
 if __name__ == "__main__":

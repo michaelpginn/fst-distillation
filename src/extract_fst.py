@@ -62,6 +62,7 @@ class ExtractionHyperparameters:
     model_shortname: str
     clustering_method: Literal["kmeans", "optics", "hdbscan", "dbscan"]
     kmeans_num_clusters: int | None = None
+    use_faiss: bool = False
     min_samples: int | None = None
     eps: float | None = None
 
@@ -331,33 +332,58 @@ def _standardize(hyperparams: ExtractionHyperparameters, activations: torch.Tens
 
 def _cluster(hyperparams: ExtractionHyperparameters, activations: np.ndarray):
     logger.info(f"Clustering with '{hyperparams.clustering_method}'")
-    if hyperparams.clustering_method == "kmeans":
-        if hyperparams.kmeans_num_clusters > len(activations):  # type:ignore
-            raise ValueError(
-                "kmeans_num_clusters is larger than the number of points, aborting!"
-            )
-        _, labels, _ = k_means(  # type:ignore
-            activations, n_clusters=hyperparams.kmeans_num_clusters, random_state=0
-        )
-    elif hyperparams.clustering_method == "optics":
-        labels = OPTICS(
-            min_samples=hyperparams.min_samples,  # type:ignore
-            n_jobs=-1,
-        ).fit_predict(activations)
-    elif hyperparams.clustering_method == "hdbscan":
-        labels = HDBSCAN(
-            min_cluster_size=50,
-            min_samples=hyperparams.min_samples,
-            core_dist_n_jobs=-1,
-        ).fit_predict(activations)
-    elif hyperparams.clustering_method == "dbscan":
-        assert hyperparams.eps is not None
-        assert hyperparams.min_samples is not None
-        labels = DBSCAN(
-            eps=hyperparams.eps, min_samples=hyperparams.min_samples, n_jobs=-1
-        ).fit_predict(activations)
+    if hyperparams.use_faiss:
+        import faiss
+
+        activations = activations.astype(np.float32)
+        if hyperparams.clustering_method == "kmeans":
+            k = hyperparams.kmeans_num_clusters
+            assert k
+            d = activations.shape[1]
+            faiss.randn.seed(0)
+            # Match sklearn
+            clus = faiss.Clustering(d, k)
+            clus.niter = 300
+            clus.nredo = 1
+            clus.seed = 0
+            clus.init_type = faiss.ClusteringInitType.KMEANS_PLUS_PLUS
+            index = faiss.IndexFlatL2(d)  # flat L2 index, like sklearn
+            if torch.cuda.is_available():
+                res = faiss.StandardGpuResources()
+                index = faiss.index_cpu_to_gpu(res, 0, index)
+            clus.train(activations, index)
+            _, labels = index.search(activations, 1)
+            labels = labels.reshape(-1)
+        else:
+            raise NotImplementedError()
     else:
-        raise ValueError()
+        if hyperparams.clustering_method == "kmeans":
+            if hyperparams.kmeans_num_clusters > len(activations):  # type:ignore
+                raise ValueError(
+                    "kmeans_num_clusters is larger than the number of points, aborting!"
+                )
+            _, labels, _ = k_means(  # type:ignore
+                activations, n_clusters=hyperparams.kmeans_num_clusters, random_state=0
+            )
+        elif hyperparams.clustering_method == "optics":
+            labels = OPTICS(
+                min_samples=hyperparams.min_samples,  # type:ignore
+                n_jobs=-1,
+            ).fit_predict(activations)
+        elif hyperparams.clustering_method == "hdbscan":
+            labels = HDBSCAN(
+                min_cluster_size=50,
+                min_samples=hyperparams.min_samples,
+                core_dist_n_jobs=-1,
+            ).fit_predict(activations)
+        elif hyperparams.clustering_method == "dbscan":
+            assert hyperparams.eps is not None
+            assert hyperparams.min_samples is not None
+            labels = DBSCAN(
+                eps=hyperparams.eps, min_samples=hyperparams.min_samples, n_jobs=-1
+            ).fit_predict(activations)
+        else:
+            raise ValueError()
     assert labels is not None
 
     if hyperparams.visualize:
@@ -434,6 +460,7 @@ if __name__ == "__main__":
             umap_min_distance=0.01,
             clustering_method="kmeans",
             kmeans_num_clusters=5996,
+            use_faiss=True,
             min_samples=10,
             eps=1,
             minimum_transition_count=None,
