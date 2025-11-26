@@ -13,7 +13,7 @@ echo "SLURMD_NODENAME: $SLURMD_NODENAME"
 
 module purge
 module load miniforge
-mamba activate distillfst
+mamba activate fst
 cd "/projects/$USER/fst-distillation"
 
 set -x

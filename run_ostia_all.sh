@@ -16,7 +16,7 @@ set -x
 
 module purge
 module load miniforge
-mamba activate distillfst
+mamba activate fst
 # source activate distillfst
 cd "/projects/$USER/fst-distillation"
 
