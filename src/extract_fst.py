@@ -340,19 +340,12 @@ def _cluster(hyperparams: ExtractionHyperparameters, activations: np.ndarray):
             k = hyperparams.kmeans_num_clusters
             assert k
             d = activations.shape[1]
-            faiss.randn.seed(0)
-            # Match sklearn
-            clus = faiss.Clustering(d, k)
-            clus.niter = 300
-            clus.nredo = 1
-            clus.seed = 0
-            clus.init_type = faiss.ClusteringInitType.KMEANS_PLUS_PLUS
-            index = faiss.IndexFlatL2(d)  # flat L2 index, like sklearn
+            kmeans = faiss.Kmeans(d, k, niter=300, nredo=1, verbose=True, seed=0)
             # if torch.cuda.is_available():
             #     res = faiss.StandardGpuResources()
             #     index = faiss.index_cpu_to_gpu(res, 0, index)
-            clus.train(activations, index)
-            _, labels = index.search(activations, 1)
+            kmeans.train(activations)
+            _, labels = kmeans.index.search(activations, 1)
             labels = labels.reshape(-1)
         else:
             raise NotImplementedError()
