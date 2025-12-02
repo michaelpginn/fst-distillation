@@ -109,9 +109,15 @@ def extract_fst(
     else:
         activations, all_transition_labels = precomputed_activations
 
-    raw_train_examples = load_unaligned(paths["train"], paths["has_features"])
-    raw_eval_examples = load_unaligned(paths["eval"], paths["has_features"])
-    raw_test_examples = load_unaligned(paths["test"], paths["has_features"])
+    raw_train_examples = load_unaligned(
+        paths["train"], paths["has_features"], paths["output_split_into_chars"]
+    )
+    raw_eval_examples = load_unaligned(
+        paths["eval"], paths["has_features"], paths["output_split_into_chars"]
+    )
+    raw_test_examples = load_unaligned(
+        paths["test"], paths["has_features"], paths["output_split_into_chars"]
+    )
 
     if (hparams.kmeans_num_clusters or 0) > len(np.unique(activations, axis=0)):
         # Might fail if num clusters > num activations

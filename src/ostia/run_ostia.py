@@ -23,9 +23,15 @@ def run_ostia(paths: Paths, order: Literal["lex", "dd"]):
         config={**locals(), "slurm_job_id": slurm_job_id},
     )
 
-    train_examples = load_examples_from_file(paths["train"], paths["has_features"])
-    eval_examples = load_examples_from_file(paths["eval"], paths["has_features"])
-    test_examples = load_examples_from_file(paths["test"], paths["has_features"])
+    train_examples = load_examples_from_file(
+        paths["train"], paths["has_features"], paths["output_split_into_chars"]
+    )
+    eval_examples = load_examples_from_file(
+        paths["eval"], paths["has_features"], paths["output_split_into_chars"]
+    )
+    test_examples = load_examples_from_file(
+        paths["test"], paths["has_features"], paths["output_split_into_chars"]
+    )
 
     samples: list[tuple[str | list[str], str | list[str]]] = []
     for ex in train_examples:

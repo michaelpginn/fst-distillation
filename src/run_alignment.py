@@ -35,7 +35,11 @@ def run_alignment(
     output_folder.mkdir(exist_ok=True)
     file_paths = [paths["train"], paths["eval"]]
     examples_per_file = [
-        load_examples_from_file(path, has_features=paths["has_features"])
+        load_examples_from_file(
+            path,
+            has_features=paths["has_features"],
+            output_split_into_chars=paths["output_split_into_chars"],
+        )
         for path in file_paths
     ]
     all_examples = [ex for file_examples in examples_per_file for ex in file_examples]

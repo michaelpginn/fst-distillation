@@ -4,12 +4,14 @@ from os import PathLike
 
 @dataclass
 class String2StringExample:
-    input_string: str
+    input_string: str | list[str]
     features: list[str] | None
-    output_string: str | None
+    output_string: str | list[str] | None
 
 
-def load_examples_from_file(path: PathLike, has_features: bool):
+def load_examples_from_file(
+    path: PathLike, has_features: bool, output_split_into_chars: bool
+):
     """Loads `String2StringExample` instances from a TSV file"""
     examples: list[String2StringExample] = []
     with open(path, "r") as f:
@@ -39,6 +41,8 @@ def load_examples_from_file(path: PathLike, has_features: bool):
                     raise ValueError(
                         "Wrong number of columns, you probably want --features"
                     )
+            if output_split_into_chars and output_string:
+                output_string = output_string.split()
             examples.append(String2StringExample(input_string, features, output_string))
 
     return examples

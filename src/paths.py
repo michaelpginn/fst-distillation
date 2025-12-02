@@ -15,6 +15,7 @@ class Paths(TypedDict):
     eval: Path
     test: Path
     has_features: bool
+    output_split_into_chars: bool
 
     train_aligned: Path
     eval_aligned: Path
@@ -37,6 +38,11 @@ def create_arg_parser():
         action="store_true",
         help="Set this flag if the data includes a features column",
     )
+    parser.add_argument(
+        "--output-split",
+        action="store_true",
+        help="Set this flag if the output strings are already split into chars",
+    )
     parser.add_argument("--models", help="A folder to store models in. Optional.")
     parser.add_argument("--alignment-symbol", default=ALIGNMENT_SYMBOL)
     return parser
@@ -47,6 +53,7 @@ def create_paths_from_args(args: Namespace):
         data_folder=args.data_folder,
         dataset=args.dataset,
         has_features=args.features or False,
+        output_split=args.output_split or False,
         models_folder=args.models,
         alignment_symbol=args.alignment_symbol,
     )
@@ -56,6 +63,7 @@ def create_paths(
     data_folder: str | PathLike,
     dataset: str,
     has_features: bool,
+    output_split: bool,
     models_folder: str | PathLike | None,
     alignment_symbol: str = ALIGNMENT_SYMBOL,
 ) -> Paths:
@@ -65,6 +73,7 @@ def create_paths(
         data_folder: A path to a folder containing the raw data files
         dataset: The name of the raw data files (followed by .trn, .dev, .tst)
         has_features: Whether the raw data includes a features column
+        split_into_chars: Whether data is already split with spaces into chars
         models_folder: A path to store models. If not provided, uses `<data_folder>/models`
     """
     data_root = Path(data_folder)
@@ -82,6 +91,7 @@ def create_paths(
         "eval": find_data_file(f"{dataset}.dev", data_root),
         "test": find_data_file(f"{dataset}.tst", data_root),
         "has_features": has_features,
+        "output_split_into_chars": output_split,
         "train_aligned": data_root / "aligned" / f"{dataset}.trn.aligned",
         "eval_aligned": data_root / "aligned" / f"{dataset}.dev.aligned",
         "test_aligned": data_root / "aligned" / f"{dataset}.tst.aligned",

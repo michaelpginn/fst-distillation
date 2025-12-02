@@ -109,5 +109,5 @@ class Aligner:
                 if outints[j] == -1:
                     break
                 outstr.append(self.inttosymbol[outints[j]])
-            self.alignedpairs.append(("".join(instr), "".join(outstr)))
+            self.alignedpairs.append((instr, outstr))
             stringpairptr = libalign_getpairs_advance(c_void_p(stringpairptr))
