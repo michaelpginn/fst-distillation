@@ -46,6 +46,10 @@ def main():
     train_examples = load_examples_from_file(paths["train_aligned"])
     train_size = len(train_examples)
     max_batch_size = train_size // 5
+    if train_size > 5000:
+        num_extract_runs = 100
+    else:
+        num_extract_runs = 500
 
     # =========================================
     # 2. ALIGNMENT PREDICTOR TRAINING
@@ -291,7 +295,7 @@ def main():
             run.log(results)
             run.summary["training_run"] = best_run.url  # type:ignore
 
-    wandb.agent(fst_sweep_id, function=_run_extraction, count=500)
+    wandb.agent(fst_sweep_id, function=_run_extraction, count=num_extract_runs)
     sweep = wandb.Api().sweep(
         f"lecs-general/fst-distillation.extraction/sweeps/{fst_sweep_id}"
     )
