@@ -1,6 +1,12 @@
+import logging
+import math
+import random
 from collections import defaultdict
+from typing import Counter
 
 from .example import AlignmentPredictionExample
+
+logger = logging.getLogger(__name__)
 
 
 def domain_cover(
@@ -58,5 +64,77 @@ def _domain_cover_features(train_examples: list[AlignmentPredictionExample]):
     ]
 
 
-def _domain_cover_no_features(train_examples: list[AlignmentPredictionExample]):
-    raise NotImplementedError()
+def _domain_cover_no_features(
+    train_examples: list[AlignmentPredictionExample], n=2, max_samples=3000
+):
+    """Since it's infeasible to cover the *whole* domain, we will approximate it using
+    an n-gram language model.
+    """
+
+    # Collect counts for all n-grams
+    # Wow this is like a homework assignment
+    def _ngrams(s: list[str]):
+        for i in range(0, len(s) - n + 1):
+            yield tuple(s[i : i + n])
+
+    ngram_counts: Counter[tuple[str, ...]] = Counter()
+    lengths: Counter[int] = Counter()
+    for ex in train_examples:
+        s = ["#"] + ex.unaligned + ["#"]
+        ngram_counts.update(list(_ngrams(s)))
+        lengths.update([len(s)])
+
+    # Compute Gaussian distribution for length
+    sum_of_numbers = sum(number * count for number, count in lengths.items())
+    count = sum(count for n, count in lengths.items())
+    mean = sum_of_numbers / count
+    total_squares = sum(number * number * count for number, count in lengths.items())
+    mean_of_squares = total_squares / count
+    variance = mean_of_squares - mean * mean
+    std_dev = math.sqrt(variance)
+
+    # Sampling time
+    new_lemmas: set[tuple[str, ...]] = set()
+    while len(new_lemmas) < max_samples:
+        chosen_length = round(random.gauss(mu=mean, sigma=std_dev))
+        start_grams = [gram for gram in ngram_counts if gram[0] == "#"]
+        new_lemma = list(
+            random.choices(
+                start_grams, weights=[ngram_counts[g] for g in start_grams], k=1
+            )[0]
+        )
+
+        try:
+            while len(new_lemma) < chosen_length - 1:
+                next_gram_candidates = [
+                    gram
+                    for gram in ngram_counts
+                    if list(gram[:-1]) == new_lemma[-(n - 1) :] and gram[-1] != "#"
+                ]
+                if len(next_gram_candidates) == 0:
+                    raise Exception()
+                next_gram = random.choices(
+                    next_gram_candidates,
+                    weights=[ngram_counts[g] for g in next_gram_candidates],
+                    k=1,
+                )[0]
+                new_lemma.append(next_gram[-1])
+
+        except Exception:
+            logger.info("Skipping, no matching n-gram")
+            continue
+        last_gram_candidates = [
+            gram
+            for gram in ngram_counts
+            if list(gram[:-1]) == new_lemma[-(n - 1) :] and gram[-1] == "#"
+        ]
+        if len(last_gram_candidates) == 0:
+            logger.info("Skipping, no match end n-gram")
+            continue
+        new_lemma.append("#")
+        logger.info(f"New lemma: {new_lemma}")
+        new_lemmas.add(tuple(new_lemma))
+
+    return [
+        AlignmentPredictionExample(list(lem[1:-1]), None, None) for lem in new_lemmas
+    ]

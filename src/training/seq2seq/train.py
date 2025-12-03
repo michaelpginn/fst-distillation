@@ -1,5 +1,6 @@
 import math
 import tempfile
+from contextlib import nullcontext
 from typing import Callable, Literal
 
 import torch
@@ -58,6 +59,11 @@ def train(
     wandb.config.update({"warmup_steps": warmup_steps})
 
     model = model.to(device)
+    autocast_ctx = (
+        torch.autocast(device_type=device, dtype=torch.bfloat16)
+        if device in ("cuda", "cpu")
+        else nullcontext()
+    )
 
     print("Training...")
     step = 0
@@ -68,7 +74,7 @@ def train(
         model.train()
         train_loss = 0
         for batch in tqdm(train_dataloader, "Training"):
-            with torch.autocast(device, dtype=torch.bfloat16):
+            with autocast_ctx:
                 loss = batch_forward(batch, model, loss_fn)
                 optimizer.zero_grad()
                 loss.backward()
@@ -97,7 +103,7 @@ def train(
         validation_loss: float = 0
         with torch.no_grad():
             for batch in tqdm(eval_dataloader, "Training"):
-                with torch.autocast(device, dtype=torch.bfloat16):
+                with autocast_ctx:
                     loss = batch_forward(batch, model, loss_fn)
                     validation_loss += loss.detach().item()
         validation_loss /= len(eval_dataloader)
