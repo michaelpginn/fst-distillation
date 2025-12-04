@@ -39,4 +39,4 @@ sbatch \
   --partition="$part" \
   --account="$acct" \
   --gres=gpu:1 \
-  sweep_job.sh "$@"
+  sweep_job.sh  --models /scratch/alpine/$USER/fst-distillation/models/ "$@"
