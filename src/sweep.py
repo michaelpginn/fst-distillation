@@ -47,8 +47,10 @@ def main():
     train_size = len(train_examples)
     max_batch_size = train_size // 5
     if train_size > 5000:
+        num_neural_runs = 75
         num_extract_runs = 100
     else:
+        num_neural_runs = 100
         num_extract_runs = 500
 
     # =========================================
@@ -106,7 +108,9 @@ def main():
             entity="lecs-general",
             project="fst-distillation.alignment_prediction",
         )
-        wandb.agent(sweep_id, function=single_run_train_alignment, count=100)
+        wandb.agent(
+            sweep_id, function=single_run_train_alignment, count=num_neural_runs
+        )
         sweep = wandb.Api().sweep(
             f"lecs-general/fst-distillation.alignment_prediction/sweeps/{sweep_id}"
         )
@@ -153,7 +157,7 @@ def main():
             if sweep.name == paths["identifier"]:
                 if (
                     any(r.state != "finished" for r in sweep.runs)
-                    or len(sweep.runs) < 100
+                    or len(sweep.runs) < num_neural_runs
                 ):
                     raise ValueError(
                         f"Found sweep for {paths['identifier']}, but sweep is not finished or crashed! Delete and try again."
@@ -217,7 +221,7 @@ def main():
         sweep_id = wandb.sweep(
             sweep=sweep_configuration, entity="lecs-general", project=rnn_project_name
         )
-        wandb.agent(sweep_id, function=single_run_train_rnn, count=100)
+        wandb.agent(sweep_id, function=single_run_train_rnn, count=num_neural_runs)
         sweep = wandb.Api().sweep(f"lecs-general/{rnn_project_name}/sweeps/{sweep_id}")
         best_run = sweep.best_run()
     if isinstance(best_run.summary_metrics, str):
