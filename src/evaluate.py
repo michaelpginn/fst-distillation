@@ -26,14 +26,14 @@ def evaluate_all(
     else:
         indices_to_log = list(range(len(examples)))
     for idx, example in tqdm(enumerate(examples), "Evaluating"):
-        input_string = tokenize(example.input_string)
+        input_string = ["<sep>"] + tokenize(example.input_string) + ["<sink>"]
         assert example.output_string is not None
-        correct_output = tokenize(example.output_string)
+        correct_output = ["<sep>"] + tokenize(example.output_string) + ["<sink>"]
         if example.features is not None:
             features = [f"[{f}]" for f in example.features]
-            input_string = features + ["<sep>"] + input_string + ["<sink>"]
+            input_string = features + input_string
             if not output_raw_string:
-                correct_output = features + ["<sep>"] + correct_output + ["<sink>"]
+                correct_output = features + correct_output
         labels.append("".join(correct_output))
 
         # Generate outputs by composing input acceptor with transducer

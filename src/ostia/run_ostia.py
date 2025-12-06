@@ -35,9 +35,9 @@ def run_ostia(paths: Paths, order: Literal["lex", "dd"]):
 
     samples: list[tuple[str | list[str], str | list[str]]] = []
     for ex in train_examples:
-        input_string = list(ex.input_string)
+        input_string = ["<sep>"] + list(ex.input_string)
         if ex.features is not None:
-            input_string = [f"[{f}]" for f in ex.features] + ["<sep>"] + input_string
+            input_string = [f"[{f}]" for f in ex.features] + input_string
         assert ex.output_string is not None
         samples.append((input_string, ex.output_string))
 
