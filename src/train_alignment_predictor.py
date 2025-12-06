@@ -175,10 +175,11 @@ if __name__ == "__main__":
     parser.add_argument("--weight-decay", default=0.1)
     parser.add_argument("--d-model", default=32)
     parser.add_argument("--num-layers", default=3)
-    parser.add_argument("--num-heads", default=8)
+    parser.add_argument("--num-heads", default=2)
     parser.add_argument("--dropout", default=0.1)
+    parser.add_argument("--run-pred", action="store_true")
     args = parser.parse_args()
-    train_alignment_predictor(
+    run = train_alignment_predictor(
         paths=create_paths_from_args(args),
         batch_size=int(args.batch_size),
         epochs=int(args.epochs),
@@ -189,3 +190,8 @@ if __name__ == "__main__":
         num_heads=int(args.num_heads),
         dropout=float(args.dropout),
     )
+    if args.run_pred:
+        assert run and run.name
+        predict_full_domain(
+            create_paths_from_args(args), run.name, run.config["batch_size"]
+        )
