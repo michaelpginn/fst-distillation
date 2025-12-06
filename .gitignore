@@ -9,3 +9,4 @@ __pycache__
 logs
 src/crpalign/libalign.so
 *.aligned
+*.key
