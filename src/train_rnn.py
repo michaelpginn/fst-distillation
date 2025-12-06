@@ -32,11 +32,14 @@ def train_rnn(
     activation: Literal["relu", "gelu", "tanh"],
     spectral_norm_weight: float | None,
     wandb_run: wandb.Run | None = None,
+    wandb_label: str | None = None,
     seed=0,
 ) -> tuple[wandb.Run | None, float]:
     logger.info(f"Training on {paths['identifier']}")
     hyperparams = locals()
     project_name = f"fst-distillation.rnn_{objective}"
+    if wandb_label:
+        project_name += "." + wandb_label
 
     if wandb_run is None:
         # Check if this run is a duplicate
@@ -53,7 +56,7 @@ def train_rnn(
             if len(runs) > 0 and any(
                 r._state == "finished" or r._state == "running" for r in runs
             ):
-                logger.info("Skipping run, identical run already found!!")
+                logger.info(f"Skipping run, identical run already found: {runs[0]}!!")
                 eval_loss = (
                     runs[0]
                     .history(keys=["validation.loss"])["validation.loss"]
@@ -181,6 +184,7 @@ if __name__ == "__main__":
     parser.add_argument("--learning-rate", default=0.001)
     parser.add_argument("--activation", default="tanh")
     parser.add_argument("--spec-weight", default=0.1)
+    parser.add_argument("--label", help="Extra label for the wandb project")
     args = parser.parse_args()
     train_rnn(
         paths=create_paths_from_args(args),
@@ -194,4 +198,5 @@ if __name__ == "__main__":
         use_many_to_many_transitions=False,
         activation=args.activation,
         spectral_norm_weight=args.spec_weight,
+        wandb_label=args.label,
     )
