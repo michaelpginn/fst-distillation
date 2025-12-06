@@ -1,300 +1,300 @@
-اشتاق	i ʃ t aː q a
-صحصح	sˤ a ħ sˤ a ħ
-أنموذج	ʔ u n m uː ð a d͡ʒ
-امتعض	i m t a ʕ a dˤ a
-فرغ	f a r a ɣ a
-شذر	ʃ a ð r
-ومض	w a m a dˤ a
-زمجر	z a m d͡ʒ a r a
-شاهدانق	ʃ aː h d aː n a q
-مصاب	m a sˤ aː b b
-عيني	ʕ a j n i j j
-أخضر	ʔ a x dˤ a r
-شحاذة	ʃ i ħ aː ð a
-عقرب	ʕ a q r a b
-تقية	t a q i j j a
-عصيان	ʕ i sˤ j aː n
-أفطس	ʔ a f tˤ a s
-غرة	ɣ u r r a
-لاءم	l aː ʔ a m a
-حميم	ħ a m iː m
-صرب	sˤ a r a b a
-تتلى	t u t l aː
-تصادأ	t a sˤ aː d a ʔ a
-معتزلة	m u ʕ t a z i l a
-ناطف	n aː tˤ i f
-الزهرة	a z z u h a r a
-بهشية	b a h a ʃ i j j a
-جخى	d͡ʒ a x x aː
-قفص	q a f a sˤ
-عبوثران	ʕ a b a w θ a r aː n
-قبرة	q u b b a r a
-صدغ	sˤ a d ɣ
-مفتعل	m u f t a ʕ a l
-أعلى	ʔ a ʕ l aː
-دولاب	d a w l aː b
-علاجي	ʕ i l aː d͡ʒ iː
-حيران	ħ a j r aː n
-حرباء	ħ i r b aː ʔ
-بوذي	b uː ð i j j
-حصاد	ħ a sˤ aː d
-قويعدة	q u w a j ʕ i d a
-غذى	ɣ a ð ð aː
-مستقبلي	m u s t a q b a l i j j
-مساعد	m u s aː ʕ i d
-بلاعة	b a l l aː ʕ a
-زمزم	z a m z a m
-مايو	m aː j uː
-وظف	w a ðˤ ðˤ a f a
-أبتر	ʔ a b t a r
-استفراغ	i s t i f r aː ɣ
-جاء	d͡ʒ aː ʔ a
-غمامة	ɣ a m aː m a
-ينسون	j a n s uː n
-أعرن	ʔ a ʕ r a n a
-بعلبك	b a ʕ l a b a k k
-اتحاد	i t t i ħ aː d
-خالف	x aː l a f a
-تشخيصي	t a ʃ x iː sˤ i j j
-دواسة	d a w w aː s a
-مرشد	m u r ʃ i d
-قارن	q aː r a n a
-نضار	n u dˤ aː r
-أسطمة	ʔ u s tˤ u m m a
-أجرب	ʔ a d͡ʒ r a b
+قشمير	q i ʃ m iː r
+معاوية	m u ʕ aː w i j a
+تلم	t a l a m
+كأب	k a ʔ b
 سطح	s a tˤ ħ
-مرجع	m a r d͡ʒ i ʕ
-ردد	r a d d a d a
-إحارة	ʔ i ħ aː r a
-أنبذ	ʔ a n b a ð a
-تسلية	t a s l i j a
-صبرة	sˤ a b a r a
-فسافس	f a s aː f i s
-انتقل	i n t a q a l a
-بقشة	b u q ʃ a
-سورة	s a w r a
-إجاصة	ʔ i d͡ʒ d͡ʒ aː sˤ a
-الأرجنتين	a l ʔ a r d͡ʒ a n t iː n
-جرذ	d͡ʒ u r a ð
-جوهر	d͡ʒ a w h a r
-طشقند	tˤ a ʃ q a n d
-المغرب	a l m a ɣ r i b
-موسمي	m a w s i m i j j
-لعنة	l a ʕ n a
-رصع	r a sˤ sˤ a ʕ a
-شنبر	ʃ a n b a r
-صاخة	sˤ aː x x a
-إقناع	ʔ i q n aː ʕ
-حصان	ħ i sˤ aː n
-أباريق	ʔ a b aː r iː q
-فرهد	f a r h a d
-صفد	sˤ a f a d
-كنزة	k a n z a
-نبرة	n a b r a
-تجارة	t i d͡ʒ aː r a
-تقرر	t a q a r r a r a
-أصم	ʔ a sˤ a m m
-عبق	ʕ a b b a q a
-زحافة	z a ħ ħ aː f a
-قداد	q a d aː d
-بتليس	b i t l iː s
-منتظم	m u n t a ðˤ a m
-أسترالي	ʔ u s t u r aː l i j j
-ذبابة	ð u b aː b a
-غرمول	ɣ u r m uː l
-جمهورية	d͡ʒ u m h uː r i j j a
-طهران	tˤ a h r aː n
-عروس	ʕ a r uː s
-ارتاع	i r t aː ʕ a
-ناجذ	n aː d͡ʒ i ð
-جمع	d͡ʒ a m a ʕ a
-زنزانة	z i n z aː n a
-راحل	r aː ħ i l
-شلح	ʃ a l a ħ a
-متناول	m u t a n aː w i l
-تغريد	t a ɣ r iː d
-أجنبي	ʔ a d͡ʒ n a b i j j
-شلغم	ʃ a l ɣ a m
-احتضن	i ħ t a dˤ a n a
-رذاذ	r a ð aː ð
-متنوع	m u t a n a w w i ʕ
-جرثوم	d͡ʒ u r θ uː m
-أمريكي	ʔ a m r iː k i j j
-سمويل	s a m a w iː l
-قتبان	q a t a b aː n
-انسل	i n s a l l a
-كرج	k a r i d͡ʒ a
-زنوبة	z a n n uː b a
-سلاح	s i l aː ħ
-سخد	s u x d
-دخل	d a x a l
-نورج	n a w r a d͡ʒ
-وريد	w a r iː d
-درقة	d a r a q a
-مقشدة	m i q ʃ a d a
-محمد	m a ħ m a d
-استثنائي	i s t i θ n aː ʔ i j j
-شونيز	ʃ uː n iː z
-أرض	ʔ a r dˤ
-حمزة	ħ a m z a
-إدحية	ʔ i d ħ i j a
-قادوس	q aː d uː s
-قاء	q aː ʔ a
-تأنق	t a ʔ a n n a q a
-دبي	d i b b iː
-قطران	q a tˤ a r aː n
-فؤاد	f u ʔ aː d
-ردم	r a d a m a
-قسطران	q a s tˤ a r aː n
-لؤلؤة	l u ʔ l u ʔ a
-انتقم	i n t a q a m a
-كينيا	k iː n i j aː
-جنينة	d͡ʒ u n a j n a
-أنفحة	ʔ a n f i ħ a
-بلغاري	b u l ɣ aː r i j j
-عسكر	ʕ a s k a r
-فوفل	f a w f a l
-تبشير	t a b ʃ iː r
-تخم	t a x m
-مرحلة	m a r ħ a l a
-وجهة	w i d͡ʒ h a
-شبشب	ʃ i b ʃ i b
-زرجون	z a r d͡ʒ uː n
-تخدر	t a x a d d a r a
-معجزات	m u ʕ d͡ʒ i z aː t
-استدل	i s t a d a l l a
-أغرم	ʔ a ɣ r a m a
-ناعور	n aː ʕ uː r
-مطب	m a tˤ a b b
-إسماعيل	ʔ i s m aː ʕ iː l
-جنيف	d͡ʒ i n iː f
-نقطة	n u q tˤ a
-يونس	j uː n u s
-آدمي	ʔ aː d a m i j j
-بينما	b a j n a m aː
-بورتسودان	b uː r t s uː d aː n
-شيهم	ʃ a j h a m
-نصاب	n a sˤ sˤ aː b
-خزانة	x i z aː n a
-دودة	d uː d a
-فركس	f i r k i s
-بسالة	b a s aː l a
-دشداشة	d i ʃ d aː ʃ a
-لتوانيا	l i t u w aː n i j aː
-فني	f a n i j a
-دماغ	d i m aː ɣ
-نحن	n a ħ n i
-بطرك	b a tˤ r a k
-آخرة	ʔ aː x i r a
-خلاعي	x a l aː ʕ i j j
-مريلة	m i r j a l a
-مكون	m u k a w w i n
-صدر	sˤ a d a r a
-استنفد	i s t a n f a d a
-فراشة	f a r aː ʃ a
-ليث	l a j θ
-خارج	x aː r i d͡ʒ
-زبدة	z a b d a
-فلك	f a l a k
-عطر	ʕ a tˤ i r
-سكنجبين	s i k a n d͡ʒ a b iː n
-أرسطو	ʔ a r i s tˤ uː
-إزعاج	ʔ i z ʕ aː d͡ʒ
-مشط	m a ʃ a tˤ a
-الكاميرون	a l k aː m iː r uː n
-فقيه	f a q iː h
-سحور	s a ħ uː r
-رماد	r a m aː d
-قرد	q a r d
-أبيدجان	ʔ a b iː d d͡ʒ aː n
-فأل	f a ʔ l
-شهترج	ʃ a h t a r a d͡ʒ
-مداولة	m u d aː w a l a
-توتياء	t uː t i j aː ʔ
-توعوي	t a w ʕ a w i j j
-خزان	x a z z aː n
-بطريك	b a tˤ r iː k
-مهماز	m i h m aː z
-أعيان	ʔ a ʕ j aː n
-باخوم	b aː x uː m
-تناقض	t a n aː q a dˤ a
-صحة	sˤ i ħ ħ a
-إقالة	ʔ i q aː l a
-أنبج	ʔ a m b i d͡ʒ
-مذهبي	m a ð h a b i j j
-قلل	q a l l a l a
-بهيمة	b a h iː m a
-لؤلؤ	l u ʔ l u ʔ
-مسطار	m i s tˤ aː r
-رطانة	r a tˤ aː n a
-شقواص	ʃ a q w aː sˤ
-اليونان	a l j uː n aː n
-شوفان	ʃ uː f aː n
-بندر	b a n d a r
-كتابة	k i t aː b a
-دهليز	d i h l iː z
-بلجيكي	b i l d͡ʒ iː k i j j
-سائمة	s aː ʔ i m a
-حاط	ħ aː tˤ a
-يسار	j a s aː r
-زئير	z a ʔ iː r
+زوفا	z uː f aː
 ظربان	ðˤ a r i b aː n
-تكدس	t a k a d d a s a
-قابلية	q aː b i l i j j a
-كاعب	k aː ʕ i b
-مالك	m aː l i k
-أترج	ʔ u t r u d͡ʒ d͡ʒ
-عري	ʕ a r i j a
-طموحات	tˤ u m uː ħ aː t
-حنجرة	ħ a n d͡ʒ a r a
-اكتسى	i k t a s aː
-صربيا	sˤ i r b i j aː
-عمى	ʕ a m m aː
-طاح	tˤ aː ħ a
-قافلة	q aː f i l a
-فيج	f a j d͡ʒ
-كزبرة	k u z b a r a
-عريان	ʕ u r j aː n
-مغرفة	m i ɣ r a f a
-كهروتقني	k a h r uː t i q n i j j
-إنموذج	ʔ i n m uː ð a d͡ʒ
-رشفة	r a ʃ f a
-اجتذب	i d͡ʒ t a ð a b a
-لله	l i l l aː h
-قاقلة	q aː q i l l a
-كويكب	k u w a j k i b
-أكشف	ʔ a k ʃ a f a
-عافية	ʕ aː f i j a
-ملح	m i l ħ
-أخامص	ʔ a x aː m i sˤ
-مشتريات	m u ʃ t a r a j aː t
-أصطرك	ʔ a sˤ tˤ a r a k
-أموي	ʔ u m a w i j j
+متصل	m u t t a sˤ i l
+ساحلي	s aː ħ i l i j j
+ينسون	j a n s uː n
+رقم	r a q m
+أسترالي	ʔ u s t u r aː l i j j
+انشقاق	i n ʃ i q aː q
+رفاهة	r a f aː h a
+جعضيض	d͡ʒ a ʕ dˤ iː dˤ
+ذكاء	ð a k aː ʔ
+كافتيريا	k aː f i t iː r i j aː
+حصل	ħ a sˤ a l
+شقة	ʃ a q q a
+شعيب	ʃ u ʕ a j b
+مضض	m a dˤ a dˤ
+عنقاد	ʕ i n q aː d
+مداخلة	m u d aː x a l a
+قبيلة	q a b iː l a
+نساب	n a s s aː b
+ألهى	ʔ a l h aː
+دفلى	d i f l aː
+عابس	ʕ aː b i s
 متخلف	m i t x a l l a f
-قتلة	q a t l a h
-ظفر	ðˤ a f a r
-متزوج	m u t a z a w w i d͡ʒ
-شفنين	ʃ i f n iː n
-زملاء	z u m a l aː ʔ
-ضوى	dˤ a w aː
-حربث	ħ u r b u θ
-مطبعة	m a tˤ b a ʕ a
-ملامح	m a l aː m i ħ
-قنديل	q a n d iː l
-عنصرية	ʕ u n sˤ u r i j j a
-تطفل	t a tˤ a f f a l a
-حجم	ħ a d͡ʒ a m a
-لبان	l u b aː n
-سريع	s a r iː ʕ
-شوب	ʃ a w b
-أخوية	ʔ a x a w i j j a
-نيفق	n a j f a q
-مطران	m a tˤ r aː n
-ألم	ʔ a l a m
-إشفى	ʔ i ʃ f aː
-رأسي	r a ʔ s i j j
-أراد	ʔ a r aː d a
+ثريد	θ a r iː d
+ستارة	s i t aː r a
+قيصر	q a j sˤ a r
+ترنيم	t a r n iː m
+اتحاد	i t t i ħ aː d
+مسطار	m i s tˤ aː r
+غلا	ɣ a l aː
+دماغ	d i m aː ɣ
+مسيح	m a s iː ħ
+إيجار	ʔ iː d͡ʒ aː r
+مطب	m a tˤ a b b
+خرقة	x i r q a
+مرجان	m a r d͡ʒ aː n
+المغرب	a l m a ɣ r i b
+مراوغة	m u r aː w a ɣ a
+ارتخى	i r t a x aː
+بولاد	b uː l aː d
+تليس	t a l l iː s
+دهس	d a h a s a
+أسماء	ʔ a s m aː ʔ
+ردد	r a d d a d a
+محترف	m u ħ t a r i f
+سماء	s a m aː ʔ
+تقيؤ	t a q a j j u ʔ
+تخفيض	t a x f iː dˤ
+مقلق	m u q l i q
+اشتهى	i ʃ t a h aː
+صخيد	sˤ a x iː d
+دشداشة	d i ʃ d aː ʃ a
+مذهبي	m a ð h a b i j j
+قرد	q a r d
+قيمة	q iː m a
+عندما	ʕ i n d a m aː
+قفازات	q u f f aː z aː t
+فاض	f aː dˤ a
+عظيم	ʕ a ðˤ iː m
+فودنج	f uː d a n a d͡ʒ
+مضمون	m a dˤ m uː n
+قنبيل	q a n b iː l
+زراعي	z i r aː ʕ i j j
+نطل	n a tˤ a l a
+اتصال	i t t i sˤ aː l
+زائر	z aː ʔ i r
+تجارة	t i d͡ʒ aː r a
+معجزات	m u ʕ d͡ʒ i z aː t
+ناعم	n aː ʕ i m
+أنكر	ʔ a n k a r a
+ثيوقراطي	θ i j uː q r aː tˤ i j j
+هذر	h a ð a r a
+نفث	n a f a θ a
+طلب	tˤ a l a b
+أمير	ʔ a m iː r
+إدحية	ʔ i d ħ i j a
+وصيد	w a sˤ iː d
+أشل	ʔ a ʃ a l l
+حوول	ħ uː w i l a
+حبارى	ħ u b aː r aː
+نحن	n a ħ n i
+غرب	ɣ a r a b
+تذكرة	t a ð k i r a
+حبق	ħ a b a q
+غرامة	ɣ a r aː m a
+بواليع	b a w aː l iː ʕ
+انتماء	i n t i m aː ʔ
+ياسين	j aː s iː n
+خزينة	x a z iː n a
+مقاعد	m a q aː ʕ i d
+استعمل	i s t a ʕ m a l a
 ميعاد	m iː ʕ aː d
-مارس	m aː r a s a
-جنين	d͡ʒ a n iː n
-صأصأ	sˤ a ʔ sˤ a ʔ a
+فوج	f a w d͡ʒ
+شاء	ʃ aː ʔ
+هرولة	h a r w a l a
+خاطئ	x aː tˤ i ʔ
+عروس	ʕ a r uː s
+رابط	r aː b i tˤ
+رهبانية	r a h b aː n i j j a
+طائفة	tˤ aː ʔ i f a
+أنهك	ʔ a n h a k a
+قاوق	q aː w u q
+بامية	b aː m i j a
+وابور	w aː b uː r
+دولاب	d a w l aː b
+مسيحي	m a s iː ħ i j j
+باطس	b aː tˤ u s
+مقشدة	m i q ʃ a d a
+جلس	d͡ʒ a l a s a
+أغيد	ʔ a ɣ j a d
+صرق	sˤ a r a q
+رفأ	r a f a ʔ a
+مظلة	m a ðˤ a l l a
+جائز	d͡ʒ aː ʔ i z
+بغيض	b a ɣ iː dˤ
+كوالا	k u w aː l aː
+كارة	k aː r a
+إيران	ʔ iː r aː n
+اعتقاد	i ʕ t i q aː d
+ريح	r a j j a ħ a
+استمات	i s t a m aː t a
+خرفة	x u r f a
+سلاف	s u l aː f
+أسف	ʔ a s a f f a
+فأس	f a ʔ s
+سلوى	s a l w aː
+كسرة	k a s r a
+خوف	x a w f
+حنان	ħ a n aː n
+معاينة	m u ʕ aː j a n a
+استهجان	i s t i h d͡ʒ aː n
+عوائد	ʕ a w aː ʔ i d
+ثورة	θ a w r a
+زنباع	z a n b aː ʕ
+مقطعية	m a q tˤ a ʕ i j j a
+أثث	ʔ a θ θ a θ a
+شيهم	ʃ a j h a m
+ضجيج	dˤ a d͡ʒ iː d͡ʒ
+عزيز	ʕ a z iː z
+خابور	x aː b uː r
+مرأة	m a r ʔ a
+راجل	r aː d͡ʒ i l
+إلحاق	ʔ i l ħ aː q
+أبنوس	ʔ a b a n uː s
+اعتل	i ʕ t a l l a
+كعبة	k a ʕ b a
+شهترج	ʃ a h t a r a d͡ʒ
+صابورة	sˤ aː b uː r a
+بكرج	b a k r a d͡ʒ
+طبقة	tˤ a b a q a
+غضة	ɣ a dˤ dˤ a
+فيثاغورس	f iː θ aː ɣ uː r a s
+قنص	q a n a sˤ a
+سريان	s a r a j aː n
+طليعة	tˤ a l iː ʕ a
+مجموع	m a d͡ʒ m uː ʕ
+هذيان	h a ð a j aː n
+عجب	ʕ a d͡ʒ a b
+براين	b r aː j a n
+فتخاء	f a t x aː ʔ
+خلية	x a l i j j a
+مروض	m u r a w w a dˤ
+نفخ	n a f a x a
+عرزال	ʕ i r z aː l
+حظيرة	ħ a ðˤ iː r a
+استجاب	i s t a d͡ʒ aː b a
+فرضية	f a r a dˤ i j j a
+باكستاني	b aː k i s t aː n i j j
+تفاف	t i f aː f
+صحرة	sˤ u ħ r a
+عربز	ʕ a r b a z
+دركي	d a r a k i j j
+أساس	ʔ a s aː s
+تخم	t a x m
+الآخرة	a l ʔ aː x i r a
+دقع	d a q i ʕ a
+اقترح	i q t a r a ħ a
+فاكرة	f aː k i r a
+لهجة	l a h d͡ʒ a
+نرويجية	n u r w iː d͡ʒ i j j a
+أبد	ʔ a b a d
+ملوكية	m u l uː k i j j a
+كزبرة	k u z b a r a
+صتع	sˤ a t a ʕ a
+عقدة	ʕ u q d a
+شليل	ʃ a l iː l
+جندب	d͡ʒ u n d u b
+سمن	s a m i n a
+إرتريا	ʔ i r i t r i j aː
+منفاخ	m i n f aː x
+توجه	t a w a d͡ʒ d͡ʒ a h a
+شلال	ʃ a l l aː l
+صفد	sˤ a f a d
+ظهر	ðˤ a h a r a
+إهداء	ʔ i h d aː ʔ
+مغرفة	m i ɣ r a f a
+بريطاني	b a r iː tˤ aː n i j j
+ذعن	ð a ʕ i n a
+سكران	s a k r aː n
+سلسل	s a l s a l a
+جمجمة	d͡ʒ u m d͡ʒ u m a
+بندق	b u n d u q
+ذئب	ð i ʔ b
+صحل	sˤ a ħ i l a
+شاكرة	ʃ aː k i r a
+جاورجيوس	d͡ʒ aː w u r d͡ʒ i j uː s
+قلقطار	q a l q a tˤ aː r
+استوقف	i s t a w q a f a
+أدحوة	ʔ u d ħ u w w a
+قروش	q u r uː ʃ
+كاعب	k aː ʕ i b
+ملجأ	m a l d͡ʒ a ʔ
+بوذية	b uː ð i j j a
+عانس	ʕ aː n i s
+رجع	r a d͡ʒ a ʕ a
+أعيا	ʔ a ʕ j aː
+أحد	ʔ a ħ a d
+جخى	d͡ʒ a x x aː
+فراء	f a r aː ʔ
+انجذاب	i n d͡ʒ i ð aː b
+رأي	r a ʔ j
+ظليم	ðˤ a l iː m
+حدق	ħ a d a q a
+سخيف	s a x iː f
+مباراة	m u b aː r aː h
+فالوذة	f aː l uː ð a
+عدد	ʕ a d a d
+قطران	q a tˤ a r aː n
+نملة	n a m l a
+فتح	f a t a ħ a
+سيكولوجي	s a j k uː l uː d͡ʒ i j j
+بعلة	b a ʕ l a
+شارع	ʃ aː r i ʕ
+ورشنوفة	w a r ʃ a n uː f a
+جانرك	d͡ʒ aː n a r i k
+احترق	i ħ t a r a q a
+قرنبيط	q a r n a b iː tˤ
+جدار	d͡ʒ i d aː r
+رسغ	r u s ɣ
+مئذنة	m i ʔ ð a n a
+ساحة	s aː ħ a
+كدس	k a d a s a
+إشفى	ʔ i ʃ f aː
+أنضج	ʔ a n dˤ a d͡ʒ a
+إداري	ʔ i d aː r i j j
+منتخب	m u n t a x a b
+المريخ	a l m i r r iː x
+جبان	d͡ʒ a b aː n
+مريمية	m a r j a m i j j a
+ردم	r a d a m a
+مرددوش	m a r d a d uː ʃ
+رابع	r aː b i ʕ
+غمود	ɣ u m uː d
+قاوون	q aː w uː n
+زنباعة	z a n b aː ʕ a
+أفغانستان	ʔ a f ɣ aː n i s t aː n
+بهشية	b a h a ʃ i j j a
+مصفاة	m i sˤ f aː h
+استنتاج	i s t i n t aː d͡ʒ
+اكترى	i k t a r aː
+لاحم	l aː ħ i m
+اتسم	i t t a s a m a
+مثلث	m u θ a l l a θ
+تضاد	t a dˤ aː d d a
+إلكترونيات	ʔ i l i k t r uː n i j j aː t
+فيج	f a j d͡ʒ
+إفرند	ʔ i f r i n d
+تراب	t u r aː b
+سهول	s u h uː l
+أبهج	ʔ a b h a d͡ʒ a
+بلور	b i l l a w r
+أرغان	ʔ a r ɣ aː n
+تبغ	t a b ɣ
+احتفال	i ħ t i f aː l
+شنع	ʃ a n n a ʕ a
+مرقد	m a r q a d
+بهائي	b a h aː ʔ i j j
+سقيفة	s a q iː f a
+أرثوذكسي	ʔ u r θ uː ð u k s i j j
+النيجر	a n n iː d͡ʒ a r
+جبيز	d͡ʒ a b iː z
+ذهب	ð a h a b
+وقت	w a q a t
+شهادة	ʃ a h aː d a
+تمهيد	t a m h iː d
+غافث	ɣ aː f a θ
+مركب	m a r k a b
+نعجة	n a ʕ d͡ʒ a
+فقري	f i q r i j j
+وقع	w a q a ʕ a
+دراسي	d i r aː s i j j
+محيط	m u ħ iː tˤ
+لاءم	l aː ʔ a m a
+ندم	n a d a m

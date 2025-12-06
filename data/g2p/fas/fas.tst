@@ -1,300 +1,300 @@
-لوز	l a v z
-چمدان	t͡ʃ a m i d ɑː n
-اصول‌گرا	o s uː l ɡ a ɾ ɑː
-مقصد	m a ɢ s a d
-خنیا	x o n i j ɑː
-شناسی	ʃ e n ɑː s iː
-باسن	b ɑː s a n
-روشن	ɾ a v ʃ a n
-نوروز	n a v ɾ s z
-مسافرت	m o s ɑː f e ɾ a t
-بخار	b o x ɑː ɾ
-آشتی	ɑː ʃ t iː
-هفته	a f t a
-کین	k iː n
-قرار	ɢ a ɾ ɑː ɾ
-معمار	m e ʔ m ɑː ɾ
-امسال	e m s ɑː l
-چندان	t͡ʃ a n d ɑː n
-سعی	s a ʔ j
-ریدک	r e j d a k
-لحظه	l a h z a
-آستانه	ɑː s t ɑː n a
-پوده	p uː d a
-دراز	d a ɾ ɑː z
-ارغوان	a ɾ ɢ a v ɑː n
-اصفهانی	e s f a h ɑː n iː
-چیش	t ʃ i ʃ
-نسک	n a s k
-فراصوت	f a ɾ ɑː s a v t
-گرفت	ɡ e ɾ e f t
-ابری‌سازی	ʔ a b ɾ iː s ɑː z iː
-قوت	ɢ u v v a t
-جویبار	d͡ʒ oː j b ɑː ɾ
-بیژن	b e ʒ a n
-میشین	m e ʃ i n
-نریمان	n a ɾ e m ɑː n
-خدایی	x o d ɑː j iː
-قیمتی	ɢ a j m a t iː
-یک	j a k
-گزارش	ɡ o z ɑː ɾ e ʃ
-باریک‌تر	b ɑː ɾ iː k t a ɾ
-بوی	b oː j
-خون‌شناسی	x u n ʃ i n ɑː s iː
-قزوین	ɢ a z v i n
-تحت	t a h t i
-معده	m e ʔ d a
-یخ	j a x
-اعلام	e ʔ l ɑː m
-روادید	r a v ɑː d iː d
-هنرپیشه	h o n a ɾ p iː ʃ e
-انبار	ʔ a m b ɑː ɾ
-چایخانه	t͡ʃ ɑː j x ɑː n a
-دردناک	d a ɾ d n ɑː k
-زنانگی	z a n ɑː n a ɡ iː
-شکوفه	ʃ e k uː f e
-نصیحت	n a s i h a t
-پوییدن	p u j i d a n
-چاقو	t͡ʃ ɑː ɢ uː
-خوابیدن	x ɑː b iː d a n
-خلیج	x a l i d͡ʒ
-پسوند	p a s v a n d
-تیرداد	t i ɾ d ɑː d
-سهمگین	s a h m ɡ i n
-فرآیند	f a ɾ ɑː j a n d
-وج	v a d͡ʒ
-مسخره	m a s x a ɾ a
-سمع	s a m ʔ
-شنیدن	ʃ e n iː d a n
-نامور	n ɑː m v a ɾ
-دلیل	d a l i l
-مشکل‌ها	m o ʃ k e l h ɑː
-فرانک	f a ɾ ɑː n a k
-ضربه	z a ɾ b a
-فعال	f a ʔ ɑː l
-منظومه	m a n z u m a
-زمان	z a m ɑː n
-بندر	b a n d a ɾ
-شهود	ʃ o h uː d
-دری	d a ɾ iː
-سده	s a d a
-هل	h e l
-گام	ɡ ɑː m
-بیور	b e v a ɾ
-شهوتی	ʃ a h v a t iː
-چشمان	t ʃ e ʃ m ɑː
-شاهان	ʃ ɑː h ɑː n
-خاویار	x ɑː v i j ɑː ɾ
-دست	d a s t
-توجه	t a v a d d͡ʒ s h
-قاعده	ɢ ɑː ʔ i d a
-بین	b a j n
-خەر	x ɑː ɾ
-اسفند	e s f a n d
-شاداب	ʃ ɑː d ɑː b
-کیچه	k iː t͡ʃ e
-ناز	n ɑː z
-دعا	d o ʔ ɑː
-تکیه	t a k j a
-گشادن	ɡ o ʃ ɑː d a n
-پهلوان	p a h l a v ɑː n
-سیم	s e j o m
-بامزه	b ɑː m a z e
-قرنفل	ɢ a ɾ a n f u l
-ابرنواختر	a b a ɾ n a v a x t a ɾ
-پرگار	p a ɾ ɡ ɑː ɾ
-سامانه‌ها	s ɑː m ɑː n e h ɑː
-پول	p u l
-پریدن	p a ɾ i d a n
-منطقه	m i n t a ɢ a
-مولانا	m o v l ɑː n ɑː
-همچنان	h a m t ʃ e n ɑː n
-سنگ	s a n ɡ
-دروغ	d o ɾ uː ɢ
-خشکوندن	x o ʃ k uː n d a n
-اشک	a ʃ k
-یواش	j a v ɑː ʃ
-ارغنون	a ɾ ɢ a n uː n
-شاه	ʃ ɑː h
-نازی	n ɑː z iː
-گریه	ɡ e ɾ j e
-باحال‌ترین	b ɑː h ɑː l t a ɾ iː n
-خدنگ	x a d a n ɡ
-مرتبه	m a ɾ t a b a
-فروش	f o ɾ uː ʃ
-ابراهیم	e b ɾ ɑː h iː m
-مردم‌سالاری	m a ɾ d u m s ɑː l ɑː ɾ iː
-سبزه	s e b z a
-پودنه	p u d i n a
-متفاوت	m o t a f ɑː v e t
-گلدان	ɡ o l d ɑː n
-صبحانه	s o b h ɑː n e
-حشیش	h a ʃ i ʃ
-صورت	s u ɾ a t
-شاپور	ʃ ɑː p uː ɾ
-آفریدن	ɑː f a ɾ iː d a n
-نوکر	n a v k a r
-قرمز	ɢ i ɾ m i z
-صاحب	s ɑː h i b
-صنوبر	s a n a v b a ɾ
+بال	b ɑː l
+نواختر	n a v a x t a ɾ
 آدینه	ɑː d iː n a
-دادگاه	d ɑː d ɡ ɑː h
-منظور	m a n z u ɾ
-تاریخ	t ɑː ɾ iː x
-سرخوش	s a ɾ x u ʃ
-ممکن	m o m k e n
-در	d a ɾ
-برگ	b a ɾ ɡ
-نیز	n e z
-مهبل	m a h b a l
-آرپا	ɑː ɾ p ɑː
-شیرین‌ترین	ʃ iː ɾ iː n t a ɾ iː n
-جامعه	d͡ʒ ɑː m i ʔ a
-داستان	d ɑː s t ɑː n
-سرودن	s o ɾ uː d a n
-کارزار	k ɑː ɾ z ɑː ɾ
-گوی	ɡ uː
-ساکاستان	s ɑː k ɑː s t ɑː n
-داوود	d ɑː v uː d
-بادرنگ	b ɑː d ɾ a n ɡ
-گم	ɡ o m
-علاءالدین	a l ɑː ʔ u d d i n
-جبهه	d͡ʒ e b h e
-پراندن	p a ɾ ɑː n d a n
-کاغد	k ɑː ɢ a d
-مجازات	m o d ʒ ɑː z ɑː t
-واج	v ɑː d͡ʒ
-کرایه	k i ɾ ɑː j a
-بی‌گناه	b e ɡ u n ɑː h
-رسیدن	ɾ a s i d a n
-زانو	z ɑː n uː
-ناو	n ɑː v
-معمول	m a ʔ m u l
-کبود	k a b oː d
-سالار	s ɑː l ɑː ɾ
-موضوع	m a v z s ʔ
-سه	s e
-ویس	v i s
-شاعر	ʃ ɑː ʔ i ɾ
-شغال‌ها	ʃ o ɢ ɑː l ɑː
-عمو	a m u
-آبی	ɑː b iː
-توقع	t a v a ɢ ɢ s ʔ
-شورش	ʃ u ɾ i ʃ
-مدهوش	m a d h u ʃ
-زنخ	z a n a x
-عدد	ʔ a d a d
-انگیزه	a n ɡ e z a
-عقل	a ɢ l
-آسایش	ɑː s ɑː j i ʃ
-بختیار	b a x t i j ɑː ɾ
-سپهسالار	s e p a h s ɑː l ɑː ɾ
-عصمت	e s m a t
-مهاجر	m o h ɑː d͡ʒ e ɾ
-ناپسند	n ɑː p a s a n d
-احمدی‌نژاد	a h m a d i n i ʒ ɑː d
-درود	d a ɾ oː d
-آهن	ɑː h a n
-تذرو	t a z a ɾ v
-مجرد	m o d͡ʒ a ɾ ɾ a d
-جمعیت	d͡ʒ a m ʔ i j j a t
-ماموت	m ɑː m uː t
-خفگی	x a f i ɡ iː
-اغلب	a ɢ l a b
-قرغیزستان	ɢ i ɾ ɢ iː z i s t ɑː n
-درنگ	d e ɾ a n ɡ
-غذا	ɢ e z ɑː
-امام	e m ɑː m
-مظهر	m a z h a ɾ
-بهتان	b o h t u n
-شبانه	ʃ a b ɑː n a
-اسلام‌گرا	e s l ɑː m ɡ a ɾ ɑː
-معماری	m e ʔ m ɑː ɾ iː
-ایرانشهر	e ɾ ɑː n ʃ a h ɾ
-اسلامی	e s l ɑː m iː
-آبگینه	ʔ ɑː b ɡ iː n e
-کندن	k a n d a n
-گشتن	ɡ a ʃ t a n
-توضیح	t a v z e h
-گیاخن	ɡ o j ɑː x a n
-کیر	k e ɾ
-خارگیل	x ɑː ɾ ɡ iː l
-کاخ	k ɑː x
-پسی	p o s e
-دلبستگی	d e l b a s t e ɡ iː
-جامعه‌شناس	d͡ʒ ɑː m i ʔ a ʃ i n ɑː s
-ژاندرم	ʒ ɑː n d a r m
-آبلیمو	ɑː b l iː m uː
-شاه‌دانه	ʃ ɑː h d ɑː n a
-فصیح	f a s e h
-ماک	m ɑː k
-پرچم	p a ɾ t͡ʃ a m
-فشنگ	f e ʃ a n ɡ
-تهدید	t a h d i d
-کشتن	k e ʃ t a n
-پیشانی	p e ʃ ɑː n iː
-معتدل	m o ʔ t a d e l
-گرگ	ɡ o ɾ ɡ
-سوزن	s u z a n
+انقلاب	e n ɢ e l ɑː b
+آتنا	ɑː t i n ɑː
+غسل	ɢ o s l
+بی‌میل	b e m a j l
+کوتاه‌تر	k uː t ɑː h t a ɾ
+تاجگذاری	t ɑː d͡ʒ ɡ u z ɑː ɾ iː
 سرعت	s o ɾ ʔ a t
-زنانه	z a n ɑː n a
-تغییر	t a ɢ j i ɾ
-لیو	l e v
-حقیقت	h a ɢ i ɢ a t
-لاله	l ɑː l e
-رحیم	r a h iː m
-نهور	n o h uː ɾ
-دپارتمان	d e p ɑ r t e m ɑ n
-عفو	ʔ a f v
+دیسال	d i s ɑː l
+وزیدن	v a z iː d a n
 صدمه	s a d a m a
-تاریخچه	t ɑː ɾ iː x t͡ʃ a
-همبازی	h a m b ɑː z iː
+فریبا	f a ɾ e b ɑː
+افغانستان	a f ɢ ɑː n i s t ɑː n
+بیور	b e v a ɾ
+کفش	k a f ʃ
+ذره	z a r r a
+شاهنامه	ʃ ɑː h n ɑː m a
+نازک	n ɑː z u k
+میوه	m e v a
+سرخ	s o ɾ x
+بوم	b u m
+تولید	t a v l i d
+مرگ	m a ɾ ɡ
+رام	ɾ ɑː m
+تجربه	t a d͡ʒ ɾ i b a
+آزمودن	ɑː z m uː d a n
+پلخته	p a l a x t a
+ابر	a b a ɾ
+ثانیه	s ɑː n i j a
+منزل	m a n z i l
 شعله	ʃ o ʔ l e
-تهرون	t e h ɾ uː n
-انتقاد	e n t e ɢ ɑː d
-ققنس	ɢ u ɢ n u s
-مشارکت	m o ʃ ɑː ɾ e k a t
-قاشق	ɢ ɑː ʃ u ɢ
-یازده	j ɑː z d a h
-سپاهی	s e p ɑː h iː
-حق	h a ɢ ɢ
-ابریق	e b ɾ iː ɢ
-گفتار	ɡ o f t ɑː ɾ
-علاقه	a l ɑː ɢ a
-اثاث	a s ɑː s
-آهنگ	ɑː h a n ɡ
-قهرمان	ɢ a h ɾ a m ɑː n
-بحث	b a h s
-افغان	a f ɢ ɑː n
-کوزه	k u z a
-او	oː
+شهوت	ʃ a h v a t
+ترگمان	t a ɾ ɡ u m ɑː n
+بی	b e
+شهری	ʃ a h ɾ iː
+غمناک	ɢ a m n ɑː k
+برهنه‌گرا	b a ɾ a h n a ɡ a ɾ ɑː
+ارتعاش	e ɾ t e ʔ ɑː ʃ
+انتشار	e n t e ʃ ɑː ɾ
+معادل	m o ʔ ɑː d e l
+بزاق	b o z ɑː ɢ
+نیزه	n e i z e
+برزیستن	b a r z iː s t a n
+آرایشگاه	ɑː ɾ ɑː j i ʃ ɡ ɑː h
+قیمتی	ɢ a j m a t iː
+بیمارتر	b iː m ɑː ɾ t a ɾ
+آبلیمو	ɑː b l iː m uː
+قطر	ɢ a t a ɾ
+بد	b a d
+خوار	x ɑː ɾ
+افتخار	e f t e x ɑː ɾ
+سیبویه	s i b u j a
+زرشکی	z e ɾ e ʃ k iː
+گماشتن	ɡ o m ɑː ʃ t a n
+تسو	t a s u
+چهره	t͡ʃ e h ɾ a
+خندق	x a n d a ɢ
+تاجیکستان	t ɑː d͡ʒ iː k i s t ɑː n
+زندگی	z e n d e ɡ iː
+دیشب	d i ʃ a b
 داروساز	d ɑː ɾ uː s ɑː z
-ساختن	s ɑː x t a n
-کاریز	k ɑː ɾ e z
-خالق	x ɑː l i ɢ
-مصر	m e s ɾ
-یپک	j e p a k
-قبیح	ɢ a b e h
-تنبسه	t a n b a s a
-تکور	t a k v o ɾ
-سابق	s ɑː b i ɢ
-خارجه	x ɑː ɾ i d͡ʒ a
-اثر	a s a ɾ
-بشقاب	b o ʃ ɢ ɑː b
-را	ɾ ɑː
-آمد	ɑː m a d
-بسته	b a s t a
-اعتیاد	e ʔ t i j ɑː d
-ونوس	v e n uː s
-چاشنی	t ʃ ɑː ʃ n iː
-اقمار	a ɢ m ɑː ɾ
-باژدار	b ɑː ʒ d ɑː ɾ
-بوستان	b oː s t ɑː n
-خوشنویس	x o ʃ n e v iː s
-بسیار	b e s j ɑː ɾ
-داماد	d uː m ɑː d
-کارواژه‌ها	k ɑː r v ɑː ʒ e h ɑː
-ضد	z e d
-نفت	n a f t
-سرپرستی	s a ɾ p a ɾ a s t iː
-مشابه	m o ʃ ɑː b e
+اسلیمی	e s l iː m iː
+دنیدن	d a n iː d a n
+من	m a n
+نیوشا	n i j oː ʃ ɑː
+بلد	b a l a d
+استراتژی	e s t ɾ ɑː t e ʒ iː
+هرچه	h a ɾ t͡ʃ i
+شغال‌ها	ʃ o ɢ ɑː l ɑː
+همجنس‌گراهراس	h a m d͡ʒ i n s ɡ a ɾ ɑː h a ɾ ɑː s
+ضلع	z e l ʔ
+که	k e
+پروسه	p e ɾ o s e
+روش	ɾ a v i ʃ
+دانستن	d uː n e s t a n
+جنگجو	d͡ʒ a n ɡ d͡ʒ u
+درمانگاه	d a ɾ m ɑː n ɡ ɑː h
+چمدان	t͡ʃ a m i d ɑː n
+میزان	m i z ɑ n
+ظاهر	z ɑː h i ɾ
+کر	k a ɾ
+بون	b uː n
+اشتراک	e ʃ t e ɾ ɑː k
+رخ	r o x
+شلوغ	ʃ o l uː ɢ
+شترگاوپلنگ	ʃ o t o ɾ ɡ ɑː v p a l a n ɡ
+مورچه	m oː ɾ t͡ʃ a
+کاسب	k ɑː s i b
+دما	d a m ɑː
+دیدن	d i d a n
+تندیس	t a n d iː s
+پرتو	p a ɾ t a v
+گناه	ɡ o n ɑː h
+گذشتن	ɡ o z a ʃ t a n
+آشنا	ɑː ʃ i n ɑː
+مربا	m o r a b b ɑ
+صندلی	s a n d a l iː
+رم	ɾ a m
+چایدان	t͡ʃ ɑː j d ɑː n
+لوبیا	l oː b i i ɑː
+چنان	t ʃ o n ɑː n
+یار	j ɑː ɾ
+خشونت	x o ʃ uː n a t
+ندا	n e d ɑː
+مقدماتی	m o ɢ a d d a m ɑː t iː
+خدشه	x a d ʃ a
+تمثیل	t a m s i l
+تفنگ	t o f a n ɡ
+آویختن	ɑː v e x t a n
+جا	d͡ʒ ɑː j
+دقت	d e ɢ ɢ a t
+ماهور	m ɑː h uː ɾ
+گریه	ɡ e ɾ j e
+خاور	x ɑː v a ɾ
+پرندوش	p a ɾ a n d oː ʃ
+میدان	m a j d ɑː n
+تحصیل	t a h s i l
+رب	ɾ a b
+صنوبر	s a n a v b a ɾ
+پیسه	p a j s a
+اسکندر	e s k a n d a ɾ
+گلستان	ɡ o l e s t ɑː n
+رنگین	ɾ a n ɡ i n
+آخوند	ɑː x uː n d
+دریدن	d a ɾ i d a n
+ویس	v i s
+ادیان	a d j ɑː n
+سپاهی	s e p ɑː h iː
+خنیا	x o n i j ɑː
+میلاد	m e l ɑː d
+انجام	a n d͡ʒ ɑː m
+شستن	ʃ o s t a n
+فرزندخوانده	f a ɾ z a n d x ɑː n d a
+بیرونی	b e ɾ uː n iː
+واقعا	v ɑː ɢ e ʔ a n
+آچار	ɑː t͡ʃ ɑː ɾ
+یائسگی	j ɑː ʔ i s a ɡ iː
+سالن	s ɑː l o n
+کو	k oː
+خوشبخت	x o ʃ b a x t
+مختلط	m o x t a l e t
+لعل	l a ʔ l
+دیم	d e m
+سفارش	s e f ɑː ɾ e ʃ
+خصومت	x o s uː m a t
+سیمرغ	s i m u ɾ ɢ
+اشتر	ʔ o ʃ t o ɾ
+جویبار	d͡ʒ oː j b ɑː ɾ
+گوساله	ɡ uː s ɑː l e
+مصدر	m a s d a ɾ
+آنقدر	ɑː n ɢ a d ɾ
+کوچه	k oː t͡ʃ a
+گائیدن	ɡ ɑː j iː d a n
+قرن	ɢ a ɾ n
+دیو	d e v
+شاخه	ʃ ɑː x e
+نظر	n a z a ɾ
+ژرف‌تر	ʒ a ɾ f t a ɾ
+مهربان	m e h ɾ a b ɑː n
+شاد	ʃ ɑː d
+قربک	ɢ o ɾ b a k
+عثمان	o s m ɑː n
+خفگی	x a f i ɡ iː
+پیامبر	p a j ɑː m b a ɾ
+لبخند	l a b x a n d
+تور	t o v a ɾ
+شهادت	ʃ a h ɑː d a t
+وعده	v a ʔ d a
+تدریج	t a d ɾ i d͡ʒ
+اعلام	e ʔ l ɑː m
+منظور	m a n z u ɾ
+دوران	d a v a ɾ ɑː n
+کهر	k a h a ɾ
+پاره	p ɑː ɾ a
+قلاوز	ɢ u l ɑː v u z
+مقدس	m o ɢ a d d a s
+زیبا	z e b ɑː
+ناراحت	n ɑː ɾ ɑː h a t
+غار	ɢ ɑː ɾ
+گورستان	ɡ oː ɾ i s t ɑː n
+شاهین	ʃ ɑː h iː n
+لب	l a b
+افسر	a f s a ɾ
+پرطرفدار	p o ɾ t a ɾ a f d ɑː ɾ
+فقرا	f o ɢ a ɾ ɑː
+منظومه	m a n z u m a
+آسان	ɑː s ɑː n
+جوهر	d͡ʒ a v h a ɾ
+جنون	d ʒ o n uː n
+چربی	t͡ʃ a ɾ b iː
+یاد	j ɑː d
+آرایش	ɑː ɾ ɑː j i ʃ
+نیفه	n e f a
+بهبود	b e h b uː d
+سرور	s a ɾ v a ɾ
+منبع	m a n b a ʔ
+اشتباه	e ʃ t e b ɑː h
+فرد	f a ɾ d
+سرحد	s a ɾ h a d
+آواز	ɑː v ɑː z
+تازه	t ɑː z a
+شو	ʃ o v
+گواشتن	ɡ o v ɑː ʃ t a n
+مهبل	m a h b a l
+خباز	x a b b ɑː z
+ویرایش	v i ɾ ɑː j i ʃ
+ول	v e l
+کلپ	k l a p
+اصفهان	e s f a h ɑː n
+صبحانه	s o b h ɑː n e
+کویت	k o v e j t
+تا	t ɑː
+گویش	ɡ oː j i ʃ
+تب	t a b
+دردمند	d a ɾ d m a n d
+تخم	t o x m
+تیهو	t i h s
+انفجار	e n f e d͡ʒ ɑː ɾ
+چل	t ʃ e l
+دارفلفل	d ɑː ɾ f i l f i l
+روادید	r a v ɑː d iː d
+نصف	n e s f
+درست	d o ɾ o s
+بابک	b ɑː b a k
+اداره	e d ɑː ɾ e
+مسلحانه	m o s a l l a h ɑː n e
+جزدان	d͡ʒ o z d ɑː n
+ارگ	o ɾ ɡ
+خزان	x a z ɑː n
+حاجت	h ɑː d͡ʒ a t
+آنلاین	ɑː n l ɑː j n
+بلاگ	b l ɑː ɡ
+تفسیدن	t a f s i d a n
+گردن	ɡ a ɾ d a n
+نوکر	n a v k a r
+دندان	d a n d ɑː n
+آدم‌ها	ɑː d a m h ɑː
+کجا	k o d͡ʒ ɑː
+چوپ	t͡ʃ oː p
+غریب	ɢ a ɾ iː b
+ورز	v a ɾ z
+چند	t͡ʃ a n d
+درگاه	d a ɾ ɡ ɑː h
+پری	p a ɾ iː
+کلنگ	k o l o n ɡ
+ساده‌تر	s ɑː d e t a ɾ
+مشاور	m o ʃ ɑː v e ɾ
+اندازه	a n d ɑː z a
+کنده	k a n d a
+بایستی	b ɑː j a s t iː
+بوران	b uː ɾ ɑ n
+پرهیز	p a ɾ h e z
+قرآن	ɢ u ɾ ʔ ɑː n
+تاریک‌تر	t ɑː ɾ iː k t a ɾ
+درباره	d a ɾ b ɑː ɾ a j i
+کنسرت	k o n s e ɾ t
+تمساح	t e m s ɑː h
+پنهان	p e n h uː n
+شنیدن	ʃ e n iː d a n
+گوی	ɡ uː
+زندان	z e n d ɑː n
+نو	n a v
+خلاف	x e l ɑː f
+قدر	ɢ a d a ɾ
+استخوان	o s t o x ɑː n
+زنخ	z a n a x
+بەت	b ɑː t
+شوق	ʃ a v ɢ
+مطبوعات	m a t b u ʔ ɑː t
+ارزان	a ɾ z ɑː n
+پسوند	p a s v a n d
+موج	m a v d͡ʒ
+آسیا	ɑː s i j ɑː
+امضاء	e m z ɑː
+بوسیدن	b oː s iː d a n
+کین	k iː n
+پنجشیر	p a n d͡ʒ ʃ e ɾ
+تاجور	t ɑː d ʒ v a ɾ
+زمان	z a m ɑː n
+اطمینان	e t m iː n ɑː n
+ساز	s ɑː z
+خاص	x ɑː s
+قاشق	ɢ ɑː ʃ u ɢ
+شش	ʃ a ʃ
+والله	v a l l ɑː h
+ناتوان	n ɑː t a v ɑː n
+ولایت	v e l ɑː j a t
+قلیان	ɢ a l j ɑː n
+ناف	n ɑː f
+شرک	ʃ e ɾ e k
+مدت	m o d d a t
+نارنج	n ɑː ɾ a n d͡ʒ
+قلعه	ɢ a l ʔ a
+مشق	m a ʃ ɢ
+پذیرفتن	p a z i ɾ u f t a n
+گنم	ɡ e n o m
+گاز	ɡ ɑː z
+موسیقی	m u s i ɢ iː

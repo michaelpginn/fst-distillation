@@ -1,300 +1,300 @@
-ventured	v ɛ n t͡ʃ ɚ d
-shotgun	ʃ ɑ t ɡ ʌ n
-stoor	s t ɔ ɚ
-gsoc	d͡ʒ iː s ɑ k
-nasal	n e ɪ z ə l
-verstehen	v ə ɹ ʃ t e ɪ ə n
-cogniscient	k ɒ ɡ n ɪ ʃ ə n t
-leia	l e ɪ ə
-gibraltar	d͡ʒ ɪ b ɹ ɒ l t ə ɹ
-temeritous	t ɪ m ɛ ɹ ə t ə s
-ended	ɛ n d ɪ d
-arbitrary	ɑ ɹ b ɪ t ɹ ɛ ə ɹ i
-lakh	l æ k
-expressions	ɪ k s p ɹ ɛ ʃ ə n z
-greens	ɡ ɹ iː n z
-mortal	m ɔ ɹ t ə l
-puppies	p ʌ p i z
-awry	ə ɹ a ɪ
-bedash	b ɪ d æ ʃ
-futon	f u t ɑ n
-circles	s ɝ k l̩ z
-laisse	l e ɪ s
-infiltrate	ɪ n f ə l t ɹ e ɪ t
-upfront	ʌ p f ɹ ʌ n t
-philistine	f ɪ l ɪ s t a ɪ n
-lingala	l ɪ ŋ ɡ ɑː l ə
-eutrapely	j uː t ɹ æ p ə l ɪ
-sansha	s ɑ n ʃ ɑː
-colon	k o ʊ l o ʊ n
-tyebble	t j ɛ b ə l
-wool	w ʊ l
-overspecialize	o ʊ v ɚ s p ɛ ʃ ə l a ɪ z
-pulls	p ʊ l z
-disopyramide	d a ɪ s ə p ɪ ɹ ə m a ɪ d
-sinicise	s ɪ n ə s a ɪ z
-luckily	l ʌ k ə l i
-docks	d ɒ k s
-psychotic	s a ɪ k ɒ t ɪ k
-fling	f l ɪ ŋ
-academical	æ k ə d ɛ m ɪ k l̩
-expletive	ɛ k s p l ə t ɪ v
-cacoethes	k a k ə ʊ iː θ iː z
-dyslectic	d ɪ s l ɛ k t ɪ k
-fatal	f e ɪ t ə l
-danger	d e ɪ n d͡ʒ ɚ
-recant	ɹ ə k æ n t
-lachrymose	l æ k ɹ ɪ m o ʊ s
-mexicali	m ɛ k s ɪ k æ l i
-teller	t ɛ l ə ɹ
-podiatry	p ə d a ɪ ə t ɹ i
-deserve	d ɪ z ɝ v
-fractionality	f ɹ æ k ʃ ə n æ l ɪ t i
-discus	d ɪ s k ə s
-clavichord	k l æ v ɪ k ɔ ɹ d
-aeration	ɛː r e ɪ ʃ ə n
-comphet	k ɑ m p h ɛ t
-bioinformatics	b a ɪ o ʊ ɪ n f ɚ m æ t ɪ k s
-fuzed	f j uː z d
-cezve	d͡ʒ ɛ z v e ɪ
-cunning	k ʌ n ɪ ŋ
-aber	æ b ɚ
-pisciculture	p ɪ s ɪ k ʌ l t͡ʃ ə ɹ
-paddocking	p æ d ə k ɪ ŋ
-housebroken	h a ʊ s b ɹ ə ʊ k ə n
-categories	k æ t ə ɡ ɔ ɹ i z
-lubra	l uː b ɹ ə
-vaguebook	v e ɪ ɡ b ʊ k
-blacker	b l æ k ɚ
-silken	s ɪ l k ə n
-oneiromancy	o ʊ n a ɪ ɹ o ʊ m æ n t s i
-culverin	k ʌ l v ə ɹ ɪ n
-adolph	e ɪ d ɑ l f
-myokine	m a ɪ ə ʊ k a ɪ n
-impregnable	ɪ m p ɹ ɛ ɡ n ə b ə l
-disulfiram	d a ɪ s ʌ l f ə ɹ æ m
-pearl	p ɝ l
-promises	p ɹ ɑ m ɪ s ɪ z
-confess	k ə n f ɛ s
-copperfield	k ɑ p ɚ f iː l d
-now	n a ʊ
-palingenesy	p æ l ɪ n d͡ʒ ɛ n ə s i
-i'dn't've	a ɪ d ə n t ə v
-masquerade	m æ s k ə ɹ e ɪ d
-hebbville	h ɛ b v ɪ l
-these've	ð i z ə v
-adulate	æ d͡ʒ ə l e ɪ t
-aedeagus	i d i e ɪ ɡ ə s
-greatsword	ɡ ɹ e ɪ t s ɔ ɹ d
-drossel	d ɹ ɒ s ə l
-entertainer	ɛ n t ə t e ɪ n ə
-natasha	n ə t æ ʃ ə
-swimmer	s w ɪ m ɚ
-frigorific	f ɹ ɪ ɡ ə ɹ ɪ f ɪ k
-haematology	h i m ə t ɑ l ə d͡ʒ i
-navvy	n æ v i
-abjurer	æ b d͡ʒ ʊ ɹ ɚ
-americanness	ə m ɛ ɹ ə k ə n ə s
-dessiatina	d ɛ s j ə t iː n ə
-cuirass	k j ʊ ɹ æ s
-neist	n iː s t
-bebusy	b ɪ b ɪ z i
-ingredient	ɪ n ɡ ɹ iː d i ə n t
-fryatt	f ɹ a ɪ ə t
-hivemind	h a ɪ v m a ɪ n d
-viewed	v j uː d
-personality	p ɝ s ə n æ l ɪ t i
-dishevelled	d ɪ s ʃ ɛ v ə l d
-bardolatrous	b ɑː ɹ d ɒ l ə t ɹ ə s
-epaulement	e ɪ p o ʊ l m ɑ n t
-cacoethics	k a k ə ʊ ɛ θ ɪ k s
-abkar	ɑ b k ɑ ɹ
-cheaping	t͡ʃ iː p ɪ ŋ
-gorget	ɡ o ɹ d͡ʒ ə t
-fitzpatrick	f ɪ t s p æ t ɹ ɪ k
-entertained	ɛ n t ɚ t e ɪ n d
-sandy	s æ n d i
-misoneism	m a ɪ s ə n iː ɪ z ə m
-complying	k ə m p l a ɪ ɪ ŋ
-oceany	o ʊ ʃ ə n i
-basheer	b ə ʃ i ɹ
-righteousness	ɹ a ɪ t͡ʃ ə s n ə s
-achillean	æ k ɪ l iː ə n
-superbeing	s u p ɚ b i ŋ
-civilise	s ɪ v ɪ l a ɪ z
-floor	f l o ɹ
-bassoon	b ə s u n
-notoriety	n o ʊ t ɚ a ɪ ə t i
-hen	h ɛ n
-towkay	t a ʊ k e ɪ
-cheeped	t͡ʃ iː p t
-paced	p e ɪ s t
-buchi	b ʊ t͡ʃ i
-reminisce	ɹ ɛ m ə n ɪ s
-doogh	d uː ɡ
-vocales	v o ʊ k e ɪ l i z
-paprika	p æ p ɹ iː k ə
-roaring	ɹ ɔː ɹ ɪ ŋ
-raspberry	ɹ æ z b ɛ ɹ i
-tentative	t ɛ n t ə t ɪ v
-closh	k l ɒ ʃ
-illusory	ɪ l uː s ə ɹ i
-crewed	k ɹ uː d
-mattie	m æ t i
-caliber	k æ l ə b ɚ
-waspish	w ɑ s p ɪ ʃ
-dominions	d ə m ɪ n j ə n z
-lend	l ɛ n d
-longevous	l ɔ n d͡ʒ iː v ə s
-prototype	p ɹ o ʊ t ə t a ɪ p
-fanti	f æ n t i
+claps	k l æ p s
+tag	t æ ɡ
+acalculia	e ɪ k æ l k j uː l i ə
+catamite	k æ t ə m a ɪ t
+cueing	k j uː ɪ ŋ
 suzerain	s j u z ə ɹ e ɪ̯ n
-goosefoot	ɡ uː s f ʊ t
-pistol	p ɪ s t ə l
-havant	h æ v ə n t
-whimsy	w ɪ m z i
-vocally	v o ʊ k ə l i
-pitcher	p ɪ t͡ʃ ɚ
-busted	b ʌ s t ə d
-fauld	f ɔ l d
-recalcitrate	ɹ ɪ k æ l s ɪ t ɹ e ɪ t
-production	p ɹ ə d ʌ k ʃ ə n
-sazerac	s æ z ə ɹ æ k
-mordant	m ɔː ɹ d ə n t
-oxibendazole	ɒ k s ɪ b ɛ n d ə z ə ʊ l
-fizgigged	f ɪ z ɡ ɪ ɡ d
-eyeglass	a ɪ ɡ l æ s
-melodramata	m ɛ l ə d ɹ ɑ m ə t ə
-intake	ɪ n t e ɪ k
-bentley	b e n t l iː
-anagoge	æ n ə ɡ o ʊ d͡ʒ i
-inter	ɪ n t ɝ
-hydroxymethylsulfonate	h a ɪ d r ɑ k s i m ɛ θ ə l s ʌ l f ə n e ɪ t
-babe	b e ɪ b
-penelope	p ɪ n ɛ l ə p i
-californium	k æ l ɪ f ɔ ɹ n i ə m
-stumble	s t ʌ m b ə l
-gaga	ɡ ɑː ɡ ɑː
-lexicon	l ɛ k s ɪ k ɑ n
-tenses	t ɛ n s ɪ z
-denmark	d ɛ n m ɑ ɹ k
-liberty	l ɪ b ɚ t i
-petit	p ə t i
-trucks	t ɹ ʌ k s
-blends	b l ɛ n d z
-pope	p o ʊ p
-transcribe	t r æ n s k ɹ a ɪ b
-smuthound	s m ʌ t h a ʊ n d
-sherbrooke	ʃ ɝ b ɹ ʊ k
-gleeman	ɡ l iː m ə n
-sink	s ɪ ŋ k
-bias	b a ɪ ə s
-uliginous	j uː l ɪ d͡ʒ ɪ n ə s
-aisle	a ɪ̯ l
+scoop	s k uː p
+apheresis	æ f ə ɹ i s ɪ s
+ground	ɡ ɹ a ʊ n d
+smiling	s m a ɪ l ɪ ŋ
+denotation	d iː n o ʊ t e ɪ ʃ ə n
+unmerited	ʌ n m ɛ ɹ ɪ t ɪ d
+disinherit	d ɪ s ɪ n h ɛ ɹ ɪ t
+picul	p ɪ k ə l
+ancle	æ ŋ k ə l
 forestal	f ɔ ɚ ɹ ə s t ə l
-pastel	p æ s t ɛ l
-ashkelon	æ ʃ k ə l ɒ n
-sagittae	s ə d͡ʒ ɪ t i
-bengali	b ɛ ŋ ɡ ɔː l i
-vag	v æ d͡ʒ
-muggins	m ʌ ɡ ɪ n z
-telegraphy	t ə l ɛ ɡ ɹ ə f i
-winked	w ɪ ŋ k t
-acidic	ə s ɪ d ɪ k
-hashish	h æ ʃ iː ʃ
-budgerigar	b ʌ d͡ʒ ə ɹ i ɡ ɑ ɹ
-scold	s k o ʊ l d
-advantageous	æ d v ə n t e ɪ d͡ʒ ə s
-dehull	d i h ʌ l
-boulevard	b ʊ l ə v ɑ ɹ d
-carts	k ɑ ɹ t s
-indium	ɪ n d i ə m
-unprofitable	ʌ n p ɹ ɑ f ɪ t ə b l̩
-satisfaction	s æ t ɪ s f æ k ʃ ə n
-micropaedic	m a ɪ k ɹ ə p i d i k
-connecting	k ə n ɛ k t ɪ ŋ
-benzopyrazine	b ɛ n z ə ʊ p a ɪ ɹ ə z iː n
-despotic	d ɛ s p ɑ t ɪ k
-jambeau	d͡ʒ æ m b o ʊ
-specialist	s p ɛ ʃ ə l ɪ s t
-oryx	o ʊ ɹ ɪ k s
-sapodilla	s æ p ə d ɪ l ə
-considerative	k ɑ n s ɪ d ə ɹ e ɪ t ɪ v
-ocher	o ʊ k ɚ
-broil	b ɹ ɔ ɪ l
-slow	s l o ʊ
-remixture	ɹ iː m ɪ k s t j ʊ ə ɹ
-exactly	ɪ ɡ z æ k t l i
-cyberocracy	s a ɪ b ə ɹ ɒ k ɹ ə s i
-markovian	m ɑ ɹ k o ʊ v i ə n
-fleck	f l ɛ k
-cruft	k ɹ ʌ f t
-dick	d ɪ k
-dickon	d ɪ k ə n
-dudess	d j uː d ɛ s
-alps	æ l p s
-established	ɪ s t æ b l ɪ ʃ t
-wrang	ɹ æ ŋ
-dieretic	d a ɪ ə ɹ ɛ t ɪ k
-rusto	ɹ ʌ s t o ʊ
-workforce	w ɝ k f o ɹ s
-slutsk	s l ʊ t s k
-windowsill	w ɪ n d o ʊ s ɪ l
-antarctic	æ n t ɑ ɹ k t ɪ k
-haecceitistic	h iː k s iː ə t ɪ s t i k
-pitch	p ɪ t͡ʃ
-also	ɑ l s o ʊ
-heirdom	ɛ ə ɹ d ə m
-trihexyphenidyl	t ɹ a ɪ h ɛ k s ɪ f ɛ n ɪ d ɪ l
-wainwright	w e ɪ n ɹ a ɪ t
-bereft	b ə ɹ ɛ f t
-hermitty	h ɜː ɹ m ɪ t i
-dalteparin	d ɔ l t ɛ p ə ɹ ɪ n
-wickiup	w ɪ k i ʌ p
-manhood	m æ n h ʊ d
-untakeable	ʌ n t e ɪ k ə b l̩
-sourceable	s ɔ ɹ s ə b ə l
-recover	ɹ i k ʌ v ɚ
-departed	d ɪ p ɑ ɹ t ɪ d
-vacua	v æ k j u ə
-owler	a ʊ l ɚ
-ingenuous	ɪ n d͡ʒ ɛ n j u ə s
-reran	ɹ iː ɹ æ n
-spoke	s p ə ʊ k
-kirmess	k ɜː ɹ m ə s
-web	w ɛ b
-zouave	z u ɑ v
-karin	k æ r ɪ n
-theogony	θ ɪ ɑː ɡ ə n ɪ
-adorb	ə d ɔ ɹ b
-verse	v ɝ s
-perpend	p ɚ p ɛ n d
-mishmash	m ɪ ʃ m æ ʃ
-weekend	w i k ɛ n d
-spectral	s p ɛ k t ɹ ə ɫ
-whitey	w a ɪ t i
-cockaigne	k ɒ k e ɪ n
-foraminifer	f ɔ ɹ ə m ɪ n ə f ɚ
+after	æ f t ɚ
+steady	s t ɛ d i
+sympiezometer	s ɪ m p i ɪ z ɒ m ɪ t ə
+determinant	d ɪ t ɝ m ɪ n ə n t
+frontlet	f ɹ ʌ n t l ə t
+tuff	t ʌ f
 mull	m ʌ l
-panther	p æ n θ ɚ
-lusatia	l u s e ɪ ʃ ə
-sloane	s l o ʊ n
-linty	l ɪ n t i
-coaxes	k ə ʊ k s ɪ z
-pericardium	p ɛ ɹ ɪ k ɑː ɹ d i ə m
-plosive	p l o ʊ s ɪ v
-alsatian	æ l s e ɪ ʃ ə n
-immitigable	ɪ m ɪ t ɪ ɡ ə b ə l
-swept	s w ɛ p t
-beprose	b ɪ p ɹ ə ʊ z
+pleas	p l iː z
+aphorism	æ f ə ɹ ɪ z ə m
+feiseanna	f ɛ ʃ ə n ə
+serum	s ɪ ɹ ə m
+woken	w o ʊ k ə n
+snug	s n ʌ ɡ
+trucks	t ɹ ʌ k s
+pushful	p ʊ ʃ f ʊ l
+agnostic	æ ɡ n ɑ s t ɪ k
+superinstantaneous	s uː p ɚ ɪ n s t ə n t e ɪ n i ə s
+hornotine	h ɔː ɹ n ə t a ɪ n
+ternary	t ɝ n ə ɹ i
+celtomania	k ɛ l t o ʊ m e ɪ n i ə
+purdah	p ɝ d ə
+dalteparin	d ɔ l t ɛ p ə ɹ ɪ n
+milf	m ɪ l f
+glyceride	ɡ l ɪ s ə ɹ a ɪ d
+tombal	t uː m b ə l
+niobe	n a ɪ o ʊ b i
+puzzled	p ʌ z l̩ d
+copyist	k ɑ p i ɪ s t
+bavaroy	b æ v ə ɹ ɔ ɪ
+nest	n ɛ s t
+abkar	ɑ b k ɑ ɹ
+rupert	ɹ u p ɚ t
+belladonna	b ɛ l ə d ɑ n ə
+roc	ɹ ɒ k
+scrab	s k ɹ æ b
+bookstave	b ʊ k s t ɪ v
+mezereon	m ə z ɪ ə r i ə n
+adage	æ d ɪ d͡ʒ
+cuts	k ʌ t s
+femalia	f iː m e ɪ l i ə
+leaching	l iː t͡ʃ ɪ ŋ
+acetylcholine	ə s i t ə l k o ʊ l i n
+teller	t ɛ l ə ɹ
+lavandin	l æ v ə n d ɪ n
+aedeagus	i d i e ɪ ɡ ə s
+beemer	b i m ɚ
+stood	s t ʊ d
+mishmash	m ɪ ʃ m æ ʃ
+freshes	f ɹ ɛ ʃ ɪ z
+americanness	ə m ɛ ɹ ə k ə n ə s
+tomato	t ə m e ɪ t o ʊ
+antecedent	æ n t ɪ s iː d ə n t
+containment	k ə n t e ɪ n m ə n t
+cacoethics	k a k ə ʊ ɛ θ ɪ k s
+huffaz	h ʊ f ɑː z
+boiler	b ɔ ɪ l ɚ
+veny	v ɛ n i
+termini	t ɝ m ə n a ɪ
+reneg	ɹ ɪ n e ɪ ɡ
+atrichic	e ɪ t ɹ ɪ k ɪ k
+fanti	f æ n t i
+quittor	k w ɪ t ɚ
+fucus	f j uː k ə s
+gravamen	ɡ ɹ æ v ə m ɛ n
+ignifluous	ɪ ɡ n ɪ f l u ə s
+complains	k ə m p l e ɪ n z
+irenic	a ɪ ɹ i n ɪ k
+croupier	k ɹ u p i e ɪ
+aknee	ə n iː
+richness	ɹ ɪ t͡ʃ n ə s
+dissemination	d ɪ s ɛ m ɪ n e ɪ ʃ ə n
+fascial	f e ɪ ʃ ə l
+sirenomelia	s a ɪ ɹ ə n o ʊ m i l i ə
+web	w ɛ b
+crosier	k ɹ o ʊ ʒ ɚ
+brad	b ɹ æ d
+yep	j ɛ p
+launch	l ɔ n t͡ʃ
+panay	p ə n a ɪ
+roué	ɹ uː e ɪ
+flooding	f l ʌ d ɪ ŋ
+foofaraw	f u f ə ɹ ɔ
+adulate	æ d͡ʒ ə l e ɪ t
+nonunion	n ɒ n j uː n i ə n
+artifice	ɑː ɹ t ɪ f ɪ s
+israelite	ɪ z ɹ e ɪ ə l a ɪ t
+janine	d͡ʒ ə n iː n
+dissension	d ɪ s ɛ n ʃ ə n
+pistole	p ɪ s t o ʊ l
+slutsk	s l ʊ t s k
+flexure	f l ɛ k s j ʊ ə ɹ
+foreholding	f ɔ ɹ h o ʊ l d ɪ ŋ
+rejoin	ɹ iː d͡ʒ ɔ ɪ n
+hermitty	h ɜː ɹ m ɪ t i
+papyrus	p ə p a ɪ ɹ ə s
+squeteague	s k w iː t iː ɡ
+loppet	l o ʊ p ɛ t
+spangel	s p e ɪ n d͡ʒ ə l
+ciliolate	s ɪ l i ə l ə t
+globin	ɡ l ə ʊ b ɪ n
+toughie	t ʌ f i
+romsey	ɹ ɒ m z i
+sherbrooke	ʃ ɝ b ɹ ʊ k
+cousin	k ʌ z ə n
+asceticist	ə s ɛ t ə s ɪ s t
+impetuous	i m p ɛ t͡ʃ u ə s
+pizzazz	p ɪ z æ z
+shitty	ʃ ɪ t i
+poise	p ɔ ɪ z
+theanthropist	θ iː æ n θ ɹ ə p ɪ s t
 patrols	p ə t ɹ o ʊ l z
-billed	b ɪ l d
-skype	s k a ɪ p
-amphora	æ m f ə ɹ ə
-firelock	f a ɪ ə ɹ l ɑ k
-beatlesque	b iː t ə l ɛ s k
-mincer	m ɪ n s ɚ
-embale	ɪ m b e ɪ l
-occultation	ɑ k ə l t e ɪ ʃ ə n
-choc	t͡ʃ ɒ k
-risker	ɹ ɪ s k ə ɹ
+dorothy	d ɔ ɹ ə θ i
+popina	p ɒ p a ɪ n ə
+nasus	n e ɪ s ə s
+cringing	k ɹ ɪ n d͡ʒ ɪ ŋ
+illness	ɪ l n ə s
+kumara	k uː m ə ɹ ə
+batdom	b æ t d ə m
+coaxes	k ə ʊ k s ɪ z
+dorty	d ɔ ɹ t i
+omad	o ʊ̯ m æ d
+greatsword	ɡ ɹ e ɪ t s ɔ ɹ d
+injuria	ɪ n d ʒ ʊ ə ɹ i ə
+beliven	b ə l ɪ v ə n
+outsourcing	a ʊ t s ɔː ɹ s ɪ ŋ
+echard	ɛ k ɑː ɹ d
+morbihan	m ɔː ɹ b i ə n
+uncial	ʌ n s i ə l
+caused	k ɔ z d
+epicaricacy	ɛ p ɪ k æ ɹ ɪ k ə s i
+kendell	k ɛ n d ə l
+tteokbokki	t ɒ k b ə ʊ k i
+hallucinogen	h ə l uː s ɪ n ə d͡ʒ e n
+sesquipedalian	s ɛ s k w ɪ p ɪ d e ɪ l ɪ ə n
+goety	ɡ o ʊ ɪ t i
+maraca	m ə ɹ æ k ə
+jointed	d͡ʒ ɔ ɪ n t ɪ d
+compass	k ʌ m p ə s
+uotsuri	uː o ʊ t s ʊ ə ɹ i
+wainwright	w e ɪ n ɹ a ɪ t
+truculent	t ɹ ʌ k j ʊ l ə n t
+gushes	ɡ ʌ ʃ ɪ z
+britannia	b ɹ ɪ t æ n ɪ ə
+such	s ʌ t͡ʃ
+disney	d ɪ z n i
+declaring	d ɪ k l ɛ ɹ ɪ ŋ
+abound	ə b a ʊ n d
+thoughtlessly	θ ɔ t l ɪ s l i
+subpoena	s ə p iː n ə
+walnut	w ɑ l n ə t
+cuajo	k w a h o
+faciliatory	f ə s ɪ l i ə t o ɹ i
+sievert	s iː v ɚ t
+wrang	ɹ æ ŋ
+ablush	ə b l ʌ ʃ
+spread	s p ɹ ɛ d
+xoanon	z o ʊ ə n ɑ n
+blood	b l ʌ d
+misled	m ɪ s l ɛ d
+arun	ɑː ɹ ʊ n
+juridicial	d͡ʒ ʊ ɹ ɪ d ɪ ʃ ə l
+care	k ɛ ə ɹ
+foulsome	f a ʊ l s ə m
+freeminer	f ɹ iː m a ɪ n ə
+clade	k l e ɪ d
+dipstick	d ɪ p s t ɪ k
+demagogue	d ɛ m ə ɡ ɑ ɡ
+amicide	æ m ɪ s a ɪ d
+shitkicker	ʃ ɪ t k ɪ k ə ɹ
+elytron	ɛ l ɪ t ɹ ɒ n
+noosed	n uː s t
+script	s k ɹ ɪ p t
+piano	p i æ n o ʊ
+stabilization	s t e ɪ b ə l a ɪ z e ɪ ʃ ə n
+automatons	ɑ t ɑ m ə t ɑ n z
+dastardly	d æ s t ɚ d l i
+bellburns	b ɛ l b ɝ n z
+anglo	æ ŋ ɡ l o ʊ
+aureus	ɔː ɹ ɪ ə s
+gungy	ɡ ʌ n d͡ʒ iː
+kirkheaton	k ə r k h iː t ə n
+herring	h ɛ ɹ ɪ ŋ
+exchanged	ɛ k s t͡ʃ e ɪ n d͡ʒ d
+gibbet	d͡ʒ ɪ b ɪ t
+balboa	b æ l b ə ʊ ə
+maya	m a ɪ ə
+couchee	k uː ʃ e ɪ
+ocher	o ʊ k ɚ
+pavis	p ɑ v ɪ s
+venality	v ɪ n æ l ɪ t i
+implements	ɪ m p l ə m ə n t s
+osborne	ɒ z b ɔː ɹ n
+authorized	ɔ θ ə ɹ a ɪ z d
+encounter	ɪ n k a ʊ n t ɚ
+odorless	ə ʊ d ə l ə s
+saule	s ɔː l
+monoousian	m ɑ n o ʊ u z i ə n
+seized	s iː z d
+outlier	a ʊ t l a ɪ ə ɹ
+haryana	h ɑː ɹ ɪ j ɑː n ə
+eightieth	e ɪ t i ə θ
+throat	θ ɹ o ʊ t
+palingeneses	p æ l ɪ n d͡ʒ ɛ n ə s i z
+populace	p ɑ p j ə l ə s
+daemon	d e ɪ m ə n
+upsoar	ʌ p s ɔː ɹ
+appear	ə p ɪ ɹ
+lino	l a ɪ n ə ʊ
+enclave	ɑ n k l e ɪ v
+dicky	d ɪ k i
+picador	p ɪ k ə d ɔː ɹ
+retribution	ɹ ɛ t ɹ ɪ b j u ʃ ə n
+subliterate	s ʌ b l ɪ t ə ɹ ə t
+mesquite	m ɛ s k iː t
+macroeconomic	m æ k ɹ o ʊ ɛ k ə n ɑː m ɪ k
+thermometer	θ ɚ m ɑ m ɪ t ɚ
+tsaric	z ɑ ɹ ɪ k
+yerkish	j ɜː r k ɪ ʃ
+outlook	a ʊ t l ʊ k
+vick	v ɪ k
+minigun	m ɪ n i ɡ ʌ n
+westrip	w ɛ s t ɹ ɪ p
+tabby	t æ b i
+subterranean	s ʌ b t ə ɹ e ɪ n i ə n
+hates	h e ɪ t s
+culty	k ʌ l t i
+rusto	ɹ ʌ s t o ʊ
+gaslight	ɡ æ s l a ɪ t
+matitudinal	m æ t ə t j u d ə n l̩
+shivering	ʃ ɪ v ə ɹ ɪ ŋ
+jarrah	d͡ʒ æ ɹ ə
+discussing	d ɪ s k ʌ s ɪ ŋ
+telepathy	t ə l ɛ p ə θ i
+ended	ɛ n d ɪ d
+spatialism	s p e ɪ ʃ ə l ɪ z ə m
+wreathe	ɹ iː ð
+cooties	k uː t i z
+celtic	k ɛ l t ɪ k
+spell	s p ɛ l
+cosmopolis	k ɒ z m ɒ p ɒ l ɪ s
+bashlyk	b æ ʃ l ɪ k
+menhaden	m ɛ n h e ɪ d ə n
+dilucidation	d ɪ l j uː s ɪ d e ɪ ʃ ə n
+rösti	ɹ ɔ s t i
+dieretic	d a ɪ ə ɹ ɛ t ɪ k
+euphrates	j uː f ɹ e ɪ t iː z
+crawshay	k ɹ ɔː ʃ e ɪ
+pasadena	p æ s ə d iː n ə
+ceremonial	s ɛ ɹ ɪ m o ʊ n i ə l
+thorough	θ ɜ ɹ o ʊ
+reanimate	ɹ i æ n ə m e ɪ t
+laisse	l e ɪ s
+badassery	b æ d æ s ə ɹ i
+vint	v ɪ n t
+alicorns	æ l ɪ k ɔ ɹ n z
+poking	p o ʊ k ɪ ŋ
+geophyte	d͡ʒ i o ʊ f a ɪ t
+nosel	n ə ʊ z ə l
+weekend	w i k ɛ n d
+macaroni	m æ k ə ɹ o ʊ n i
+whitey	w a ɪ t i
+observed	ə b z ɝ v d
+complement	k ɑ m p l ə m ə n t
+copperfield	k ɑ p ɚ f iː l d
+debit	d ɛ b ɪ t
+picturesquely	p ɪ k t͡ʃ ə ɹ ɛ s k l i
+dictionary	d ɪ k ʃ ə n ɛ ɹ i
+gyle	ɡ a ɪ l
+dally	d æ l i
+macropsy	m æ k ɹ ɒ p s i
+pizza	p iː t s ə
+kittitas	k ɪ d ɪ t æ s
+fuckings	f ʌ k ɪ ŋ z
+alabama	æ l ə b æ m ə
+that	ð æ t
+dunam	d ʊ n ə m
+pegloticase	p ə ɡ l ɑ t ə k e ɪ s
+apt	æ p t
+polylactide	p ɒ l i l æ k t a ɪ d
+abscondence	æ b s k ɑ n d n̩ s
+colony	k ɑ l ə n i
+belly	b ɛ l i
+fusospirochetal	f j uː z ə ʊ s p a ɪ ɹ ə ʊ k iː t ə l
+billet	b ɪ l ɪ t

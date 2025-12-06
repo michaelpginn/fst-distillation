@@ -1,300 +1,300 @@
-сечко	s ɛ t͡ʃ k o
-особено	o s ɔ b ɛ n o
-глупачка	ɡ ɫ u p a t͡ʃ k ɐ
-далече	d ɐ lʲ ɛ t͡ʃ ɛ
-околен	o k ɔ lʲ ɛ n
-възсин	v ɐ s s i n
-яз	j a s
-за	z a
-гнилоч	ɡ n i ɫ ɔ t͡ʃ
-бледен	b lʲ ɛ d ɛ n
-хлад	x ɫ a t
-принц	p r i n t͡s
-очилат	o t͡ʃ i ɫ a t
-воденица	v o d ɛ n i t͡s ɐ
-причина	p r i t͡ʃ i n ɐ
-ямбичен	j ɐ m b i t͡ʃ ɛ n
-халост	x a ɫ o s t
-цирконий	t͡s i r k ɔ n i
-яка	j ɐ k a
-плута	p ɫ u t ɐ
-дроб	d r ɔ p
-наоколо	n ɐ ɔ k o ɫ o
-доволен	d o v ɔ lʲ ɛ n
-тревога	t r ɛ v ɔ ɡ ɐ
-господарство	ɡ o s p o d a r s t v o
-прага	p r a ɡ ɐ
-уикипедия	u i kʲ i p ɛ d i j ɐ
-коридор	k o r i d ɔ r
-граждански	ɡ r a ʒ d ɐ n s kʲ i
-легитимен	lʲ ɛ ɡʲ i t i m ɛ n
-ялите	j a lʲ i t ɛ
-похват	p o x v a t
-овци	o f t͡s i
-артист	ɐ r t i s t
-гургулица	ɡ u r ɡ u lʲ i t͡s ɐ
-махам	m a x ɐ m
-бръглеш	b r ɤ ɡ lʲ ɛ ʃ
-фокус	f ɔ k u s
-казерна	k ɐ z ɛ r n ɐ
-гав	ɡ a f
-беда	b ɛ d a
-тералитър	t ɛ r ɐ lʲ i t ɐ r
-стърга	s t ɤ r ɡ ɐ
-бекон	b ɛ k ɔ n
-скръкав	s k r ɤ k ɐ f
-пирон	p i r ɔ n
-чернодробен	t͡ʃ ɛ r n o d r ɔ b ɛ n
-водород	v o d o r ɔ t
-съгласен	s ɐ ɡ ɫ a s ɛ n
-немски	n ɛ m s kʲ i
-прах	p r a x
-лидер	lʲ i d ɛ r
-боядисам	b o j ɐ d i s ɐ m
-арестувахте	a r ɛ s t u v a x t ɛ
-анкара	ɐ n k a r ɐ
-мързелив	m ɐ r z ɛ lʲ i f
-член	t͡ʃ lʲ ɛ n
-греша	ɡ r ɛ ʃ ɤ
-хокам	x ɔ k ɐ m
-яйчен	j a j t͡ʃ ɛ n
-преда	p r ɛ d ɤ
-издутина	i z d u t i n a
-паспорт	p ɐ s p ɔ r t
-обкова	o p k o v a
-правилно	p r a v i ɫ n o
-абдоминалния	ɐ b d o m i n a ɫ n i j ɐ
-тресавище	t r ɛ s a v i ʃ t ɛ
-гърбав	ɡ ɐ r b a f
-победител	p o b ɛ d i t ɛ ɫ
-възхищение	v ɐ s xʲ i ʃ t ɛ n i ɛ
-знак	z n a k
-средняк	s r ɛ d nʲ a k
-щръклица	ʃ t r ɐ k lʲ i t͡s ɐ
-медовина	m ɛ d o v i n ɐ
-харем	x ɐ r ɛ m
-тези	t ɛ z i
-щял	ʃ tʲ a ɫ
-дума	d u m ɐ
-личинкоядка	lʲ i t͡ʃ i n k o j a t k ɐ
-забитък	z ɐ b i i t ɐ k
-узаконяваното	u z ɐ k o nʲ a v ɐ n o t o
-фабрика	f a b r i k ɐ
-поемам	p o ɛ m ɐ m
-безсмислен	b ɛ s s m i s lʲ ɛ n
-рог	r ɔ k
-будак	b u d a k
-ледина	lʲ ɛ d i n ɐ
-купюр	k u pʲ u r
-васил	v ɐ s i ɫ
-точица	t ɔ t͡ʃ i t͡s ɐ
-криптон	k r i p t ɔ n
-недоимък	n ɛ d o i m ɐ k
-задача	z ɐ d a t͡ʃ ɐ
-работилница	r ɐ b o t i ɫ n i t͡s ɐ
-заслужено	z ɐ s ɫ u ʒ ɛ n o
-наредя	n ɐ r ɛ dʲ a
-държава	d ɐ r ʒ a v ɐ
-тежък	t ɛ ʒ ɐ k
-проклитичен	p r o k lʲ i t i t͡ʃ ɛ n
-спогодба	s p o ɡ ɔ d b ɐ
-модел	m o d ɛ ɫ
-порядък	p o rʲ a d ɐ k
-богиня	b o ɡʲ i nʲ ɐ
-грънчарница	ɡ r ɐ n t͡ʃ a r n i t͡s ɐ
-членувам	t͡ʃ lʲ ɛ n u v ɐ m
-рибар	r i b a r
-трева	t r ɛ v a
-кубометър	k u b o m ɛ t ɐ r
-друг	d r u k
-рухо	r u x o
-скръндза	s k r ɤ n d z ɐ
-балкон	b ɐ ɫ k ɔ n
-корона	k o r ɔ n ɐ
-върша	v ɐ r ʃ a
-целувка	t͡s ɛ ɫ u f k ɐ
-кланица	k ɫ a n i t͡s ɐ
-шугав	ʃ u ɡ ɐ f
-завивка	z ɐ v i f k ɐ
-половина	p o ɫ o v i n ɐ
-скорошен	s k ɔ r o ʃ ɛ n
-пигментен	p i ɡ m ɛ n t ɛ n
-щирица	ʃ t i r i t͡s ɐ
-коприварче	k o p r i v a r t͡ʃ ɛ
-иск	i s k
-откъслек	o t k ɤ s lʲ ɛ k
-спор	s p ɔ r
-творба	t v o r b a
-пеганка	p ɛ ɡ a n k ɐ
-брегът	b r ɛ ɡ ɤ t
-стяг	s tʲ a k
-лъх	ɫ ɤ x
-тъмносин	t ɤ m n o s i n
-узаконява	u z ɐ k o nʲ a v ɐ
-черешарка	t͡ʃ ɛ r ɛ ʃ a r k ɐ
-разсипия	r ɐ s s i p i j ɐ
-галата	ɡ a ɫ ɐ t ɐ
-абатските	ɐ b a t s kʲ i t ɛ
-о	ɔ
-нашият	n a ʃ i j ɐ t
-бях	bʲ a x
-лък	ɫ ɤ k
-манастир	m ɐ n ɐ s t i r
-втечня	f t ɛ t͡ʃ nʲ ɤ
-клюн	k lʲ u n
-пчелояд	p t͡ʃ ɛ ɫ o j a t
-първи	p ɤ r v i
-че	t͡ʃ ɛ
-къртица	k ɐ r t i t͡s ɐ
-свра	s v r ɤ
-разногласие	r ɐ z n o ɡ ɫ a s i ɛ
-грозев	ɡ r ɔ z ɛ f
-патица	p a t i t͡s ɐ
-матрак	m ɐ t r a k
-диня	d i nʲ ɐ
-хлабав	x ɫ ɐ b a f
-монако	m o n a k o
-иней	i n ɛ j
-имащи	i m ɐ ʃ t i
-черта	t͡ʃ ɛ r t a
-висшист	v i ʃ ʃ i s t
-цент	t͡s ɛ n t
-избода	i z b o d ɤ
-загуба	z a ɡ u b ɐ
-рафт	r a f t
-липса	lʲ i p s ɐ
-антре	ɐ n t r ɛ
-оръдие	o r ɤ d i ɛ
-огранича	o ɡ r ɐ n i t͡ʃ ɤ
-статистичен	s t ɐ t i s t i t͡ʃ ɛ n
-дървен	d ɤ r v ɛ n
-конопарче	k o n o p a r t͡ʃ ɛ
-седеф	s ɛ d ɛ f
-говедо	ɡ o v ɛ d o
-магаре	m ɐ ɡ a r ɛ
-използвам	i s p ɔ ɫ z v ɐ m
-зъболекар	z ɐ b o lʲ ɛ k ɐ r
-запридам	z ɐ p r i d ɐ m
-пасящ	p ɐ sʲ a ʃ t
-краче	k r ɐ t͡ʃ ɛ
-плувам	p ɫ u v ɐ m
-буболечка	b u b o lʲ ɛ t͡ʃ k ɐ
-дори	d o r i
-десети	d ɛ s ɛ t i
-играчка	i ɡ r a t͡ʃ k ɐ
-морскосин	m ɔ r s k o s i n
-небеса	n ɛ b ɛ s a
-кървавица	k ɐ r v ɐ v i t͡s ɐ
-поставя	p o s t a vʲ ɐ
-барок	b ɐ r ɔ k
-ударя	u d a rʲ ɐ
-аромат	ɐ r o m a t
-двойствен	d v ɔ j s t v ɛ n
-полуостров	p o ɫ u ɔ s t r o f
-безпрецедентен	b ɛ s p r ɛ t͡s ɛ d ɛ n t ɛ n
-лавка	ɫ a f k ɐ
-сънища	s ɤ n i ʃ t ɐ
-ваксина	v ɐ k s i n ɐ
-принудя	p r i n u dʲ ɐ
-лъскав	ɫ ɤ s k ɐ f
-именит	i m ɛ n i t
-надонеса	n ɐ d o n ɛ s ɤ
-механа	m ɛ x ɐ n a
-раждане	r a ʒ d ɐ n ɛ
-глупост	ɡ ɫ u p o s t
-рак	r a k
-зъб	z ɤ p
-вожд	v ɔ ʃ t
-банкнота	b ɐ n k n ɔ t ɐ
-пита	p i t a
-сече	s ɛ t͡ʃ ɛ
-хор	x ɔ r
-край	k r a j
-заспя	z ɐ s pʲ ɤ
-израз	i z r ɐ s
-узаконявано	u z ɐ k o nʲ a v ɐ n o
-торба	t o r b a
-московий	m o s k ɔ v i
-абревиатура	a b r ɛ v i ɐ t u r ɐ
-култура	k u ɫ t u r ɐ
-запад	z a p ɐ t
-клъвка	k ɫ ɤ f k ɐ
-сръбски	s r ɤ p s kʲ i
-разум	r a z u m
-онези	o n ɛ z i
-постоянен	p o s t o j a n ɛ n
-храм	x r a m
-кулминационен	k u ɫ m i n ɐ t͡s i ɔ n ɛ n
-бяг	bʲ a k
-озадача	o z ɐ d ɐ t͡ʃ ɤ
-българийо	b ɐ ɫ ɡ a r i j o
-съчетавам	s ɐ t͡ʃ ɛ t a v ɐ m
-дрехи	d r ɛ xʲ i
-отвор	o t v ɔ r
-мекотело	m ɛ k o t ɛ ɫ o
-издутък	i z d u t ɐ k
-войска	v o j s k a
-виня	v i nʲ ɤ
-лъв	ɫ ɤ f
-валог	v a ɫ o k
-имащия	i m ɐ ʃ t i j ɐ
-близък	b lʲ i z ɐ k
-зависим	z ɐ v i s i m
-спътник	s p ɤ t n i k
-апарат	ɐ p ɐ r a t
-таквъз	t ɐ k v ɤ s
-сковранец	s k o v r a n ɛ t͡s
-прекаля	p r ɛ k ɐ lʲ ɤ
-депонентен	d ɛ p o n ɛ n t ɛ n
-съзра	s ɐ z r ɤ
-щете	ʃ t ɛ t ɛ
-боже	b ɔ ʒ ɛ
-благословия	b ɫ ɐ ɡ o s ɫ o v i j ɐ
-заявя	z ɐ j a vʲ a
-диалект	d i ɐ lʲ ɛ k t
-вид	v i t
-есенция	ɛ s ɛ n t͡s i j ɐ
-говорих	ɡ o v o r i x
-управител	u p r a v i t ɛ ɫ
-втрисане	f t r i s ɐ n ɛ
-барий	b a r i
-милостив	m i ɫ o s t i f
+анасон	ɐ n ɐ s ɔ n
+мерзавец	m ɛ r z a v ɛ t͡s
+плутоний	p ɫ u t ɔ n i
+безопасност	b ɛ z o p a s n o s t
+съблазнявам	s ɐ b ɫ ɐ z nʲ a v ɐ m
+загреб	z a ɡ r ɛ p
+магнетофон	m ɐ ɡ n ɛ t o f ɔ n
+кралство	k r a ɫ s t v o
+правя	p r a vʲ ɐ
+подозирам	p o d o z i r ɐ m
+фиорд	f i ɔ r t
+яли	j a lʲ i
+влагалище	v ɫ ɐ ɡ a lʲ i ʃ t ɛ
+копаница	k ɔ p ɐ n i t͡s ɐ
+рунтав	r u n t ɐ f
+лихва	lʲ i x v ɐ
 агония	ɐ ɡ ɔ n i j ɐ
-изляза	i z lʲ a z ɐ
-приемам	p r i ɛ m ɐ m
-единия	ɛ d i n i j ɐ
-гидия	ɡʲ i d i j ɐ
-десет	d ɛ s ɛ t
-плен	p lʲ ɛ n
-доза	d ɔ z ɐ
-над	n a t
-алармен	ɐ ɫ a r m ɛ n
-кабинет	k ɐ b i n ɛ t
-ясмин	j ɐ s m i n
-пренасям	p r ɛ n a sʲ ɐ m
-бутилирам	b u t i lʲ i r ɐ m
-пихтия	p i x t i j ɐ
-между	m ɛ ʒ d u
-панпсихизъм	p ɐ n p s i xʲ i z ɐ m
-забрани	z ɐ b r a n i
-административен	ɐ d m i n i s t r ɐ t i v ɛ n
-проблем	p r o b lʲ ɛ m
-даде	d a d ɛ
-отличен	o t lʲ i t͡ʃ ɛ n
-тайна	t a j n ɐ
-плевен	p lʲ ɛ v ɛ n
-имахте	i m a x t ɛ
-легион	lʲ ɛ ɡʲ i ɔ n
-кораб	k ɔ r ɐ p
-владика	v ɫ ɐ d i k ɐ
-изкуство	i s k u s t v o
-бяхме	bʲ a x m ɛ
+съдба	s ɐ d b a
+връв	v r ɤ f
 радвам	r a d v ɐ m
-пепеляв	p ɛ p ɛ lʲ a f
-шести	ʃ ɛ s t i
-всякакъв	f sʲ a k ɐ k ɐ f
-изтребя	i s t r ɛ bʲ ɐ
-атометър	ɐ t o m ɛ t ɐ r
+хълм	x ɤ ɫ m
+сестрински	s ɛ s t r i n s kʲ i
+тръпчив	t r ɐ p t͡ʃ i f
+китайски	kʲ i t a j s kʲ i
+деактивирам	d ɛ ɐ k t i v i r ɐ m
+тоалет	t o ɐ lʲ ɛ t
+снасям	s n a sʲ ɐ m
+покрай	p o k r a j
+превъзхождам	p r ɛ v ɐ s x ɔ ʒ d ɐ m
+атентат	ɐ t ɛ n t a t
+гълъб	ɡ ɤ ɫ ɐ p
+рубидий	r u b i d i
+гостилница	ɡ o s t i ɫ n i t͡s ɐ
+учебник	u t͡ʃ ɛ b n i k
+узаконихте	u z ɐ k o n i x t ɛ
+арабски	ɐ r a p s kʲ i
+възрастта	v ɐ z r ɐ s t a
+изгубя	i z ɡ u bʲ ɐ
+сприхав	s p r i x ɐ f
+имаше	i m ɐ ʃ ɛ
+почивш	p o t͡ʃ i f ʃ
+охрид	o x r i t
+ръждав	r ɐ ʒ d a f
+вея	v ɛ j ɐ
+поднеса	p o d n ɛ s ɤ
+преперец	p r ɛ p ɛ r ɛ t͡s
+християнин	x r i s t i j a n i n
+сатрап	s ɐ t r a p
+панталон	p ɐ n t ɐ ɫ ɔ n
+серен	s ɛ r ɛ n
+станой	s t ɐ n ɔ j
+увал	u v a ɫ
+вегав	v ɛ ɡ ɐ f
+диалект	d i ɐ lʲ ɛ k t
+рений	r ɛ n i
+предишен	p r ɛ d i ʃ ɛ n
+варя	v a rʲ ɐ
+да	d a
+патърдия	p ɐ t ɐ r d i j ɐ
+веднага	v ɛ d n a ɡ ɐ
+бодил	b o d i ɫ
+плащ	p ɫ a ʃ t
+банкнота	b ɐ n k n ɔ t ɐ
+общ	ɔ p ʃ t
+изказване	i s k a z v ɐ n ɛ
+ме	m ɛ
+лютив	lʲ u t i f
+определен	o p r ɛ d ɛ lʲ ɛ n
+плащам	p ɫ a ʃ t ɐ m
+мас	m a s
+саксия	s ɐ k s i j ɐ
+ушия	u ʃ i j ɐ
+пищен	p i ʃ t ɛ n
+превъзнеса	p r ɛ v ɐ z n ɛ s ɤ
+възел	v ɤ z ɛ ɫ
+завеждам	z ɐ v ɛ ʒ d ɐ m
+мекотело	m ɛ k o t ɛ ɫ o
+гледка	ɡ lʲ ɛ t k ɐ
+озаглавя	o z ɐ ɡ ɫ ɐ vʲ ɤ
+молив	m o lʲ i f
+кафе	k ɐ f ɛ
+невъзможно	n ɛ v ɐ z m ɔ ʒ n o
+байно	b a j n o
+господин	ɡ o s p o d i n
+камък	k a m ɐ k
+бастилия	b ɐ s t i lʲ i j ɐ
+узаконяването	u z ɐ k o nʲ a v ɐ n ɛ t o
+щедър	ʃ t ɛ d ɐ r
+пасящото	p ɐ sʲ a ʃ t o t o
+кой	k ɔ j
+стена	s t ɛ n a
+капак	k ɐ p a k
+огорча	o ɡ o r t͡ʃ a
+много	m n ɔ ɡ o
+бразилия	b r ɐ z i lʲ i j ɐ
+скок	s k ɔ k
+ярък	j a r ɐ k
+клюн	k lʲ u n
+абдикиралата	ɐ b d i kʲ i r ɐ ɫ ɐ t ɐ
+мях	mʲ a x
+накъде	n ɐ k ɐ d ɛ
+уплаши	u p ɫ a ʃ i
+извиквам	i z v i k v ɐ m
+мрялото	m rʲ a ɫ o t o
+белезници	b ɛ lʲ ɛ z n i t͡s i
+тиква	t i k v ɐ
+узаконявайте	u z ɐ k o nʲ a v ɐ j t ɛ
+апсида	ɐ p s i d ɐ
+напредък	n ɐ p r ɛ d ɐ k
+култура	k u ɫ t u r ɐ
+братски	b r a t s kʲ i
+кърджалия	k ɐ r d ʒ a lʲ i j ɐ
+никое	n i k o ɛ
+разсипия	r ɐ s s i p i j ɐ
+барий	b a r i
+дърва	d ɐ r v a
+лесно	lʲ ɛ s n o
+който	k ɔ j t o
+ядяща	j a dʲ a ʃ t ɐ
+азе	a z ɛ
+радой	r ɐ d ɔ j
+бележа	b ɛ lʲ ɛ ʒ ɐ
+зърна	z ɤ r n ɐ
+изтребител	i s t r ɛ b i t ɛ ɫ
+падна	p a d n ɐ
+отнасям	o t n a sʲ ɐ m
+двигател	d v i ɡ ɐ t ɛ ɫ
+рехабилитационен	r ɛ x ɐ b i lʲ i t ɐ t͡s i ɔ n ɛ n
+тръне	t r ɤ n ɛ
+благодарност	b ɫ ɐ ɡ o d a r n o s t
+чвор	t͡ʃ v ɔ r
+годинак	ɡ o d i n a k
+раждам	r a ʒ d ɐ m
+глух	ɡ ɫ u x
+лют	lʲ u t
+овци	o f t͡s i
+очен	ɔ t͡ʃ ɛ n
+имана	i m ɐ n ɐ
+производство	p r o i z v ɔ t s t v o
+фикус	f i k u s
+чуждестранен	t͡ʃ u ʒ d ɛ s t r a n ɛ n
+парк	p a r k
+торта	t ɔ r t ɐ
+ляво	lʲ a v o
+амвон	ɐ m v ɔ n
+хелий	xʲ ɛ lʲ i
+посетител	p o s ɛ t i t ɛ ɫ
+лъч	ɫ ɤ t͡ʃ
+твърд	t v ɤ r t
+аташе	ɐ t ɐ ʃ ɛ
+упреквам	u p r ɛ k v ɐ m
+грапав	ɡ r a p ɐ f
+ами	ɐ m i
+опашка	o p a ʃ k ɐ
+изслушвам	i s ɫ u ʃ v ɐ m
+мегаметър	m ɛ ɡ ɐ m ɛ t ɐ r
+сценарий	s t͡s ɛ n a r i
+камшик	k ɐ m ʃ i k
+целува	t͡s ɛ ɫ u v a
+юпитер	j u p i t ɛ r
+глупачка	ɡ ɫ u p a t͡ʃ k ɐ
+вашето	v a ʃ ɛ t o
+смрадливец	s m r ɐ d lʲ i v ɛ t͡s
+университет	u n i v ɛ r s i t ɛ t
+автобус	ɐ f t o b u s
+ибис	i b i s
+матерен	m a t ɛ r ɛ n
+кралица	k r ɐ lʲ i t͡s ɐ
+етажерка	ɛ t ɐ ʒ ɛ r k ɐ
+краен	k r a ɛ n
+оскъден	o s k ɤ d ɛ n
+елит	ɛ lʲ i t
+окрада	o k r ɐ d ɤ
+невъзможен	o o o o o
+юбилей	j u b i lʲ ɛ j
+почвам	p ɔ t͡ʃ v ɐ m
+тромав	t r ɔ m ɐ f
+моя	m ɔ j ɐ
+нар	n a r
+контакт	k o n t a k t
+топлик	t o p lʲ i k
+картал	k ɐ r t a ɫ
+седалка	s ɛ d a ɫ k ɐ
+спасявам	s p ɐ sʲ a v ɐ m
+бандит	b ɐ n d i t
+причастие	p r i t͡ʃ a s t i ɛ
+тъмен	t ɤ m ɛ n
+католически	k ɐ t o lʲ i t͡ʃ ɛ s kʲ i
+въртошийка	v ɐ r t o ʃ i k ɐ
+дрозд	d r ɔ s t
+петрол	p ɛ t r ɔ ɫ
+деветнадесет	d ɛ v ɛ t n a d ɛ s ɛ t
+свят	s vʲ a t
+пасене	p ɐ s ɛ n ɛ
+извличам	i z v lʲ i t͡ʃ ɐ m
+корем	k o r ɛ m
+ищах	i ʃ t a x
+огън	ɔ ɡ ɐ n
+колибри	k o lʲ i b r i
+русло	r u s ɫ o
+сматрям	s m a t rʲ ɐ m
+кафенета	k ɐ f ɛ n ɛ t ɐ
+носорог	n o s o r ɔ k
+редя	r ɛ dʲ a
+късно	k ɤ s n o
+диаграма	d i ɐ ɡ r a m ɐ
+желаещ	ʒ ɛ ɫ a ɛ ʃ t
+свръхякане	s v r ɐ xʲ a k ɐ n ɛ
+институт	i n s t i t u t
+използвам	i s p ɔ ɫ z v ɐ m
+труден	t r u d ɛ n
+разногласие	r ɐ z n o ɡ ɫ a s i ɛ
+глота	ɡ ɫ ɔ t ɐ
+дома	d o m a
+кралски	k r a ɫ s kʲ i
+узаконена	u z ɐ k o n ɛ n ɐ
+язовец	j a z o v ɛ t͡s
+джип	d ʒ i p
+боязън	b o j a z ɐ n
+непорочност	n ɛ p o r ɔ t͡ʃ n o s t
+направя	n ɐ p r a vʲ ɐ
+ексалитър	ɐ t o lʲ i t ɐ r
+абразивен	ɐ b r ɐ z i v ɛ n
+стилист	s t i lʲ i s t
+легализирам	lʲ ɛ ɡ ɐ lʲ i z i r ɐ m
+вериго	v ɛ r i ɡ o
+сладкарница	s ɫ ɐ t k a r n i t͡s ɐ
+нула	n u ɫ a
+приятен	p r i j a t ɛ n
+бетонен	b ɛ t ɔ n ɛ n
+гнилоч	ɡ n i ɫ ɔ t͡ʃ
+светиня	s v ɛ t i nʲ ɐ
+двуличен	d v u lʲ i t͡ʃ ɛ n
+благ	b ɫ a k
+удобен	u d ɔ b ɛ n
+сърбин	s ɤ r b i n
+трици	t r i t͡s i
+ванадий	v ɐ n a d i
+мрялата	m rʲ a ɫ ɐ t ɐ
+вар	v a r
+правилно	p r a v i ɫ n o
+валог	v a ɫ o k
+заявя	z ɐ j a vʲ a
+сръбски	s r ɤ p s kʲ i
+надежден	n ɐ d ɛ ʒ d ɛ n
+смъртник	s m ɤ r t n i k
+миризма	m i r i z m a
+деепричастие	d ɛ ɛ p r i t͡ʃ a s t i ɛ
+чуваш	t͡ʃ u v ɐ ʃ
+имал	i m a ɫ
+съвършенство	s ɐ v ɐ r ʃ ɛ n s t v o
+манган	m ɐ n ɡ a n
+ревност	r ɛ v n o s t
+знак	z n a k
+нелеп	n ɛ lʲ ɛ p
+прегиня	p r ɛ ɡʲ i nʲ ɐ
+отвръщам	o t v r ɤ ʃ t ɐ m
+пубер	p u b ɛ r
+бидейки	b i d ɛ j kʲ i
+основа	o s n ɔ v ɐ
+сърпоклюн	s ɐ r p o k lʲ u n
 щяла	ʃ tʲ a ɫ ɐ
-изведа	i z v ɛ d ɤ
-поради	p o r ɐ d i
+мамут	m ɐ m u t
+столова	s t o ɫ ɔ v ɐ
+разболявам	r ɐ z b o lʲ a v ɐ m
+узаконят	u z ɐ k o nʲ ɤ t
+другар	d r u ɡ a r
+чорба	t͡ʃ o r b a
+хардуер	x a r d u ɛ r
+януари	j ɐ n u a r i
+леко	lʲ ɛ k o
+пръчица	p r ɤ t͡ʃ i t͡s ɐ
+гигантски	ɡʲ i ɡ a n t s kʲ i
+дълбочина	d ɐ ɫ b o t͡ʃ i n a
+сиях	s i j a x
+нож	n ɔ ʃ
+временен	v r ɛ m ɛ n ɛ n
+немощен	n ɛ m o ʃ t ɛ n
+дума	d u m ɐ
+изток	i s t o k
+обущарница	o b u ʃ t a r n i t͡s ɐ
+усмихвам	u s m i x v ɐ m
+благословия	b ɫ ɐ ɡ o s ɫ o v i j ɐ
+ухо	u x ɔ
+ястреб	j a s t r ɛ p
+сви	s v i
+мултикултурализъм	m u ɫ t i k u ɫ t u r ɐ lʲ i z ɐ m
+асансьор	ɐ s ɐ n sʲ ɔ r
+повтором	p o f t ɔ r o m
+кулминационен	k u ɫ m i n ɐ t͡s i ɔ n ɛ n
+германски	ɡʲ ɛ r m a n s kʲ i
+гибел	ɡʲ i b ɛ ɫ
+багър	b a ɡ ɐ r
+годеница	ɡ o d ɛ n i t͡s ɐ
+безплатен	b ɛ s p ɫ a t ɛ n
+аргатин	ɐ r ɡ a t i n
+корона	k o r ɔ n ɐ
+подбел	p ɔ d b ɛ ɫ
+аерометър	a ɛ r o m ɛ t ɐ r
+суровина	s u r o v i n a

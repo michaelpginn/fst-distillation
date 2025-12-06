@@ -1,300 +1,300 @@
-ayam	a . j a m
-informatif	ɪ n f ɔ r ˈm a t ɪ f
-bushido	b u s . h i . d o
-tarekat	t a ˈr ɛ k a t̚
-warsa	ˈw a r . s a
-romansa	r o ˈm a n s a
-undur	u n ˈd ʊ ɾ
-registri	r e . ˈɡ ɪ s . t r i
-timbal	ˈt ɪ m b a l
-satori	s a . t o . r i
-gambus	ˈɡ a m . b ʊ s
-anggi	ˈa ŋ ɡ i
-mayit	ˈm a j i t̚
-berkap	b ə r ˈk a p̚
-dikti	ˈd ɪ k̚ t i
-buana	b u a̯ . n a
-bunda	ˈb ʊ n d a
-asonisoni	a . s o . n i . ˈs o . n i
-gilap	ˈɡ i l a p̚
-impuls	ˈɪ m . p ʊ l s
-bangau	ˈb a ŋ a u̯
-degenerasi	d e ɡ e n ə ˈr a s i
-KTP	k a t ɛ ˈp ɛ
-arti	a r . t i
-pahlawan	p a h ˈl a w a n
-heterotrof	h e . t e . r o . t r o f
-mancanegara	m a n . t͡ʃ a . n ə ˈɡ a . r a
-sesak	s ə . ˈs a k
-layu	ˈl a . j u
-antuk	ˈa n t u k
-gap	ˈɡ a p
-sanggah	ˈs a ŋ ɡ a h
-lama	l a . m a
-alumpa	ˈa l ʊ m p a
-mendasar	m ə n ˈd a s a r
-kawanan	k a ˈw a n a n
-anau	ˈa n a u̯
-dinamika	d i n a ˈm i k a
-iktidal	ɪ ʔ ˈt i d a l
-Betawi	b ə t a w i
-yubileum	j u b i ˈl e ʊ m
-jangankan	d͡ʒ a . ŋ a n . k a n
-intonasi	ɪ n t o ˈn a s i
-kuy	ˈk u j
-ekstrapolasi	ɛ k s . t r a . p o . ˈl a . s i
-agrowisata	a ɡ r o w i ˈs a t a
-ampal	ˈa m p a l
-memaafkan	m ə . m a . a f . k a n
-kami	ˈk ä . m i
-banua	ˈb a n u a̯
-makrokosmos	m a k . r o . ˈk ɔ s . m ɔ s
-coker	ˈt͡ʃ o k ə r
-sudra	ˈs ʊ t . r a
-cerpelai	t͡ʃ ə r ˈp ə l a j
-ari	ˈa . r i
-perdikan	p ə r ˈd i k a n
-kuntit	ˈk ʊ n t ɪ t̚
-kuliah	k u ˈl i a h
-memetieskan	m ə . m ə . t i . ɛ s . k a n
-persik	ˈp ɛ r . s ɪ k
-beleran	b ɛ l ɛ ˈr aː n
-audite	a u̯ . ˈd i . t e
-bendahara	b ə n . d a . h a . r a
-asistol	a . ˈs ɪ s . t ɔ l
-skor	s k o r
-heterogenitas	h e . t e . r o . ɡ e . ˈn i . t a s
-tabel	ˈt a b ə l
-riba	ˈr i b a
-arowon	a . ˈr o . w ɔ n
-parak	ˈp a . r a ʔ
-kultivasi	k ʊ l t i ˈv a s i
-demografi	d e m o ˈɡ r a f i
-itu	ˈi t u
-televisi	t e l e v i s i
-indekos	i n d ə ˈk ɔ s
-kardiogram	k a r . d i . ˈo . ɡ r a m
-kadi	ˈk a . d i
-catat	ˈt͡ʃ a t a t̚
-badare	b a . ˈd a . r ə
-persediaan	p ə r . s ə . d i . ˈa . a n
-biliun	b i ˈl i ʊ n
-kakak	k a . k a ʔ
-katak	ˈk a t a ʔ
-antil	ˈa n t ɪ l
-panjang	ˈp a n d͡ʒ a ŋ
-gabungan	ɡ a ˈb ʊ ŋ a n
-buku	ˈb u k u
-lebar	ˈl e b a r
-swakriya	s w a ˈk r i j a
-Oktober	ɔ k̚ . ˈt o . b ə r
-puputan	p u . ˈp ʊ t . a n
-pembohong	p ə m . b o . h o n ɡ
-perbuatan	p ə r . b u . a . t a n
-Denmark	ˈd ɛ n m a r k
-nirharapan	n i r h a r a p a n
-mengenai	m ə ŋ ə n a i
-gubernur	ɡ u b ə r n ʊ r
-silsilah	s ɪ l ˈs i l a h
-perambah	p ə r a m b a h
-alferes	a l ˈf e r e s
-ayeuh	a ˈj ɤ h
-sumbu	ˈs ʊ m . b u
-binawah	b i ˈn a w a h
-demografis	d e m o ˈɡ r a f ɪ s
-bersih	b ə r s ɪ h
-deforestasi	d e . f o . r ə s . ˈt a . s i
-silet	ˈs i l ɛ t̚
-karnivora	k a r n i ˈv o r a
-faktor	ˈf a k̚ t ɔ r
-angkutan	a ŋ ˈk ʊ t a n
-adiposa	a d i ˈp o s a
-oksimeter	ɔ k̚ s i ˈm ɛ t ə r
-pulang	ˈp u l a ŋ
-aspal	a s . p a l
-jajahan	d͡ʒ a ˈd͡ʒ a h a n
-Naufal	n a u . f a l
-pelacur	p ə . l a . t͡ʃ ʊ r
-KTT	k a . ˈt e . t e
-cecer	ˈt͡ʃ e . t͡ʃ ɛ r
-laknat	ˈl a k n a t̚
-absolutis	a p . s o . ˈl u . t ɪ s
-sekali	s ə . k a . l i
-lancia	l a n . t͡ʃ i a̯
-peluk	p ə l ʊ k
-tinggal	ˈt ɪ ŋ ɡ a l
-holistis	h o . ˈl ɪ s . t ɪ s
-hasad	ˈh a s a t̚
-memiliki	m ə ˈm i l ɪ k i
-aktivitas	a k̚ t i v i t a s
-fantasi	f a n ˈt a s i
-cadar	t͡ʃ a . d a r
-aci	a t͡ʃ i
-eigendom	e i . ɡ ə n . d o m
-angpao	a ŋ . p a o
-sewu	s e . w u
-pulih	ˈp u l ɪ h
-gunseikan	ɡ u n . s e i . k a n
-ulun	ˈu l u n
-bumi	b u m i
-epos	ˈe . p ɔ s
-aanwijzing	a n . w ɛ i . z ɪ ŋ
-yakitori	j a . k i . t o . r i
-papan	ˈp a p a n
-mufasir	m u f a s ɪ r
-intensi	i n t ɛ n s i
-patriarkat	p a . t r i . ˈa r . k a t̚
-aplikatif	a p l i ˈk a t ɪ f
-akademi	a k a . d e . m i
-wazari	w a . z a . r i
-aktivasi	a k̚ t i v a s i
-tentu	t ə n ˈt u
-gemuk	ˈɡ ə m ʊ ʔ
-bancakan	b a n ˈt͡ʃ a k a n
-ABK	a b e k a
-bus	ˈb ʊ s
-daerah	d a ˈɛ r a h
-KPK	k a ˈp e k a
-lestari	l ə s . ˈt a . r i
-walau	ˈw a l a u̯
-Selasa	s ə ˈl a s a
-ꦲꦤ	ɔ n ɔ
-proses	ˈp r o s ɛ s
-wadah	ˈw a . d a h
-yen	j ɛ n
-memencar	m ə ˈm ə n t͡ʃ a r
-saset	ˈs a s ɛ t
-bozah	ˈb o z a h
-lima	ˈl i . m ä
-yakni	ˈj a ʔ n i
-menang	m ə n a ŋ
-aruris	a . ˈr u . r ɪ s
-asrama	a s . r a . m a
-adorasi	a . d o . ˈr a . s i
-kartun	k a r t u n
-bad	ˈb a t̚
-kelengkiak	k ə l ə ŋ ˈk i a k̚
-calak	ˈt͡ʃ a l a ʔ
-sepupu	s ə p u p u
-suiseki	s u i . s e . k i
-surat	s u . r a t
-dinamis	d i ˈn a m ɪ s
-taju	ˈt a d͡ʒ u
-yudikatif	j u d i ˈk a t ɪ f
-lencang	l ə n ˈt͡ʃ a ŋ
-antigen	a n . ˈt i . ɡ ɛ n
-manira	m a . ˈn i . r a
-hadirin	h a ˈd i r ɪ n
-petrus	p ə ˈt r ʊ s
-tafsir	ˈt a f s ɪ r
-IPS	i . ˈp e . ɛ s
-swasembada	s w a . s ə m . b a . d a
+kedutaan	k ə d u t a a n
 kanca	ˈk ɔ n t͡ʃ ɔ
-amahatua	a m a ˈh a t u a̯
-Januari	d͡ʒ a . n u . ˈa . r i
-peremajaan	p ə . r ə . m a . ˈd͡ʒ a . a n
-protein	p r o ˈt e ɪ n
-berkembang	b ə r k ə m ˈb a ŋ
-sakelar	s a . k ə . l a r
-bunga	ˈb u ŋ a
-arababu	a r a ˈb a b u
-kanit	k a . n i t
-provos	ˈp r o v ɔ s
-pagi	ˈp a ɡ i
-upawasa	u p a . w a . s a
-syah	ʃ a h
-enzim	ˈɛ n . z ɪ m
-judogi	d͡ʒ u . d o . ɡ i
-kongruen	k ɔ n . ˈɡ r u . ɛ n
-babad	ˈb a b a t̚
+menyatakan	m ə ɲ a ˈt a k a n
+menyebar	m ə ɲ ə ˈb a r
+lapar	ˈl a p a r
+batara	b a . t a . r a
+siang	s i . a ŋ
+kami	ˈk ä . m i
+kemudahan	k ə m u ˈd a h a n
+datar	ˈd a t a r
+linear	l i ˈn ɛ a r
+lobak	l o . b a k
 tersier	t ɛ r ˈs i ɛ r
-gerha	ɡ ə r . h a
-tirani	t i . ˈr a . n i
-jamur	ˈd͡ʒ a . m ʊ r
-pengusaha	p ə ŋ u ˈs a h a
-menganggap	m ə ŋ ˈa ŋ ɡ a p̚
-danau	d a n a u̯
-reksa	r ə k . s a
-tuas	t u a s
-lateks	ˈl a . t ɛ k s
-publikasi	p u b l i ˈk a s i
-lisan	l i . s a n
-amiug	ˈa m i ʊ k̚
-ia	ˈi a̯
-begawan	b ə . ɡ a . w a n
-balugut	b a ˈl u ɡ ʊ t̚
-Bali	b a l i
-basmati	b a s ˈm a t i
-sampling	ˈs a m p l ɪ ŋ
-komandan	k o . m a n . d a n
-seremoni	s e . r e . m o . n i
-n	n
-adiksimba	a d ɪ k ˈs ɪ m b a
-seratus	s ə ˈr a t ʊ s
-parsimoni	p a r . s i . ˈm o . n i
-andam	ˈa n d a m
-konsul	ˈk ɔ n s ʊ l
-anaria	a . n a . ˈr i . a
-bajaj	ˈb a . d ʒ a i̯
-benar	ˈb e . n a r
-darwis	ˈd a r w ɪ s
-angsongar	a ŋ ˈs o ŋ a r
-AS	ˈa . ɛ s
-babu	ˈb a b u
-amegop	a . ˈm ə . ɡ ɔ p
-kekasih	k ə ˈk a s ɪ h
-cenangga	t͡ʃ ə . n a ŋ . ɡ a
-maling	ˈm a . l ɪ ŋ
-toksikologi	ˈt ɔ k . s i . k o . ˈl o . ɡ i
-uap	ˈʊ a p̚
-negeri	n ə ɡ ə r i
-ovum	ˈɔ v ʊ m
-fatwa	ˈf a t . w a
-calir	ˈt͡ʃ a l ɪ r
-babi	ˈb a b i
-astronaut	a s t r o n a u̯ t̚
-keranda	k ə r a n d a
-balak	ˈb a l a ʔ
-tanggapan	t a ŋ . ɡ a . p a n
-pastor	p a s t o r
-lapangan	l a ˈp a ŋ a n
-serundeng	s ə . ˈr ʊ n . d ɛ ŋ
-beri	b ə r i
-metana	m ɛ . t a . n a
-tali	ˈt a l i
-telefon	t e ˈl e f ɔ n
-seperti	s ə p ə r t i
-ajaran	a d͡ʒ a r a n
-masyarakat	m a ʃ a ˈr a k a t̚
-kuadran	ˈk u a̯ d r a n
-wasabi	w a ˈs a b i
-defekasi	d e f e ˈk a s i
-argentum	a r . ˈɡ ɛ n . t ʊ m
-pintu	ˈp ɪ n t u
-berpulang	b ə r ˈp u l a ŋ
-firaun	f i r . a . u n
-ranjang	ˈr a n . d͡ʒ a ŋ
-laksana	l a k s a n a
-kait	ˈk a ɪ t̚
-toksisitas	t ɔ k . s i . ˈs i . t a s
-kedokteran	k ə . d o k . t ə . r a n
-kehakiman	k ə . h a . ˈk ɪ m . a n
-aktifitas	a k̚ t i f i t a s
-tanah	t a . n a h
-berakhiran	b ə r a ˈx ɪ r a n
-barongsai	b a . r o ŋ . s a i̯
-dimakan	ˈd i . m a k a n
-semaya	s ə ˈm a j a
+sampir	ˈs a m p ɪ r
+umur	u m ʊ r
+rasional	r a s i ˈo n a l
+kolektivitas	k o l ɛ k t i ˈv i t a s
+Jateng	d͡ʒ a ˈt ə ŋ
+penguji	p ə ŋ . ˈʊ d͡ʒ i
+menjaring	m ə n ˈd͡ʒ a r i ŋ
+praktik	ˈp r a k̚ t ɪ k̚
+sekresi	s ə ˈk r e s i
+moda	ˈm o . d a
+inferensi	ɪ n . f e . ˈr ɛ n . s i
+petahana	p ə t a ˈh a n a
+KY	ˈk a j e
+asyik	a . ʃ ɪ k
+ꦱꦺꦴꦕ	s o t͡ʃ ɔ
+pemacu	p ə . ˈm a . t͡ʃ u
+akidah	ˈa k i d a h
+memutakhirkan	m ə m u t a x i r k a n
+biostatika	b i . o . s t a . ˈt i . k a
+mentol	ˈm ɛ n . t ɔ l
+memproklamasikan	m ə m p r o k l a m a ˈs i k a n
+benzol	b e n . z o l
+bakero	b a k e r o
+asbabulwurud	a s . b a . b ʊ l . ˈw u . r ʊ t
+pengecaman	p ə . ŋ ə . ˈt͡ʃ a m . a n
+peduli	p ə d u l i
+gilik	ˈɡ i l ɪ k̚
+binasa	b i . n a . s a
+micin	m i . t͡ʃ i n
+kalurahan	k a . l u . ˈr a h . a n
+pandemi	p a n ˈd e m i
+kabuki	k a ˈb u k i
+merk	m ɛ r k
+angki	ˈa ŋ k i
+duren	ˈd u . r ɛ n
+sebar	s ə ˈb a r
+bentar	b ə n ˈt a r
+catat	ˈt͡ʃ a t a t̚
+luka	ˈl u k a
+Islandia	ɪ s ˈl a n d i a̯
+Indra	i n . d r a
+antaladan	a n . t a . ˈl a . d a n
+julang	ˈd͡ʒ u l a ŋ
 gelut	ɡ ə . ˈl ʊ t
-kering	k ə ˈr ɪ ŋ
-merubah	m ə ˈr u b a h
-biner	ˈb i n ɛ r
-melansir	m ə . ˈl a n . s ɪ r
-ꦱꦺꦧ	s e b a
-baftah	ˈb a f t a h
-magnitudo	m a k n i ˈt u d o
-luak	ˈl u a k̚
+samper	s a m p ə r
+bandung	ˈb a n . d ʊ ŋ
+pertahanan	p ə r t a ˈh a n a n
+liyan	ˈl i j a n
+sein	s e ɪ̯ n
+tanya	t a . ɲ a
+teori	t e o r i
+barid	ˈb a r ɪ t̚
+liana	ˈl i a̯ n a
+bendu	b ə n . ˈd u
+bungsut	ˈb ʊ ŋ s ʊ t̚
+akresi	a . ˈk r e . s i
+ate	ˈa . t e
+bineka	b i . ˈn e . k a
+kapal	k a . p a l
+talian	t a ˈl i a n
+bungsu	b u ŋ s u
+karna	k a r . n a
 masakan	m a ˈs a k̚ a n
-bunuh	ˈb u n ʊ h
-ilham	ˈɪ l h a m
-pacu	ˈp a . t͡ʃ u
+lelangit	l ə . ˈl ä . ŋ ɪ t̪̚
+kolusi	k o ˈl u s i
+junta	ˈd͡ʒ ʊ n . t a
+intensi	i n t ɛ n s i
+jagung	ˈd͡ʒ a ɡ ʊ ŋ
+perpaduan	p ə r p a ˈd u a n
+mengimbuh	m ə ŋ . i m . b u h
+gang	ɡ a ŋ
+swatantra	s ʋ a t a n t r a
+lali	ˈl a l i
+tromol	ˈt r o . m o l
+kultivasi	k ʊ l t i ˈv a s i
+hiu	ˈh i . u
+tarekat	t a ˈr ɛ k a t̚
+aspal	a s . p a l
+alkana	a l . k a . n a
+membaca	m ə m ˈb a t͡ʃ a
+IPM	i ˈp ɛ ɛ m
+aloun	a . ˈl o . ʊ n
+Sulut	s u . l u t
+serampang	s ə ˈr a m p a ŋ
+perbuatan	p ə r . b u . a . t a n
+akar	a . k a r
+pemeruman	p ə m ə ˈr u m a n
+tengok	ˈt e . ŋ ɔ k
+wilis	ˈw i . l ɪ s
+perembesan	p ə . r ə m . b ə s . ˈa n
+kotor	k o t o r
+jijik	d͡ʒ i . d͡ʒ ɪ ʔ
+pemandian	p ə m a n ˈd i a n
+tuai	t u a i̯
+limas	ˈl i m a s
+tiram	ˈt i r a m
+baba	ˈb a . b a
+borang	ˈb ɔ r a ŋ
+ambil	ˈa m b ɪ l
+dukung	ˈd u . k ʊ ŋ
+tinjau	t i n d͡ʒ a u̯
+canang	ˈt͡ʃ a . n a ŋ
+angkruk	ˈa ŋ k r ʊ k̚
+pernyataan	p ə r . ɲ a . ˈt a . a n
+onagata	o . n a . ɡ a . t a
+arowon	a . ˈr o . w ɔ n
+keseruan	k ə s ə ˈr u a n
+magnitudo	m a k n i ˈt u d o
+angkatan	a ŋ ˈk a t a n
+senantiasa	s ə n a n t i ˈa s a
+nyaman	ˈɲ a m a n
+menghadap	m ə ŋ . ˈh a . d a p
+ardi	ˈa r . d i
+abi	a b i
+uap	ˈʊ a p̚
+formatif	f ɔ r . ˈm a . t ɪ f
+mengemasi	m ə ɲ ə m a s i
+cedera	t͡ʃ ə . d ə . r a
+zikir	ˈz i k ɪ r
+rehabilitasi	r e h a b i l i ˈt a s i
+dipantau	d i ˈp a n t a u̯
+peria	p ə ˈr i a̯
+bagi	b a . ɡ i
+menyanggah	m ə ˈɲ a ŋ ɡ a h
+gilap	ˈɡ i l a p̚
+andam	ˈa n d a m
+pedagogi	p e d a ˈɡ o ɡ i
+kubak	ˈk u b a ʔ
+kecil	k ə ˈt͡ʃ i l
+ekstrapolasi	ɛ k s . t r a . p o . ˈl a . s i
+pengenalan	p ə ŋ ə ˈn a l a n
+lancia	l a n . t͡ʃ i a̯
+menggarisbawahi	m ə ŋ . ɡ a . r i s . b a . w a h . i
+penganjur	p ə ŋ ˈa n d͡ʒ ʊ r
+kontributor	k ɔ n . t r i . ˈb u . t ɔ r
+kuap	ˈk u a p̚
+berbeda	b ə r ˈb ɛ d a
+lurah	ˈl u . r a h
+kabupaten	k a . b u . p a . t e n
+bushido	b u s . h i . d o
+handschoen	h a n . s ə k ʊ n
+nabatah	n a b a t a h
+pola	ˈp o l a
+tanggapan	t a ŋ . ɡ a . p a n
+buruk	ˈb u r u k
+insaf	i n . s a f
+keparat	k ə . p a . r a t
+patriarki	p a . t r i . ˈa r . k i
+tengar	t ə ˈŋ a r
+toksik	ˈt ɔ k . s ɪ k
+japri	d͡ʒ a . p r i
+frater	f r a t ə r
+kemacetan	k ə m a t͡ʃ ə t ˈa n
+min	ˈm ɪ n
+produk	ˈp r o . d ʊ k
+siber	ˈs i b ə r
+permainan	p ə r ˈm a i . n a n
+Merkurius	m ɛ r . k u . ˈr i . ʊ s
+rekonsiliasi	r e . k ɔ n . s i . l i . ˈa . s i
+diperkokoh	d i p ə r ˈk o k ɔ h
+tapa	t a . p a
+naskah	ˈn a s . k a h
+LPMP	ɛ l p e ˈɛ m p e
+aborsi	ˈa b ɔ r s i
+cultuurstelsel	k ʊ l t ʊ r s t ɛ l s ə l
+mengatakan	m ə ŋ a ˈt a k a n
+ritsleting	r i t . s l ə . t i ŋ
+memilih	m ə . m i . l i h
+nalar	ˈn a l a r
+jujitsu	d ʒ u . d ʒ ɪ t . s u
+ketumbar	k ə ˈt ʊ m b a r
+memaafkan	m ə . m a . a f . k a n
+mukbang	ˈm ʊ k b ɑ ŋ
+kayas	k a ˈj a s
+manset	ˈm a n s ɛ t
+bustan	ˈb ʊ s t a n
+pihak	ˈp i h a ʔ
+membangunkan	m ə m b a ˈŋ ʊ n k a n
+monomer	m o ˈn o m ɛ r
+kehujanan	k ə ˈh u d͡ʒ a n a n
+sarden	ˈs a r d ɛ n
+berkembang	b ə r k ə m ˈb a ŋ
+asrok	ˈa s . r ɔ k
+adil	a . d i l
+amporang	a m ˈp o r a ŋ
+pastor	p a s t o r
+bersenandung	b ə r s ə ˈn a n d ʊ ŋ
+ransel	ˈr a n . s ə l
+perdana	p ə r d a n a
+am	ˈa m
+pita	p i . t a
+buku	ˈb u k u
+eksim	ˈɛ k . s ɪ m
+sarana	s a . r a . n a
+bulu	ˈb u . l u
+determinasi	d e . t ɛ r . m i . ˈn a . s i
+beban	b ə ˈb a n
+luak	ˈl u a k̚
+dolar	ˈd o l a r
+warkat	ˈw a r . k a t
+sembilan	s ə m . ˈb i . l ä n
+sentul	s ə n . ˈt ʊ l
+umat	ˈu m a t̚
+membuka	m ə m ˈb u k a
+umi	ˈʊ m i
+anggana	a ŋ ˈɡ a n a
+yuyitsu	j u . j i t . s u
+menjijikkan	m ə n . d͡ʒ i . d͡ʒ ɪ ʔ . k a n
+izin	ˈɪ z ɪ n
+menyusun	m ə . ɲ u . s ʊ n
+siluet	s i . ˈl u . ɛ t
+hibrida	h i ˈb r i d a
+kompetisi	k ɔ m p ə ˈt i s i
+calak	ˈt͡ʃ a l a ʔ
+sementara	s ə m ə n ˈt a r a
+sini	ˈs i n i
+seronok	s ə . ˈr o . n ɔ ʔ
+takoyaki	t a . k o . j a . k i
+abras	a b . r a s
+Februari	f ɛ b r u ˈa r i
+perabuan	p ə r ˈa b u a n
+manga	ˈm a n ɡ a
+darwis	ˈd a r w ɪ s
+rungu	ˈr u . ŋ u
+IPA	i . ˈp a
+landasan	l a n . d a . s a n
+hitung	ˈh i t ʊ ŋ
+feodal	f e ˈo d a l
+kedaerahan	k ə . d a ɛ . ˈr a h . a n
+komet	ˈk o . m ɛ t̚
+alodna	a . ˈl ɔ t . n a
+mula	m u l a
+bingar	ˈb i ŋ a r
+bunga	ˈb u ŋ a
+eutanasia	e u t a n a ˈs i a
+katedral	k a t ə d r a l
+beton	b ə . t o n
+alfuil	a l ˈf u ɪ l
+psikolog	p ə s i ˈk o l ɔ k̚
+gender	ˈɡ ɛ n d ə r
+lepra	l ɛ p r a
+apologi	a p o ˈl o ɡ i
+pialang	ˈp ɪ j a l a ŋ
+sadir	ˈs a d ɪ r
+kaliks	ˈk a l ɪ k s
+embrio	ɛ m ˈb r i o
+kaca	k a t͡ʃ a
+alis	ˈʔ ä . l i s
+geulis	ɡ ɘ . ˈl ɪ s
+kuy	ˈk u j
+aora	a . ˈo . r a
+memola	m ə ˈm o l a
+doa	d o a
+bulbul	ˈb ʊ l b ʊ l
+persentil	p ə r . ˈs ɛ n . t ɪ l
+gemuk	ˈɡ ə m ʊ ʔ
+adisi	a . ˈd i . s i
+pembohong	p ə m . b o . h o n ɡ
+mahakuasa	m a h a k u a s a
+ilah	ˈɪ l a h
+perulangan	p ə r . ˈʊ l a ŋ . a n
+agung	ˈa ɡ ʊ ŋ
+Tamil	ˈt a m ɪ l
+gusi	ˈɡ u . s i
+esa	ə . s a
+pokok	ˈp o k ɔ k̚
+biner	ˈb i n ɛ r
+makna	ˈm a ʔ n a
+aruris	a . ˈr u . r ɪ s
+pencucian	p ə n t͡ʃ u t͡ʃ iʲ a n
+sami	ˈs a m i
+wanprestasi	w a n p r e s t a s i
+kanji	k a n . d͡ʒ i
+bagan	ˈb a . ɡ a n
+amput	ˈa m p ʊ t̚
+ajara	ˈa d͡ʒ a r a
+gugus	ˈɡ u ɡ ʊ s
+buana	b u a̯ . n a
+teladan	t ə l a d a n
+Austria	a ʊ s ˈt r i a
+muluk	ˈm u . l ʊ ʔ
+kandungan	k a n ˈd ʊ ŋ a n
+ketombe	k ə ˈt ɔ m b e
+bawi	b a . w i
+internasional	i n t ə r n a s i o n a l
+iotasisme	i o t a ˈs ɪ s m ə
+dekan	d e k a n

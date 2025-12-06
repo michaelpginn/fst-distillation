@@ -1,300 +1,300 @@
-sangra	ˈs a n ɡ ɾ a
-precavido	p ɾ e k a ˈb i d o
-alcaide	a l ˈk a i d e
-escoriada	e s k o ˈɾ j a d a
-profanadas	p ɾ o f a ˈn a d a s
-amillararías	a m i ʝ a ɾ a ˈɾ i a s
-abundas	a ˈb u n d a s
-horroroso	o r o ˈɾ o s o
-andémoste	a n ˈd e m o s t e
-sedimentario	s e d i m e n ˈt a ɾ j o
-Vaupés	b a u ˈp e s
-evangelio	e b a n ˈx e l j o
-percuta	p e ɾ ˈk u t a
-supramediterráneo	s u p ɾ a m e d i t e ˈr a n e o
-salidora	s a l i ˈd o ɾ a
-pluripatológico	p l u ɾ i p a t o ˈl o x i k o
-alondra	a ˈl o n d ɾ a
-despierta	d e s ˈp j e ɾ t a
-goleadas	ɡ o l e ˈa d a s
-relojería	r e l o x e ˈɾ i a
-divinado	d i b i ˈn a d o
-guío	ˈɡ i o
-bolardo	b o ˈl a ɾ d o
-ofrenda	o ˈf ɾ e n d a
-ungidos	u n ˈx i d o s
-farero	f a ˈɾ e ɾ o
-comilonas	k o m i ˈl o n a s
-Borja	ˈb o ɾ x a
-correísmo	k o r e ˈi s m o
-gernikarra	x e ɾ n i ˈk a r a
-despistado	d e s p i s ˈt a d o
-veraneada	b e ɾ a n e ˈa d a
-subsumido	s u b s u ˈm i d o
-orladas	o ɾ ˈl a d a s
-paliatorio	p a l j a ˈt o ɾ j o
-ventriloquia	b e n t ɾ i ˈl o k j a
-atenuantes	a t e ˈn w a n t e s
-deslustrada	d e s l u s ˈt ɾ a d a
-tonos	ˈt o n o s
-endospora	e n d o s ˈp o ɾ a
-agendada	a x e n ˈd a d a
-diseminar	d i s e m i ˈn a ɾ
-pertrechados	p e ɾ t ɾ e ˈt͡ʃ a d o s
-agosteño	a ɡ o s ˈt e ɲ o
-interpoladas	i n t e ɾ p o ˈl a d a s
-esotéricas	e s o ˈt e ɾ i k a s
-Parodi	p a ˈɾ o d i
-amigdalectomía	a m i ɡ d a l e ɡ t o ˈm i a
-acojonada	a k o x o ˈn a d a
-siútico	ˈs j u t i k o
-hablándome	a ˈb l a n d o m e
-Cabanilla	k a b a ˈn i ʝ a
-depredados	d e p ɾ e ˈd a d o s
-despabilado	d e s p a b i ˈl a d o
-ulco	ˈu l k o
-fonsadera	f o n s a ˈd e ɾ a
-skyline	e s ˈk a i l a i n
-rayuela	r a ˈʝ w e l a
-fonólogo	f o ˈn o l o ɡ o
-correaje	k o r e ˈa x e
-admitir	a d m i ˈt i ɾ
-escarda	e s ˈk a ɾ d a
-sajado	s a ˈx a d o
-tolina	t o ˈl i n a
-padrastro	p a ˈd ɾ a s t ɾ o
-quebracho	k e ˈb ɾ a t͡ʃ o
-diletante	d i l e ˈt a n t e
-primavera	p ɾ i m a ˈb e ɾ a
-Brayan	ˈb ɾ a ʝ a n
-ovil	o ˈb i l
-intrusadas	i n t ɾ u ˈs a d a s
-adrenalínico	a d ɾ e n a ˈl i n i k o
-lucaya	l u ˈk a ʝ a
-vibradas	b i ˈb ɾ a d a s
-resolladas	r e s o ˈʝ a d a s
-compartimentados	k o m p a ɾ t i m e n ˈt a d o s
-soldadesco	s o l d a ˈd e s k o
-ambivalente	a m b i b a ˈl e n t e
-Carreño	k a ˈr e ɲ o
-inmensos	i m ˈm e n s o s
-aborregaríamos	a b o r e ɡ a ˈɾ i a m o s
-enagua	e ˈn a ɡ w a
-emularemos	e m u l a ˈɾ e m o s
-almodovarianos	a l m o d o b a ˈɾ j a n o s
-chupamiel	ˌt͡ʃ u p a ˈm j e l
-guayadas	ɡ w a ˈʝ a d a s
-expansivo	e ɡ s p a n ˈs i b o
-eufemísticos	e u f e ˈm i s t i k o s
-profundamente	p ɾ o ˌf u n d a ˈm e n t e
-defino	d e ˈf i n o
-tardar	t a ɾ ˈd a ɾ
-pipada	p i ˈp a d a
-perturbamos	p e ɾ t u ɾ ˈb a m o s
-general	x e n e ˈɾ a l
-aglomeradas	a ɡ l o m e ˈɾ a d a s
+sicológicas	s i k o ˈl o x i k a s
+conversara	k o m b e ɾ ˈs a ɾ a
+apocopa	a p o ˈk o p a
+balleneras	b a ʝ e ˈn e ɾ a s
+queísmo	k e ˈi s m o
+fosforilaremos	f o s f o ɾ i l a ˈɾ e m o s
 elegantes	e l e ˈɡ a n t e s
-catán	k a ˈt a n
-autoalimentados	a u t o a l i m e n ˈt a d o s
-puerquita	p w e ɾ ˈk i t a
-optados	o b ˈt a d o s
-heroica	e ˈɾ o i k a
-limados	l i ˈm a d o s
-chocoano	t͡ʃ o k o ˈa n o
-palmear	p a l m e ˈa ɾ
-saturaste	s a t u ˈɾ a s t e
-extracapilares	e ɡ s t ɾ a k a p i ˈl a ɾ e s
-manú	m a ˈn u
-intemperante	i n t e m p e ˈɾ a n t e
-galés	ɡ a ˈl e s
-enfisematoso	e n f i s e m a ˈt o s o
-pulcros	ˈp u l k ɾ o s
-opositora	o p o s i ˈt o ɾ a
-cuchuchear	k u t͡ʃ u t͡ʃ e ˈa ɾ
-patetismo	p a t e ˈt i s m o
-barbarie	b a ɾ ˈb a ɾ j e
-envidioso	e m b i ˈd j o s o
-santa	ˈs a n t a
-adenohipófisis	a d e n o i ˈp o f i s i s
-estaque	e s ˈt a k e
-imaginara	i m a x i ˈn a ɾ a
-aglutinar	a ɡ l u t i ˈn a ɾ
-petidina	p e t i ˈd i n a
-trasmontados	t ɾ a s m o n ˈt a d o s
-criminóloga	k ɾ i m i ˈn o l o ɡ a
-flan	ˈf l a n
-Fuerteventura	f w e ɾ t e b e n ˈt u ɾ a
-peleados	p e l e ˈa d o s
-esprín	e s ˈp ɾ i n
-hermeneútica	e ɾ m e n e ˈu t i k a
-punibilidad	p u n i b i l i ˈd a d
-colicorto	k o l i ˈk o ɾ t o
-abastardé	a b a s t a ɾ ˈd e
-fichados	f i ˈt͡ʃ a d o s
-subactuar	s u b a ɡ ˈt w a ɾ
-apagamos	a p a ˈɡ a m o s
-capirote	k a p i ˈɾ o t e
-intradérmico	i n t ɾ a ˈd e ɾ m i k o
-farmacológico	f a ɾ m a k o ˈl o x i k o
-simplificareis	s i m p l i f i ˈk a ɾ e i s
-amillaráremos	a m i ʝ a ˈɾ a ɾ e m o s
-ornitólogo	o ɾ n i ˈt o l o ɡ o
-Bretaña	b ɾ e ˈt a ɲ a
-agorafóbico	a ɡ o ɾ a ˈf o b i k o
-sagitada	s a x i ˈt a d a
-ahorrativo	a o r a ˈt i b o
-blindados	b l i n ˈd a d o s
-policromas	p o l i ˈk ɾ o m a s
-embreada	e m b ɾ e ˈa d a
-almiar	a l ˈm j a ɾ
-enrabietados	e n r a b j e ˈt a d o s
-clic	ˈk l i k
-contestatario	k o n t e s t a ˈt a ɾ j o
-prever	p ɾ e ˈb e ɾ
-vivada	b i ˈb a d a
-bosar	b o ˈs a ɾ
-identificada	i d e n t i f i ˈk a d a
-gavión	ɡ a ˈb j o n
-recalificada	r e k a l i f i ˈk a d a
-servil	s e ɾ ˈb i l
-dialogadas	d j a l o ˈɡ a d a s
-debilidades	d e b i l i ˈd a d e s
-amputadas	a m p u ˈt a d a s
-carrero	k a ˈr e ɾ o
-lanchero	l a n ˈt͡ʃ e ɾ o
-indivisibilidad	i n d i b i s i b i l i ˈd a d
-culito	k u ˈl i t o
-indico	i n ˈd i k o
-efecto	e ˈf e ɡ t o
-tetradimensionales	t e t ɾ a d i m e n s j o ˈn a l e s
-pergeñado	p e ɾ x e ˈɲ a d o
-pretendida	p ɾ e t e n ˈd i d a
-detectados	d e t e ɡ ˈt a d o s
-rabanito	r a b a ˈn i t o
-banquetear	b a n k e t e ˈa ɾ
-Eulogia	e u ˈl o x j a
-reinterpretadas	r e i n t e ɾ p ɾ e ˈt a d a s
-residente	r e s i ˈd e n t e
-vestibulococlear	b e s t i b u l o k o k l e ˈa ɾ
-enferma	e n ˈf e ɾ m a
-confirmareis	k o n f i ɾ ˈm a ɾ e i s
-descocada	d e s k o ˈk a d a
-tratamos	t ɾ a ˈt a m o s
-aculados	a k u ˈl a d o s
-mayar	m a ˈʝ a ɾ
-conjuntadas	k o n x u n ˈt a d a s
-pinillos	p i ˈn i ʝ o s
-huí	u ˈi
-compurgar	k o m p u ɾ ˈɡ a ɾ
-conmutatividad	k o m m u t a t i b i ˈd a d
-masturbador	m a s t u ɾ b a ˈd o ɾ
-encuartelada	e n k w a ɾ t e ˈl a d a
-cantándoos	k a n ˈt a n d o o s
-hevea	e ˈb e a
-virareis	b i ˈɾ a ɾ e i s
-soplados	s o ˈp l a d o s
-administrareis	a d m i n i s ˈt ɾ a ɾ e i s
-tormientado	t o ɾ m j e n ˈt a d o
-andándola	a n ˈd a n d o l a
-putrefactas	p u t ɾ e ˈf a ɡ t a s
-buró	b u ˈɾ o
-año	ˈa ɲ o
-hackeará	x a k e a ˈɾ a
-padrino	p a ˈd ɾ i n o
-erradiquemos	e r a d i ˈk e m o s
-panarabista	p a n a ɾ a ˈb i s t a
-misionero	m i s j o ˈn e ɾ o
-estacados	e s t a ˈk a d o s
-argayar	a ɾ ɡ a ˈʝ a ɾ
-glorificares	ɡ l o ɾ i f i ˈk a ɾ e s
-cajón	k a ˈx o n
-amariconado	a m a ɾ i k o ˈn a d o
-personadas	p e ɾ s o ˈn a d a s
-fu	ˈf u
-indumentaria	i n d u m e n ˈt a ɾ j a
-columbradas	k o l u m ˈb ɾ a d a s
-chufado	t͡ʃ u ˈf a d o
-premeditar	p ɾ e m e d i ˈt a ɾ
-negativas	n e ɡ a ˈt i b a s
-rumorados	r u m o ˈɾ a d o s
-fisgoneo	f i s ɡ o ˈn e o
-partido	p a ɾ ˈt i d o
-m'ijo	ˈm i x o
-suplementado	s u p l e m e n ˈt a d o
-ansiada	a n ˈs j a d a
-masculina	m a s k u ˈl i n a
-cantarlos	k a n ˈt a ɾ l o s
-pesquisares	p e s k i ˈs a ɾ e s
-encasquillada	e n k a s k i ˈʝ a d a
-badalonesa	b a d a l o ˈn e s a
-cronométrico	k ɾ o n o ˈm e t ɾ i k o
-languor	l a n ˈɡ w o ɾ
-esculturales	e s k u l t u ˈɾ a l e s
-adquirible	a d k i ˈɾ i b l e
-Atlanta	a ˈt l a n t a
-sajón	s a ˈx o n
-aviará	a b j a ˈɾ a
-funcar	f u n ˈk a ɾ
-aperadora	a p e ɾ a ˈd o ɾ a
-soberbia	s o ˈb e ɾ b j a
-tintineo	t i n t i ˈn e o
-indexar	i n d e ɡ ˈs a ɾ
-grelina	ɡ ɾ e ˈl i n a
-atrayente	a t ɾ a ˈʝ e n t e
-incumbido	i n k u m ˈb i d o
-morfina	m o ɾ ˈf i n a
-edificar	e d i f i ˈk a ɾ
-encanijar	e n k a n i ˈx a ɾ
-deformar	d e f o ɾ ˈm a ɾ
-dimidiadas	d i m i ˈd j a d a s
-sensatas	s e n ˈs a t a s
-troquelar	t ɾ o k e ˈl a ɾ
-blusón	b l u ˈs o n
-amarradero	a m a r a ˈd e ɾ o
-acoplas	a ˈk o p l a s
-chaquetón	t͡ʃ a k e ˈt o n
-autómata	a u ˈt o m a t a
-vételo	ˈb e t e l o
-Palomar	p a l o ˈm a ɾ
-colegido	k o l e ˈx i d o
-amurallados	a m u ɾ a ˈʝ a d o s
-polimorfa	p o l i ˈm o ɾ f a
-redimidos	r e d i ˈm i d o s
-parduscas	p a ɾ ˈd u s k a s
-sugestionable	s u x e s t j o ˈn a b l e
-aventurares	a b e n t u ˈɾ a ɾ e s
-devastados	d e b a s ˈt a d o s
-oncohematológico	o n k o e m a t o ˈl o x i k o
-denotaríamos	d e n o t a ˈɾ i a m o s
-megaloblásticos	m e ɡ a l o ˈb l a s t i k o s
-esgrimir	e s ɡ ɾ i ˈm i ɾ
-psicopompo	s i k o ˈp o m p o
-alechugar	a l e t͡ʃ u ˈɡ a ɾ
-encriptadas	e n k ɾ i b ˈt a d a s
-reasentar	r e a s e n ˈt a ɾ
-arábigo	a ˈɾ a b i ɡ o
-revalidadas	r e b a l i ˈd a d a s
-vetustense	b e t u s ˈt e n s e
+aguará	a ɡ w a ˈɾ a
+olimpiada	o l i m ˈp j a d a
+becuadro	b e ˈk w a d ɾ o
+rédito	ˈr e d i t o
+tolina	t o ˈl i n a
+resoluto	r e s o ˈl u t o
+llamémosla	ʝ a ˈm e m o s l a
+compurgamos	k o m p u ɾ ˈɡ a m o s
+comuniques	k o m u ˈn i k e s
+profundamente	p ɾ o ˌf u n d a ˈm e n t e
+ameba	a ˈm e b a
+filmar	f i l ˈm a ɾ
+leías	l e ˈi a s
+inmunocomprometidos	i m m u n o k o m p ɾ o m e ˈt i d o s
+hablándome	a ˈb l a n d o m e
+atrofiará	a t ɾ o f j a ˈɾ a
+ultrarreligiosa	u l t ɾ a r e l i ˈx j o s a
 canela	k a ˈn e l a
-expectorados	e ɡ s p e ɡ t o ˈɾ a d o s
-tranqui	ˈt ɾ a n k i
-incruenta	i n ˈk ɾ w e n t a
-totopo	t o ˈt o p o
-Reye	ˈr e ʝ e
-chip	ˈt͡ʃ i p
-empinemos	e m p i ˈn e m o s
-arquitecto	a ɾ k i ˈt e ɡ t o
-aparatología	a p a ɾ a t o l o ˈx i a
-oyó	o ˈʝ o
+Piamonte	p j a ˈm o n t e
+veámoslos	b e ˈa m o s l o s
+pluripatológico	p l u ɾ i p a t o ˈl o x i k o
+marmota	m a ɾ ˈm o t a
+aventures	a b e n ˈt u ɾ e s
+salvaguardamos	s a l b a ɡ w a ɾ ˈd a m o s
+fibrinosos	f i b ɾ i ˈn o s o s
+colorada	k o l o ˈɾ a d a
+hierosolimitano	ʝ e ɾ o s o l i m i ˈt a n o
+acompañamiento	a k o m p a ɲ a ˈm j e n t o
+abstendríamos	a b s t e n ˈd ɾ i a m o s
+calda	ˈk a l d a
+trilineal	t ɾ i l i n e ˈa l
+daríamos	d a ˈɾ i a m o s
+et	ˈe t
+godo	ˈɡ o d o
+abajadlo	a b a ˈx a d l o
+remunerativo	r e m u n e ɾ a ˈt i b o
+emperrar	e m p e ˈr a ɾ
+hayámoos	a ˈʝ a m o o s
+atas	ˈa t a s
+desencadenador	d e s e n k a d e n a ˈd o ɾ
+acuitados	a k w i ˈt a d o s
+espesas	e s ˈp e s a s
+tírenla	ˈt i ɾ e n l a
+estacados	e s t a ˈk a d o s
+acordándose	a k o ɾ ˈd a n d o s e
+crac	ˈk ɾ a k
+postulas	p o s ˈt u l a s
+protamina	p ɾ o t a ˈm i n a
+blocadas	b l o ˈk a d a s
+acuminadas	a k u m i ˈn a d a s
+Amarillo	a m a ˈɾ i ʝ o
+rondeña	r o n ˈd e ɲ a
+espachurrada	e s p a t͡ʃ u ˈr a d a
+Mauro	ˈm a u ɾ o
+polenta	p o ˈl e n t a
+amargosa	a m a ɾ ˈɡ o s a
+amistado	a m i s ˈt a d o
+techados	t e ˈt͡ʃ a d o s
+caxcana	k a ɡ s ˈk a n a
+ratificamos	r a t i f i ˈk a m o s
+secuestrador	s e k w e s t ɾ a ˈd o ɾ
+petidina	p e t i ˈd i n a
+trigarante	t ɾ i ɡ a ˈɾ a n t e
+trasmontados	t ɾ a s m o n ˈt a d o s
+putadita	p u t a ˈd i t a
+vetaros	b e ˈt a ɾ o s
+gerontóloga	x e ɾ o n ˈt o l o ɡ a
+diptongada	d i b t o n ˈɡ a d a
+divisadas	d i b i ˈs a d a s
+andaban	a n ˈd a b a n
+bandejita	b a n d e ˈx i t a
+subveguería	s u b b e ɡ e ˈɾ i a
+espinodal	e s p i n o ˈd a l
+sidonia	s i ˈd o n j a
+bayuca	b a ˈʝ u k a
+testificar	t e s t i f i ˈk a ɾ
+horroroso	o r o ˈɾ o s o
+enredados	e n r e ˈd a d o s
+mansega	m a n ˈs e ɡ a
+parlamentarios	p a ɾ l a m e n ˈt a ɾ j o s
+mandamiento	m a n d a ˈm j e n t o
+bastoneadas	b a s t o n e ˈa d a s
+puritanas	p u ɾ i ˈt a n a s
+intemperante	i n t e m p e ˈɾ a n t e
+lucaya	l u ˈk a ʝ a
+abadernásemos	a b a d e ɾ ˈn a s e m o s
+desternilladas	d e s t e ɾ n i ˈʝ a d a s
+arbustiva	a ɾ b u s ˈt i b a
+enlutar	e n l u ˈt a ɾ
+saquear	s a k e ˈa ɾ
+adenohipófisis	a d e n o i ˈp o f i s i s
+ningunos	n i n ˈɡ u n o s
+prearmar	p ɾ e a ɾ ˈm a ɾ
+victimado	b i ɡ t i ˈm a d o
+listillo	l i s ˈt i ʝ o
+jadeados	x a d e ˈa d o s
+estada	e s ˈt a d a
+amarrete	a m a ˈr e t e
+cómanle	ˈk o m a n l e
+joderla	x o ˈd e ɾ l a
+apanar	a p a ˈn a ɾ
+sensatas	s e n ˈs a t a s
+deteriorante	d e t e ɾ j o ˈɾ a n t e
+rehén	r e ˈe n
+cámping	ˈk a m p i n
+puros	ˈp u ɾ o s
+servil	s e ɾ ˈb i l
+semiconductor	s e m i k o n d u ɡ ˈt o ɾ
+discreteadas	d i s k ɾ e t e ˈa d a s
+Cantórbery	k a n ˈt o ɾ b e ɾ i
+restados	r e s ˈt a d o s
+corsé	k o ɾ ˈs e
+vetándoles	b e ˈt a n d o l e s
+intrusadas	i n t ɾ u ˈs a d a s
+cadaverosa	k a d a b e ˈɾ o s a
+lubrifico	l u b ɾ i ˈf i k o
+leyendo	l e ˈʝ e n d o
+autogestionado	a u t o x e s t j o ˈn a d o
+plebeyo	p l e ˈb e ʝ o
+argumentar	a ɾ ɡ u m e n ˈt a ɾ
+punalúa	p u n a ˈl u a
+incluso	i n ˈk l u s o
+frambueso	f ɾ a m ˈb w e s o
+leoninas	l e o ˈn i n a s
+definitivas	d e f i n i ˈt i b a s
+cafeico	k a ˈf e i k o
+oíble	o ˈi b l e
+piemontés	p j e m o n ˈt e s
+polbero	p o l ˈb e ɾ o
+compendiado	k o m p e n ˈd j a d o
+desarbolar	d e s a ɾ b o ˈl a ɾ
+apetitosa	a p e t i ˈt o s a
+sinostosis	s i n o s ˈt o s i s
+arrullo	a ˈr u ʝ o
+apagamos	a p a ˈɡ a m o s
+cómanme	ˈk o m a m m e
+vestibulococlear	b e s t i b u l o k o k l e ˈa ɾ
+africada	a f ɾ i ˈk a d a
+intransigentes	i n t ɾ a n s i ˈx e n t e s
+vimos	ˈb i m o s
+morfea	m o ɾ ˈf e a
+fabrica	f a ˈb ɾ i k a
+calumniosa	k a l u m ˈn j o s a
+anaplásico	a n a ˈp l a s i k o
+apocalipsis	a p o k a ˈl i b s i s
+enastado	e n a s ˈt a d o
+enrabietados	e n r a b j e ˈt a d o s
+huno	ˈu n o
+precapitalista	p ɾ e k a p i t a ˈl i s t a
+retornado	r e t o ɾ ˈn a d o
+huí	u ˈi
+estaban	e s ˈt a b a n
+reológico	r e o ˈl o x i k o
+reproductivas	r e p ɾ o d u ɡ ˈt i b a s
+cascajo	k a s ˈk a x o
+sótano	ˈs o t a n o
+Mercurio	m e ɾ ˈk u ɾ j o
+alejada	a l e ˈx a d a
+anteanoche	a n t e a ˈn o t͡ʃ e
+bruñido	b ɾ u ˈɲ i d o
+vetaríamos	b e t a ˈɾ i a m o s
+deputaréis	d e p u t a ˈɾ e i s
+faremos	f a ˈɾ e m o s
+profusos	p ɾ o ˈf u s o s
+ondulado	o n d u ˈl a d o
+anadeadas	a n a d e ˈa d a s
+perennifolio	p e ɾ e n n i ˈf o l j o
+densificadas	d e n s i f i ˈk a d a s
+alteo	a l ˈt e o
+mericarpio	m e ɾ i ˈk a ɾ p j o
+convergidos	k o m b e ɾ ˈx i d o s
+esculturales	e s k u l t u ˈɾ a l e s
+morfina	m o ɾ ˈf i n a
+portuenses	p o ɾ ˈt w e n s e s
+recostados	r e k o s ˈt a d o s
+adoptando	a d o b ˈt a n d o
+ampolla	a m ˈp o ʝ a
+malditas	m a l ˈd i t a s
+Angulo	a n ˈɡ u l o
+juglaresco	x u ɡ l a ˈɾ e s k o
+chulunca	t͡ʃ u ˈl u n k a
+reproductiva	r e p ɾ o d u ɡ ˈt i b a
+curvare	k u ɾ ˈb a ɾ e
+Ledesma	l e ˈd e s m a
+Marroquín	m a r o ˈk i n
+burkinesa	b u ɾ k i ˈn e s a
+inequívoca	i n e ˈk i b o k a
+precavidas	p ɾ e k a ˈb i d a s
+recolectadas	r e k o l e ɡ ˈt a d a s
+sufragada	s u f ɾ a ˈɡ a d a
+traficados	t ɾ a f i ˈk a d o s
 intuir	i n ˈt w i ɾ
-trancado	t ɾ a n ˈk a d o
-Tartaristán	t a ɾ t a ɾ i s ˈt a n
-desmorir	d e s m o ˈɾ i ɾ
-masnavi	m a s ˈn a b i
-complique	k o m ˈp l i k e
-fosforilaríamos	f o s f o ɾ i l a ˈɾ i a m o s
-náuticas	ˈn a u t i k a s
-pitito	p i ˈt i t o
-prototipo	p ɾ o t o ˈt i p o
+asuán	a ˈs w a n
+cantarlas	k a n ˈt a ɾ l a s
+Ramona	r a ˈm o n a
+laboratorial	l a b o ɾ a t o ˈɾ j a l
+testadas	t e s ˈt a d a s
+moraríamos	m o ɾ a ˈɾ i a m o s
+vial	ˈb j a l
+ovil	o ˈb i l
+reputar	r e p u ˈt a ɾ
+contraatacados	k o n t ɾ a a t a ˈk a d o s
+codesarrollado	k o d e s a r o ˈʝ a d o
+heparina	e p a ˈɾ i n a
+artesano	a ɾ t e ˈs a n o
+subscriptos	s u b s ˈk ɾ i b t o s
+forro	ˈf o r o
+fructífero	f ɾ u ɡ ˈt i f e ɾ o
+escapado	e s k a ˈp a d o
+columnela	k o l u m ˈn e l a
+enrocas	e n ˈr o k a s
+sujetar	s u x e ˈt a ɾ
 bagrátida	b a ˈɡ ɾ a t i d a
-hijes	ˈi x e s
+coliderar	k o l i d e ˈɾ a ɾ
+sexar	s e ɡ ˈs a ɾ
+defino	d e ˈf i n o
+contestar	k o n t e s ˈt a ɾ
+transfectar	t ɾ a n s f e ɡ ˈt a ɾ
+deputemos	d e p u ˈt e m o s
+entesitis	e n t e ˈs i t i s
+expiado	e ɡ s ˈp j a d o
+veneranda	b e n e ˈɾ a n d a
+disyuntor	d i s ʝ u n ˈt o ɾ
+ectópica	e ɡ ˈt o p i k a
+funcar	f u n ˈk a ɾ
+reputados	r e p u ˈt a d o s
+butiá	b u ˈt j a
+incolora	i n k o ˈl o ɾ a
+florido	f l o ˈɾ i d o
+gentilhombre	x e n t i ˈl o m b ɾ e
+chupamiel	ˌt͡ʃ u p a ˈm j e l
+mostraríamos	m o s t ɾ a ˈɾ i a m o s
+lihueñe	l i ˈw e ɲ e
+catinona	k a t i ˈn o n a
+envestir	e m b e s ˈt i ɾ
+pocotón	p o k o ˈt o n
+autotrófico	a u t o ˈt ɾ o f i k o
+abastos	a ˈb a s t o s
+epigástrico	e p i ˈɡ a s t ɾ i k o
+piquigualdo	p i k i ˈɡ w a l d o
+Vichada	b i ˈt͡ʃ a d a
+desrabotada	d e s r a b o ˈt a d a
+acalorarse	a k a l o ˈɾ a ɾ s e
+almodovarianos	a l m o d o b a ˈɾ j a n o s
+saturaste	s a t u ˈɾ a s t e
+latué	l a ˈt w e
+escudriñamiento	e s k u d ɾ i ɲ a ˈm j e n t o
+encuartelada	e n k w a ɾ t e ˈl a d a
+ruinado	r w i ˈn a d o
+predestinada	p ɾ e d e s t i ˈn a d a
+espeso	e s ˈp e s o
+rubéola	r u ˈb e o l a
+conectaste	k o n e ɡ ˈt a s t e
+unicameral	u n i k a m e ˈɾ a l
+tándems	ˈt a n d e m s
+mohínos	m o ˈi n o s
+logísticas	l o ˈx i s t i k a s
+quemador	k e m a ˈd o ɾ
+calabriadas	k a l a ˈb ɾ j a d a s
+optados	o b ˈt a d o s
+bioéticas	b i o ˈe t i k a s
+yiras	ˈʝ i ɾ a s
+anchura	a n ˈt͡ʃ u ɾ a
+criaturita	k ɾ j a t u ˈɾ i t a
+vapeadas	b a p e ˈa d a s
+rácano	ˈr a k a n o
+alojativo	a l o x a ˈt i b o
+quíntuplos	ˈk i n t u p l o s
+Cartago	k a ɾ ˈt a ɡ o
+endotérmicos	e n d o ˈt e ɾ m i k o s
+trasquilado	t ɾ a s k i ˈl a d o
+estuvieses	e s t u ˈb j e s e s
+clamadas	k l a ˈm a d a s
+microbiana	m i k ɾ o ˈb j a n a
+traído	t ɾ a ˈi d o
+manú	m a ˈn u
+escarbador	e s k a ɾ b a ˈd o ɾ
+cacheteada	k a t͡ʃ e t e ˈa d a
+alardeados	a l a ɾ d e ˈa d o s
+según	s e ˈɡ u n
+indico	i n ˈd i k o
+data	ˈd a t a
+esponjoso	e s p o n ˈx o s o
+minamos	m i ˈn a m o s
+desdeñar	d e s d e ˈɲ a ɾ
+pluripartidaria	p l u ɾ i p a ɾ t i ˈd a ɾ j a
+anticarro	a n t i ˈk a r o
+abrasaremos	a b ɾ a s a ˈɾ e m o s
+sobrevoladas	s o b ɾ e b o ˈl a d a s
+triángulos	ˈt ɾ j a n ɡ u l o s
+puntilla	p u n ˈt i ʝ a
+ligoteo	l i ɡ o ˈt e o
+sacramento	s a k ɾ a ˈm e n t o
