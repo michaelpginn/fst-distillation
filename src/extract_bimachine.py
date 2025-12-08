@@ -9,6 +9,7 @@ import torch
 from pyfoma.fst import FST
 from tqdm import tqdm
 
+from src.data.aligned.alignment_prediction.domain_cover import ngram_bfs
 from src.data.aligned.example import (
     ALIGNMENT_SYMBOL,
     AlignedStringExample,
@@ -264,28 +265,93 @@ def _collect_activations(
             all_transition_labels["backward_out"].append(
                 ["<eos>"] + list(reversed(out_labels))
             )
-            # transition_labels = [
-            #     f"({i},{o})" if i != o else i
-            #     for i, o in zip(transition_labels, outputs)
-            # ]
-            # all_transition_labels.append(transition_labels)
 
         # 1B. Also collect inputs for the whole domain
-        # if hyperparams.full_domain and task != "classification":
-        #     if hyperparams.full_domain_mode == "sample":
-        #         new_activations, new_labels = sample_full_domain(
-        #             paths, model, tokenizer, task
-        #         )
-        #     elif hyperparams.full_domain_mode == "search":
-        #         new_activations, new_labels = search_full_domain(
-        #             hyperparams, aligned_train_examples, model, tokenizer, task
-        #         )
-        #     else:
-        #         raise ValueError()
-        #     activations.extend(new_activations)
-        #     all_transition_labels.extend(new_labels)
+
+        if hyperparams.full_domain:
+            if hyperparams.full_domain_mode == "sample":
+                # new_activations, new_labels = sample_full_domain(
+                #     paths, model, tokenizer, task
+                # )
+                raise NotImplementedError()
+            elif hyperparams.full_domain_mode == "search":
+                new_activations, new_labels = search_full_domain(
+                    hyperparams, aligned_train_examples, model, tokenizer
+                )
+            else:
+                raise ValueError()
+            for key in activations:
+                activations[key].extend(new_activations[key])
+            for key in all_transition_labels:
+                all_transition_labels[key].extend(new_labels[key])
 
     return {k: torch.concat(a) for k, a in activations.items()}, all_transition_labels
+
+
+def search_full_domain(
+    hyperparams: ExtractionHyperparameters,
+    aligned_train_examples: list[AlignedStringExample],
+    model: BiRNN,
+    tokenizer: Tokenizer,
+):
+    activations: dict[str, list[torch.Tensor]] = {
+        "forward": [],
+        "backward": [],
+    }
+    all_transition_labels: dict[str, list[list[str]]] = {
+        "forward_in": [],
+        "forward_out": [],
+        "backward_in": [],
+        "backward_out": [],
+    }
+
+    # BFS through state space
+    all_inputs = ngram_bfs(
+        aligned_train_examples, n=hyperparams.full_domain_search_n, max_length=8
+    )
+    assert tokenizer.token_to_id
+    for input_string in tqdm(
+        all_inputs, desc="Computing hidden states for full domain"
+    ):
+        token_ids = [tokenizer.token_to_id[t] for t in input_string]
+        token_ids = [
+            tokenizer.bos_token_id,
+            tokenizer.sep_token_id,
+            *token_ids,
+            tokenizer.sink_token_id,
+            tokenizer.eos_token_id,
+        ]
+        input_ids = torch.tensor([token_ids], device=device)
+        next_input_ids = torch.tensor([token_ids[1:-1]], device=device)
+        preds, forward_states, backward_states = model.forward(
+            input_ids,
+            torch.tensor([len(token_ids)]),  # type:ignore
+            next_input_ids,
+        )
+        next_output_ids = preds.squeeze(0).argmax(-1)
+        forward_states = forward_states.squeeze(0)[:-1].cpu().detach()
+        backward_states = backward_states.squeeze(0)[:-1].cpu().detach()
+        activations["forward"].append(forward_states)
+        activations["backward"].append(backward_states)
+        in_labels: list[str] = model.tokenizer.decode(
+            next_input_ids[0].tolist(),  # type:ignore
+            skip_special_tokens=False,
+            return_as="list",
+        )
+        out_labels: list[str] = model.tokenizer.decode(
+            next_output_ids.tolist(),  # type:ignore
+            skip_special_tokens=False,
+            return_as="list",
+        )
+        all_transition_labels["forward_in"].append(["<bos>"] + in_labels)
+        all_transition_labels["forward_out"].append(["<bos>"] + out_labels)
+        all_transition_labels["backward_in"].append(
+            ["<eos>"] + list(reversed(in_labels))
+        )
+        all_transition_labels["backward_out"].append(
+            ["<eos>"] + list(reversed(out_labels))
+        )
+    return activations, all_transition_labels
 
 
 if __name__ == "__main__":

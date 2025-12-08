@@ -46,7 +46,7 @@ def train_alignment_predictor(
     if wandb_run is None:
         wandb_run = wandb.init(
             entity="lecs-general",
-            project="fst-distillation.alignment_prediction",
+            project="fst-distillation.alignment_prediction.v2",
             config={**hyperparams},
         )
     else:

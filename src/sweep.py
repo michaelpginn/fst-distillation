@@ -52,11 +52,11 @@ def main():
     train_size = len(train_examples)
     max_batch_size = train_size // 5
     if train_size > 5000:
-        num_neural_runs = 75
-        num_extract_runs = 100
+        num_neural_runs = 25
+        num_extract_runs = 50
     else:
-        num_neural_runs = 100
-        num_extract_runs = 500
+        num_neural_runs = 50
+        num_extract_runs = 300
 
     # =========================================
     # 2. ALIGNMENT PREDICTOR TRAINING
@@ -70,7 +70,7 @@ def main():
             def single_run_train_alignment():
                 with wandb.init(
                     entity="lecs-general",
-                    project="fst-distillation.alignment_prediction",
+                    project="fst-distillation.alignment_prediction.v2",
                     dir=WANDB_DIRECTORY,
                 ) as run:
                     run.config.update({"slurm_job_id": slurm_job_id})
@@ -114,13 +114,13 @@ def main():
             sweep_id = wandb.sweep(
                 sweep=sweep_configuration,
                 entity="lecs-general",
-                project="fst-distillation.alignment_prediction",
+                project="fst-distillation.alignment_prediction.v2",
             )
             wandb.agent(
                 sweep_id, function=single_run_train_alignment, count=num_neural_runs
             )
             sweep = wandb.Api().sweep(
-                f"lecs-general/fst-distillation.alignment_prediction/sweeps/{sweep_id}"
+                f"lecs-general/fst-distillation.alignment_prediction.v2/sweeps/{sweep_id}"
             )
             best_run = sweep.best_run()
             predict_full_domain(paths, best_run.name, best_run.config["batch_size"])
@@ -131,7 +131,7 @@ def main():
             for sweep in (
                 wandb.Api()
                 .project(
-                    name="fst-distillation.alignment_prediction",
+                    name="fst-distillation.alignment_prediction.v2",
                     entity="lecs-general",
                 )
                 .sweeps()
@@ -154,7 +154,7 @@ def main():
     # =========================================
     # 3. RNN TRAINING
     # =========================================
-    rnn_project_name = f"fst-distillation.rnn_{args.objective}"
+    rnn_project_name = f"fst-distillation.rnn_{args.objective}.v2"
 
     # Load the best run
     best_run = None
@@ -273,13 +273,13 @@ def main():
     fst_sweep_id = wandb.sweep(
         sweep=sweep_configuration,
         entity="lecs-general",
-        project="fst-distillation.extraction",
+        project="fst-distillation.extraction.v2",
     )
 
     def _run_extraction():
         with wandb.init(
             entity="lecs-general",
-            project="fst-distillation.extraction",
+            project="fst-distillation.extraction.v2",
             config={
                 "rnn": {
                     "eval.loss": best_run_loss,
@@ -316,7 +316,7 @@ def main():
 
     wandb.agent(fst_sweep_id, function=_run_extraction, count=num_extract_runs)
     sweep = wandb.Api().sweep(
-        f"lecs-general/fst-distillation.extraction/sweeps/{fst_sweep_id}"
+        f"lecs-general/fst-distillation.extraction.v2/sweeps/{fst_sweep_id}"
     )
     best_run = sweep.best_run()
     print(f"Best run: {best_run.url}")

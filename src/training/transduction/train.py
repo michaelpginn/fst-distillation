@@ -26,7 +26,9 @@ def compute_loss(model: RNNModel | BiRNN, batch, spectral_norm_weight: float | N
     )
     if isinstance(out, tuple):
         out = out[0]
-    loss = torch.nn.functional.cross_entropy(out.permute(0, 2, 1), next_output_ids)
+    loss = torch.nn.functional.cross_entropy(
+        out.permute(0, 2, 1), next_output_ids, ignore_index=model.tokenizer.pad_token_id
+    )
 
     if spectral_norm_weight is not None:
         spec_loss = 0.0

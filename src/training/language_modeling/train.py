@@ -24,7 +24,9 @@ def compute_loss(model: Module, batch, spectral_norm_weight: float | None):
         input_ids=input_ids,
         seq_lengths=seq_lengths,
     )
-    loss = torch.nn.functional.cross_entropy(out.permute(0, 2, 1), labels)
+    loss = torch.nn.functional.cross_entropy(
+        out.permute(0, 2, 1), labels, ignore_index=model.tokenizer.pad_token_id
+    )
 
     if spectral_norm_weight is not None:
         spec_loss = 0.0

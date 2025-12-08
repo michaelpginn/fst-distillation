@@ -28,7 +28,9 @@ results.loc["OSTIA"] = ostia_results
 results.loc["OSTIA-DD"] = ostia_dd_results
 
 # Ours
-sweeps = api.project(name="fst-distillation.extraction", entity="lecs-general").sweeps()
+sweeps = api.project(
+    name="fst-distillation.extraction.v2", entity="lecs-general"
+).sweeps()
 our_results = {}
 for sweep in sweeps:
     best_run = sweep.best_run()

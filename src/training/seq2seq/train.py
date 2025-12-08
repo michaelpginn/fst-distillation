@@ -48,7 +48,9 @@ def train(
     torch.manual_seed(seed)
     torch.cuda.manual_seed(seed)
 
-    loss_fn = torch.nn.CrossEntropyLoss(label_smoothing=0.1)
+    loss_fn = torch.nn.CrossEntropyLoss(
+        label_smoothing=0.1, ignore_index=model.tokenizer.pad_token_id
+    )
     optimizer = AdamW(model.parameters(), lr=learning_rate, weight_decay=weight_decay)
     total_steps = epochs * len(train_dataloader)
     if warmup_steps == "auto":
