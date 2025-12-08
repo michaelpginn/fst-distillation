@@ -24,7 +24,9 @@ os.environ["WANDB_DIR"] = os.path.abspath(WANDB_DIRECTORY)
 def main():
     parser = create_arg_parser()
     parser.add_argument(
-        "--objective", choices=["lm", "classification", "transduction"], required=True
+        "--objective",
+        choices=["lm", "classification", "transduction", "bi_trans"],
+        required=True,
     )
     parser.add_argument("--override-alignment", action="store_true")
     parser.add_argument(
