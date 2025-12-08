@@ -44,9 +44,9 @@ def run_ostia(paths: Paths, order: Literal["lex", "dd"]):
     fst = ostia(samples, order, use_cython=True)
     fst = FST.re(".* '<sink>':'#'") @ fst
 
-    train_metrics = evaluate_all(fst, train_examples, output_raw_string=True, log=True)
+    train_metrics = evaluate_all(fst, train_examples, output_raw_string=True)
     logger.info(f"Train metrics: {pprint.pformat(train_metrics)}")
-    eval_metrics = evaluate_all(fst, eval_examples, output_raw_string=True)
+    eval_metrics = evaluate_all(fst, eval_examples, output_raw_string=True, log=True)
     logger.info(f"Eval metrics: {pprint.pformat(eval_metrics)}")
     test_metrics = evaluate_all(fst, test_examples, output_raw_string=True)
     logger.info(f"Test metrics: {pprint.pformat(test_metrics)}")

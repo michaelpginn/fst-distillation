@@ -11,6 +11,7 @@ from typing import Literal
 import torch
 
 import wandb
+from src.modeling.birnn import BiRNN
 
 from .data.aligned.example import load_examples_from_file
 from .modeling import RNNModel
@@ -21,7 +22,7 @@ logger = getLogger(__name__)
 
 def train_rnn(
     paths: Paths,
-    objective: Literal["classification", "lm", "transduction"],
+    objective: Literal["classification", "lm", "transduction", "bi_trans"],
     batch_size: int,
     epochs: int,
     d_model: int,
@@ -118,7 +119,7 @@ def train_rnn(
             examples=eval_examples,
             tokenizer=tokenizer,
         )
-    elif objective == "transduction":
+    elif objective == "transduction" or objective == "bi_trans":
         from src.data.aligned.transduction.dataloader import create_dataloader
         from src.data.aligned.transduction.dataset import (
             AlignedTransductionDataset,
@@ -128,25 +129,36 @@ def train_rnn(
         train_dataset = AlignedTransductionDataset(
             examples=train_examples,
             tokenizer=None,
+            is_bidirect=objective == "bi_trans",
         )
         tokenizer = train_dataset.tokenizer
         eval_dataset = AlignedTransductionDataset(
             examples=eval_examples,
             tokenizer=tokenizer,
+            is_bidirect=objective == "bi_trans",
         )
 
     train_dataloader = create_dataloader(train_dataset, batch_size=batch_size)  # type:ignore
     eval_dataloader = create_dataloader(eval_dataset, batch_size=batch_size)  # type:ignore
-    model = RNNModel(
-        tokenizer=tokenizer,
-        output_head=objective,
-        d_model=d_model,
-        num_layers=num_layers,
-        dropout=dropout,
-        activation=activation,
-    )
+    if objective == "bi_trans":
+        model = BiRNN(
+            tokenizer=tokenizer,
+            d_model=d_model,
+            num_layers=num_layers,
+            dropout=dropout,
+            activation=activation,
+        )
+    else:
+        model = RNNModel(
+            tokenizer=tokenizer,
+            output_head=objective,
+            d_model=d_model,
+            num_layers=num_layers,
+            dropout=dropout,
+            activation=activation,
+        )
     last_eval_loss: float = train(
-        model=model,
+        model=model,  # type:ignore
         train_dataloader=train_dataloader,
         eval_dataloader=eval_dataloader,
         tokenizer=tokenizer,
@@ -174,7 +186,9 @@ def train_rnn(
 if __name__ == "__main__":
     parser = create_arg_parser()
     parser.add_argument(
-        "--objective", choices=["classification", "lm", "transduction"], required=True
+        "--objective",
+        choices=["classification", "lm", "transduction", "bi_trans"],
+        required=True,
     )
     parser.add_argument("--batch-size", default=2048)
     parser.add_argument("--epochs", default=200)

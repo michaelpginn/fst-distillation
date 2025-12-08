@@ -28,7 +28,9 @@ def evaluate_all(
     for idx, example in tqdm(enumerate(examples), "Evaluating"):
         input_string = ["<sep>"] + tokenize(example.input_string) + ["<sink>"]
         assert example.output_string is not None
-        correct_output = ["<sep>"] + tokenize(example.output_string) + ["<sink>"]
+        correct_output = tokenize(example.output_string)
+        if not output_raw_string:
+            correct_output = ["<sep>"] + correct_output + ["<sink>"]
         if example.features is not None:
             features = [f"[{f}]" for f in example.features]
             input_string = features + input_string

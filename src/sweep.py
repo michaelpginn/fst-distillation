@@ -27,6 +27,11 @@ def main():
         "--objective", choices=["lm", "classification", "transduction"], required=True
     )
     parser.add_argument("--override-alignment", action="store_true")
+    parser.add_argument(
+        "--mode",
+        choices=["sample", "search"],
+        help="If sample, will train an alignment predictor to sample from the domain. If search, will use n-grams with BFS to collect activations",
+    )
     args = parser.parse_args()
     paths = create_paths_from_args(args)
     slurm_job_id = os.environ.get("SLURM_JOB_ID")
@@ -56,92 +61,95 @@ def main():
     # =========================================
     # 2. ALIGNMENT PREDICTOR TRAINING
     # =========================================
-    if args.override_alignment or not paths["full_domain_aligned"].exists():
-        logger.info("Running alignment predictor sweep")
+    if args.mode == "search":
+        alignment_pred_loss = None
+    else:
+        if args.override_alignment or not paths["full_domain_aligned"].exists():
+            logger.info("Running alignment predictor sweep")
 
-        def single_run_train_alignment():
-            with wandb.init(
+            def single_run_train_alignment():
+                with wandb.init(
+                    entity="lecs-general",
+                    project="fst-distillation.alignment_prediction",
+                    dir=WANDB_DIRECTORY,
+                ) as run:
+                    run.config.update({"slurm_job_id": slurm_job_id})
+                    logger.info(f"Training with params: {pformat(run.config)}")
+                    train_alignment_predictor(
+                        paths,
+                        run.config["batch_size"],
+                        epochs=run.config["epochs"],
+                        learning_rate=run.config["learning_rate"],
+                        weight_decay=run.config["weight_decay"],
+                        d_model=run.config["d_model"],
+                        num_layers=run.config["num_layers"],
+                        num_heads=2,
+                        dropout=run.config["dropout"],
+                        wandb_run=run,
+                    )
+
+            sweep_configuration = {
+                "name": paths["identifier"],
+                "method": "bayes",
+                "metric": {"goal": "minimize", "name": "validation.loss"},
+                "parameters": {
+                    "learning_rate": {"values": [2e-4, 1e-3, 2e-3]},
+                    "weight_decay": {"values": [0.1, 0.2, 0.3]},
+                    "d_model": {"values": [16, 32, 64]},
+                    "num_layers": {"values": [2, 3, 4]},
+                    "dropout": {"values": [0.1, 0.2, 0.3]},
+                    "batch_size": {
+                        "values": [
+                            b for b in [2, 4, 8, 16, 32, 64, 96] if b <= max_batch_size
+                        ][-3:]
+                    },
+                    "epochs": {"values": [200, 400, 600, 800]},
+                },
+                "early_terminate": {
+                    "type": "hyperband",
+                    "min_iter": 100,  # minimum epochs before possible pruning
+                    "max_iter": 800,  # maximum epochs (full resource)
+                },
+            }
+            sweep_id = wandb.sweep(
+                sweep=sweep_configuration,
                 entity="lecs-general",
                 project="fst-distillation.alignment_prediction",
-                dir=WANDB_DIRECTORY,
-            ) as run:
-                run.config.update({"slurm_job_id": slurm_job_id})
-                logger.info(f"Training with params: {pformat(run.config)}")
-                train_alignment_predictor(
-                    paths,
-                    run.config["batch_size"],
-                    epochs=run.config["epochs"],
-                    learning_rate=run.config["learning_rate"],
-                    weight_decay=run.config["weight_decay"],
-                    d_model=run.config["d_model"],
-                    num_layers=run.config["num_layers"],
-                    num_heads=2,
-                    dropout=run.config["dropout"],
-                    wandb_run=run,
-                )
-
-        sweep_configuration = {
-            "name": paths["identifier"],
-            "method": "bayes",
-            "metric": {"goal": "minimize", "name": "validation.loss"},
-            "parameters": {
-                "learning_rate": {"values": [2e-4, 1e-3, 2e-3]},
-                "weight_decay": {"values": [0.1, 0.2, 0.3]},
-                "d_model": {"values": [16, 32, 64]},
-                "num_layers": {"values": [2, 3, 4]},
-                "dropout": {"values": [0.1, 0.2, 0.3]},
-                "batch_size": {
-                    "values": [
-                        b for b in [2, 4, 8, 16, 32, 64, 96] if b <= max_batch_size
-                    ][-3:]
-                },
-                "epochs": {"values": [200, 400, 600, 800]},
-            },
-            "early_terminate": {
-                "type": "hyperband",
-                "min_iter": 100,  # minimum epochs before possible pruning
-                "max_iter": 800,  # maximum epochs (full resource)
-            },
-        }
-        sweep_id = wandb.sweep(
-            sweep=sweep_configuration,
-            entity="lecs-general",
-            project="fst-distillation.alignment_prediction",
-        )
-        wandb.agent(
-            sweep_id, function=single_run_train_alignment, count=num_neural_runs
-        )
-        sweep = wandb.Api().sweep(
-            f"lecs-general/fst-distillation.alignment_prediction/sweeps/{sweep_id}"
-        )
-        best_run = sweep.best_run()
-        predict_full_domain(paths, best_run.name, best_run.config["batch_size"])
-
-    else:
-        # Load the best run
-        best_run = None
-        for sweep in (
-            wandb.Api()
-            .project(
-                name="fst-distillation.alignment_prediction",
-                entity="lecs-general",
             )
-            .sweeps()
-        ):
-            if sweep.name == paths["identifier"]:
-                logger.info(
-                    f"Found existing alignment predictor sweep {paths['identifier']}"
-                )
-                best_run = sweep.best_run()
-                break
+            wandb.agent(
+                sweep_id, function=single_run_train_alignment, count=num_neural_runs
+            )
+            sweep = wandb.Api().sweep(
+                f"lecs-general/fst-distillation.alignment_prediction/sweeps/{sweep_id}"
+            )
+            best_run = sweep.best_run()
+            predict_full_domain(paths, best_run.name, best_run.config["batch_size"])
 
-    assert best_run is not None
-    if isinstance(best_run.summary_metrics, str):
-        alignment_pred_loss = ast.literal_eval(best_run.summary_metrics)["validation"][
-            "loss"
-        ]
-    else:
-        alignment_pred_loss = best_run.summary_metrics["validation"]["loss"]
+        else:
+            # Load the best run
+            best_run = None
+            for sweep in (
+                wandb.Api()
+                .project(
+                    name="fst-distillation.alignment_prediction",
+                    entity="lecs-general",
+                )
+                .sweeps()
+            ):
+                if sweep.name == paths["identifier"]:
+                    logger.info(
+                        f"Found existing alignment predictor sweep {paths['identifier']}"
+                    )
+                    best_run = sweep.best_run()
+                    break
+
+        assert best_run is not None
+        if isinstance(best_run.summary_metrics, str):
+            alignment_pred_loss = ast.literal_eval(best_run.summary_metrics)[
+                "validation"
+            ]["loss"]
+        else:
+            alignment_pred_loss = best_run.summary_metrics["validation"]["loss"]
 
     # =========================================
     # 3. RNN TRAINING
@@ -242,6 +250,8 @@ def main():
             clustering_method="kmeans",
             kmeans_num_clusters=1,
             n_components=None,
+            full_domain_mode=args.mode,
+            full_domain_search_n=2,
         ),
         paths,
     )
@@ -257,6 +267,7 @@ def main():
                 "values": [None, 2, 3, 4, 5, 10, 15, 20, 25, 30, 40, 50]
             },
             "kmeans_num_clusters": {"min": 50, "max": max_clusters},
+            **({"full_domain_search_n": [2, 3, 4]} if args.mode == "search" else {}),
         },
     }
     fst_sweep_id = wandb.sweep(
@@ -290,11 +301,15 @@ def main():
                 n_components=None,
                 minimum_transition_count=run.config["minimum_transition_count"],
                 kmeans_num_clusters=run.config["kmeans_num_clusters"],
+                full_domain_mode=args.mode,
+                full_domain_search_n=run.config["full_domain_search_n"],
             )
             results, _ = extract_fst(
                 hparams=hyperparams,
                 paths=paths,
-                precomputed_activations=(activations, transition_labels),
+                precomputed_activations=(activations, transition_labels)
+                if run.config["full_domain_search_n"] == 2
+                else None,
             )
             run.log(results)
             run.summary["training_run"] = best_run.url  # type:ignore

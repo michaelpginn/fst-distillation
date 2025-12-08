@@ -16,7 +16,7 @@ class RNNModel(nn.Module):
         self,
         *args,
         tokenizer: Tokenizer | dict,
-        output_head: Literal["classification", "lm", "transduction"],
+        output_head: Literal["classification", "lm", "transduction", "none"],
         d_model: int,
         num_layers: int,
         dropout: float,
@@ -69,6 +69,8 @@ class RNNModel(nn.Module):
             self.out = nn.Linear(in_features=d_model, out_features=vocab_size)
         elif output_head == "transduction":
             self.out = nn.Linear(in_features=2 * d_model, out_features=vocab_size)
+        else:
+            self.out = None
 
     @property
     def config_dict(self):
@@ -159,6 +161,8 @@ class RNNModel(nn.Module):
         src_embeddings = self.embedding(input_ids)  # (B, T, d_model)
         final_hidden_states, _ = self.compute_hidden_states(src_embeddings, seq_lengths)
 
+        if self.out is None:
+            return final_hidden_states
         if self.output_head == "classification":
             out = self.out(final_hidden_states[:, -1]).squeeze(-1)
         elif self.output_head == "lm":

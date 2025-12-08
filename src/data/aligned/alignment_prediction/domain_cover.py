@@ -4,6 +4,8 @@ import random
 from collections import defaultdict
 from typing import Counter
 
+from src.data.aligned.example import AlignedStringExample
+
 from .example import AlignmentPredictionExample
 
 logger = logging.getLogger(__name__)
@@ -138,3 +140,43 @@ def _domain_cover_no_features(
     return [
         AlignmentPredictionExample(list(lem[1:-1]), None, None) for lem in new_lemmas
     ]
+
+
+def ngram_bfs(train_examples: list[AlignedStringExample], n=3, max_length=7):
+    # Performs *search*, returning all possible input strings (except existing train strings) in increasing length order
+    def _ngrams(s: list[str]):
+        for i in range(0, len(s) - n + 1):
+            yield tuple(s[i : i + n])
+
+    ngrams: dict[tuple[str, ...], set[str]] = defaultdict(set)
+    train_strings: set[tuple[str, ...]] = set()
+    for ex in train_examples:
+        if ex.features is not None:
+            raise ValueError("Cannot use search with features")
+        s = ["#"] + [in_char for in_char, _ in ex.aligned_chars] + ["#"]
+        train_strings.add(tuple(s))
+        for gram in _ngrams(s):
+            ngrams[gram[:-1]].add(gram[-1])
+
+    all_strings: list[list[str]] = []
+    queue: list[tuple[str, ...]] = []
+    # Start with any start ngrams
+    for key, chars in ngrams.items():
+        if key[0] == "#":
+            for c in chars:
+                queue.append((*key, c))
+    # BFS
+    while len(queue) > 0:
+        next_string = queue.pop(0)
+        if next_string[-1] == "#":
+            if next_string not in train_strings:
+                all_strings.append(list(next_string[1:-1]))
+                print("Generated %d" % len(all_strings), end="\r")
+            continue
+        if len(next_string) >= max_length:
+            # Throw away this string
+            continue
+        # Look for matching ngrams
+        for c in ngrams[tuple(next_string[-(n - 1) :])]:
+            queue.append((*next_string, c))
+    return all_strings

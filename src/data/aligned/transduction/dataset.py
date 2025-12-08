@@ -17,6 +17,7 @@ class AlignedTransductionDataset(Dataset):
         self,
         examples: list[AlignedStringExample],
         tokenizer: AlignedTransductionTokenizer | None,
+        is_bidirect: bool = False,
     ):
         """
         Initialize a dataset. If a pretrained `tokenizer` is provided, will use to
@@ -26,7 +27,7 @@ class AlignedTransductionDataset(Dataset):
         if tokenizer is not None:
             self.tokenizer = tokenizer
         else:
-            self.tokenizer = AlignedTransductionTokenizer()
+            self.tokenizer = AlignedTransductionTokenizer(is_bidirect=is_bidirect)
             self.tokenizer.learn_vocab(examples)
 
         self.examples = [self.tokenizer.tokenize(ex) for ex in examples]

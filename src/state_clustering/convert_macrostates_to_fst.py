@@ -19,6 +19,7 @@ def convert_macrostates_to_fst(
     state_splitting_classifier: Literal["svm", "logistic"],
     minimum_transition_count: int | None,
     do_merge: bool = True,
+    do_minimize: bool = True,
 ) -> FST:
     """Processes an initial grouping of macrostates,
     adding transitions and splitting states if necessary. Returns an FST."""
@@ -130,7 +131,8 @@ def convert_macrostates_to_fst(
     logger.info(f"After splitting, FST has {len(fst.states)} states")
     logger.info("Minimizing and determinizing")
     # TODO: Add back epsilon loop thing
-    fst = fst.minimize()
+    if do_minimize:
+        fst = fst.minimize()
     logger.info(f"Created FST with {len(fst.states)} states")
     return fst
 

@@ -26,6 +26,7 @@ from sklearn.cluster import DBSCAN, OPTICS, k_means
 from sklearn.decomposition import PCA
 from tqdm import tqdm
 
+from src.data.aligned.alignment_prediction.domain_cover import ngram_bfs
 from src.data.aligned.transduction.tokenizer import AlignedTransductionTokenizer
 from src.state_clustering.hopkins import hopkins
 
@@ -76,6 +77,8 @@ class ExtractionHyperparameters:
     state_split_classifier: Literal["svm", "logistic"] = "svm"
     do_merge: bool = True
     full_domain: bool = True
+    full_domain_mode: Literal["sample", "search"] = "sample"
+    full_domain_search_n: int = 2
 
     gen_top_k: int = 1
     """How many generations to pick, in increasing length order"""
@@ -127,7 +130,7 @@ def extract_fst(
         return fail_metrics(), None
     logger.info(f"Hopkins statistic: {hopkins(activations)}")
     labels = _cluster(hparams, activations)
-    macrostates, initial_macrostate = _collect_microstates(
+    macrostates, initial_macrostate, _ = _collect_microstates(
         activations, all_transition_labels, labels
     )
     fst = convert_macrostates_to_fst(
@@ -220,101 +223,171 @@ def _collect_activations(
             all_transition_labels.append(transition_labels)
 
         # 1B. Also collect inputs for the whole domain
-        if (
-            hyperparams.full_domain
-            and task != "classification"
-            and paths["full_domain_aligned"].exists()
-        ):
-            full_alignment = load_examples_from_file(paths["full_domain_aligned"])
-            for example in tqdm(
-                full_alignment, "Computing hidden states for full domain"
-            ):
-                tokenizer = cast(AlignedLanguageModelingTokenizer, tokenizer)
-
-                if task == "lm":
-                    # First compute hidden states for start symbol and features,
-                    # then walk hidden space by picking the highest next symbol with the correct input side
-                    input_prefix = tokenizer.tokenize(
-                        AlignedStringExample([], example.features, True)
-                    )
-                    transition_labels: list[str] = model.tokenizer.decode(
-                        input_prefix["input_ids"][:-1],  # type:ignore
-                        skip_special_tokens=False,
-                        return_as="list",
-                    )
-                    hidden_states, H_t = model.compute_hidden_states(
-                        embeddings=model.embedding(
-                            torch.tensor(
-                                input_prefix["input_ids"][:-1]  # type:ignore
-                            ).unsqueeze(0)
-                        ),
-                        seq_lengths=torch.tensor(
-                            [len(input_prefix["input_ids"]) - 1]  # type:ignore
-                        ),
-                    )
-                    for char, _ in example.aligned_chars:
-                        logits: torch.Tensor = model.out(hidden_states[:, -1]).squeeze(
-                            0
-                        )
-                        # Mask to only allowed next symbols (which start with the input symbol)
-                        possible_ids = tokenizer.token_ids_matching_input(char)
-                        mask = torch.ones(logits.size(0), dtype=torch.bool)
-                        mask[torch.tensor(possible_ids)] = False
-                        logits[mask] = 0
-                        chosen_symbol_index = torch.argmax(logits).item()
-                        H_t = model.compute_timestep(
-                            H_t_min1=H_t,
-                            x_t=model.embedding(torch.tensor([[chosen_symbol_index]])),
-                            mask=None,
-                        )
-                        hidden_states = torch.concat([hidden_states, H_t[:, -1]], dim=1)
-                        transition_labels.append(
-                            tokenizer.decode([chosen_symbol_index])  # type:ignore
-                        )
-                    # Finally add the <sink>
-                    H_t = model.compute_timestep(
-                        H_t_min1=H_t,
-                        x_t=model.embedding(torch.tensor([[tokenizer.sink_token_id]])),
-                        mask=None,
-                    )
-                    hidden_states = torch.concat([hidden_states, H_t[:, -1]], dim=1)
-                    activations.append(hidden_states.squeeze(0).cpu().detach())
-                    transition_labels.append(
-                        tokenizer.id_to_token[tokenizer.sink_token_id]  # type:ignore
-                    )
-                elif task == "transduction":
-                    # Wow, this is so much easier!
-                    batch: dict = tokenizer.tokenize(example)
-                    input_ids = torch.tensor([batch["input_ids"]], device=device)
-                    next_input_ids = torch.tensor(
-                        [batch["next_input_ids"]], device=device
-                    )
-                    seq_lengths = torch.tensor([len(batch["input_ids"])], device=device)
-                    out, hidden_states = model(
-                        input_ids=input_ids,
-                        seq_lengths=seq_lengths,
-                        next_input_ids=next_input_ids,
-                        return_hidden_states=True,
-                    )
-                    out = out.squeeze(0).argmax(dim=-1)
-                    preds: list = tokenizer.decode(  # type:ignore
-                        out.tolist(), skip_special_tokens=False, return_as="list"
-                    )
-                    preds = ["<bos>"] + preds[:-1]
-                    transition_labels: list[str] = model.tokenizer.decode(
-                        batch["input_ids"],  # type:ignore
-                        skip_special_tokens=False,
-                        return_as="list",
-                    )
-                    transition_labels = [
-                        f"({i},{o})" if i != o else i
-                        for i, o in zip(transition_labels, preds)
-                    ]
-                    activations.append(hidden_states.squeeze(0).cpu().detach())
-
-                all_transition_labels.append(transition_labels)
+        if hyperparams.full_domain and task != "classification":
+            if hyperparams.full_domain_mode == "sample":
+                new_activations, new_labels = sample_full_domain(
+                    paths, model, tokenizer, task
+                )
+            elif hyperparams.full_domain_mode == "search":
+                new_activations, new_labels = search_full_domain(
+                    hyperparams, aligned_train_examples, model, tokenizer, task
+                )
+            else:
+                raise ValueError()
+            activations.extend(new_activations)
+            all_transition_labels.extend(new_labels)
 
     return torch.concat(activations), all_transition_labels
+
+
+def sample_full_domain(
+    paths: Paths,
+    model: RNNModel,
+    tokenizer: Tokenizer,
+    task: Literal["classification", "lm", "transduction"],
+):
+    activations = []
+    all_transition_labels = []
+    assert paths["full_domain_aligned"].exists()
+    full_alignment = load_examples_from_file(paths["full_domain_aligned"])
+    for example in tqdm(full_alignment, "Computing hidden states for full domain"):
+        tokenizer = cast(AlignedLanguageModelingTokenizer, tokenizer)
+
+        if task == "lm":
+            # First compute hidden states for start symbol and features,
+            # then walk hidden space by picking the highest next symbol with the correct input side
+            input_prefix = tokenizer.tokenize(
+                AlignedStringExample([], example.features, True)
+            )
+            transition_labels: list[str] = model.tokenizer.decode(
+                input_prefix["input_ids"][:-1],  # type:ignore
+                skip_special_tokens=False,
+                return_as="list",
+            )
+            hidden_states, H_t = model.compute_hidden_states(
+                embeddings=model.embedding(
+                    torch.tensor(
+                        input_prefix["input_ids"][:-1]  # type:ignore
+                    ).unsqueeze(0)
+                ),
+                seq_lengths=torch.tensor(
+                    [len(input_prefix["input_ids"]) - 1]  # type:ignore
+                ),
+            )
+            for char, _ in example.aligned_chars:
+                logits: torch.Tensor = model.out(hidden_states[:, -1]).squeeze(0)
+                # Mask to only allowed next symbols (which start with the input symbol)
+                possible_ids = tokenizer.token_ids_matching_input(char)
+                mask = torch.ones(logits.size(0), dtype=torch.bool)
+                mask[torch.tensor(possible_ids)] = False
+                logits[mask] = 0
+                chosen_symbol_index = torch.argmax(logits).item()
+                H_t = model.compute_timestep(
+                    H_t_min1=H_t,
+                    x_t=model.embedding(torch.tensor([[chosen_symbol_index]])),
+                    mask=None,
+                )
+                hidden_states = torch.concat([hidden_states, H_t[:, -1]], dim=1)
+                transition_labels.append(
+                    tokenizer.decode([chosen_symbol_index])  # type:ignore
+                )
+            # Finally add the <sink>
+            H_t = model.compute_timestep(
+                H_t_min1=H_t,
+                x_t=model.embedding(torch.tensor([[tokenizer.sink_token_id]])),
+                mask=None,
+            )
+            hidden_states = torch.concat([hidden_states, H_t[:, -1]], dim=1)
+            activations.append(hidden_states.squeeze(0).cpu().detach())
+            transition_labels.append(
+                tokenizer.id_to_token[tokenizer.sink_token_id]  # type:ignore
+            )
+        elif task == "transduction":
+            # Wow, this is so much easier!
+            batch: dict = tokenizer.tokenize(example)
+            input_ids = torch.tensor([batch["input_ids"]], device=device)
+            next_input_ids = torch.tensor([batch["next_input_ids"]], device=device)
+            seq_lengths = torch.tensor([len(batch["input_ids"])], device=device)
+            out, hidden_states = model(
+                input_ids=input_ids,
+                seq_lengths=seq_lengths,
+                next_input_ids=next_input_ids,
+                return_hidden_states=True,
+            )
+            out = out.squeeze(0).argmax(dim=-1)
+            preds: list = tokenizer.decode(  # type:ignore
+                out.tolist(), skip_special_tokens=False, return_as="list"
+            )
+            preds = ["<bos>"] + preds[:-1]
+            transition_labels: list[str] = model.tokenizer.decode(
+                batch["input_ids"],  # type:ignore
+                skip_special_tokens=False,
+                return_as="list",
+            )
+            transition_labels = [
+                f"({i},{o})" if i != o else i for i, o in zip(transition_labels, preds)
+            ]
+            activations.append(hidden_states.squeeze(0).cpu().detach())
+        else:
+            raise ValueError()
+        all_transition_labels.append(transition_labels)
+    return activations, all_transition_labels
+
+
+def search_full_domain(
+    hyperparams: ExtractionHyperparameters,
+    aligned_train_examples: list[AlignedStringExample],
+    model: RNNModel,
+    tokenizer: Tokenizer,
+    task: Literal["classification", "lm", "transduction"],
+):
+    activations = []
+    all_transition_labels = []
+    # BFS through state space
+    if task == "lm":
+        raise NotImplementedError()
+    elif task == "transduction":
+        all_inputs = ngram_bfs(
+            aligned_train_examples, n=hyperparams.full_domain_search_n, max_length=8
+        )
+        assert tokenizer.token_to_id
+        for input_string in tqdm(
+            all_inputs, desc="Computing hidden states for full domain"
+        ):
+            token_ids = [tokenizer.token_to_id[t] for t in input_string]
+            token_ids = [
+                tokenizer.bos_token_id,
+                tokenizer.sep_token_id,
+                *token_ids,
+                tokenizer.sink_token_id,
+                tokenizer.eos_token_id,
+            ]
+            input_ids = torch.tensor([token_ids[:-1]], device=device)
+            next_input_ids = torch.tensor([token_ids[1:]], device=device)
+            seq_lengths = torch.tensor([len(input_ids)], device=device)
+            out, hidden_states = model(
+                input_ids=input_ids,
+                seq_lengths=seq_lengths,
+                next_input_ids=next_input_ids,
+                return_hidden_states=True,
+            )
+            out = out.squeeze(0).argmax(dim=-1)
+            preds: list = tokenizer.decode(  # type:ignore
+                out.tolist(), skip_special_tokens=False, return_as="list"
+            )
+            preds = ["<bos>"] + preds[:-1]
+            transition_labels: list[str] = model.tokenizer.decode(
+                token_ids,  # type:ignore
+                skip_special_tokens=False,
+                return_as="list",
+            )
+            transition_labels = [
+                f"({i},{o})" if i != o else i for i, o in zip(transition_labels, preds)
+            ]
+            activations.append(hidden_states.squeeze(0).cpu().detach())
+    else:
+        raise ValueError()
+    return activations, all_transition_labels
 
 
 def _standardize(hyperparams: ExtractionHyperparameters, activations: torch.Tensor):
@@ -359,7 +432,7 @@ def _cluster(hyperparams: ExtractionHyperparameters, activations: np.ndarray):
         if hyperparams.clustering_method == "kmeans":
             if hyperparams.kmeans_num_clusters > len(activations):  # type:ignore
                 raise ValueError(
-                    "kmeans_num_clusters is larger than the number of points, aborting!"
+                    f"kmeans_num_clusters is larger than the number of points ({len(activations)}), aborting!"
                 )
             _, labels, _ = k_means(  # type:ignore
                 activations, n_clusters=hyperparams.kmeans_num_clusters, random_state=0
@@ -441,7 +514,7 @@ def _collect_microstates(
             microstate.macrostate = weakref.ref(assigned_macrostate)
             previous_microstate = microstate
         offset += len(ex_transition_labels)
-    return macrostates, initial_macrostate
+    return macrostates, initial_macrostate, microstates
 
 
 if __name__ == "__main__":
@@ -466,6 +539,8 @@ if __name__ == "__main__":
             state_split_classifier="svm",
             gen_top_k=1,
             full_domain=True,
+            full_domain_mode="search",
+            full_domain_search_n=4,
             do_merge=False,
             visualize=args.visualize,
         ),

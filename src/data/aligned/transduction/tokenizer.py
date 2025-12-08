@@ -13,6 +13,9 @@ class AlignedTransductionTokenizer(Tokenizer):
     }
     """
 
+    def __init__(self, is_bidirect: bool = False):
+        self.is_bidirect = is_bidirect
+
     def create_vocab(self, examples: list[AlignedStringExample]) -> list[str]:
         vocab: set[str] = set()
         for example in examples:
@@ -52,8 +55,15 @@ class AlignedTransductionTokenizer(Tokenizer):
             input_ids.append(self.sink_token_id)
             output_ids.append(self.sink_token_id)
 
-        next_input_ids = input_ids[1:] + [self.eos_token_id]
-        next_output_ids = output_ids + [self.eos_token_id]
+        if self.is_bidirect:
+            # For bidirectional, we need the input to have one extra on both end (bos and eos)
+            # compared to the input ids
+            input_ids += [self.eos_token_id]
+            next_input_ids = input_ids[1:-1]
+            next_output_ids = output_ids
+        else:
+            next_input_ids = input_ids[1:] + [self.eos_token_id]
+            next_output_ids = output_ids + [self.eos_token_id]
         return {
             "input_ids": input_ids,
             "next_input_ids": next_input_ids,

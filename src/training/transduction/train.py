@@ -2,11 +2,11 @@ import logging
 import tempfile
 
 import torch
-from torch.nn import Module
 from torch.utils.data import DataLoader
 from tqdm import tqdm, trange
 
 import wandb
+from src.modeling.birnn import BiRNN
 from src.modeling.rnn import RNNModel
 from src.modeling.spectral_penalty import spectral_penalty
 from src.modeling.tokenizer import Tokenizer
@@ -16,7 +16,7 @@ device = "cuda" if torch.cuda.is_available() else "mps"
 logger = logging.getLogger(__file__)
 
 
-def compute_loss(model: Module, batch, spectral_norm_weight: float | None):
+def compute_loss(model: RNNModel | BiRNN, batch, spectral_norm_weight: float | None):
     input_ids = batch["input_ids"].to(device, non_blocking=True)
     next_input_ids = batch["next_input_ids"].to(device, non_blocking=True)
     next_output_ids = batch["next_output_ids"].to(device, non_blocking=True)
@@ -24,6 +24,8 @@ def compute_loss(model: Module, batch, spectral_norm_weight: float | None):
     out = model(
         input_ids=input_ids, seq_lengths=seq_lengths, next_input_ids=next_input_ids
     )
+    if isinstance(out, tuple):
+        out = out[0]
     loss = torch.nn.functional.cross_entropy(out.permute(0, 2, 1), next_output_ids)
 
     if spectral_norm_weight is not None:
@@ -37,7 +39,7 @@ def compute_loss(model: Module, batch, spectral_norm_weight: float | None):
 
 
 def train(
-    model: RNNModel,
+    model: RNNModel | BiRNN,
     train_dataloader: DataLoader,
     eval_dataloader: DataLoader,
     tokenizer: Tokenizer,
