@@ -9,6 +9,7 @@ import numpy as np
 
 import wandb
 from src.data.aligned.example import load_examples_from_file
+from src.extract_bimachine import extract_bimachine
 from src.paths import create_arg_parser, create_paths_from_args
 from src.train_alignment_predictor import predict_full_domain, train_alignment_predictor
 
@@ -306,13 +307,19 @@ def main():
                 full_domain_mode=args.mode,
                 full_domain_search_n=run.config["full_domain_search_n"],
             )
-            results, _ = extract_fst(
-                hparams=hyperparams,
-                paths=paths,
-                precomputed_activations=(activations, transition_labels)
-                if run.config["full_domain_search_n"] == 2
-                else None,
-            )
+            if args.objective == "bi_trans":
+                results, _ = extract_bimachine(
+                    hparams=hyperparams,
+                    paths=paths,
+                )
+            else:
+                results, _ = extract_fst(
+                    hparams=hyperparams,
+                    paths=paths,
+                    precomputed_activations=(activations, transition_labels)
+                    if run.config["full_domain_search_n"] == 2
+                    else None,
+                )
             run.log(results)
             run.summary["training_run"] = best_run.url  # type:ignore
 
