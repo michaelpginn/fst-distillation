@@ -13,7 +13,7 @@ from src.extract_bimachine import extract_bimachine
 from src.paths import create_arg_parser, create_paths_from_args
 from src.train_alignment_predictor import predict_full_domain, train_alignment_predictor
 
-from .extract_fst import ExtractionHyperparameters, compute_activations, extract_fst
+from .extract_fst import ExtractionHyperparameters, extract_fst
 from .train_rnn import train_rnn
 
 logger = logging.getLogger(__name__)
@@ -247,6 +247,10 @@ def main():
 
     # Pre-compute activations since they shouldn't change across the sweep
     # the hparams don't matter except for the model name
+    if args.objective == "bi_trans":
+        from .extract_bimachine import compute_activations
+    else:
+        from .extract_fst import compute_activations
     activations, transition_labels = compute_activations(
         ExtractionHyperparameters(
             model_shortname=best_run.name,  # type:ignore
@@ -316,7 +320,7 @@ def main():
                 results, _ = extract_fst(
                     hparams=hyperparams,
                     paths=paths,
-                    precomputed_activations=(activations, transition_labels)
+                    precomputed_activations=(activations, transition_labels)  # type:ignore
                     if run.config["full_domain_search_n"] == 2
                     else None,
                 )
