@@ -144,6 +144,8 @@ def _domain_cover_no_features(
 
 def ngram_bfs(train_examples: list[AlignedStringExample], n=3, max_length=7):
     # Performs *search*, returning all possible input strings (except existing train strings) in increasing length order
+    logger.info(f"BFS using {n}-grams up to {max_length=}")
+
     def _ngrams(s: list[str]):
         for i in range(0, len(s) - n + 1):
             yield tuple(s[i : i + n])
@@ -157,6 +159,8 @@ def ngram_bfs(train_examples: list[AlignedStringExample], n=3, max_length=7):
         train_strings.add(tuple(s))
         for gram in _ngrams(s):
             ngrams[gram[:-1]].add(gram[-1])
+
+    logger.info(f"Generated {len(ngrams)} {n}-grams")
 
     all_strings: list[list[str]] = []
     queue: list[tuple[str, ...]] = []
@@ -174,7 +178,7 @@ def ngram_bfs(train_examples: list[AlignedStringExample], n=3, max_length=7):
                 all_strings.append(list(next_string[1:-1]))
                 added += 1
                 if added % 1000 == 0:
-                    print("Generated %d" % added, end="\r")
+                    logger.info("Generated %d strings" % added)
             continue
         if len(next_string) >= max_length:
             # Throw away this string
