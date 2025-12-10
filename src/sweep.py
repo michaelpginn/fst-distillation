@@ -249,20 +249,37 @@ def main():
     # the hparams don't matter except for the model name
     if args.objective == "bi_trans":
         from .extract_bimachine import compute_activations
+
+        activations, transition_labels = compute_activations(
+            ExtractionHyperparameters(
+                model_shortname=best_run.name,  # type:ignore
+                clustering_method="kmeans",
+                kmeans_num_clusters=1,
+                n_components=None,
+                full_domain_mode=args.mode,
+                full_domain_search_n=2,
+            ),
+            paths,
+        )
+        max_clusters = min(
+            len(np.unique(activations["forward"], axis=0)),
+            len(np.unique(activations["backward"], axis=0)),
+        )
     else:
         from .extract_fst import compute_activations
-    activations, transition_labels = compute_activations(
-        ExtractionHyperparameters(
-            model_shortname=best_run.name,  # type:ignore
-            clustering_method="kmeans",
-            kmeans_num_clusters=1,
-            n_components=None,
-            full_domain_mode=args.mode,
-            full_domain_search_n=2,
-        ),
-        paths,
-    )
-    max_clusters = len(np.unique(activations, axis=0))
+
+        activations, transition_labels = compute_activations(
+            ExtractionHyperparameters(
+                model_shortname=best_run.name,  # type:ignore
+                clustering_method="kmeans",
+                kmeans_num_clusters=1,
+                n_components=None,
+                full_domain_mode=args.mode,
+                full_domain_search_n=2,
+            ),
+            paths,
+        )
+        max_clusters = len(np.unique(activations, axis=0))
 
     sweep_configuration = {
         "name": paths["identifier"],
