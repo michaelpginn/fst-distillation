@@ -257,7 +257,7 @@ def main():
                 kmeans_num_clusters=1,
                 n_components=None,
                 full_domain_mode=args.mode,
-                full_domain_search_n=2,
+                full_domain_search_n=3,
             ),
             paths,
         )
@@ -275,7 +275,7 @@ def main():
                 kmeans_num_clusters=1,
                 n_components=None,
                 full_domain_mode=args.mode,
-                full_domain_search_n=2,
+                full_domain_search_n=3,
             ),
             paths,
         )
