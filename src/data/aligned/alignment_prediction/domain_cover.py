@@ -166,12 +166,15 @@ def ngram_bfs(train_examples: list[AlignedStringExample], n=3, max_length=7):
             for c in chars:
                 queue.append((*key, c))
     # BFS
+    added = 0
     while len(queue) > 0:
         next_string = queue.pop(0)
         if next_string[-1] == "#":
             if next_string not in train_strings:
                 all_strings.append(list(next_string[1:-1]))
-                print("Generated %d" % len(all_strings), end="\r")
+                added += 1
+                if added % 1000 == 0:
+                    print("Generated %d" % added, end="\r")
             continue
         if len(next_string) >= max_length:
             # Throw away this string

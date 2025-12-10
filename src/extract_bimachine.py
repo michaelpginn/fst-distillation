@@ -371,7 +371,7 @@ if __name__ == "__main__":
             state_split_classifier="svm",
             full_domain=True,
             full_domain_mode="search",
-            full_domain_search_n=4,
+            full_domain_search_n=3,
             do_merge=False,
             visualize=args.visualize,
         ),
