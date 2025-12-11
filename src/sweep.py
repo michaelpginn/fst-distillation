@@ -332,13 +332,16 @@ def main():
                 results, _ = extract_bimachine(
                     hparams=hyperparams,
                     paths=paths,
+                    precomputed_activations=(activations, transition_labels)
+                    if run.config["full_domain_search_n"] == 3
+                    else None,
                 )
             else:
                 results, _ = extract_fst(
                     hparams=hyperparams,
                     paths=paths,
                     precomputed_activations=(activations, transition_labels)  # type:ignore
-                    if run.config["full_domain_search_n"] == 2
+                    if run.config["full_domain_search_n"] == 3
                     else None,
                 )
             run.log(results)

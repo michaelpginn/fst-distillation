@@ -5,6 +5,7 @@ from dataclasses import dataclass
 from random import sample
 from typing import Counter
 
+import numpy as np
 import torch
 from pyfoma.fst import FST
 from tqdm import tqdm
@@ -88,7 +89,12 @@ def compute_activations(hparams: ExtractionHyperparameters, paths: Paths):
     return activations, all_transition_labels
 
 
-def extract_bimachine(hparams: ExtractionHyperparameters, paths: Paths):
+def extract_bimachine(
+    hparams: ExtractionHyperparameters,
+    paths: Paths,
+    precomputed_activations: tuple[dict[str, np.ndarray], dict[str, list[list[str]]]]
+    | None,
+):
     raw_train_examples = load_unaligned(
         paths["train"], paths["has_features"], paths["output_split_into_chars"]
     )
@@ -99,7 +105,10 @@ def extract_bimachine(hparams: ExtractionHyperparameters, paths: Paths):
         paths["test"], paths["has_features"], paths["output_split_into_chars"]
     )
 
-    activations, all_transition_labels = compute_activations(hparams, paths)
+    if precomputed_activations is None:
+        activations, all_transition_labels = compute_activations(hparams, paths)
+    else:
+        activations, all_transition_labels = precomputed_activations
     # Note: for a given index, the transition label is the *incoming* transition to that state
     forward_clusters = _cluster(hparams, activations["forward"])
     backward_clusters = _cluster(hparams, activations["backward"])
@@ -307,7 +316,7 @@ def search_full_domain(
 
     # BFS through state space
     all_inputs = ngram_bfs(
-        aligned_train_examples, n=hyperparams.full_domain_search_n, max_length=8
+        aligned_train_examples, n=hyperparams.full_domain_search_n, max_length=7
     )
     assert tokenizer.token_to_id
     for input_string in tqdm(
