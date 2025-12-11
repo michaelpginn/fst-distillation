@@ -291,7 +291,11 @@ def main():
                 "values": [None, 2, 3, 4, 5, 10, 15, 20, 25, 30, 40, 50]
             },
             "kmeans_num_clusters": {"min": 50, "max": max_clusters},
-            **({"full_domain_search_n": [3, 4]} if args.mode == "search" else {}),
+            **(
+                {"full_domain_search_n": {"values": [3, 4]}}
+                if args.mode == "search"
+                else {}
+            ),
         },
     }
     fst_sweep_id = wandb.sweep(
