@@ -67,7 +67,7 @@ def load_examples_from_file(
 def merge_outputs_right(examples: list[AlignedStringExample]):
     """Removes epsilon input pairs by delaying outputs.
 
-    For example, (~,r)(~,e)(d,d)(~,x)(o,o) would become (d:rer)(o,xo)
+    For example, (~,r)(~,e)(d,d)(~,x)(o,o) would become (d:red)(o,xo)
     """
 
     def process_example(example: AlignedStringExample):

@@ -32,6 +32,7 @@ def train_rnn(
     merge_outputs: Literal["none", "right", "bpe"],
     activation: Literal["relu", "gelu", "tanh"],
     spectral_norm_weight: float | None,
+    label_smoothing: float,
     wandb_run: wandb.Run | None = None,
     wandb_label: str | None = None,
     seed=0,
@@ -168,6 +169,7 @@ def train_rnn(
         learning_rate=learning_rate,
         seed=seed,
         spectral_norm_weight=spectral_norm_weight,
+        label_smoothing=label_smoothing,
     )
     checkpoint_path = (
         paths["models_folder"] / f"{wandb_run.name}/model.pt"  # type:ignore
@@ -200,6 +202,7 @@ if __name__ == "__main__":
     parser.add_argument("--learning-rate", default=0.001)
     parser.add_argument("--activation", default="tanh")
     parser.add_argument("--spec-weight", default=0.1)
+    parser.add_argument("--label-smoothing", default=0.1)
     parser.add_argument(
         "--merge-outputs", choices=["none", "right", "bpe"], default="none"
     )
@@ -217,5 +220,6 @@ if __name__ == "__main__":
         merge_outputs=args.merge_outputs,
         activation=args.activation,
         spectral_norm_weight=float(args.spec_weight),
+        label_smoothing=float(args.label_smoothing),
         wandb_label=args.label,
     )

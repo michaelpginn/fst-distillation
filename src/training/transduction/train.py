@@ -19,7 +19,12 @@ device = "cuda" if torch.cuda.is_available() else "mps"
 logger = logging.getLogger(__file__)
 
 
-def compute_loss(model: RNNModel | BiRNN, batch, spectral_norm_weight: float | None):
+def compute_loss(
+    model: RNNModel | BiRNN,
+    batch,
+    spectral_norm_weight: float | None,
+    label_smoothing=0.1,
+):
     input_ids = batch["input_ids"].to(device, non_blocking=True)
     next_input_ids = batch["next_input_ids"].to(device, non_blocking=True)
     next_output_ids = batch["next_output_ids"].to(device, non_blocking=True)
@@ -33,7 +38,7 @@ def compute_loss(model: RNNModel | BiRNN, batch, spectral_norm_weight: float | N
         out.permute(0, 2, 1),
         next_output_ids,
         ignore_index=model.tokenizer.pad_token_id,
-        label_smoothing=0.1,
+        label_smoothing=label_smoothing,
     )
     preds = out.argmax(dim=-1)
     mask = next_output_ids != model.tokenizer.pad_token_id
@@ -85,6 +90,7 @@ def train(
     min_learning_rate: float = 1e-5,
     warmup_steps: int | Literal["auto"] | None = "auto",
     spectral_norm_weight: float | None = 0.1,
+    label_smoothing: float = 0.1,
     seed: int = 0,
 ):
     """Trains the model with the specified parameters."""
@@ -114,6 +120,7 @@ def train(
                 model,
                 batch,
                 spectral_norm_weight=spectral_norm_weight,
+                label_smoothing=label_smoothing,
             )
             (loss + spec_loss).backward()
             torch.nn.utils.clip_grad_norm_(model.parameters(), max_norm=1.0)
@@ -144,6 +151,7 @@ def train(
                     model,
                     batch,
                     spectral_norm_weight=spectral_norm_weight,
+                    label_smoothing=label_smoothing,
                 )
                 epoch_loss += loss.detach().item()
                 epoch_accuracy += accuracy

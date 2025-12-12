@@ -16,7 +16,9 @@ device = "cuda" if torch.cuda.is_available() else "mps"
 logger = logging.getLogger(__file__)
 
 
-def compute_loss(model: Module, batch, spectral_norm_weight: float | None):
+def compute_loss(
+    model: Module, batch, spectral_norm_weight: float | None, label_smoothing: float
+):
     input_ids = batch["input_ids"].to(device, non_blocking=True)
     seq_lengths = batch["seq_lengths"].to(device, non_blocking=True)
     labels = batch["labels"].to(device, non_blocking=True)
@@ -25,7 +27,10 @@ def compute_loss(model: Module, batch, spectral_norm_weight: float | None):
         seq_lengths=seq_lengths,
     )
     loss = torch.nn.functional.cross_entropy(
-        out.permute(0, 2, 1), labels, ignore_index=model.tokenizer.pad_token_id
+        out.permute(0, 2, 1),
+        labels,
+        ignore_index=model.tokenizer.pad_token_id,
+        label_smoothing=label_smoothing,
     )
 
     if spectral_norm_weight is not None:
@@ -46,6 +51,7 @@ def train(
     epochs: int,
     learning_rate: float = 0.0001,
     spectral_norm_weight: float | None = 0.1,
+    label_smoothing: float = 0.1,
     seed: int = 0,
 ):
     """Trains the model with the specified parameters."""
@@ -67,6 +73,7 @@ def train(
                 model,
                 batch,
                 spectral_norm_weight=spectral_norm_weight,
+                label_smoothing=label_smoothing,
             )
             loss.backward()
             torch.nn.utils.clip_grad_norm_(model.parameters(), max_norm=1.0)

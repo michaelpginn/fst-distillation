@@ -33,7 +33,7 @@ class BiRNN(nn.Module):
         self.embedding = nn.Embedding(vocab_size, d_model)
         self.forward_rnn = RNNModel(
             *args,
-            tokenizer=tokenizer,
+            tokenizer=self.tokenizer,
             output_head="none",
             d_model=d_model,
             num_layers=num_layers,
@@ -43,12 +43,13 @@ class BiRNN(nn.Module):
         )
         self.backward_rnn = RNNModel(
             *args,
-            tokenizer=tokenizer,
+            tokenizer=self.tokenizer,
             output_head="none",
             d_model=d_model,
             num_layers=num_layers,
             dropout=dropout,
             activation=activation,
+            **kwargs,
         )
         self.out = nn.Linear(d_model * 3, vocab_size)
 

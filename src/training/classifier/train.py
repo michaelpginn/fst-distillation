@@ -62,6 +62,7 @@ def train(
     epochs: int,
     learning_rate: float = 0.0001,
     spectral_norm_weight: float | None = 0.1,
+    label_smoothing: float = 0,
     seed: int = 0,
 ):
     """Trains the model with the specified parameters."""

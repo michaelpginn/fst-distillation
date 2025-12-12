@@ -3,7 +3,7 @@ import pprint
 from collections import defaultdict
 from dataclasses import dataclass
 from random import sample
-from typing import Counter
+from typing import Counter, Literal
 
 import numpy as np
 import torch
@@ -43,7 +43,9 @@ class Bimachine:
     backward_fst: FST
     output_table: dict[tuple[str, str, str], str]
 
-    def generate(self, input: list[str]):
+    def generate(
+        self, input: list[str]
+    ) -> tuple[list[str], None] | tuple[None, Literal["forward", "backward", "output"]]:
         assert input[0] == "<bos>", input[-1] == "<eos>"
         forward_states = []
         backward_states = []
@@ -54,7 +56,7 @@ class Bimachine:
             if len(trans) != 1:
                 trans = s.transitions_by_input[""]
             if len(trans) != 1:
-                return None
+                return None, "forward"
             s = list(trans)[0][1].targetstate
         s = self.backward_fst.initialstate
         for c in input[1:-1][::-1]:
@@ -63,7 +65,7 @@ class Bimachine:
             if len(trans) != 1:
                 trans = s.transitions_by_input[""]
             if len(trans) != 1:
-                return None
+                return None, "backward"
             s = list(trans)[0][1].targetstate
         output = []
         for forward_state, backward_state, input_char in zip(
@@ -75,15 +77,17 @@ class Bimachine:
             if out_char is None:
                 out_char = self.output_table.get((forward_state, backward_state, ""))
             if out_char is None:
-                return None
+                return None, "output"
             output.append(out_char)
-        return output
+        return output, None
 
 
 def compute_activations(hparams: ExtractionHyperparameters, paths: Paths):
     """Collects and standardizes activations for the train and full domain"""
     model, tokenizer = _load_model(hparams, paths)
-    aligned_train_examples = load_examples_from_file(paths["train_aligned"])
+    aligned_train_examples, _ = load_examples_from_file(
+        paths["train_aligned"], merge_outputs="bpe"
+    )
     activations, all_transition_labels = _collect_activations(
         hparams, paths, aligned_train_examples, model, tokenizer
     )
@@ -179,6 +183,7 @@ def extract_bimachine(
         labels: list[str] = []
         preds: list[set[str]] = []
         indices_to_log = sample(range(len(examples)), k=10)
+        error_types = Counter()
         for idx, ex in enumerate(examples):
             assert ex.output_string is not None
             input_string = ["<sep>"] + tokenize(ex.input_string) + ["<sink>"]
@@ -189,12 +194,17 @@ def extract_bimachine(
                 correct_output = features + correct_output
             labels.append("".join(correct_output))
             input_string = ["<bos>"] + input_string + ["<eos>"]
-            output = bimachine.generate(input_string)
-            preds.append({"".join(output)} if output else set())
+            output, error = bimachine.generate(input_string)
+            if output:
+                preds.append({"".join(output)})
+            else:
+                preds.append(set())
+                error_types[error] += 1
             if log and idx in indices_to_log:
                 logger.info(f"Input:\t{''.join(input_string)}")
                 logger.info(f"Gold:\t{''.join(correct_output)}")
                 logger.info(f"Predicted:\t{output}")
+            logger.info(f"Not accepted reasons:\n{pprint.pformat(error_types)}")
         return compute_metrics(labels, preds)
 
     metrics = {
@@ -318,7 +328,7 @@ def search_full_domain(
 
     # BFS through state space
     all_inputs = ngram_bfs(
-        aligned_train_examples, n=hyperparams.full_domain_search_n, max_length=7
+        aligned_train_examples, n=hyperparams.full_domain_search_n, max_length=6
     )
     assert tokenizer.token_to_id
     for input_string in tqdm(
@@ -380,7 +390,7 @@ if __name__ == "__main__":
             use_faiss=False,
             minimum_transition_count=None,
             state_split_classifier="svm",
-            full_domain=False,
+            full_domain=True,
             full_domain_mode="search",
             full_domain_search_n=3,
             do_merge=False,
