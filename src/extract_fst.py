@@ -26,7 +26,8 @@ from sklearn.cluster import DBSCAN, OPTICS, k_means
 from sklearn.decomposition import PCA
 from tqdm import tqdm
 
-from src.data.aligned.alignment_prediction.domain_cover import ngram_bfs
+from src.data.aligned.alignment_prediction.domain_cover import domain_cover, ngram_bfs
+from src.data.aligned.alignment_prediction.example import AlignmentPredictionExample
 from src.data.aligned.transduction.tokenizer import AlignedTransductionTokenizer
 from src.state_clustering.hopkins import hopkins
 
@@ -95,7 +96,9 @@ class ExtractionHyperparameters:
 def compute_activations(hparams: ExtractionHyperparameters, paths: Paths):
     """Collects and standardizes activations for the train and full domain"""
     model, tokenizer, task = _load_model(hparams, paths)
-    aligned_train_examples = load_examples_from_file(paths["train_aligned"])
+    aligned_train_examples, _ = load_examples_from_file(
+        paths["train_aligned"], paths["merge_outputs"]
+    )
     activations, all_transition_labels = _collect_activations(
         hparams, paths, aligned_train_examples, model, tokenizer, task
     )
@@ -248,8 +251,31 @@ def sample_full_domain(
 ):
     activations = []
     all_transition_labels = []
-    assert paths["full_domain_aligned"].exists()
-    full_alignment = load_examples_from_file(paths["full_domain_aligned"])
+    if paths["merge_outputs"] == "none":
+        # We need to have predicted these inputs with epsilons using an alignment predictor
+        assert paths["full_domain_aligned"].exists()
+        full_alignment, _ = load_examples_from_file(
+            paths["full_domain_aligned"], paths["merge_outputs"]
+        )
+    else:
+        # Inputs don't have epsilons
+        train_examples, _ = load_examples_from_file(
+            paths["train_aligned"], merge_outputs=paths["merge_outputs"]
+        )
+        train_examples = [
+            AlignmentPredictionExample.from_aligned(ex) for ex in train_examples
+        ]
+        full_alignment = domain_cover(train_examples)
+        full_alignment = [
+            AlignedStringExample(
+                aligned_chars=[(c, "?") for c in ex.aligned],  # type:ignore
+                features=ex.features,
+                label=True,
+            )
+            for ex in full_alignment
+        ]
+
+    assert model.out is not None
     for example in tqdm(full_alignment, "Computing hidden states for full domain"):
         tokenizer = cast(AlignedLanguageModelingTokenizer, tokenizer)
 
@@ -412,7 +438,7 @@ def _standardize(hyperparams: ExtractionHyperparameters, activations: torch.Tens
 def _cluster(hyperparams: ExtractionHyperparameters, activations: np.ndarray):
     logger.info(f"Clustering with '{hyperparams.clustering_method}'")
     if hyperparams.use_faiss:
-        import faiss
+        import faiss  # type:ignore
 
         activations = activations.astype(np.float32)
         if hyperparams.clustering_method == "kmeans":

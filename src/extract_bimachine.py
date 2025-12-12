@@ -86,7 +86,8 @@ def compute_activations(hparams: ExtractionHyperparameters, paths: Paths):
     """Collects and standardizes activations for the train and full domain"""
     model, tokenizer = _load_model(hparams, paths)
     aligned_train_examples, _ = load_examples_from_file(
-        paths["train_aligned"], merge_outputs="bpe"
+        paths["train_aligned"],
+        merge_outputs=paths["merge_outputs"],
     )
     activations, all_transition_labels = _collect_activations(
         hparams, paths, aligned_train_examples, model, tokenizer

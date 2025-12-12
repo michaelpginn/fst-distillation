@@ -203,9 +203,6 @@ if __name__ == "__main__":
     parser.add_argument("--activation", default="tanh")
     parser.add_argument("--spec-weight", default=0.1)
     parser.add_argument("--label-smoothing", default=0.1)
-    parser.add_argument(
-        "--merge-outputs", choices=["none", "right", "bpe"], default="none"
-    )
     parser.add_argument("--label", help="Extra label for the wandb project")
     args = parser.parse_args()
     train_rnn(

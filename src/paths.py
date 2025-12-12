@@ -3,7 +3,7 @@
 from argparse import ArgumentParser, Namespace
 from os import PathLike
 from pathlib import Path
-from typing import TypedDict
+from typing import Literal, TypedDict
 
 from src.data.aligned.example import ALIGNMENT_SYMBOL
 
@@ -16,6 +16,7 @@ class Paths(TypedDict):
     test: Path
     has_features: bool
     output_split_into_chars: bool
+    merge_outputs: Literal["none", "right", "bpe"]
 
     train_aligned: Path
     eval_aligned: Path
@@ -43,17 +44,28 @@ def create_arg_parser():
         action="store_true",
         help="Set this flag if the output strings are already split into chars",
     )
+    parser.add_argument(
+        "--merge-outputs", choices=["none", "right", "bpe"], default="none"
+    )
     parser.add_argument("--models", help="A folder to store models in. Optional.")
     parser.add_argument("--alignment-symbol", default=ALIGNMENT_SYMBOL)
     return parser
 
 
 def create_paths_from_args(args: Namespace):
+    has_features = args.features or False
+    if args.data_folder == "data/inflection":
+        has_features = True
+    output_split = args.output_split or False
+    if args.data_folder == "data/g2p":
+        output_split = True
+
     return create_paths(
         data_folder=args.data_folder,
         dataset=args.dataset,
-        has_features=args.features or False,
-        output_split=args.output_split or False,
+        has_features=has_features,
+        output_split=output_split,
+        merge_outputs=args.merge_outputs,
         models_folder=args.models,
         alignment_symbol=args.alignment_symbol,
     )
@@ -64,6 +76,7 @@ def create_paths(
     dataset: str,
     has_features: bool,
     output_split: bool,
+    merge_outputs: Literal["none", "right", "bpe"],
     models_folder: str | PathLike | None,
     alignment_symbol: str = ALIGNMENT_SYMBOL,
 ) -> Paths:
@@ -92,6 +105,7 @@ def create_paths(
         "test": find_data_file(f"{dataset}.tst", data_root),
         "has_features": has_features,
         "output_split_into_chars": output_split,
+        "merge_outputs": merge_outputs,
         "train_aligned": data_root / "aligned" / f"{dataset}.trn.aligned",
         "eval_aligned": data_root / "aligned" / f"{dataset}.dev.aligned",
         "test_aligned": data_root / "aligned" / f"{dataset}.tst.aligned",

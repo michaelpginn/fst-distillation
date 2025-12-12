@@ -53,8 +53,13 @@ def train_alignment_predictor(
         wandb_run.config.update(hyperparams)
 
     # Load examples into alignment prediction format
-    train_examples = load_examples_from_file(paths["train_aligned"])
-    eval_examples = load_examples_from_file(paths["eval_aligned"])
+    assert paths["merge_outputs"] == "none"
+    train_examples, _ = load_examples_from_file(
+        paths["train_aligned"], merge_outputs="none"
+    )
+    eval_examples, _ = load_examples_from_file(
+        paths["eval_aligned"], merge_outputs="none"
+    )
     train_examples = [
         AlignmentPredictionExample.from_aligned(ex) for ex in train_examples
     ]
@@ -121,7 +126,9 @@ def train_alignment_predictor(
 
 
 def predict_full_domain(paths: Paths, model_shortname: str, batch_size: int):
-    train_examples = load_examples_from_file(paths["train_aligned"])
+    train_examples, _ = load_examples_from_file(
+        paths["train_aligned"], merge_outputs="none"
+    )
     train_examples = [
         AlignmentPredictionExample.from_aligned(ex) for ex in train_examples
     ]

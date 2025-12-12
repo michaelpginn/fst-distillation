@@ -34,6 +34,7 @@ def main():
         "--mode",
         choices=["sample", "search"],
         help="If sample, will train an alignment predictor to sample from the domain. If search, will use n-grams with BFS to collect activations",
+        required=True,
     )
     args = parser.parse_args()
     paths = create_paths_from_args(args)
@@ -51,7 +52,9 @@ def main():
 
         logger.info("Couldn't find aligned data, running alignment!")
         run_alignment(paths, iterations=100)
-    train_examples = load_examples_from_file(paths["train_aligned"])
+    train_examples, _ = load_examples_from_file(
+        paths["train_aligned"], paths["merge_outputs"]
+    )
     train_size = len(train_examples)
     max_batch_size = train_size // 5
     if train_size > 5000:
@@ -64,7 +67,7 @@ def main():
     # =========================================
     # 2. ALIGNMENT PREDICTOR TRAINING
     # =========================================
-    if args.mode == "search":
+    if args.mode == "search" or paths["merge_outputs"] != "none":
         alignment_pred_loss = None
     else:
         if args.override_alignment or not paths["full_domain_aligned"].exists():
@@ -200,9 +203,10 @@ def main():
                     num_layers=1,
                     dropout=run.config["dropout"],
                     learning_rate=run.config["learning_rate"],
-                    merge_outputs=False,
+                    merge_outputs=paths["merge_outputs"],
                     activation="tanh",
                     spectral_norm_weight=0.1,
+                    label_smoothing=0.1,
                     wandb_run=run,
                 )
 
@@ -338,7 +342,7 @@ def main():
                     paths=paths,
                     precomputed_activations=(activations, transition_labels)
                     if run.config["full_domain_search_n"] == 3
-                    else None,
+                    else None,  # type:ignore
                 )
             else:
                 results, _ = extract_fst(
