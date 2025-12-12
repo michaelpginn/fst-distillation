@@ -28,7 +28,7 @@ class Tokenizer(metaclass=abc.ABCMeta):
         self.id_to_token = {
             id: token for id, token in zip(range(len(vocabulary)), vocabulary)
         }
-        logger.info("Created vocabulary.")
+        logger.info(f"Created vocabulary (size {len(vocabulary)}).")
 
     @abc.abstractmethod
     def create_vocab(self, examples: list[Any]) -> list[str]:

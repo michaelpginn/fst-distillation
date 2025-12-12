@@ -26,7 +26,7 @@ def main():
     parser = create_arg_parser()
     parser.add_argument(
         "--objective",
-        choices=["lm", "classification", "transduction", "bi_trans"],
+        choices=["lm", "classification", "transduction", "bimachine"],
         required=True,
     )
     parser.add_argument("--override-alignment", action="store_true")
@@ -200,7 +200,7 @@ def main():
                     num_layers=1,
                     dropout=run.config["dropout"],
                     learning_rate=run.config["learning_rate"],
-                    use_many_to_many_transitions=False,
+                    merge_outputs=False,
                     activation="tanh",
                     spectral_norm_weight=0.1,
                     wandb_run=run,
@@ -247,7 +247,7 @@ def main():
 
     # Pre-compute activations since they shouldn't change across the sweep
     # the hparams don't matter except for the model name
-    if args.objective == "bi_trans":
+    if args.objective == "bimachine":
         from .extract_bimachine import compute_activations
 
         activations, transition_labels = compute_activations(
@@ -332,7 +332,7 @@ def main():
                 full_domain_mode=args.mode,
                 full_domain_search_n=run.config["full_domain_search_n"],
             )
-            if args.objective == "bi_trans":
+            if args.objective == "bimachine":
                 results, _ = extract_bimachine(
                     hparams=hyperparams,
                     paths=paths,

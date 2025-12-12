@@ -22,14 +22,14 @@ logger = getLogger(__name__)
 
 def train_rnn(
     paths: Paths,
-    objective: Literal["classification", "lm", "transduction", "bi_trans"],
+    objective: Literal["classification", "lm", "transduction", "bimachine"],
     batch_size: int,
     epochs: int,
     d_model: int,
     num_layers: int,
     dropout: float,
     learning_rate: float,
-    use_many_to_many_transitions: bool,
+    merge_outputs: Literal["none", "right", "bpe"],
     activation: Literal["relu", "gelu", "tanh"],
     spectral_norm_weight: float | None,
     wandb_run: wandb.Run | None = None,
@@ -79,11 +79,11 @@ def train_rnn(
 
     # In order to create negative examples (for classification), we need to pre-load all of the examples so
     # we don't accidentally create negative examples that are valid
-    train_examples = load_examples_from_file(
-        paths["train_aligned"], remove_epsilons=use_many_to_many_transitions
+    train_examples, mergelist = load_examples_from_file(
+        paths["train_aligned"], merge_outputs=merge_outputs
     )
-    eval_examples = load_examples_from_file(
-        paths["eval_aligned"], remove_epsilons=use_many_to_many_transitions
+    eval_examples, _ = load_examples_from_file(
+        paths["eval_aligned"], merge_outputs=merge_outputs, pretrained_merges=mergelist
     )
     wandb_run.log({"train_size": len(train_examples)}, commit=False)
 
@@ -119,7 +119,7 @@ def train_rnn(
             examples=eval_examples,
             tokenizer=tokenizer,
         )
-    elif objective == "transduction" or objective == "bi_trans":
+    elif objective == "transduction" or objective == "bimachine":
         from src.data.aligned.transduction.dataloader import create_dataloader
         from src.data.aligned.transduction.dataset import (
             AlignedTransductionDataset,
@@ -129,18 +129,20 @@ def train_rnn(
         train_dataset = AlignedTransductionDataset(
             examples=train_examples,
             tokenizer=None,
-            is_bidirect=objective == "bi_trans",
+            is_bidirect=objective == "bimachine",
         )
         tokenizer = train_dataset.tokenizer
         eval_dataset = AlignedTransductionDataset(
             examples=eval_examples,
             tokenizer=tokenizer,
-            is_bidirect=objective == "bi_trans",
+            is_bidirect=objective == "bimachine",
         )
+
+    logger.info(f"First five train examples: {train_examples[:5]}")
 
     train_dataloader = create_dataloader(train_dataset, batch_size=batch_size)  # type:ignore
     eval_dataloader = create_dataloader(eval_dataset, batch_size=batch_size)  # type:ignore
-    if objective == "bi_trans":
+    if objective == "bimachine":
         model = BiRNN(
             tokenizer=tokenizer,
             d_model=d_model,
@@ -187,10 +189,10 @@ if __name__ == "__main__":
     parser = create_arg_parser()
     parser.add_argument(
         "--objective",
-        choices=["classification", "lm", "transduction", "bi_trans"],
+        choices=["classification", "lm", "transduction", "bimachine"],
         required=True,
     )
-    parser.add_argument("--batch-size", default=2048)
+    parser.add_argument("--batch-size", default=64)
     parser.add_argument("--epochs", default=200)
     parser.add_argument("--hidden-dim", default=64)
     parser.add_argument("--num-layers", default=1)
@@ -198,6 +200,9 @@ if __name__ == "__main__":
     parser.add_argument("--learning-rate", default=0.001)
     parser.add_argument("--activation", default="tanh")
     parser.add_argument("--spec-weight", default=0.1)
+    parser.add_argument(
+        "--merge-outputs", choices=["none", "right", "bpe"], default="none"
+    )
     parser.add_argument("--label", help="Extra label for the wandb project")
     args = parser.parse_args()
     train_rnn(
@@ -209,8 +214,8 @@ if __name__ == "__main__":
         num_layers=int(args.num_layers),
         dropout=float(args.dropout),
         learning_rate=float(args.learning_rate),
-        use_many_to_many_transitions=False,
+        merge_outputs=args.merge_outputs,
         activation=args.activation,
-        spectral_norm_weight=args.spec_weight,
+        spectral_norm_weight=float(args.spec_weight),
         wandb_label=args.label,
     )

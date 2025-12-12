@@ -73,6 +73,8 @@ class Bimachine:
                 (forward_state, backward_state, input_char)
             )
             if out_char is None:
+                out_char = self.output_table.get((forward_state, backward_state, ""))
+            if out_char is None:
                 return None
             output.append(out_char)
         return output
@@ -196,8 +198,8 @@ def extract_bimachine(
         return compute_metrics(labels, preds)
 
     metrics = {
-        "train": evaluate(raw_train_examples),
         "eval": evaluate(raw_eval_examples, log=True),
+        "train": evaluate(raw_train_examples),
         "test": evaluate(raw_test_examples),
     }
     logger.info(pprint.pformat(metrics))
@@ -378,11 +380,12 @@ if __name__ == "__main__":
             use_faiss=False,
             minimum_transition_count=None,
             state_split_classifier="svm",
-            full_domain=True,
+            full_domain=False,
             full_domain_mode="search",
             full_domain_search_n=3,
             do_merge=False,
             visualize=args.visualize,
         ),
         paths=create_paths_from_args(args),
+        precomputed_activations=None,
     )

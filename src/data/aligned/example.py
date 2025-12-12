@@ -1,8 +1,11 @@
 import re
+from collections import Counter
 from dataclasses import dataclass
 from os import PathLike
+from typing import Literal
 
 ALIGNMENT_SYMBOL = "~"
+Bigram = tuple[tuple[str, str], tuple[str, str]]
 
 
 @dataclass
@@ -30,7 +33,11 @@ class AlignedStringExample:
         )
 
 
-def load_examples_from_file(path: str | PathLike, remove_epsilons=False):
+def load_examples_from_file(
+    path: str | PathLike,
+    merge_outputs: Literal["none", "right", "bpe"],
+    pretrained_merges: list[Bigram] | None = None,
+):
     """Loads `AlignedStringExample` instances from a TSV file.
     If the file includes two columns, treat the second column as a
     feature column (e.g. for inflection)."""
@@ -49,46 +56,112 @@ def load_examples_from_file(path: str | PathLike, remove_epsilons=False):
             char_pairs: list[tuple[str, str]] = re.findall(r"\((.*?),(.*?)\)", chars)
             examples.append(AlignedStringExample(char_pairs, features, label=True))
 
-    if remove_epsilons:
-        return remove_epsilon_inputs(examples)
+    if merge_outputs == "right":
+        return merge_outputs_right(examples), None
+    elif merge_outputs == "bpe":
+        return merge_outputs_bpe(examples, pretrained_merges)
     else:
-        return examples
+        return examples, None
 
 
-def remove_epsilon_inputs(examples: list[AlignedStringExample]):
+def merge_outputs_right(examples: list[AlignedStringExample]):
     """Removes epsilon input pairs by delaying outputs.
 
-    For example, (~,r)(~,e)(d,d)(~,x)(o,o) would become (<sep>:re)(d,d)(o,xo)
+    For example, (~,r)(~,e)(d,d)(~,x)(o,o) would become (d:rer)(o,xo)
     """
 
     def process_example(example: AlignedStringExample):
         new_aligned_chars: list[tuple[str, str]] = []
 
         out_char_buffer = []
-        seen_first_input = False
         for in_char, out_char in example.aligned_chars:
             if in_char == ALIGNMENT_SYMBOL:
                 out_char_buffer.append(out_char)
             elif len(out_char_buffer) > 0:
-                if seen_first_input:
-                    new_aligned_chars.append(
-                        (in_char, "".join(out_char_buffer) + out_char)
-                    )
-                else:
-                    # For a prefix before any input chars, attach to sep
-                    new_aligned_chars.append(
-                        ("<sep>", "".join(out_char_buffer) + "<sep>")
-                    )
+                new_aligned_chars.append((in_char, "".join(out_char_buffer) + out_char))
                 out_char_buffer = []
             else:
                 new_aligned_chars.append((in_char, out_char))
 
         if len(out_char_buffer) > 0:
-            new_aligned_chars.append(("<sink>", "".join(out_char_buffer) + "<sink>"))
-        else:
-            new_aligned_chars.append(("<sink>", "<sink>"))
+            last_in, last_out = new_aligned_chars[-1]
+            new_aligned_chars[-1] = (last_in, last_out + "".join(out_char_buffer))
 
         example.aligned_chars = new_aligned_chars
         return example
 
     return [process_example(ex) for ex in examples]
+
+
+def merge_outputs_bpe(
+    examples: list[AlignedStringExample], pretrained_merges: list[Bigram] | None
+):
+    """Removes epsilon input pairs by merging outputs either left or right.
+    Follows BPE, identifying globally common edges and merging in order.
+
+    Returns a list of merges
+    """
+
+    def count_bigrams(exs: list[AlignedStringExample]):
+        counts: Counter[Bigram] = Counter()
+        for ex in exs:
+            for i in range(len(ex.aligned_chars) - 1):
+                first_pair = ex.aligned_chars[i]
+                second_pair = ex.aligned_chars[i + 1]
+                if (
+                    first_pair[0] == ALIGNMENT_SYMBOL
+                    and second_pair[0] != ALIGNMENT_SYMBOL
+                ) or (
+                    first_pair[0] != ALIGNMENT_SYMBOL
+                    and second_pair[0] == ALIGNMENT_SYMBOL
+                ):
+                    counts[(first_pair, second_pair)] += 1
+        return counts
+
+    def replace_bigram(exs: list[AlignedStringExample], bigram: Bigram):
+        new_examples: list[AlignedStringExample] = []
+        for ex in exs:
+            new_aligned_chars = []
+            last_merged = False
+            for i in range(len(ex.aligned_chars) - 1):
+                if last_merged:
+                    last_merged = False
+                    continue
+                first_pair = ex.aligned_chars[i]
+                second_pair = ex.aligned_chars[i + 1]
+                if (first_pair, second_pair) == bigram:
+                    if first_pair[0] == ALIGNMENT_SYMBOL:
+                        new_in = second_pair[0]
+                    elif second_pair[0] == ALIGNMENT_SYMBOL:
+                        new_in = first_pair[0]
+                    else:
+                        raise ValueError()
+                    new_aligned_chars.append((new_in, first_pair[1] + second_pair[1]))
+                    last_merged = True
+                else:
+                    new_aligned_chars.append(first_pair)
+                    last_merged = False
+            if not last_merged:
+                new_aligned_chars.append(ex.aligned_chars[-1])
+            new_examples.append(
+                AlignedStringExample(
+                    aligned_chars=new_aligned_chars,
+                    features=ex.features,
+                    label=ex.label,
+                )
+            )
+        return new_examples
+
+    if not pretrained_merges:
+        merges: list[Bigram] = []
+        counts = count_bigrams(examples)
+        while counts.total() > 0:
+            next_merge = counts.most_common(1)[0][0]
+            merges.append(next_merge)
+            examples = replace_bigram(examples, next_merge)
+            counts = count_bigrams(examples)
+    else:
+        merges = pretrained_merges
+        for merge in merges:
+            examples = replace_bigram(examples, merge)
+    return examples, merges
