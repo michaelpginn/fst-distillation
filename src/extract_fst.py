@@ -268,7 +268,7 @@ def sample_full_domain(
         full_alignment = domain_cover(train_examples)
         full_alignment = [
             AlignedStringExample(
-                aligned_chars=[(c, "?") for c in ex.aligned],  # type:ignore
+                aligned_chars=[(c, "?") for c in ex.unaligned],  # type:ignore
                 features=ex.features,
                 label=True,
             )
