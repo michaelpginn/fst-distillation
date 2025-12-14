@@ -334,7 +334,7 @@ def main():
                 minimum_transition_count=run.config["minimum_transition_count"],
                 kmeans_num_clusters=run.config["kmeans_num_clusters"],
                 full_domain_mode=args.mode,
-                full_domain_search_n=run.config["full_domain_search_n"],
+                full_domain_search_n=run.config.get("full_domain_search_n", 2),
             )
             if args.objective == "bimachine":
                 results, _ = extract_bimachine(
