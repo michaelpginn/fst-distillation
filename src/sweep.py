@@ -325,6 +325,7 @@ def main():
             dir=WANDB_DIRECTORY,
         ) as run:
             run.config.update({"slurm_job_id": slurm_job_id})
+            full_domain_search_n = run.config.get("full_domain_search_n", 2)
             hyperparams = ExtractionHyperparameters(
                 model_shortname=best_run.name,  # type:ignore
                 clustering_method="kmeans",
@@ -334,14 +335,14 @@ def main():
                 minimum_transition_count=run.config["minimum_transition_count"],
                 kmeans_num_clusters=run.config["kmeans_num_clusters"],
                 full_domain_mode=args.mode,
-                full_domain_search_n=run.config.get("full_domain_search_n", 2),
+                full_domain_search_n=full_domain_search_n,
             )
             if args.objective == "bimachine":
                 results, _ = extract_bimachine(
                     hparams=hyperparams,
                     paths=paths,
                     precomputed_activations=(activations, transition_labels)
-                    if run.config["full_domain_search_n"] == 3
+                    if full_domain_search_n == 3
                     else None,  # type:ignore
                 )
             else:
@@ -349,7 +350,7 @@ def main():
                     hparams=hyperparams,
                     paths=paths,
                     precomputed_activations=(activations, transition_labels)  # type:ignore
-                    if run.config["full_domain_search_n"] == 3
+                    if full_domain_search_n == 3
                     else None,
                 )
             run.log(results)
