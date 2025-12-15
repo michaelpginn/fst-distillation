@@ -70,7 +70,27 @@ def main():
     if args.mode == "search" or paths["merge_outputs"] != "none":
         alignment_pred_loss = None
     else:
+        best_run = None
         if args.override_alignment or not paths["full_domain_aligned"].exists():
+            # Load the best run
+            for sweep in (
+                wandb.Api()
+                .project(
+                    name="fst-distillation.alignment_prediction.v2",
+                    entity="lecs-general",
+                )
+                .sweeps()
+            ):
+                if sweep.name == paths["identifier"]:
+                    logger.info(
+                        f"Found existing alignment predictor sweep {paths['identifier']}"
+                    )
+                    # If we didn't use identical paths, do a new run
+                    if sweep.best_run().config["paths"] == paths:  # type:ignore
+                        best_run = sweep.best_run()
+                        break
+
+        if best_run is None:
             logger.info("Running alignment predictor sweep")
 
             def single_run_train_alignment():
@@ -131,24 +151,6 @@ def main():
             best_run = sweep.best_run()
             predict_full_domain(paths, best_run.name, best_run.config["batch_size"])
 
-        else:
-            # Load the best run
-            best_run = None
-            for sweep in (
-                wandb.Api()
-                .project(
-                    name="fst-distillation.alignment_prediction.v2",
-                    entity="lecs-general",
-                )
-                .sweeps()
-            ):
-                if sweep.name == paths["identifier"]:
-                    logger.info(
-                        f"Found existing alignment predictor sweep {paths['identifier']}"
-                    )
-                    best_run = sweep.best_run()
-                    break
-
         assert best_run is not None
         if isinstance(best_run.summary_metrics, str):
             alignment_pred_loss = ast.literal_eval(best_run.summary_metrics)[
@@ -176,11 +178,12 @@ def main():
                     raise ValueError(
                         f"Found sweep for {paths['identifier']}, but sweep is not finished or crashed! Delete and try again."
                     )
-                logger.info(
-                    f"Found existing finished sweep {paths['identifier']}, reusing best run instead of running."
-                )
-                best_run = sweep.best_run()
-                break
+                if sweep.best_run().config["paths"] == paths:  # type:ignore
+                    logger.info(
+                        f"Found existing finished sweep {paths['identifier']}, reusing best run instead of running."
+                    )
+                    best_run = sweep.best_run()
+                    break
     except ValueError:
         logger.warning(f"Didn't find project {rnn_project_name}, creating new!")
 
