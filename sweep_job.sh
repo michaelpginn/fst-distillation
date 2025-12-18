@@ -18,4 +18,4 @@ cd "/projects/$USER/fst-distillation"
 
 set -x
 
-python -m src.sweep "$@"
+python -m src.sweep "$@" --wandb-dir /scratch/alpine/migi8081/fst-distillation/wandb/

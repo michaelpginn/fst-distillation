@@ -18,9 +18,6 @@ from .train_rnn import train_rnn
 
 logger = logging.getLogger(__name__)
 
-WANDB_DIRECTORY = "/scratch/alpine/migi8081/fst-distillation/wandb/"
-os.environ["WANDB_DIR"] = os.path.abspath(WANDB_DIRECTORY)
-
 
 def main():
     parser = create_arg_parser()
@@ -36,9 +33,13 @@ def main():
         help="If sample, will train an alignment predictor to sample from the domain. If search, will use n-grams with BFS to collect activations",
         required=True,
     )
+    parser.add_argument("--wandb-dir")
     args = parser.parse_args()
     paths = create_paths_from_args(args)
     slurm_job_id = os.environ.get("SLURM_JOB_ID")
+
+    if args.wandb_dir:
+        os.environ["WANDB_DIR"] = os.path.abspath(args.wandb_dir)
 
     # =========================================
     # 1. CRP ALIGNMENT
