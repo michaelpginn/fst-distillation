@@ -71,7 +71,7 @@ def main():
         alignment_pred_loss = None
     else:
         best_run = None
-        if args.override_alignment or not paths["full_domain_aligned"].exists():
+        if not args.override_alignment and paths["full_domain_aligned"].exists():
             # Load the best run
             for sweep in (
                 wandb.Api()

@@ -461,7 +461,11 @@ def _cluster(hyperparams: ExtractionHyperparameters, activations: np.ndarray):
                     f"kmeans_num_clusters is larger than the number of points ({len(activations)}), aborting!"
                 )
             _, labels, _ = k_means(  # type:ignore
-                activations, n_clusters=hyperparams.kmeans_num_clusters, random_state=0
+                activations,
+                n_clusters=hyperparams.kmeans_num_clusters,
+                random_state=0,
+                init="random",
+                n_init=1,  # type:ignore
             )
         elif hyperparams.clustering_method == "optics":
             labels = OPTICS(
@@ -557,15 +561,15 @@ if __name__ == "__main__":
             umap_n_neighbors=10,
             umap_min_distance=0.01,
             clustering_method="kmeans",
-            kmeans_num_clusters=1000,
+            kmeans_num_clusters=3779,
             use_faiss=False,
             min_samples=10,
             eps=1,
-            minimum_transition_count=None,
+            minimum_transition_count=10,
             state_split_classifier="svm",
             gen_top_k=1,
             full_domain=True,
-            full_domain_mode="search",
+            full_domain_mode="sample",
             full_domain_search_n=4,
             do_merge=False,
             visualize=args.visualize,

@@ -38,15 +38,19 @@ def train_alignment_predictor(
     num_layers: int,
     num_heads: int,
     dropout: float,
+    wandb_label: str | None = None,
     seed=0,
     wandb_run: wandb.Run | None = None,
 ):
     logger.info(f"Training on {paths['identifier']}")
     hyperparams = locals()
     if wandb_run is None:
+        project_name = "fst-distillation.alignment_prediction.v2"
+        if wandb_label:
+            project_name += "." + wandb_label
         wandb_run = wandb.init(
             entity="lecs-general",
-            project="fst-distillation.alignment_prediction.v2",
+            project=project_name,
             config={**hyperparams},
         )
     else:
@@ -185,6 +189,7 @@ if __name__ == "__main__":
     parser.add_argument("--num-heads", default=2)
     parser.add_argument("--dropout", default=0.1)
     parser.add_argument("--run-pred", action="store_true")
+    parser.add_argument("--label", help="Extra label for the wandb project")
     args = parser.parse_args()
     run = train_alignment_predictor(
         paths=create_paths_from_args(args),
@@ -196,6 +201,7 @@ if __name__ == "__main__":
         num_layers=int(args.num_layers),
         num_heads=int(args.num_heads),
         dropout=float(args.dropout),
+        wandb_label=args.label,
     )
     if args.run_pred:
         assert run and run.name
