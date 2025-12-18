@@ -98,7 +98,7 @@ def main():
                 with wandb.init(
                     entity="lecs-general",
                     project="fst-distillation.alignment_prediction.v2",
-                    dir=WANDB_DIRECTORY,
+                    dir=args.wandb_dir,
                 ) as run:
                     run.config.update({"slurm_job_id": slurm_job_id})
                     logger.info(f"Training with params: {pformat(run.config)}")
@@ -194,7 +194,7 @@ def main():
 
         def single_run_train_rnn():
             with wandb.init(
-                entity="lecs-general", project=rnn_project_name, dir=WANDB_DIRECTORY
+                entity="lecs-general", project=rnn_project_name, dir=args.wandb_dir
             ) as run:
                 run.config.update({"slurm_job_id": slurm_job_id})
                 logger.info(f"Training with params: {pformat(run.config)}")
@@ -326,7 +326,7 @@ def main():
                 },
                 "identifier": paths["identifier"],
             },
-            dir=WANDB_DIRECTORY,
+            dir=args.wandb_dir,
         ) as run:
             run.config.update({"slurm_job_id": slurm_job_id})
             full_domain_search_n = run.config.get("full_domain_search_n", 2)
