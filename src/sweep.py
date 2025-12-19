@@ -3,6 +3,7 @@
 import ast
 import logging
 import os
+from pathlib import Path
 from pprint import pformat
 
 import numpy as np
@@ -87,7 +88,11 @@ def main():
                         f"Found existing alignment predictor sweep {paths['identifier']}"
                     )
                     # If we didn't use identical paths, do a new run
-                    if sweep.best_run().config["paths"] == paths:  # type:ignore
+                    paths_strs = {
+                        k: str(v) if isinstance(v, Path) else v
+                        for k, v in paths.items()
+                    }
+                    if sweep.best_run().config["paths"] == paths_strs:  # type:ignore
                         best_run = sweep.best_run()
                         break
 
