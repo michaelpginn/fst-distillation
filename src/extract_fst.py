@@ -374,7 +374,7 @@ def search_full_domain(
         raise NotImplementedError()
     elif task == "transduction":
         all_inputs = ngram_bfs(
-            aligned_train_examples, n=hyperparams.full_domain_search_n, max_length=8
+            aligned_train_examples, n=hyperparams.full_domain_search_n, max_length=6
         )
         assert tokenizer.token_to_id
         for input_string in tqdm(
