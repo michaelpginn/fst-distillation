@@ -551,26 +551,32 @@ if __name__ == "__main__":
     parser = create_arg_parser()
     parser.add_argument("--model-id", help="WandB shortname for the training run")
     parser.add_argument("--visualize", action="store_true")
+    parser.add_argument("--num-clusters", type=int, required=True)
+    parser.add_argument("--use-faiss", action="store_true")
+    parser.add_argument("--min-transition-count", type=int, required=True)
+    parser.add_argument(
+        "--state-split-classifier", choices=["svm", "logistic"], required=True
+    )
+    parser.add_argument("--no-full-domain", action="store_true")
+    parser.add_argument(
+        "--full-domain-mode", choices=["search", "sample"], required=True
+    )
+    parser.add_argument("--full-domain-search-n", type=int, default=4)
     args = parser.parse_args()
 
     extract_fst(
         hparams=ExtractionHyperparameters(
             model_shortname=args.model_id,
             dim_reduction_method="none",
-            n_components=16,
-            umap_n_neighbors=10,
-            umap_min_distance=0.01,
             clustering_method="kmeans",
-            kmeans_num_clusters=3779,
-            use_faiss=False,
-            min_samples=10,
-            eps=1,
-            minimum_transition_count=10,
-            state_split_classifier="svm",
+            kmeans_num_clusters=int(args.num_clusters),
+            use_faiss=args.use_faiss,
+            minimum_transition_count=int(args.min_transition_count),
+            state_split_classifier=args.state_split_classifier,
             gen_top_k=1,
-            full_domain=True,
-            full_domain_mode="sample",
-            full_domain_search_n=4,
+            full_domain=not args.no_full_domain,
+            full_domain_mode=args.full_domain_mode,
+            full_domain_search_n=args.full_domain_search_n,
             do_merge=False,
             visualize=args.visualize,
         ),

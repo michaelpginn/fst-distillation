@@ -6,6 +6,7 @@ You must run `run_alignment.py` first to produce aligned data files.
 """
 
 from logging import getLogger
+from pathlib import Path
 from typing import Literal
 
 import torch
@@ -183,6 +184,12 @@ def train_rnn(
         },
         checkpoint_path,
     )
+    tmp_path = Path(__file__).parent / "tmp"
+    tmp_path.mkdir(exist_ok=True)
+    with open(Path(__file__).parent / "tmp" / "last-run.txt", "w") as f:
+        assert wandb_run.name
+        f.write(wandb_run.name)
+
     wandb_run.finish()
     return wandb_run, last_eval_loss
 
