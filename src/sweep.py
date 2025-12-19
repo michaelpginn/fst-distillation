@@ -184,7 +184,7 @@ def main():
                     raise ValueError(
                         f"Found sweep for {paths['identifier']}, but sweep is not finished or crashed! Delete and try again."
                     )
-                if sweep.best_run().config["paths"] == paths:  # type:ignore
+                if sweep.best_run().config["paths"] == paths_strs:  # type:ignore
                     logger.info(
                         f"Found existing finished sweep {paths['identifier']}, reusing best run instead of running."
                     )
