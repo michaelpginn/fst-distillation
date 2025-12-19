@@ -37,6 +37,7 @@ def main():
     parser.add_argument("--wandb-dir")
     args = parser.parse_args()
     paths = create_paths_from_args(args)
+    paths_strs = {k: str(v) if isinstance(v, Path) else v for k, v in paths.items()}
     slurm_job_id = os.environ.get("SLURM_JOB_ID")
 
     if args.wandb_dir:
@@ -88,10 +89,6 @@ def main():
                         f"Found existing alignment predictor sweep {paths['identifier']}"
                     )
                     # If we didn't use identical paths, do a new run
-                    paths_strs = {
-                        k: str(v) if isinstance(v, Path) else v
-                        for k, v in paths.items()
-                    }
                     if sweep.best_run().config["paths"] == paths_strs:  # type:ignore
                         best_run = sweep.best_run()
                         break
