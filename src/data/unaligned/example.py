@@ -41,6 +41,8 @@ def load_examples_from_file(
                     raise ValueError(
                         "Wrong number of columns, you probably want --features"
                     )
+            if len(input_string.strip()) == 0:
+                continue
             if output_split_into_chars and output_string:
                 output_string = output_string.split()
             examples.append(String2StringExample(input_string, features, output_string))
