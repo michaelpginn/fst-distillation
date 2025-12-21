@@ -50,7 +50,8 @@ def evaluate_all(
             logger.debug(
                 f"FST has no accepting states for input {''.join(input_string)}"
             )
-            preds_for_example = set()
+            # Fallback to no change
+            preds_for_example = {"".join(input_string)}
         else:
             output_fst = output_fst.project(-1)
             preds_for_example = {

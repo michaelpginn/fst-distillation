@@ -245,6 +245,14 @@ def main():
         wandb.agent(sweep_id, function=single_run_train_rnn, count=num_neural_runs)
         sweep = wandb.Api().sweep(f"lecs-general/{rnn_project_name}/sweeps/{sweep_id}")
         best_run = sweep.best_run()
+
+        # Push model
+        with wandb.init(id=best_run.id, resume="must"):
+            wandb.log_artifact(
+                paths["models_folder"] / f"{best_run.name}/model.pt",
+                name="checkpoint",
+                type="model",
+            )
     if isinstance(best_run.summary_metrics, str):
         best_run_loss = ast.literal_eval(best_run.summary_metrics)["validation"]["loss"]
     else:
