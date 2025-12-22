@@ -2,6 +2,7 @@ import itertools
 import logging
 from random import sample
 
+import editdistance
 from pyfoma.fst import FST
 from tqdm import tqdm
 
@@ -71,15 +72,25 @@ def compute_metrics(labels: list[str], predictions: list[set[str]]):
     precision_sum = 0
     recall_sum = 0
     accepted_sum = 0
+    edit_dist_sum = 0
 
     for label, preds in zip(labels, predictions):
         if len(preds) > 0:
             accepted_sum += 1
+
+        best_edit_dist = None
+        for pred in preds:
+            dist = editdistance.eval(pred, label) / len(label)
+            if not best_edit_dist or dist < best_edit_dist:
+                best_edit_dist = dist
+        edit_dist_sum += best_edit_dist or len(label)
+
         if label not in preds:
             # Add 0 to both prec and recall
             continue
         precision_sum += 1 / len(preds)
         recall_sum += 1
+
     precision = precision_sum / len(labels)
     recall = recall_sum / len(labels)
     if precision + recall > 0:
@@ -87,11 +98,13 @@ def compute_metrics(labels: list[str], predictions: list[set[str]]):
     else:
         f1 = 0
     accepted_percentage = accepted_sum / len(labels)
+    cer = edit_dist_sum / len(labels)
     return {
         "precision": precision,
         "recall": recall,
         "f1": f1,
         "accepted_percentage": accepted_percentage,
+        "cer": cer,
     }
 
 
