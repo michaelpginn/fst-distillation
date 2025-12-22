@@ -9,3 +9,4 @@ scikit-learn
 wandb
 hdbscan
 umap-learn
+editdistance

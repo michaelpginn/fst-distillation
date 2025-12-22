@@ -20,11 +20,13 @@ mamba activate fst
 # source activate distillfst
 cd "/projects/$USER/fst-distillation"
 
-for lang in aka ceb	crh	czn	dje	gaa	izh	kon	lin	mao	mlg	nya	ood	orm	ote	san sot	swa	syc	tgk	tgl	xty	zpv	zul
-do
-    for order in lex dd
-    do
-        echo "Running OSTIA-$order for $lang"
-        python -m src.ostia.run_ostia data/inflection $lang --features --order $order
-    done
-done
+# for lang in aka ceb	crh	czn	dje	gaa	izh	kon	lin	mao	mlg	nya	ood	orm	ote	san sot	swa	syc	tgk	tgl	xty	zpv	zul
+# do
+#     for order in lex dd
+#     do
+#         echo "Running OSTIA-$order for $lang"
+#         python -m src.ostia.run_ostia data/inflection $lang --features --order $order
+#     done
+# done
+
+python -m src.ostia-run_ostia $1 $2 --order $3
