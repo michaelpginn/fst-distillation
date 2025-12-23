@@ -22,8 +22,7 @@ def load_examples_from_file(
             if has_features:
                 try:
                     if len(row) == 2:
-                        # Test data, no target forms
-                        [input_string, features] = row
+                        continue
                     else:
                         [input_string, output_string, features] = row
                     features = features.split(";")
@@ -34,9 +33,11 @@ def load_examples_from_file(
             else:
                 try:
                     if len(row) == 1:
-                        [input_string] = row
+                        continue
                     else:
                         [input_string, output_string] = row
+                        if len(output_string.strip()) == 0:
+                            continue
                 except ValueError:
                     raise ValueError(
                         "Wrong number of columns, you probably want --features"
