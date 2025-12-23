@@ -1,32 +1,35 @@
 \begin{table}[htb]
 \begin{tabularx}{\columnwidth}{l | X | X X X }
-& \rot{Human Expert} & \rot{OSTIA} & \rot{OSTIA-DD} & \rot{Ours} \\
-\hline
-aka & 1.000 & 0.533 & 0.615 & \textbf{0.855} \\
-ceb & 0.865 & 0.135 & 0.108 & \textbf{0.856} \\
-crh & 0.964 & 0.020 &  & \textbf{0.911} \\
-czn & 0.725 & 0.013 & 0.036 & \textbf{0.489} \\
-dje & 1.000 & 0.125 & 0.438 & \textbf{1.000} \\
-gaa & 1.000 & 0.391 & 0.331 & \textbf{1.000} \\
-izh & 0.929 & 0.009 & 0.000 & \textbf{0.299} \\
-kon & 0.987 & 0.141 & 0.179 & \textbf{0.968} \\
-lin & 1.000 & 0.043 & 0.065 & \textbf{0.935} \\
-mao & 0.667 & 0.000 & 0.048 & \textbf{0.452} \\
-mlg & 1.000 & 0.189 & 0.307 & \textbf{0.984} \\
-nya & 1.000 & 0.618 & 0.533 & \textbf{1.000} \\
-ood & 0.710 & 0.010 & 0.013 & \textbf{0.589} \\
-orm & 0.990 & 0.037 & 0.012 & \textbf{0.867} \\
+& \rot{Human Expert} & \rot{OSTIA} & \rot{OSTIA-DD} & \rot{Ours} \\ 
+\hline 
+aka & 1.000 & 0.533 & 0.615 & \textbf{} \\
+ceb & 0.865 & 0.135 & 0.108 & \textbf{} \\
+crh & 0.964 & 0.020 &  & \textbf{} \\
+czn & 0.725 & 0.013 & 0.036 & \textbf{0.649} \\
+dje & 1.000 & 0.125 & 0.438 & \textbf{0.750} \\
+gaa & 1.000 & 0.391 & 0.331 & \textbf{} \\
+izh & 0.929 & 0.009 & 0.000 & \textbf{} \\
+kon & 0.987 & 0.141 & 0.179 & \textbf{0.872} \\
+lin & 1.000 & 0.043 & 0.065 & \textbf{} \\
+mao & 0.667 & 0.000 & 0.048 & \textbf{} \\
+mlg & 1.000 & 0.189 & 0.307 & \textbf{} \\
+nya & 1.000 & 0.618 & 0.533 & \textbf{} \\
+ood & 0.710 & 0.010 & 0.013 & \textbf{} \\
+orm & 0.990 & 0.037 & 0.012 & \textbf{} \\
 ote & 0.909 & 0.423 &  & \textbf{} \\
 san & 1.000 &  &  & \textbf{} \\
-sot & 1.000 & 0.424 & 0.424 & \textbf{0.939} \\
-swa & 1.000 & 0.569 & 0.541 & \textbf{0.998} \\
-syc & 0.883 & 0.031 & 0.007 & \textbf{0.874} \\
-tgk & 0.938 & 0.000 & 0.000 & \textbf{0.312} \\
-tgl & 0.778 & 0.019 & 0.013 & \textbf{0.301} \\
-xty & 0.817 & 0.122 & 0.000 & \textbf{0.813} \\
-zpv & 0.789 & 0.175 & 0.145 & \textbf{0.632} \\
-zul & 0.833 & 0.000 & 0.000 & \textbf{0.756} \\
+sot & 1.000 & 0.424 & 0.424 & \textbf{} \\
+swa & 1.000 & 0.569 & 0.541 & \textbf{} \\
+syc & 0.883 & 0.031 & 0.007 & \textbf{} \\
+tgk & 0.938 & 0.000 & 0.000 & \textbf{} \\
+tgl & 0.778 & 0.019 & 0.013 & \textbf{} \\
+xty & 0.817 & 0.122 & 0.000 & \textbf{} \\
+zpv & 0.789 & 0.175 & 0.145 & \textbf{} \\
+zul & 0.833 & 0.000 & 0.000 & \textbf{} \\
+deu &  &  &  & \textbf{0.598} \\
+swe &  &  &  & \textbf{0.763} \\
+spa &  &  &  & \textbf{0.137} \\
 \end{tabularx}
-\caption{Accuracy of learned transducers for morphological inflection datasets. Our system produces far more accurate transducers than the OSTIA-based algorithms on every language, and often nearly as accurate as expert-crafted FSTs from \citet{beemer-etal-2020-linguist}.}
+\caption{Accuracy of learned transducers for morphological inflection datasets on held-out test set. Our system produces far more accurate transducers than the OSTIA-based algorithms on every language, and often nearly as accurate as expert-crafted FSTs from \citet{beemer-etal-2020-linguist}.}
 \label{tab:inflection}
 \end{table}

@@ -1,14 +1,20 @@
+import argparse
 from pathlib import Path
 
 import pandas as pd
 
 import wandb
 
-# TODO: Adapt for non inflection task
+parser = argparse.ArgumentParser()
+parser.add_argument("task", choices=["inflection", "g2p", "histnorm"])
+args = parser.parse_args()
 
-viz_path = Path(__file__).parent.parent / "viz"
-results = pd.read_csv(viz_path / "beemer.csv")
-results.index = ["beemer"]
+viz_path = Path(__file__).parent
+if args.task == "inflection":
+    beemer_results = pd.read_csv(viz_path / "beemer.csv")
+    beemer_results.index = ["Human Expert"]
+else:
+    beemer_results = None
 
 api = wandb.Api()
 
@@ -16,7 +22,9 @@ api = wandb.Api()
 ostia_results = {}
 ostia_dd_results = {}
 for run in api.runs(path="lecs-general/fst-distillation.ostia"):
-    lang = run.config["paths"]["identifier"].split(".")[-1]
+    task, lang = run.config["paths"]["identifier"].split(".")
+    if task != args.task or run.state != "finished":
+        continue
     score = run.summary_metrics["test"]["f1"]
     if run.config["order"] == "lex":
         ostia_results[lang] = score
@@ -24,8 +32,6 @@ for run in api.runs(path="lecs-general/fst-distillation.ostia"):
         ostia_dd_results[lang] = score
     else:
         raise ValueError()
-results.loc["OSTIA"] = ostia_results
-results.loc["OSTIA-DD"] = ostia_dd_results
 
 # Ours
 sweeps = api.project(
@@ -37,7 +43,12 @@ for sweep in sweeps:
     assert best_run
     lang = sweep.name.split(".")[-1]
     our_results[lang] = best_run.summary_metrics["test"]["f1"]
-results.loc["Ours"] = our_results
+
+results = pd.DataFrame(
+    [ostia_results, ostia_dd_results, our_results], index=["OSTIA", "OSTIA-DD", "Ours"]
+)
+if beemer_results is not None:
+    results = pd.concat([beemer_results, results])
 
 
 # Create LaTeX
@@ -56,7 +67,7 @@ with open(viz_path / "main.tex", "w") as f:
     )
     for row in results.T.iterrows():
         lang = row[0]
-        beemer = fmt(row[1]["beemer"])
+        beemer = fmt(row[1]["Human Expert"])
         ostia = fmt(row[1]["OSTIA"])
         ostia_dd = fmt(row[1]["OSTIA-DD"])
         ours = "\\textbf{" + fmt(row[1]["Ours"]) + "}"
