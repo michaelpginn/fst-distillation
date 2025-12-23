@@ -187,8 +187,8 @@ def main():
                     )
                     best_run = sweep.best_run()
                     break
-    except ValueError:
-        logger.warning(f"Didn't find project {rnn_project_name}, creating new!")
+    except ValueError as e:
+        logger.warning(e)
 
     # If not, run the sweep
     if best_run is None:
