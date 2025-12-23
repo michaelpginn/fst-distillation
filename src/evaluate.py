@@ -63,7 +63,7 @@ def evaluate_all(
         if log and idx in indices_to_log:
             logger.info(f"Input:\t{''.join(input_string)}")
             logger.info(f"Gold:\t{''.join(correct_output)}")
-            logger.info(f"Predicted:\t{preds_for_example}")
+            logger.info(f"Predicted:\t{preds_for_example}\n")
     return compute_metrics(labels, preds)
 
 

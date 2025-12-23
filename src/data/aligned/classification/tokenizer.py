@@ -30,8 +30,7 @@ class AlignedClassificationTokenizer(Tokenizer):
 
         input_ids = [self.bos_token_id]
 
-        # Source should be `<bos> features <sep> aligned chars`
-        # TODO: May want to make this consistent with the LM by adding <sink> to the end
+        # Source should be `<bos> features <sep> aligned chars <sink>`
         if example.features is not None:
             input_ids += [
                 self.token_to_id.get(feature, self.unk_token_id)

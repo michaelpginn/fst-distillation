@@ -203,7 +203,7 @@ if __name__ == "__main__":
     )
     parser.add_argument("--batch-size", default=64)
     parser.add_argument("--epochs", default=200)
-    parser.add_argument("--hidden-dim", default=64)
+    parser.add_argument("--d-model", default=64)
     parser.add_argument("--num-layers", default=1)
     parser.add_argument("--dropout", default=0.1)
     parser.add_argument("--learning-rate", default=0.001)
@@ -217,7 +217,7 @@ if __name__ == "__main__":
         objective=args.objective,
         batch_size=int(args.batch_size),
         epochs=int(args.epochs),
-        d_model=int(args.hidden_dim),
+        d_model=int(args.d_model),
         num_layers=int(args.num_layers),
         dropout=float(args.dropout),
         learning_rate=float(args.learning_rate),
