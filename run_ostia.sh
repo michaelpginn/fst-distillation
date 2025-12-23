@@ -7,7 +7,6 @@
 #SBATCH --qos=blanca-curc
 #SBATCH --partition=blanca-curc
 #SBATCH --account=blanca-curc
-#SBATCH --constraint=rome
 #SBATCH --out=logs/%j.log
 #SBATCH --error=logs/%j.log
 
