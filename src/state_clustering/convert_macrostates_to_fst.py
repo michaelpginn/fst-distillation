@@ -6,7 +6,6 @@ import numpy as np
 from pyfoma.atomic import State
 from pyfoma.fst import FST
 from sklearn import linear_model, svm
-from sklearn.neighbors import KNeighborsClassifier
 
 from src.state_clustering.types import Macrostate, Macrotransition, Microstate
 
@@ -28,6 +27,7 @@ def convert_macrostates_to_fst(
 
     queue: list[Macrostate] = [initial_macrostate]
     visited_labels: set[str] = set()
+    unsplittable_state_labels: set[str] = set()
     while len(queue) > 0:
         current_macrostate = queue.pop(0)
         if current_macrostate.label in visited_labels:
@@ -47,7 +47,10 @@ def convert_macrostates_to_fst(
                 for output in outputs_sorted
                 if minimum_transition_count and output[1] >= minimum_transition_count
             ]
-            if len(outputs_over_threshold) <= 1:
+            if (
+                len(outputs_over_threshold) <= 1
+                or current_macrostate.label in unsplittable_state_labels
+            ):
                 # If we don't have any over threshold, use the most common
                 output_symbol, target_state_label = outputs_sorted[0][0]
                 chosen_transitions.add(
@@ -79,23 +82,26 @@ def convert_macrostates_to_fst(
             logger.debug(f"Splitting state: {current_macrostate.label}")
             logger.debug(f"Bad symbols: {outgoing_distributions}")
             # logger.info(f"Distribution: {pprint.pformat(outgoing_distributions)}")
-            new_macrostates, macrostates_to_recheck = split_state(
-                current_macrostate,
-                offending_input_symbols=nondeterministic_input_symbols,
-                state_splitting_classifier=state_splitting_classifier,
-                minimum_transition_count=minimum_transition_count,
-            )
-            if len(new_macrostates) == len(macrostates_to_recheck) == 0:
-                # Splitting failed
-                continue
-            del macrostates[current_macrostate.label]
-            for m in new_macrostates:
-                assert m.label not in macrostates
-                macrostates[m.label] = m
-            queue = macrostates_to_recheck + new_macrostates + queue
-            for m in macrostates_to_recheck:
-                if m.label in visited_labels:
-                    visited_labels.remove(m.label)
+            try:
+                new_macrostates, macrostates_to_recheck = split_state(
+                    current_macrostate,
+                    offending_input_symbols=nondeterministic_input_symbols,
+                    state_splitting_classifier=state_splitting_classifier,
+                    minimum_transition_count=minimum_transition_count,
+                )
+                del macrostates[current_macrostate.label]
+                for m in new_macrostates:
+                    assert m.label not in macrostates
+                    macrostates[m.label] = m
+                queue = macrostates_to_recheck + new_macrostates + queue
+                for m in macrostates_to_recheck:
+                    if m.label in visited_labels:
+                        visited_labels.remove(m.label)
+            except Exception:
+                # Splitting failed, just re-add to queeu
+                unsplittable_state_labels.add(current_macrostate.label)
+                visited_labels.remove(current_macrostate.label)
+                queue = [current_macrostate] + queue
 
     # generalize_transitions(macrostates)
 
@@ -142,7 +148,6 @@ def split_state(
     offending_input_symbols: set[str],
     state_splitting_classifier: Literal["svm", "logistic"],
     minimum_transition_count: int | None,
-    unsplittable_states: set[str] = set(),
 ):
     """Splits a state, possibly recursively.
 
@@ -156,10 +161,6 @@ def split_state(
         1. The new Macrostates created by splitting
         2. Macrostates that need to re-compute transitions
     """
-    # This depends on the fact that the default parameter is shared across function calls
-    if macrostate.label in unsplittable_states:
-        return [], []
-
     outgoing_distributions = macrostate.compute_outgoing_distributions()
 
     # 1. Find worst input symbol (by entropy)
@@ -216,18 +217,16 @@ def split_state(
     # print(f"Scores: {clf.score(states_to_split, labels)}")
     # print(f"Preds: {Counter(preds)}")
     if len(set(preds)) == 1:
-        logger.warning(
-            f"Splitting state {macrostate.label} failed. Falling back to k-NN."
-        )
-        knn = KNeighborsClassifier(n_neighbors=1, n_jobs=1)
-        knn.fit(np.stack(states_to_split), labels)
-        preds = knn.predict(
-            np.stack([microstate.position for microstate in macrostate.microstates])
-        )
-        if len(set(preds)) == 1:
-            logger.debug(f"Adding {macrostate.label} to unsplittable states")
-            unsplittable_states.add(macrostate.label)
-            return [], []
+        logger.warning("State is unsplittable")
+        raise Exception("Unsplittable state")
+        # knn = KNeighborsClassifier(n_neighbors=1, n_jobs=1)
+        # knn.fit(np.stack(states_to_split), labels)
+        # preds = knn.predict(
+        #     np.stack([microstate.position for microstate in macrostate.microstates])
+        # )
+        # if len(set(preds)) == 1:
+        #     logger.warning("Unsplittable even with knn")
+        #     raise Exception("Unsplittable state")
 
     # 4. Create n new macrostates for points
     new_macrostates = [
