@@ -235,12 +235,12 @@ def main():
                         if b <= max_batch_size
                     ][-4:]
                 },
-                "epochs": {"values": [200, 600, 1000]},
+                "epochs": {"values": [200, 400, 600]},
             },
             "early_terminate": {
                 "type": "hyperband",
                 "min_iter": 75,  # minimum epochs before possible pruning
-                "max_iter": 1000,  # maximum epochs (full resource)
+                "max_iter": 600,  # maximum epochs (full resource)
             },
         }
 
