@@ -62,10 +62,10 @@ def main():
     max_batch_size = train_size // 5
     if train_size > 5000:
         num_neural_runs = 25
-        num_extract_runs = 50
+        num_extract_runs = 25
     else:
         num_neural_runs = 50
-        num_extract_runs = 300
+        num_extract_runs = 100
 
     # =========================================
     # 2. ALIGNMENT PREDICTOR TRAINING
