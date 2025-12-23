@@ -81,9 +81,9 @@ def compute_metrics(labels: list[str], predictions: list[set[str]]):
         best_edit_dist = None
         for pred in preds:
             dist = editdistance.eval(pred, label) / len(label)
-            if not best_edit_dist or dist < best_edit_dist:
+            if best_edit_dist is None or dist < best_edit_dist:
                 best_edit_dist = dist
-        edit_dist_sum += best_edit_dist or len(label)
+        edit_dist_sum += best_edit_dist if best_edit_dist is not None else 1
 
         if label not in preds:
             # Add 0 to both prec and recall
