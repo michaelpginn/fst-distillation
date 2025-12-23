@@ -155,7 +155,7 @@ def ngram_bfs(train_examples: list[AlignedStringExample], n=3, max_length=7):
     for ex in train_examples:
         if ex.features is not None:
             raise ValueError("Cannot use search with features")
-        s = ["#"] + [in_char for in_char, _ in ex.aligned_chars] + ["#"]
+        s = [in_char for in_char, _ in ex.aligned_chars]
         train_strings.add(tuple(s))
         for gram in _ngrams(s):
             ngrams[gram[:-1]].add(gram[-1])
@@ -166,16 +166,16 @@ def ngram_bfs(train_examples: list[AlignedStringExample], n=3, max_length=7):
     queue: list[tuple[str, ...]] = []
     # Start with any start ngrams
     for key, chars in ngrams.items():
-        if key[0] == "#":
+        if key[0] == "<sep>":
             for c in chars:
                 queue.append((*key, c))
     # BFS
     added = 0
     while len(queue) > 0:
         next_string = queue.pop(0)
-        if next_string[-1] == "#":
+        if next_string[-1] == "<sink>":
             if next_string not in train_strings:
-                all_strings.append(list(next_string[1:-1]))
+                all_strings.append(list(next_string))
                 added += 1
                 if added % 1000 == 0:
                     logger.info("Generated %d strings" % added)

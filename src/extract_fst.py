@@ -383,9 +383,7 @@ def search_full_domain(
             token_ids = [tokenizer.token_to_id[t] for t in input_string]
             token_ids = [
                 tokenizer.bos_token_id,
-                tokenizer.sep_token_id,
                 *token_ids,
-                tokenizer.sink_token_id,
                 tokenizer.eos_token_id,
             ]
             input_ids = torch.tensor([token_ids[:-1]], device=device)
