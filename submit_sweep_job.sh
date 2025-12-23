@@ -34,7 +34,7 @@ case "$cluster" in
     ;;
 esac
 
-sbtail \
+sbatch \
   --qos="$qos" \
   --partition="$part" \
   --account="$acct" \
