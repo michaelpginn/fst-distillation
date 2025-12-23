@@ -19,7 +19,14 @@ class AlignedTransductionTokenizer(Tokenizer):
     def create_vocab(self, examples: list[AlignedStringExample]) -> list[str]:
         vocab: set[str] = set()
         for example in examples:
-            vocab.update({c for pair in example.aligned_chars for c in pair})
+            vocab.update(
+                {
+                    c
+                    for pair in example.aligned_chars
+                    for c in pair
+                    if c not in self.special_tokens
+                }
+            )
             if example.features is not None:
                 vocab.update(set(example.features))
         return sorted(vocab)
