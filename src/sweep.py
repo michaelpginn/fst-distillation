@@ -253,7 +253,7 @@ def main():
             )
         else:
             logger.info(f"Reusing sweep {existing_sweep.id}")
-            sweep_id = existing_sweep.id
+            sweep_id = f"lecs-general/{rnn_project_name}/{existing_sweep.id}"
         wandb.agent(sweep_id, function=single_run_train_rnn, count=num_neural_runs)
         sweep = wandb.Api().sweep(f"lecs-general/{rnn_project_name}/sweeps/{sweep_id}")
         best_run = sweep.best_run()
