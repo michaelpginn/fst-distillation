@@ -169,17 +169,19 @@ def main():
 
     # Load the best run
     best_run = None
+    existing_sweep = None
     try:
         for sweep in (
             wandb.Api().project(name=rnn_project_name, entity="lecs-general").sweeps()
         ):
             if sweep.name == paths["identifier"]:
                 if (
-                    any(r.state != "finished" for r in sweep.runs)
-                    or len(sweep.runs) < num_neural_runs
+                    len([r for r in sweep.runs if r.state == "finished"])
+                    < num_neural_runs
                 ):
+                    existing_sweep = sweep
                     raise ValueError(
-                        f"Found sweep for {paths['identifier']}, but sweep is not finished or crashed! Delete and try again."
+                        f"Found sweep for {paths['identifier']}, but sweep is not finished or crashed! Resuming..."
                     )
                 if sweep.best_run().config["paths"] == paths_strs:  # type:ignore
                     logger.info(
@@ -192,7 +194,9 @@ def main():
 
     # If not, run the sweep
     if best_run is None:
-        logger.info(f"No sweep was found for {paths['identifier']}. Running now.")
+        logger.info(
+            f"No (finished) sweep was found for {paths['identifier']}. Running now."
+        )
 
         def single_run_train_rnn():
             with wandb.init(
@@ -239,9 +243,17 @@ def main():
                 "max_iter": 1000,  # maximum epochs (full resource)
             },
         }
-        sweep_id = wandb.sweep(
-            sweep=sweep_configuration, entity="lecs-general", project=rnn_project_name
-        )
+
+        if existing_sweep is None:
+            logger.info("Creating new sweep")
+            sweep_id = wandb.sweep(
+                sweep=sweep_configuration,
+                entity="lecs-general",
+                project=rnn_project_name,
+            )
+        else:
+            logger.info(f"Reusing sweep {existing_sweep.id}")
+            sweep_id = existing_sweep.id
         wandb.agent(sweep_id, function=single_run_train_rnn, count=num_neural_runs)
         sweep = wandb.Api().sweep(f"lecs-general/{rnn_project_name}/sweeps/{sweep_id}")
         best_run = sweep.best_run()
