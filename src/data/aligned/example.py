@@ -54,7 +54,7 @@ def load_examples_from_file(
             else:
                 raise ValueError("File must be TSV with 1-2 columns")
             char_pairs: list[tuple[str, str]] = re.findall(r"\((.*?),(.*?)\)", chars)
-            char_pairs = [("<sep>", "<sep>")] + char_pairs + [("<sink>", "<sink>")]
+            char_pairs = char_pairs + [("<sink>", "<sink>")]
             examples.append(AlignedStringExample(char_pairs, features, label=True))
 
     if merge_outputs == "right":
