@@ -332,11 +332,6 @@ def main():
             ),
         },
     }
-    fst_sweep_id = wandb.sweep(
-        sweep=sweep_configuration,
-        entity="lecs-general",
-        project="fst-distillation.extraction.v2",
-    )
 
     def _run_extraction():
         with wandb.init(
@@ -386,7 +381,43 @@ def main():
             run.log(results)
             run.summary["training_run"] = best_run.url  # type:ignore
 
-    wandb.agent(fst_sweep_id, function=_run_extraction, count=num_extract_runs)
+    existing_sweep = None
+    try:
+        for sweep in (
+            wandb.Api()
+            .project(name="fst-distillation.extraction.v2", entity="lecs-general")
+            .sweeps()
+        ):
+            if sweep.name == paths["identifier"]:
+                if (
+                    len([r for r in sweep.runs if r.state == "finished"])
+                    < num_extract_runs
+                ):
+                    existing_sweep = sweep
+                    raise ValueError(
+                        f"Found sweep for {paths['identifier']}, but sweep is not finished or crashed! Resuming..."
+                    )
+    except ValueError as e:
+        logger.warning(e)
+
+    if existing_sweep is None:
+        logger.info("Creating new sweep")
+        fst_sweep_id = wandb.sweep(
+            sweep=sweep_configuration,
+            entity="lecs-general",
+            project="fst-distillation.extraction.v2",
+        )
+        remaining_runs = num_extract_runs
+    else:
+        logger.info(f"Reusing sweep {existing_sweep.id}")
+        fst_sweep_id = (
+            f"lecs-general/fst-distillation.extraction.v2/{existing_sweep.id}"
+        )
+        remaining_runs = num_extract_runs - len(
+            [r for r in existing_sweep.runs if r.state == "finished"]
+        )
+
+    wandb.agent(fst_sweep_id, function=_run_extraction, count=remaining_runs)
     sweep = wandb.Api().sweep(
         f"lecs-general/fst-distillation.extraction.v2/sweeps/{fst_sweep_id}"
     )
