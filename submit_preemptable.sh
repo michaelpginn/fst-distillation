@@ -12,4 +12,5 @@ sbatch \
   --qos="preemptable" \
   --account="blanca-blast-lecs" \
   --gres=gpu:1 \
+  --time=1-00:00:00 \
   sweep_job.sh  --models /scratch/alpine/$USER/fst-distillation/models/ "$@"
