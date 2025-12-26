@@ -28,4 +28,4 @@ cd "/projects/$USER/fst-distillation"
 #     done
 # done
 
-python -m src.ostia-run_ostia $1 $2 --order $3
+python -m src.ostia.run_ostia $1 $2 --order $3
