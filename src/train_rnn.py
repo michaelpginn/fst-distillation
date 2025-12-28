@@ -96,13 +96,11 @@ def train_rnn(
 
         train_dataset = AlignedClassificationDataset(
             positive_examples=train_examples,
-            all_positive_examples=train_examples + eval_examples,
             tokenizer=None,
         )
         tokenizer = train_dataset.tokenizer
         eval_dataset = AlignedClassificationDataset(
             positive_examples=eval_examples,
-            all_positive_examples=train_examples + eval_examples,
             tokenizer=tokenizer,
         )
     elif objective == "lm":
