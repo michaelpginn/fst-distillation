@@ -232,9 +232,13 @@ def _collect_activations(
                     paths, model, tokenizer, task
                 )
             elif hyperparams.full_domain_mode == "search":
-                new_activations, new_labels = search_full_domain(
+                new_activations, _ = search_full_domain(
                     hyperparams, aligned_train_examples, model, tokenizer, task
                 )
+                new_labels = []
+                # ^ I am intentionally throwing away these transition labels (but keeping the points)\
+                # because for some reason that seems to work better in the searching case.
+                # This might be due to some other issue, TBD at a later date.
             else:
                 raise ValueError()
             activations.extend(new_activations)
