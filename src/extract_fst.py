@@ -420,7 +420,7 @@ def _standardize(hyperparams: ExtractionHyperparameters, activations: torch.Tens
     activations_np = activations.numpy()
     if (
         hyperparams.dim_reduction_method != "none"
-        and hyperparams.n_components < activations_np.shape[-1]
+        and hyperparams.n_components < activations_np.shape[-1]  # type:ignore
     ):
         logger.info(f"Reducing dimensionality (PC = {hyperparams.n_components})...")
         if hyperparams.dim_reduction_method == "pca":

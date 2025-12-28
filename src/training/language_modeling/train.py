@@ -25,6 +25,7 @@ def compute_loss(
     out = model(
         input_ids=input_ids,
         seq_lengths=seq_lengths,
+        next_input_ids=None,
     )
     loss = torch.nn.functional.cross_entropy(
         out.permute(0, 2, 1),
@@ -89,6 +90,7 @@ def train(
                     model,
                     batch,
                     spectral_norm_weight=spectral_norm_weight,
+                    label_smoothing=label_smoothing,
                 )
                 epoch_loss += loss.detach().item()
         eval_loss = epoch_loss / len(eval_dataloader)

@@ -48,7 +48,7 @@ sweep_configuration = {
         "kmeans_num_clusters": {"min": 50, "max": max_clusters},
         **(
             {"full_domain_search_n": {"values": [3, 4]}}
-            if args.mode == "search"
+            if args.mode == "search" and not args.no_full_domain
             else {}
         ),
     },
