@@ -24,6 +24,7 @@ def compute_loss(model: Module, batch, tokenizer, spectral_norm_weight: float | 
     out = model(
         input_ids=input_ids,
         seq_lengths=seq_lengths,
+        next_input_ids=None,
     )
     loss = torch.nn.functional.binary_cross_entropy_with_logits(out, labels)
 
