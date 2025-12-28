@@ -1,3 +1,5 @@
+import re
+
 from src.modeling.tokenizer import Tokenizer
 
 from ..example import AlignedStringExample
@@ -45,3 +47,14 @@ class AlignedClassificationTokenizer(Tokenizer):
         if example.aligned_chars[-1][0] != "<sink>":
             input_ids.append(self.sink_token_id)
         return {"input_ids": input_ids, "label": int(example.label)}
+
+    def token_ids_matching_input(self, input_char: str) -> list[int]:
+        """Gets the tokens that have a given char on the input side"""
+        assert self.token_to_id is not None
+        ids = []
+        for token, id in self.token_to_id.items():
+            if (match := re.match(r"\((.*),(.*)\)", token)) is not None and match.group(
+                1
+            ) == input_char:
+                ids.append(id)
+        return ids

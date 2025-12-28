@@ -21,7 +21,6 @@ class AlignedClassificationDataset(Dataset):
     def __init__(
         self,
         positive_examples: list[AlignedStringExample],
-        all_positive_examples: list[AlignedStringExample],
         tokenizer: AlignedClassificationTokenizer | None,
     ):
         """
@@ -30,7 +29,6 @@ class AlignedClassificationDataset(Dataset):
 
         Args:
             positive_examples: The examples to use for *this dataset*
-            all_positive_examples: All seen positive examples across dataset splits
         """
         logger.info(f"Loaded {len(positive_examples)} rows.")
         if tokenizer is not None:
@@ -41,11 +39,7 @@ class AlignedClassificationDataset(Dataset):
 
         logger.info("Creating negative examples")
         negative_examples = create_negative_examples(
-            positive_examples,
-            all_positive_examples=all_positive_examples,
-            num_tag_swaps_per_ex=5,
-            num_random_perturbs_per_ex=10,
-            num_insertions_per_ex=10,
+            positive_examples, tokenizer=self.tokenizer, num_negs_per_ex=3
         )
         logger.info(f"Created {len(negative_examples)} negative examples")
         self.examples = [
