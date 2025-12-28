@@ -336,7 +336,7 @@ def main():
     def _run_extraction():
         with wandb.init(
             entity="lecs-general",
-            project="fst-distillation.extraction.v2",
+            project="fst-distillation.extraction.v3",
             config={
                 "rnn": {
                     "eval.loss": best_run_loss,
@@ -385,7 +385,7 @@ def main():
     try:
         for sweep in (
             wandb.Api()
-            .project(name="fst-distillation.extraction.v2", entity="lecs-general")
+            .project(name="fst-distillation.extraction.v3", entity="lecs-general")
             .sweeps()
         ):
             if sweep.name == paths["identifier"]:
@@ -405,13 +405,13 @@ def main():
         fst_sweep_id = wandb.sweep(
             sweep=sweep_configuration,
             entity="lecs-general",
-            project="fst-distillation.extraction.v2",
+            project="fst-distillation.extraction.v3",
         )
         remaining_runs = num_extract_runs
     else:
         logger.info(f"Reusing sweep {existing_sweep.id}")
         fst_sweep_id = (
-            f"lecs-general/fst-distillation.extraction.v2/{existing_sweep.id}"
+            f"lecs-general/fst-distillation.extraction.v3/{existing_sweep.id}"
         )
         remaining_runs = num_extract_runs - len(
             [r for r in existing_sweep.runs if r.state == "finished"]
@@ -419,7 +419,7 @@ def main():
 
     wandb.agent(fst_sweep_id, function=_run_extraction, count=remaining_runs)
     sweep = wandb.Api().sweep(
-        f"lecs-general/fst-distillation.extraction.v2/sweeps/{fst_sweep_id}"
+        f"lecs-general/fst-distillation.extraction.v3/sweeps/{fst_sweep_id}"
     )
     best_run = sweep.best_run()
     print(f"Best run: {best_run.url}")
