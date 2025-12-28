@@ -10,7 +10,7 @@ def tokenize(
     chars = list(s)
     new_chars: list[str] = []
     for c in chars:
-        if c in post_diacritics:
+        if c in post_diacritics and len(new_chars) > 0:
             new_chars[-1] += c
         else:
             new_chars.append(c)
