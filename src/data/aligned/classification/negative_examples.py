@@ -1,7 +1,6 @@
 import random
 import re
 
-
 from src.data.aligned.classification.tokenizer import AlignedClassificationTokenizer
 
 from ..example import AlignedStringExample
@@ -21,12 +20,9 @@ def create_negative_examples(
     negatives: list[AlignedStringExample] = []
     for ex in positive_examples:
         for _ in range(num_negs_per_ex):
-            k = random.randint(1, len(ex.aligned_chars))
-            indices_to_replace = random.sample(list(range(len(ex.aligned_chars))), k=k)
-            new_aligned_chars = ex.aligned_chars.copy()
-            for idx in indices_to_replace:
+            candidate_indices = []
+            for idx in range(len(ex.aligned_chars)):
                 in_char, out_char = ex.aligned_chars[idx]
-
                 # Cache result if needed
                 if in_char not in pair_lookup:
                     pair_lookup[in_char] = set()
@@ -34,8 +30,15 @@ def create_negative_examples(
                         other_tok = tokenizer.id_to_token[other_tok_id]
                         other_out_char = re.match(r"\((.*),(.*)\)", other_tok).group(2)  # type:ignore
                         pair_lookup[in_char].add(other_out_char)
-
-                # Pick a new out char
+                if len([c for c in pair_lookup[in_char] if c != out_char]) > 0:
+                    candidate_indices.append(idx)
+            if len(candidate_indices) == 0:
+                break
+            k = random.randint(1, len(candidate_indices))
+            indices_to_replace = random.sample(candidate_indices, k=k)
+            new_aligned_chars = ex.aligned_chars.copy()
+            for idx in indices_to_replace:
+                in_char, out_char = ex.aligned_chars[idx]
                 new_out_char = random.choice(
                     [c for c in pair_lookup[in_char] if c != out_char]
                 )
