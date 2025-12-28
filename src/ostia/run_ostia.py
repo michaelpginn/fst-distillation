@@ -58,7 +58,7 @@ def run_ostia(paths: Paths, order: Literal["lex", "dd"]):
     wandb.log(
         {
             "num_states": len(fst.states),
-            "train": train_metrics,
+            # "train": train_metrics,
             "eval": eval_metrics,
             "test": test_metrics,
         }
