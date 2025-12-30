@@ -1,5 +1,5 @@
-dataset,Base,— CRPAlign,— synth. data
-inflection.czn,0.666,0.646,0.643
-inflection.kon,0.846,0.878,0.814
-g2p.geo,0.596,0.407,0.516
-histnorm.swe,0.539,0.539,0.546
+dataset,Base,– CRPAlign,– synth. data,LM,Class.
+czn#(inflect.),0.666,0.646,0.643,0.636,0.58
+kon#(inflect.),0.846,0.878,0.814,0.84,0.859
+geo#(g2p),0.596,0.407,0.516,0.511,0.56
+swe#(norm.),0.539,0.539,0.546,0.579,0.549
